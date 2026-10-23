@@ -118,7 +118,8 @@ public final class Boot {
                 active++;
         }
         StringBuilder out = new StringBuilder();
-        out.append(registry.entries().size()).append(" entries, ").append(active).append(" active, ")
+        int total = registry.entries().size();
+        out.append(total).append(total == 1 ? " entry, " : " entries, ").append(active).append(" active, ")
             .append(inert).append(" missing a mod");
         if (planned > 0)
             out.append(", ").append(planned).append(" planned");

@@ -1,6 +1,7 @@
 package net.xlea99.lifeguard.boot;
 
 import java.util.List;
+import net.xlea99.lifeguard.entry.quark_elytra_duplication_crash.QuarkElytraDuplicationCrash;
 
 /**
  * Every class that declares entries. Startup loads each one so its constants register before the freeze.
@@ -11,6 +12,7 @@ import java.util.List;
  */
 public final class Catalog {
     private static final List<Class<?>> DECLARATIONS = List.of(
+        QuarkElytraDuplicationCrash.class
     );
 
     private Catalog() {
