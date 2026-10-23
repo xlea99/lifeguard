@@ -1,2 +1,4 @@
 {
+  "lifeguard.entry.quark_elytra_duplication_crash": "Quark elytra duplication crash",
+  "lifeguard.entry.quark_elytra_duplication_crash.desc": "Fixes Quark's Dragon Scales elytra duplication crashing the game when the elytra and the scale sit on a diagonal in the crafting grid. Quark 4.1 sizes the recipe's leftovers for 2 items instead of for the grid."
 }

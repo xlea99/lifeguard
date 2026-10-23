@@ -4,7 +4,9 @@
   "package": "net.xlea99.lifeguard.mixin",
   "plugin": "net.xlea99.lifeguard.boot.LifeguardMixinPlugin",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
+  "mixins": [
+    "quark_elytra_duplication_crash.ElytraDuplicationRecipeMixin"
+  ],
   "client": [],
   "server": [],
   "injectors": {
