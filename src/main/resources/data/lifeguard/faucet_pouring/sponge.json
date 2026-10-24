@@ -1,0 +1,10 @@
+{
+  "target": {
+    "predicate_type": "minecraft:block_match",
+    "block": "minecraft:sponge"
+  },
+  "amount": 1,
+  "result": {
+    "Name": "minecraft:sponge"
+  }
+}

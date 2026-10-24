@@ -1,0 +1,11 @@
+{
+  "target": {
+    "predicate_type": "minecraft:block_match",
+    "block": "minecraft:dirt_path"
+  },
+  "fluid": "moonlight:water",
+  "amount": 1,
+  "result": {
+    "Name": "minecraft:mud"
+  }
+}
