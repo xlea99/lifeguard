@@ -24,6 +24,8 @@ import net.xlea99.lifeguard.core.Entry;
 import net.xlea99.lifeguard.core.EntryClass;
 import net.xlea99.lifeguard.core.Profile;
 import net.xlea99.lifeguard.core.Registry;
+import net.xlea99.lifeguard.core.Settings;
+import net.xlea99.lifeguard.core.SettingsView;
 import net.xlea99.lifeguard.core.Side;
 import net.xlea99.lifeguard.core.SubValue;
 import net.xlea99.lifeguard.core.Switch;
@@ -78,11 +80,22 @@ public final class EntryConfig {
 
     // --- reading -------------------------------------------------------------------------------------------------------
 
-    /** Reads the file (if there is one) into the registry: the side's profile, each entry's switch, each sub-value. */
+    /** Startup: reads the file into the live registry (this side's profile, switches and sub-values). */
     public List<String> load() throws IOException {
+        Settings settings = Settings.copyOf(registry);
+        List<String> warnings = readInto(settings);
+        settings.applyTo(registry);
+        return warnings;
+    }
+
+    /**
+     * Reads the file into a draft without touching anything live: this side goes back to defaults, then takes the
+     * file's values. The menu opens on this, so edits saved earlier and waiting for a restart show as they are.
+     */
+    public List<String> readInto(Settings target) throws IOException {
         unknown.clear();
         broken = false;
-        resetToDefaults();
+        target.resetSide(side);
         if (!Files.exists(file))
             return List.of();
         String text = Files.readString(file, StandardCharsets.UTF_8);
@@ -95,19 +108,10 @@ public final class EntryConfig {
             return List.of(file.getFileName() + " isn't valid TOML, so Lifeguard is using defaults this session and"
                 + " won't touch the file until it's fixed: " + e.getMessage());
         }
-        return apply(root);
+        return apply(root, target);
     }
 
-    private void resetToDefaults() {
-        registry.setProfile(side, Profile.DEFAULT);
-        for (Entry entry : sideEntries()) {
-            entry.set(Switch.AUTO);
-            for (SubValue<?> value : entry.values())
-                value.reset();
-        }
-    }
-
-    private List<String> apply(UnmodifiableConfig root) {
+    private List<String> apply(UnmodifiableConfig root, Settings target) {
         List<String> warnings = new ArrayList<>();
         Set<List<String>> consumed = new HashSet<>();
 
@@ -116,14 +120,14 @@ public final class EntryConfig {
             consumed.add(List.of(PROFILE_KEY));
             Optional<Profile> profile = profileValue instanceof String id ? Profile.byId(id) : Optional.empty();
             if (profile.isPresent())
-                registry.setProfile(side, profile.get());
+                target.setProfile(side, profile.get());
             else
                 warnings.add("profile = " + Toml.value(profileValue) + " isn't a profile; using "
                     + Profile.DEFAULT.id() + ". Pick one of: " + profileIds());
         }
 
         for (Entry entry : sideEntries())
-            readEntry(root, entry, consumed, warnings);
+            readEntry(root, entry, target, consumed, warnings);
 
         collectUnknown(root, new ArrayList<>(), consumed);
         for (Map.Entry<List<String>, Map<String, Object>> table : unknown.entrySet())
@@ -132,7 +136,8 @@ public final class EntryConfig {
         return warnings;
     }
 
-    private void readEntry(UnmodifiableConfig root, Entry entry, Set<List<String>> consumed, List<String> warnings) {
+    private void readEntry(UnmodifiableConfig root, Entry entry, Settings target, Set<List<String>> consumed,
+                           List<String> warnings) {
         // The entry's own section first, then any other, so a re-classed entry keeps the player's choice.
         List<String> found = null;
         UnmodifiableConfig table = null;
@@ -152,7 +157,7 @@ public final class EntryConfig {
             consumed.add(child(found, ENABLED_KEY));
             Optional<Switch> setting = enabled instanceof String id ? Switch.byId(id) : Optional.empty();
             if (setting.isPresent())
-                entry.set(setting.get());
+                target.set(entry, setting.get());
             else
                 warnings.add(dotted(found, ENABLED_KEY) + " = " + Toml.value(enabled)
                     + " isn't auto, on or off; using auto");
@@ -162,7 +167,7 @@ public final class EntryConfig {
             if (raw == null)
                 continue;
             consumed.add(child(found, value.name()));
-            String problem = value.setFrom(raw);
+            String problem = target.setValueFrom(value, raw);
             if (problem != null)
                 warnings.add(dotted(found, value.name()) + " = " + Toml.value(raw) + " " + problem + "; using the default, "
                     + value.defaultValue());
@@ -197,9 +202,14 @@ public final class EntryConfig {
      * when the last load found the file broken: the player's text is worth more than our defaults.
      */
     public boolean save() throws IOException {
+        return save(registry);
+    }
+
+    /** Writes the given state (the menu's draft, say) instead of the live one. Same rules as {@link #save()}. */
+    public boolean save(SettingsView view) throws IOException {
         if (broken)
             return false;
-        String text = render();
+        String text = render(view);
         if (Files.exists(file) && normalized(Files.readString(file, StandardCharsets.UTF_8)).equals(text))
             return false;
         Files.createDirectories(file.toAbsolutePath().getParent());
@@ -217,15 +227,19 @@ public final class EntryConfig {
         return text.replace("\r\n", "\n");
     }
 
-    /** The whole file as it should read now. */
+    /** The whole file as the live state would write it. */
     public String render() {
+        return render(registry);
+    }
+
+    public String render(SettingsView view) {
         StringBuilder out = new StringBuilder();
         out.append("# Lifeguard ").append(side.id()).append(" settings").append('\n');
         out.append("# Each entry's \"enabled\" is auto, on or off. Auto follows the profile; on and off override it.").append('\n');
         out.append("# Comments are rewritten from the mod on every start; only the values are yours. Changes apply after a restart.").append('\n');
         out.append('\n');
         out.append("# ").append(profileIds()).append('\n');
-        out.append(PROFILE_KEY).append(" = ").append(Toml.string(registry.profile(side).id())).append('\n');
+        out.append(PROFILE_KEY).append(" = ").append(Toml.string(view.profile(side).id())).append('\n');
         writeUnknown(out, List.of(), 0);
 
         Set<List<String>> written = new HashSet<>();
@@ -233,7 +247,7 @@ public final class EntryConfig {
         for (EntryClass kind : EntryClass.values())
             for (Entry root : registry.roots())
                 if (root.kind() == kind)
-                    writeTree(out, root, written);
+                    writeTree(out, root, written, view);
 
         boolean header = false;
         for (List<String> path : unknown.keySet()) {
@@ -249,7 +263,7 @@ public final class EntryConfig {
         return out.toString();
     }
 
-    private void writeTree(StringBuilder out, Entry entry, Set<List<String>> written) {
+    private void writeTree(StringBuilder out, Entry entry, Set<List<String>> written, SettingsView view) {
         if (entry.side() == side) {
             List<String> path = tablePath(entry);
             int depth = path.size() - 1;
@@ -259,18 +273,18 @@ public final class EntryConfig {
             comment(out, inner, summary(entry));
             for (String line : wrap(texts.lang(entry.descKey())))
                 comment(out, inner, line);
-            comment(out, inner, autoNote(entry));
-            out.append(inner).append(ENABLED_KEY).append(" = ").append(Toml.string(entry.setting().id())).append('\n');
+            comment(out, inner, autoNote(entry, view));
+            out.append(inner).append(ENABLED_KEY).append(" = ").append(Toml.string(view.setting(entry).id())).append('\n');
             for (SubValue<?> value : entry.values()) {
                 comment(out, inner, texts.lang(value.nameKey()) + range(value) + ", default " + value.defaultValue());
-                out.append(inner).append(Toml.key(value.name())).append(" = ").append(Toml.value(value.get())).append('\n');
+                out.append(inner).append(Toml.key(value.name())).append(" = ").append(Toml.value(view.value(value))).append('\n');
             }
             writeUnknown(out, path, depth);
             written.add(path);
         }
         // A child on the other side still lives under its parent; it's just written in the other file.
         for (Entry child : entry.children())
-            writeTree(out, child, written);
+            writeTree(out, child, written, view);
     }
 
     private void writeUnknown(StringBuilder out, List<String> path, int depth) {
@@ -297,22 +311,23 @@ public final class EntryConfig {
         return capitalized(entry.kind().id()) + " · " + entry.taste().id().replace('_', ' ') + " · " + needs;
     }
 
-    private String autoNote(Entry entry) {
+    private String autoNote(Entry entry, SettingsView view) {
         String note;
         if (entry.taste() == Taste.DANGEROUS)
             note = "auto = always off: only \"on\" turns a dangerous entry on";
         else
-            note = "auto = " + (registry.profile(side).turnsOn(entry.taste()) ? "on" : "off") + " under this profile";
+            note = "auto = " + (view.profile(side).turnsOn(entry.taste()) ? "on" : "off") + " under this profile";
+        List<String> asides = new ArrayList<>();
         List<String> missing = entry.missingMods();
         if (!missing.isEmpty()) {
             List<String> names = new ArrayList<>();
             for (String modId : missing)
                 names.add(texts.modName(modId));
-            note += " (does nothing: " + String.join(", ", names) + (names.size() == 1 ? " isn't" : " aren't") + " installed)";
+            asides.add("does nothing: " + String.join(", ", names) + (names.size() == 1 ? " isn't" : " aren't") + " installed");
         }
         if (entry.isPlanned())
-            note += " (planned: no code yet)";
-        return note;
+            asides.add("planned: no code yet");
+        return asides.isEmpty() ? note : note + " (" + String.join("; ", asides) + ")";
     }
 
     private static String range(SubValue<?> value) {

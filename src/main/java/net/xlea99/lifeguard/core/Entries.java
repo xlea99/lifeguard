@@ -1,6 +1,6 @@
 package net.xlea99.lifeguard.core;
 
-/** Where entries are declared: {@code Entries.feature("jukebox", Taste.SUBTLE)} adds to Lifeguard's one registry. */
+/** Where entries are declared: {@code Entries.feature("jukebox", Taste.LIGHT)} adds to Lifeguard's one registry. */
 public final class Entries {
     public static final Registry REGISTRY = new Registry();
 

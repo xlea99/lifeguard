@@ -6,7 +6,7 @@ import java.util.Optional;
 /** A taste ceiling: a profile switches on every entry whose taste is at or below it. Tasteful is the default. */
 public enum Profile {
     TASTELESS(Taste.NONE),
-    TASTEFUL(Taste.SUBTLE),
+    TASTEFUL(Taste.LIGHT),
     FLAVOR_EXPLOSION(Taste.STRONG),
     // The highest ceiling is deep_end, not dangerous: no profile ever turns a dangerous entry on.
     OFF_THE_DEEP_END(Taste.DEEP_END);

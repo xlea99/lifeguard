@@ -11,7 +11,7 @@ public enum Taste {
     /** A direct extension of someone else's precedent; we made no real calls. */
     NONE,
     /** A call was needed, and it deliberately follows an existing precedent. */
-    SUBTLE,
+    LIGHT,
     /** Our own expression, with no precedent behind it or picking one precedent against others. */
     STRONG,
     /** Only makes sense inside Deep End: it carries the pack's vision, and most players won't want it. */

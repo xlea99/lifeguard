@@ -51,9 +51,15 @@ public final class Texts {
         return lang.getOrDefault(key, key);
     }
 
-    /** A mod's display name from its id, e.g. {@code supplementaries} to {@code Supplementaries}. */
+    /**
+     * A mod's display name from its id, e.g. {@code supplementaries} to {@code Supplementaries}: the installed mod's own
+     * name, or, when it isn't installed (exactly when "needs X" matters), {@code lifeguard.mod.<id>} from our lang file,
+     * or the id itself as a last resort.
+     */
     public String modName(String modId) {
         String name = modNames.apply(modId);
+        if (name == null || name.isBlank())
+            name = lang.get("lifeguard.mod." + modId);
         return name == null || name.isBlank() ? modId : name;
     }
 }

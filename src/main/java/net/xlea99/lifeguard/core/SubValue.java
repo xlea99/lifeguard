@@ -15,6 +15,21 @@ public abstract sealed class SubValue<T> permits SubValue.Int, SubValue.Decimal,
     private volatile T value;
     private Entry owner;
 
+    /** What a raw value read off disk or the network turned into: a value, or why it couldn't be one. */
+    public record Parsed<T>(T value, String problem) {
+        static <T> Parsed<T> ok(T value) {
+            return new Parsed<>(value, null);
+        }
+
+        static <T> Parsed<T> refused(String problem) {
+            return new Parsed<>(null, problem);
+        }
+
+        public boolean ok() {
+            return problem == null;
+        }
+    }
+
     SubValue(String name, T defaultValue) {
         this.name = Objects.requireNonNull(name);
         this.defaultValue = Objects.requireNonNull(defaultValue);
@@ -41,11 +56,12 @@ public abstract sealed class SubValue<T> permits SubValue.Int, SubValue.Decimal,
         return defaultValue;
     }
 
+    /** The live value: what this session runs with. */
     public T get() {
         return value;
     }
 
-    /** Sets the value, refusing anything out of range. Called by the config loader. */
+    /** Sets the live value, refusing anything out of range. */
     public void set(T newValue) {
         if (!accepts(newValue))
             throw new IllegalArgumentException(describe() + " can't be " + newValue + " (" + rangeText() + ")");
@@ -57,11 +73,18 @@ public abstract sealed class SubValue<T> permits SubValue.Int, SubValue.Decimal,
     }
 
     /**
-     * Sets the value from something read off disk or the network, where the type isn't known in advance (TOML hands
-     * back a Long for a whole number, a Double for a decimal). Returns why it couldn't, or null when it did; a value
-     * that doesn't fit leaves this one unchanged.
+     * Reads a value whose type isn't known in advance (TOML hands back a Long for a whole number, a Double for a
+     * decimal) without setting anything.
      */
-    public abstract String setFrom(Object raw);
+    public abstract Parsed<T> parse(Object raw);
+
+    /** Parses, and sets the live value when it fits. Returns why it didn't, or null when it did. */
+    public String setFrom(Object raw) {
+        Parsed<T> parsed = parse(raw);
+        if (parsed.ok())
+            set(parsed.value());
+        return parsed.problem();
+    }
 
     public abstract boolean accepts(T candidate);
 
@@ -111,14 +134,13 @@ public abstract sealed class SubValue<T> permits SubValue.Int, SubValue.Decimal,
         }
 
         @Override
-        public String setFrom(Object raw) {
+        public Parsed<Integer> parse(Object raw) {
             if (!(raw instanceof Integer || raw instanceof Long))
-                return "isn't a whole number";
+                return Parsed.refused("isn't a whole number");
             long candidate = ((Number) raw).longValue();
             if (candidate < min || candidate > max)
-                return "is outside " + rangeText();
-            set((int) candidate);
-            return null;
+                return Parsed.refused("is outside " + rangeText());
+            return Parsed.ok((int) candidate);
         }
 
         @Override
@@ -151,13 +173,12 @@ public abstract sealed class SubValue<T> permits SubValue.Int, SubValue.Decimal,
         }
 
         @Override
-        public String setFrom(Object raw) {
+        public Parsed<Double> parse(Object raw) {
             if (!(raw instanceof Number given))
-                return "isn't a number";
+                return Parsed.refused("isn't a number");
             if (!accepts(given.doubleValue()))
-                return "is outside " + rangeText();
-            set(given.doubleValue());
-            return null;
+                return Parsed.refused("is outside " + rangeText());
+            return Parsed.ok(given.doubleValue());
         }
 
         @Override
@@ -177,11 +198,10 @@ public abstract sealed class SubValue<T> permits SubValue.Int, SubValue.Decimal,
         }
 
         @Override
-        public String setFrom(Object raw) {
+        public Parsed<Boolean> parse(Object raw) {
             if (!(raw instanceof Boolean given))
-                return "isn't true or false";
-            set(given);
-            return null;
+                return Parsed.refused("isn't true or false");
+            return Parsed.ok(given);
         }
 
         @Override
