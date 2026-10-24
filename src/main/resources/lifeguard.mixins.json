@@ -9,6 +9,7 @@
     "quark_donkey_chests.VariantChestsModuleMixin",
     "quark_elytra_duplication_crash.ElytraDuplicationRecipeMixin",
     "quark_tool_restock_enchantments.AutomaticToolRestockModuleMixin",
+    "supplementaries_grouper_open_sides.GrouperBlockMixin",
     "zeta_instance_race.ZetaClientListMixin",
     "zeta_instance_race.ZetaListMixin"
   ],
