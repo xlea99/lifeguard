@@ -3,6 +3,7 @@ package net.xlea99.lifeguard.boot;
 import java.util.List;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
 import net.xlea99.lifeguard.entry.dye_depot_runes.DyeDepotRunes;
+import net.xlea99.lifeguard.entry.enderman_head_reach.EndermanHeadReach;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
 import net.xlea99.lifeguard.entry.no_supps_jar_fish.NoSuppsJarFish;
 import net.xlea99.lifeguard.entry.quark_amethyst_beacon_tint.QuarkAmethystBeaconTint;
@@ -21,6 +22,8 @@ import net.xlea99.lifeguard.entry.supps_lumisene_burn_time.SuppsLumiseneBurnTime
 import net.xlea99.lifeguard.entry.supps_notice_board_comparator.SuppsNoticeBoardComparator;
 import net.xlea99.lifeguard.entry.supps_plunderer_raid_weapon.SuppsPlundererRaidWeapon;
 import net.xlea99.lifeguard.entry.supps_respects_mob_griefing.SuppsRespectsMobGriefing;
+import net.xlea99.lifeguard.entry.supps_slice_maps_keep_the_altimeter.SuppsSliceMapsKeepTheAltimeter;
+import net.xlea99.lifeguard.entry.themed_candle_holder_flames.ThemedCandleHolderFlames;
 import net.xlea99.lifeguard.entry.zeta_instance_race.ZetaInstanceRace;
 
 /**
@@ -34,6 +37,7 @@ public final class Catalog {
     private static final List<Class<?>> DECLARATIONS = List.of(
         CcCannonBackfire.class,
         DyeDepotRunes.class,
+        EndermanHeadReach.class,
         FaucetPouringRecipes.class,
         NoSuppsJarFish.class,
         QuarkAmethystBeaconTint.class,
@@ -52,6 +56,8 @@ public final class Catalog {
         SuppsNoticeBoardComparator.class,
         SuppsPlundererRaidWeapon.class,
         SuppsRespectsMobGriefing.class,
+        SuppsSliceMapsKeepTheAltimeter.class,
+        ThemedCandleHolderFlames.class,
         ZetaInstanceRace.class
     );
 
