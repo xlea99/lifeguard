@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    {"id": "#c:storage_blocks/iron", "required": false},
+    {"id": "#c:storage_blocks/steel", "required": false}
+  ]
+}

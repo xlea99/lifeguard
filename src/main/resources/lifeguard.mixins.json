@@ -10,6 +10,12 @@
     "quark_elytra_duplication_crash.ElytraDuplicationRecipeMixin",
     "quark_tool_restock_enchantments.AutomaticToolRestockModuleMixin",
     "supplementaries_grouper_open_sides.GrouperBlockMixin",
+    "supps_blue_bomb_dispensing.DispenserBehaviorsManagerMixin",
+    "supps_cannon_comparator.CannonBlockMixin",
+    "supps_lumisene_burn_time.FlammableEffectMixin",
+    "supps_lumisene_burn_time.FlammableLiquidBlockMixin",
+    "supps_notice_board_comparator.NoticeBoardBlockMixin",
+    "supps_plunderer_raid_weapon.PlundererEntityMixin",
     "zeta_instance_race.ZetaClientListMixin",
     "zeta_instance_race.ZetaListMixin"
   ],
