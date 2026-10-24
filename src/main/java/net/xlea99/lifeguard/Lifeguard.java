@@ -7,6 +7,10 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
 import net.xlea99.lifeguard.boot.Boot;
 import net.xlea99.lifeguard.data.DataConditions;
+import net.xlea99.lifeguard.entry.ac_infinite_soda.AcInfiniteSoda;
+import net.xlea99.lifeguard.entry.ac_infinite_soda.InfiniteSoda;
+import net.xlea99.lifeguard.entry.am_lava_vision_fallback.AmLavaVisionFallback;
+import net.xlea99.lifeguard.entry.am_lava_vision_fallback.LavaVision;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CannonBackfire;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
@@ -37,6 +41,10 @@ public class Lifeguard {
             CannonBackfire.register();
         if (FaucetPouringRecipes.ENTRY.active())
             PouringRecipes.register();
+        if (AcInfiniteSoda.ENTRY.active())
+            InfiniteSoda.register();
+        if (AmLavaVisionFallback.ENTRY.active())
+            LavaVision.register();
         modEventBus.addListener(Sync::registerPayloads);
         if (FaucetPouringRecipes.ENTRY.installed())
             modEventBus.addListener(PouringRecipesPayload::register);
