@@ -5,7 +5,11 @@
   "plugin": "net.xlea99.lifeguard.boot.LifeguardMixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "quark_elytra_duplication_crash.ElytraDuplicationRecipeMixin"
+    "quark_donkey_chests.AbstractChestedHorseMixin",
+    "quark_donkey_chests.VariantChestsModuleMixin",
+    "quark_elytra_duplication_crash.ElytraDuplicationRecipeMixin",
+    "zeta_instance_race.ZetaClientListMixin",
+    "zeta_instance_race.ZetaListMixin"
   ],
   "client": [],
   "server": [],

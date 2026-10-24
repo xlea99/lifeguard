@@ -16,7 +16,8 @@ import net.xlea99.lifeguard.core.Switch;
 
 /**
  * The entries as a compact table: one solid, striped 12-pixel row per entry under a pinned column header. Columns:
- * taste glyph, name (indented by tree depth, collapsible), class, side, switch. Mod headings sit between groups.
+ * taste glyph and name (indented together by tree depth under drawn guides, collapsible), class, side, switch. Mod
+ * headings sit between groups and collapse them.
  *
  * <p>Rows hold no widgets: a click is read by where it lands. On the arrow it collapses; on the switch it steps the
  * switch (left click forward, right click back); anywhere else it selects the entry for the details pane.
@@ -27,7 +28,7 @@ import net.xlea99.lifeguard.core.Switch;
 final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
     static final int ROW_HEIGHT = 12;
     static final int HEADER_HEIGHT = 12;
-    private static final int INDENT = 8;
+    private static final int INDENT = 10;
     private static final int SWITCH_WIDTH = 34;
     private static final int SIDE_WIDTH = 10;
     private static final int CLASS_WIDTH = 22;
@@ -39,7 +40,9 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
     private static final int HOVER = 0xFF2E2E2E;
     private static final int SELECTED = 0xFF34485C;
     private static final int HEADING = 0xFF2B2516;
+    private static final int HEADING_HOVER = 0xFF372F1C;
     private static final int RULE = 0xFF3A3A3A;
+    private static final int GUIDE = 0xFF505050;
 
     private final LifeguardScreen screen;
 
@@ -51,17 +54,46 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
     void show(List<MenuModel.Line> lines) {
         List<Row> rows = new ArrayList<>();
         int stripe = 0;
-        for (MenuModel.Line line : lines) {
+        for (int i = 0; i < lines.size(); i++) {
+            MenuModel.Line line = lines.get(i);
             if (line.isHeading()) {
                 rows.add(new Heading(line));
                 stripe = 0;
             } else {
-                rows.add(new EntryRow(line.entry(), line.depth(), line.context(), stripe++ % 2 == 1));
+                rows.add(new EntryRow(line.entry(), line.depth(), line.context(), stripe++ % 2 == 1, guides(lines, i)));
             }
         }
         replaceEntries(rows);
         // A shorter list can leave the old scroll position past its end, showing nothing: clamp it back into range.
         setScrollAmount(getScrollAmount());
+    }
+
+    /**
+     * Which tree guides run on below a row: for each level from 1 to its depth, whether a later row sits at that level
+     * before the tree climbs back above it. A guide that runs on is a full-height line; one that doesn't ends here.
+     */
+    private static boolean[] guides(List<MenuModel.Line> lines, int at) {
+        int depth = lines.get(at).depth();
+        boolean[] runsOn = new boolean[depth + 1];
+        for (int level = 1; level <= depth; level++)
+            for (int j = at + 1; j < lines.size(); j++) {
+                MenuModel.Line next = lines.get(j);
+                if (next.isHeading() || next.depth() < level)
+                    break;
+                if (next.depth() == level) {
+                    runsOn[level] = true;
+                    break;
+                }
+            }
+        return runsOn;
+    }
+
+    /** Vanilla's hit area starts a little right of the glyph column; a click left of it still counts for its row. */
+    @Override
+    public boolean mouseClicked(double mouseX, double mouseY, int button) {
+        if (mouseX >= getX() && mouseX < getRowLeft())
+            mouseX = getRowLeft();
+        return super.mouseClicked(mouseX, mouseY, button);
     }
 
     /**
@@ -111,6 +143,19 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
         return getX() + getWidth() - 6;
     }
 
+    /**
+     * Where a root's taste glyph sits, hugging the panel's left edge instead of vanilla's centered row inset: the room
+     * goes to the tree indent, which moves glyph and name together. Rows themselves stay centered, so only drawing moves.
+     */
+    private int glyphLeft() {
+        return getX() + 3;
+    }
+
+    private boolean over(int top, int mouseX, int mouseY) {
+        return isMouseOver(mouseX, mouseY) && mouseX >= getX() && mouseX < getX() + getWidth() - 7 && mouseY >= top
+            && mouseY < top + ROW_HEIGHT;
+    }
+
     private int switchLeft(int rowLeft, int rowWidth) {
         return rowLeft + rowWidth - SWITCH_WIDTH;
     }
@@ -145,7 +190,7 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
         graphics.fill(getX(), top + HEADER_HEIGHT - 1, getRight(), top + HEADER_HEIGHT, RULE);
         int y = top + 2;
         int color = 0xFF8A8A8A;
-        graphics.drawString(font, Component.translatable("lifeguard.menu.col.entry"), left + TasteGlyphs.width(font) + 4, y, color, false);
+        graphics.drawString(font, Component.translatable("lifeguard.menu.col.entry"), glyphLeft(), y, color, false);
         graphics.drawString(font, Component.translatable("lifeguard.menu.col.class"), classLeft(left, width), y, color, false);
         graphics.drawString(font, Component.translatable("lifeguard.menu.col.side"), sideLeft(left, width) + 2, y, color, false);
         graphics.drawString(font, Component.translatable("lifeguard.menu.col.switch"), switchLeft(left, width) + 2, y, color, false);
@@ -165,13 +210,17 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
         }
     }
 
-    /** A mod's heading band: its name and how many entries under it match. Dimmed when the mod isn't installed. */
+    /**
+     * A mod's heading band: its name and how many entries under it match. Dimmed when the mod isn't installed. A click
+     * anywhere on it collapses or opens the whole group.
+     */
     final class Heading extends Row {
+        private final String mod;
         private final Component text;
         private final int color;
 
         Heading(MenuModel.Line line) {
-            String mod = line.headingMod();
+            mod = line.headingMod();
             boolean installed = mod.equals(MenuModel.MINECRAFT) || screen.model().modInstalled(mod);
             MutableComponent name = Component.literal(MenuModel.modName(mod))
                 .append(Component.literal("  " + line.count()).withColor(0xFF7A7A7A));
@@ -184,8 +233,22 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
         @Override
         public void render(GuiGraphics graphics, int index, int top, int left, int width, int height, int mouseX,
                            int mouseY, boolean hovering, float partialTick) {
-            graphics.fill(getX(), top, getX() + getWidth() - 7, top + ROW_HEIGHT, HEADING);
-            graphics.drawString(minecraft.font, text, left + 2, top + 2, color, false);
+            boolean collapsible = !screen.collapseIgnored();
+            graphics.fill(getX(), top, getX() + getWidth() - 7, top + ROW_HEIGHT,
+                collapsible && over(top, mouseX, mouseY) ? HEADING_HOVER : HEADING);
+            boolean closed = collapsible && screen.model().modCollapsed(mod);
+            graphics.drawString(minecraft.font, closed ? "▸" : "▾", glyphLeft() + 1, top + 2,
+                collapsible ? 0xFFB09A60 : 0xFF6A6050, false);
+            graphics.drawString(minecraft.font, text, glyphLeft() + 9, top + 2, color, false);
+        }
+
+        @Override
+        public boolean mouseClicked(double mouseX, double mouseY, int button) {
+            if (button != 0 || screen.collapseIgnored())
+                return false;
+            screen.model().toggleModCollapsed(mod);
+            screen.rebuildRows();
+            return true;
         }
     }
 
@@ -194,15 +257,20 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
         private final int depth;
         private final boolean context;
         private final boolean odd;
+        private final boolean[] guides;
         private int arrowLeft;
         private int switchX;
 
-        /** A context row is an ancestor shown only because something under it matches the filters; it's greyed. */
-        EntryRow(net.xlea99.lifeguard.core.Entry entry, int depth, boolean context, boolean odd) {
+        /**
+         * A context row is an ancestor shown only because something under it matches the filters; it's greyed. Guides
+         * say which tree lines run on below this row, by level (see {@link EntryList#guides}).
+         */
+        EntryRow(net.xlea99.lifeguard.core.Entry entry, int depth, boolean context, boolean odd, boolean[] guides) {
             this.entry = entry;
             this.depth = depth;
             this.context = context;
             this.odd = odd;
+            this.guides = guides;
         }
 
         @Override
@@ -211,6 +279,8 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
             MenuModel model = screen.model();
             Font font = minecraft.font;
             boolean selected = screen.selected() == entry;
+            // Vanilla's hover starts a little right of the glyphs; ours covers the whole painted row.
+            hovering = over(top, mouseX, mouseY);
             // Vanilla hands rows a height 4px short of their slot; the whole slot is painted so the stripes touch.
             height = ROW_HEIGHT;
             graphics.fill(getX(), top, getX() + getWidth() - 7, top + height,
@@ -220,13 +290,16 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
                 graphics.fill(getX(), top, getX() + getWidth() - 7, top + height, ripple);
             int textY = top + 2;
 
-            // Taste glyph, then the name column: tree indent, collapse arrow, the name, and an aside if it fits.
-            TasteGlyphs.draw(graphics, font, entry.taste(), left, top + (height - TasteGlyphs.HEIGHT) / 2 + 1);
-            int nameLeft = left + TasteGlyphs.width(font) + 4 + depth * INDENT;
-            arrowLeft = nameLeft;
+            // Tree guides, then the taste glyph indented by depth, the collapse arrow, the name, and an aside if it fits.
+            int base = glyphLeft();
+            int glyphX = base + depth * INDENT;
+            renderGuides(graphics, base, glyphX, top);
+            TasteGlyphs.draw(graphics, font, entry.taste(), glyphX, top + (height - TasteGlyphs.HEIGHT) / 2 + 1);
+            arrowLeft = glyphX + TasteGlyphs.width(font) + 3;
             if (!entry.children().isEmpty())
-                graphics.drawString(font, model.collapsed(entry) ? "▸" : "▾", nameLeft, textY, 0xFF9A9A9A, false);
-            int textX = nameLeft + 7;
+                graphics.drawString(font, model.collapsed(entry) && !screen.collapseIgnored() ? "▸" : "▾", arrowLeft,
+                    textY, 0xFF9A9A9A, false);
+            int textX = arrowLeft + 7;
             int classX = classLeft(left, width);
             int nameRight = classX - 4;
 
@@ -256,7 +329,7 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
 
             if (!hovering)
                 return;
-            if (mouseX >= left && mouseX < left + TasteGlyphs.width(font))
+            if (mouseX >= glyphX && mouseX < glyphX + TasteGlyphs.width(font))
                 screen.setTooltipForNextRenderPass(Component.translatable("lifeguard.taste." + entry.taste().id()));
             else if (mouseX >= classX && mouseX < classX + CLASS_WIDTH)
                 screen.setTooltipForNextRenderPass(Component.translatable("lifeguard.class." + entry.kind().id()));
@@ -267,6 +340,22 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
                 screen.setTooltipForNextRenderPass(lockReason(model));
             else if (mouseX >= switchX)
                 screen.setTooltipForNextRenderPass(Component.translatable("lifeguard.menu.switch.tooltip"));
+        }
+
+        /**
+         * Tree lines hanging from each ancestor's glyph: full height where that ancestor has more children below, and
+         * for this row an elbow into its own glyph, stopping at the elbow when it's the last child.
+         */
+        private void renderGuides(GuiGraphics graphics, int base, int glyphX, int top) {
+            for (int level = 1; level <= depth; level++) {
+                int x = base + (level - 1) * INDENT + 3;
+                if (level == depth) {
+                    graphics.fill(x, top, x + 1, guides[level] ? top + ROW_HEIGHT : top + 7, GUIDE);
+                    graphics.fill(x + 1, top + 6, glyphX - 1, top + 7, GUIDE);
+                } else if (guides[level]) {
+                    graphics.fill(x, top, x + 1, top + ROW_HEIGHT, GUIDE);
+                }
+            }
         }
 
         /** Auto in dim gray (saying what the profile makes it), On in green, Off in red; dimmer still when locked. */
@@ -319,7 +408,8 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
 
         @Override
         public boolean mouseClicked(double mouseX, double mouseY, int button) {
-            if (button == 0 && !entry.children().isEmpty() && mouseX >= arrowLeft && mouseX < arrowLeft + 7) {
+            if (button == 0 && !entry.children().isEmpty() && !screen.collapseIgnored() && mouseX >= arrowLeft
+                && mouseX < arrowLeft + 7) {
                 screen.model().toggleCollapsed(entry);
                 screen.rebuildRows();
                 return true;

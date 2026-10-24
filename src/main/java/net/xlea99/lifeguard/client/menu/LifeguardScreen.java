@@ -12,7 +12,6 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
-import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.ConfirmScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.CommonComponents;
@@ -47,7 +46,6 @@ public final class LifeguardScreen extends Screen {
     private final FilterPane filterPane = new FilterPane(this, filters);
     private EntryList list;
     private Button resetButton;
-    private Button motionButton;
     private Entry selected;
     private Component saveProblem;
     // "/" focuses the search box on key press; the character that follows must not land in it.
@@ -82,12 +80,6 @@ public final class LifeguardScreen extends Screen {
             profileButtons.add(addRenderableWidget(Button.builder(profileName(profile), button -> pickProfile(profile))
                 .bounds(barLeft + i * (buttonWidth + gap), BAR_TOP, buttonWidth, 20).build()));
         }
-        motionButton = addRenderableWidget(Button.builder(motionLabel(), button -> {
-            MenuPrefs.setReducedMotion(!MenuPrefs.reducedMotion());
-            ripples.clear();
-            button.setMessage(motionLabel());
-        }).bounds(width - GAP - 70, 4, 70, 14).build());
-        motionButton.setTooltip(Tooltip.create(Component.translatable("lifeguard.menu.motion.tooltip")));
 
         // Three panes: filters, entries, details. The entries get whatever the other two leave.
         int bodyHeight = height - BODY_TOP - FOOTER;
@@ -209,8 +201,6 @@ public final class LifeguardScreen extends Screen {
     /** Rows that flipped flash green (now on) or red (now off), one after another from the top. */
     private void startRipple(Map<Entry, Boolean> before) {
         ripples.clear();
-        if (MenuPrefs.reducedMotion())
-            return;
         long now = Util.getMillis();
         int index = 0;
         for (MenuModel.Line line : model.lines(filters)) {
@@ -241,8 +231,9 @@ public final class LifeguardScreen extends Screen {
         return (alpha << 24) | (ripple.on() ? 0x40C060 : 0xD04040);
     }
 
-    private static Component motionLabel() {
-        return Component.translatable(MenuPrefs.reducedMotion() ? "lifeguard.menu.motion.off" : "lifeguard.menu.motion.on");
+    /** While any filter is on, collapsing does nothing (the model shows every match): arrows show open and don't click. */
+    boolean collapseIgnored() {
+        return filters.any();
     }
 
     void rebuildRows() {
@@ -358,7 +349,7 @@ public final class LifeguardScreen extends Screen {
                 return true;
             }
             case GLFW.GLFW_KEY_LEFT, GLFW.GLFW_KEY_RIGHT -> {
-                if (selected != null && !selected.children().isEmpty()
+                if (selected != null && !selected.children().isEmpty() && !collapseIgnored()
                     && model.collapsed(selected) == (keyCode == GLFW.GLFW_KEY_RIGHT)) {
                     model.toggleCollapsed(selected);
                     rebuildRows();
