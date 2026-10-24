@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    {"id": "twigs:silt_brick", "required": false},
+    {"id": "minecraft:resin_brick", "required": false}
+  ]
+}
