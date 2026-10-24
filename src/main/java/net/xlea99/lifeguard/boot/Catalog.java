@@ -4,6 +4,7 @@ import java.util.List;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
 import net.xlea99.lifeguard.entry.dye_depot_runes.DyeDepotRunes;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
+import net.xlea99.lifeguard.entry.no_supps_jar_fish.NoSuppsJarFish;
 import net.xlea99.lifeguard.entry.quark_amethyst_beacon_tint.QuarkAmethystBeaconTint;
 import net.xlea99.lifeguard.entry.quark_donkey_chests.QuarkDonkeyChests;
 import net.xlea99.lifeguard.entry.quark_elytra_duplication_crash.QuarkElytraDuplicationCrash;
@@ -13,6 +14,7 @@ import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
 import net.xlea99.lifeguard.entry.supplementaries_grouper_open_sides.SupplementariesGrouperOpenSides;
 import net.xlea99.lifeguard.entry.supps_blue_bomb_dispensing.SuppsBlueBombDispensing;
 import net.xlea99.lifeguard.entry.supps_cannon_comparator.SuppsCannonComparator;
+import net.xlea99.lifeguard.entry.supps_captured_mob_jitter.SuppsCapturedMobJitter;
 import net.xlea99.lifeguard.entry.supps_faucet_cauldron_levels.SuppsFaucetCauldronLevels;
 import net.xlea99.lifeguard.entry.supps_faucet_honey.SuppsFaucetHoney;
 import net.xlea99.lifeguard.entry.supps_lumisene_burn_time.SuppsLumiseneBurnTime;
@@ -33,6 +35,7 @@ public final class Catalog {
         CcCannonBackfire.class,
         DyeDepotRunes.class,
         FaucetPouringRecipes.class,
+        NoSuppsJarFish.class,
         QuarkAmethystBeaconTint.class,
         QuarkDonkeyChests.class,
         QuarkElytraDuplicationCrash.class,
@@ -42,6 +45,7 @@ public final class Catalog {
         SupplementariesGrouperOpenSides.class,
         SuppsBlueBombDispensing.class,
         SuppsCannonComparator.class,
+        SuppsCapturedMobJitter.class,
         SuppsFaucetCauldronLevels.class,
         SuppsFaucetHoney.class,
         SuppsLumiseneBurnTime.class,
