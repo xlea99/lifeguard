@@ -5,6 +5,7 @@
   "plugin": "net.xlea99.lifeguard.boot.LifeguardMixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "no_supps_jar_fish.MobContainerMixin",
     "faucet_pouring_recipes.BuiltInPouringMixin",
     "faucet_pouring_recipes.FaucetBehaviorsManagerMixin",
     "quark_donkey_chests.AbstractChestedHorseMixin",
@@ -24,6 +25,7 @@
     "zeta_instance_race.ZetaListMixin"
   ],
   "client": [
+    "supps_captured_mob_jitter.CapturedMobInstanceMixin",
     "quark_amethyst_beacon_tint.BeaconRedirectionModuleMixin",
     "sexy_runic_glints.BannerRendererMixin",
     "sexy_runic_glints.BlockEntityWithoutLevelRendererMixin",
