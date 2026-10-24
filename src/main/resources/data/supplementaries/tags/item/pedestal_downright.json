@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {"id": "#c:tools/knife", "required": false},
+    {"id": "alexscaves:limestone_spear", "required": false},
+    {"id": "alexscaves:extinction_spear", "required": false},
+    {"id": "alexscaves:frostmint_spear", "required": false},
+    {"id": "alexscaves:ortholance", "required": false},
+    {"id": "alexscaves:primitive_club", "required": false},
+    {"id": "alexscaves:sharpened_candy_cane", "required": false},
+    {"id": "caverns_and_chasms:kunai", "required": false}
+  ]
+}
