@@ -9,6 +9,9 @@ import net.xlea99.lifeguard.boot.Boot;
 import net.xlea99.lifeguard.data.DataConditions;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CannonBackfire;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
+import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
+import net.xlea99.lifeguard.entry.faucet_pouring_recipes.PouringRecipesPayload;
+import net.xlea99.lifeguard.entry.faucet_pouring_recipes.PouringRecipes;
 import net.xlea99.lifeguard.entry.quark_parrot_egg_dispensing.ParrotEggDispensers;
 import net.xlea99.lifeguard.entry.quark_parrot_egg_dispensing.QuarkParrotEggDispensing;
 import net.xlea99.lifeguard.entry.supps_respects_mob_griefing.MobFiredCannonballs;
@@ -32,7 +35,11 @@ public class Lifeguard {
             MobFiredCannonballs.register();
         if (CcCannonBackfire.ENTRY.active())
             CannonBackfire.register();
+        if (FaucetPouringRecipes.ENTRY.active())
+            PouringRecipes.register();
         modEventBus.addListener(Sync::registerPayloads);
+        if (FaucetPouringRecipes.ENTRY.installed())
+            modEventBus.addListener(PouringRecipesPayload::register);
         modEventBus.addListener(Sync::registerTasks);
         NeoForge.EVENT_BUS.addListener(Sync::onServerAboutToStart);
     }

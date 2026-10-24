@@ -5,6 +5,8 @@
   "plugin": "net.xlea99.lifeguard.boot.LifeguardMixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "faucet_pouring_recipes.BuiltInPouringMixin",
+    "faucet_pouring_recipes.FaucetBehaviorsManagerMixin",
     "quark_donkey_chests.AbstractChestedHorseMixin",
     "quark_donkey_chests.VariantChestsModuleMixin",
     "quark_elytra_duplication_crash.ElytraDuplicationRecipeMixin",
@@ -12,6 +14,8 @@
     "supplementaries_grouper_open_sides.GrouperBlockMixin",
     "supps_blue_bomb_dispensing.DispenserBehaviorsManagerMixin",
     "supps_cannon_comparator.CannonBlockMixin",
+    "supps_faucet_cauldron_levels.LayeredCauldronInteractionMixin",
+    "supps_faucet_honey.BeehiveInteractionMixin",
     "supps_lumisene_burn_time.FlammableEffectMixin",
     "supps_lumisene_burn_time.FlammableLiquidBlockMixin",
     "supps_notice_board_comparator.NoticeBoardBlockMixin",
