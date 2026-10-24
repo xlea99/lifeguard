@@ -114,6 +114,7 @@ dependencies {
     // becomes a requirement (that's neoforge.mods.toml's business, and every one of them is optional there).
     compileOnly "maven.modrinth:quark:${quark_version}"
     runtimeOnly "maven.modrinth:quark:${quark_version}"
+    compileOnly "maven.modrinth:zeta:${zeta_version}"
     runtimeOnly "maven.modrinth:zeta:${zeta_version}"
 
     // Example mod dependency with JEI

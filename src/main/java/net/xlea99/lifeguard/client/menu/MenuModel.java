@@ -46,6 +46,7 @@ final class MenuModel {
     private final Registry registry = Entries.REGISTRY;
     private final Settings draft;
     private final Set<Entry> collapsed = new HashSet<>();
+    private final Set<String> collapsedMods = new HashSet<>();
     private final boolean following;
     private final boolean serverBroken;
     private final boolean clientBroken;
@@ -217,10 +218,20 @@ final class MenuModel {
         return collapsed.contains(entry);
     }
 
-    /** Opens every collapsed ancestor, so the entry has a row to scroll to. */
+    boolean modCollapsed(String mod) {
+        return collapsedMods.contains(mod);
+    }
+
+    void toggleModCollapsed(String mod) {
+        if (!collapsedMods.remove(mod))
+            collapsedMods.add(mod);
+    }
+
+    /** Opens every collapsed ancestor and the entry's mod group, so the entry has a row to scroll to. */
     void expandTo(Entry entry) {
         for (Entry up = entry.parent(); up != null; up = up.parent())
             collapsed.remove(up);
+        collapsedMods.remove(homeMod(rootOf(entry)));
     }
 
     /** Entries elsewhere in the tree that list this one in their requirements. */
@@ -260,7 +271,8 @@ final class MenuModel {
      * then declaration order.
      *
      * <p>Only entries the filters let through, plus their ancestors greyed as context, so nothing shows without where it
-     * lives. While any filter is on, collapsing is ignored: a match is never hidden inside a closed parent.
+     * lives. A collapsed mod group keeps its heading and nothing under it. While any filter is on, collapsing (entries
+     * and groups alike) is ignored: a match is never hidden inside a closed parent.
      */
     List<Line> lines(Filters filters) {
         Set<Entry> matching = matching(filters);
@@ -291,7 +303,8 @@ final class MenuModel {
                 if (homeMod(rootOf(entry)).equals(mod))
                     count++;
             lines.add(new Line(mod, count, null, 0, false));
-            lines.addAll(section);
+            if (ignoreCollapse || !collapsedMods.contains(mod))
+                lines.addAll(section);
         }
         return lines;
     }

@@ -75,7 +75,6 @@ public final class Planned {
         .requiresMods("caverns_and_chasms").values(DUCT_MAX_SPAN));
     public static final Entry GLARE_GRUMPINESS = server(Entries.fix("glare_grumpiness", Taste.LIGHT).requiresMods("caverns_and_chasms"));
     public static final Entry MAP_ATLASES_FIXES = server(Entries.fix("map_atlases_fixes", Taste.NONE).requiresMods("map_atlases"));
-    public static final Entry QUARK_DONKEY_CHESTS = server(Entries.fix("quark_donkey_chests", Taste.NONE).requiresMods("quark"));
     public static final Entry WARDEN_ROAR_LOOP = server(Entries.fix("warden_roar_loop", Taste.NONE));
     public static final Entry BUCKET_MOB_FLICKER = client(Entries.fix("bucket_mob_flicker", Taste.NONE));
 
