@@ -117,6 +117,12 @@ dependencies {
     compileOnly "maven.modrinth:zeta:${zeta_version}"
     runtimeOnly "maven.modrinth:zeta:${zeta_version}"
     runtimeOnly "maven.modrinth:dye-depot:${dye_depot_version}"
+    compileOnly "maven.modrinth:supplementaries:${supplementaries_version}"
+    runtimeOnly "maven.modrinth:supplementaries:${supplementaries_version}"
+    runtimeOnly "maven.modrinth:moonlight:${moonlight_version}"
+    compileOnly "maven.modrinth:caverns-and-chasms:${caverns_and_chasms_version}"
+    runtimeOnly "maven.modrinth:caverns-and-chasms:${caverns_and_chasms_version}"
+    runtimeOnly "maven.modrinth:blueprint:${blueprint_version}"
 
     // Example mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime

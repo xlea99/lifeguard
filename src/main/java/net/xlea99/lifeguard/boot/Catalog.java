@@ -1,6 +1,7 @@
 package net.xlea99.lifeguard.boot;
 
 import java.util.List;
+import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
 import net.xlea99.lifeguard.entry.dye_depot_runes.DyeDepotRunes;
 import net.xlea99.lifeguard.entry.planned.Planned;
 import net.xlea99.lifeguard.entry.quark_amethyst_beacon_tint.QuarkAmethystBeaconTint;
@@ -9,6 +10,8 @@ import net.xlea99.lifeguard.entry.quark_elytra_duplication_crash.QuarkElytraDupl
 import net.xlea99.lifeguard.entry.quark_parrot_egg_dispensing.QuarkParrotEggDispensing;
 import net.xlea99.lifeguard.entry.quark_tool_restock_enchantments.QuarkToolRestockEnchantments;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
+import net.xlea99.lifeguard.entry.supplementaries_grouper_open_sides.SupplementariesGrouperOpenSides;
+import net.xlea99.lifeguard.entry.supps_respects_mob_griefing.SuppsRespectsMobGriefing;
 import net.xlea99.lifeguard.entry.zeta_instance_race.ZetaInstanceRace;
 
 /**
@@ -20,6 +23,7 @@ import net.xlea99.lifeguard.entry.zeta_instance_race.ZetaInstanceRace;
  */
 public final class Catalog {
     private static final List<Class<?>> DECLARATIONS = List.of(
+        CcCannonBackfire.class,
         DyeDepotRunes.class,
         QuarkAmethystBeaconTint.class,
         QuarkDonkeyChests.class,
@@ -27,6 +31,8 @@ public final class Catalog {
         QuarkParrotEggDispensing.class,
         QuarkToolRestockEnchantments.class,
         SexyRunicGlints.class,
+        SupplementariesGrouperOpenSides.class,
+        SuppsRespectsMobGriefing.class,
         ZetaInstanceRace.class,
         Planned.class
     );

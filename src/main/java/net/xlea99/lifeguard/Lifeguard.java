@@ -7,8 +7,12 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
 import net.xlea99.lifeguard.boot.Boot;
 import net.xlea99.lifeguard.data.DataConditions;
+import net.xlea99.lifeguard.entry.cc_cannon_backfire.CannonBackfire;
+import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
 import net.xlea99.lifeguard.entry.quark_parrot_egg_dispensing.ParrotEggDispensers;
 import net.xlea99.lifeguard.entry.quark_parrot_egg_dispensing.QuarkParrotEggDispensing;
+import net.xlea99.lifeguard.entry.supps_respects_mob_griefing.MobFiredCannonballs;
+import net.xlea99.lifeguard.entry.supps_respects_mob_griefing.SuppsRespectsMobGriefing;
 import net.xlea99.lifeguard.sync.Sync;
 import org.slf4j.Logger;
 
@@ -24,6 +28,10 @@ public class Lifeguard {
         DataConditions.register(modEventBus);
         if (QuarkParrotEggDispensing.ENTRY.active())
             ParrotEggDispensers.register(modEventBus);
+        if (SuppsRespectsMobGriefing.ENTRY.active())
+            MobFiredCannonballs.register();
+        if (CcCannonBackfire.ENTRY.active())
+            CannonBackfire.register();
         modEventBus.addListener(Sync::registerPayloads);
         modEventBus.addListener(Sync::registerTasks);
         NeoForge.EVENT_BUS.addListener(Sync::onServerAboutToStart);
