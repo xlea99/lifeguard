@@ -18,8 +18,10 @@ import net.xlea99.lifeguard.entry.supps_cannon_comparator.SuppsCannonComparator;
 import net.xlea99.lifeguard.entry.supps_captured_mob_jitter.SuppsCapturedMobJitter;
 import net.xlea99.lifeguard.entry.supps_faucet_cauldron_levels.SuppsFaucetCauldronLevels;
 import net.xlea99.lifeguard.entry.supps_faucet_honey.SuppsFaucetHoney;
+import net.xlea99.lifeguard.entry.supps_gunpowder_lights_nuke.SuppsGunpowderLightsNuke;
 import net.xlea99.lifeguard.entry.supps_lumisene_burn_time.SuppsLumiseneBurnTime;
 import net.xlea99.lifeguard.entry.supps_notice_board_comparator.SuppsNoticeBoardComparator;
+import net.xlea99.lifeguard.entry.supps_pedestal_compat.SuppsPedestalCompat;
 import net.xlea99.lifeguard.entry.supps_plunderer_raid_weapon.SuppsPlundererRaidWeapon;
 import net.xlea99.lifeguard.entry.supps_respects_mob_griefing.SuppsRespectsMobGriefing;
 import net.xlea99.lifeguard.entry.supps_slice_maps_keep_the_altimeter.SuppsSliceMapsKeepTheAltimeter;
@@ -52,8 +54,10 @@ public final class Catalog {
         SuppsCapturedMobJitter.class,
         SuppsFaucetCauldronLevels.class,
         SuppsFaucetHoney.class,
+        SuppsGunpowderLightsNuke.class,
         SuppsLumiseneBurnTime.class,
         SuppsNoticeBoardComparator.class,
+        SuppsPedestalCompat.class,
         SuppsPlundererRaidWeapon.class,
         SuppsRespectsMobGriefing.class,
         SuppsSliceMapsKeepTheAltimeter.class,
