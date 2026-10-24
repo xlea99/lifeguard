@@ -33,7 +33,6 @@ public final class Planned {
 
     public static final SubValue.Int TWEETER_RANGE = SubValue.ofInt("range", 128, 1, 256);
     public static final Entry TWEETER = server(Entries.feature("tweeter", Taste.STRONG).values(TWEETER_RANGE));
-    public static final Entry RUNE_GLINTS = client(Entries.feature("rune_glints", Taste.STRONG).requiresMods("quark"));
     public static final Entry BOIDSIFY = server(Entries.feature("boidsify", Taste.STRONG));
 
     // --- tweaks --------------------------------------------------------------------------------------------------------
@@ -60,8 +59,6 @@ public final class Planned {
     public static final Entry DYE_DEPOT_SPARKLERS = server(Entries.compat("dye_depot_sparklers", Taste.NONE)
         .requiresMods("dye_depot", "caverns_and_chasms"));
     public static final Entry PLATED_BRICKS = server(Entries.compat("plated_bricks", Taste.LIGHT).requiresMods("caverns_and_chasms"));
-    public static final Entry DYE_DEPOT_RUNES = client(Entries.compat("dye_depot_runes", Taste.NONE)
-        .requiresMods("quark", "dye_depot"));
     public static final Entry EASY_ANVILS_QUARK_ANVILS = server(Entries.compat("easy_anvils_quark_anvils", Taste.NONE)
         .requiresMods("easyanvils", "quark"));
     public static final Entry CANDLE_HOLDER_SOUL_FLAMES = client(Entries.compat("candle_holder_soul_flames", Taste.NONE)

@@ -1,9 +1,14 @@
 package net.xlea99.lifeguard.boot;
 
 import java.util.List;
+import net.xlea99.lifeguard.entry.dye_depot_runes.DyeDepotRunes;
 import net.xlea99.lifeguard.entry.planned.Planned;
+import net.xlea99.lifeguard.entry.quark_amethyst_beacon_tint.QuarkAmethystBeaconTint;
 import net.xlea99.lifeguard.entry.quark_donkey_chests.QuarkDonkeyChests;
 import net.xlea99.lifeguard.entry.quark_elytra_duplication_crash.QuarkElytraDuplicationCrash;
+import net.xlea99.lifeguard.entry.quark_parrot_egg_dispensing.QuarkParrotEggDispensing;
+import net.xlea99.lifeguard.entry.quark_tool_restock_enchantments.QuarkToolRestockEnchantments;
+import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
 import net.xlea99.lifeguard.entry.zeta_instance_race.ZetaInstanceRace;
 
 /**
@@ -15,8 +20,13 @@ import net.xlea99.lifeguard.entry.zeta_instance_race.ZetaInstanceRace;
  */
 public final class Catalog {
     private static final List<Class<?>> DECLARATIONS = List.of(
+        DyeDepotRunes.class,
+        QuarkAmethystBeaconTint.class,
         QuarkDonkeyChests.class,
         QuarkElytraDuplicationCrash.class,
+        QuarkParrotEggDispensing.class,
+        QuarkToolRestockEnchantments.class,
+        SexyRunicGlints.class,
         ZetaInstanceRace.class,
         Planned.class
     );

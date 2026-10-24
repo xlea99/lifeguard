@@ -6,6 +6,9 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.common.NeoForge;
 import net.xlea99.lifeguard.boot.Boot;
+import net.xlea99.lifeguard.data.DataConditions;
+import net.xlea99.lifeguard.entry.quark_parrot_egg_dispensing.ParrotEggDispensers;
+import net.xlea99.lifeguard.entry.quark_parrot_egg_dispensing.QuarkParrotEggDispensing;
 import net.xlea99.lifeguard.sync.Sync;
 import org.slf4j.Logger;
 
@@ -18,6 +21,9 @@ public class Lifeguard {
         // The mixin plugin normally got here first; this only matters if it didn't.
         Boot.start();
 
+        DataConditions.register(modEventBus);
+        if (QuarkParrotEggDispensing.ENTRY.active())
+            ParrotEggDispensers.register(modEventBus);
         modEventBus.addListener(Sync::registerPayloads);
         modEventBus.addListener(Sync::registerTasks);
         NeoForge.EVENT_BUS.addListener(Sync::onServerAboutToStart);
