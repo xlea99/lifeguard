@@ -8,10 +8,24 @@
     "quark_donkey_chests.AbstractChestedHorseMixin",
     "quark_donkey_chests.VariantChestsModuleMixin",
     "quark_elytra_duplication_crash.ElytraDuplicationRecipeMixin",
+    "quark_tool_restock_enchantments.AutomaticToolRestockModuleMixin",
     "zeta_instance_race.ZetaClientListMixin",
     "zeta_instance_race.ZetaListMixin"
   ],
-  "client": [],
+  "client": [
+    "quark_amethyst_beacon_tint.BeaconRedirectionModuleMixin",
+    "sexy_runic_glints.BannerRendererMixin",
+    "sexy_runic_glints.BlockEntityWithoutLevelRendererMixin",
+    "sexy_runic_glints.BufferBuilderMixin",
+    "sexy_runic_glints.BufferSourceMixin",
+    "sexy_runic_glints.ColorRunesClientMixin",
+    "sexy_runic_glints.CompositeRenderTypeAccessor",
+    "sexy_runic_glints.CompositeStateAccessor",
+    "sexy_runic_glints.EmptyTextureStateShardAccessor",
+    "sexy_runic_glints.GlintRenderTypesMixin",
+    "sexy_runic_glints.HumanoidArmorLayerMixin",
+    "sexy_runic_glints.ItemRendererMixin"
+  ],
   "server": [],
   "injectors": {
     "defaultRequire": 1

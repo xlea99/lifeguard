@@ -1,0 +1,24 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "lifeguard:entry",
+      "entry": "dye_depot_runes",
+      "and": [
+        {
+          "type": "zeta:flag",
+          "flag": "color_runes"
+        }
+      ]
+    }
+  ],
+  "type": "quark:smithing_rune",
+  "template": {
+    "item": "quark:smithing_template_rune"
+  },
+  "addition": {
+    "tag": "c:dyes/verdant"
+  },
+  "color": {
+    "color": "verdant"
+  }
+}

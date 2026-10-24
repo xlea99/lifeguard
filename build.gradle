@@ -116,6 +116,7 @@ dependencies {
     runtimeOnly "maven.modrinth:quark:${quark_version}"
     compileOnly "maven.modrinth:zeta:${zeta_version}"
     runtimeOnly "maven.modrinth:zeta:${zeta_version}"
+    runtimeOnly "maven.modrinth:dye-depot:${dye_depot_version}"
 
     // Example mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
@@ -205,4 +206,9 @@ idea {
         downloadSources = true
         downloadJavadoc = true
     }
+}
+
+// Credits for third-party art (Quark-derived glints) ride along in the jar.
+jar {
+    from('NOTICE.md')
 }
