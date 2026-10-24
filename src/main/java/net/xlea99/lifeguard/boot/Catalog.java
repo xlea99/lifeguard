@@ -1,6 +1,7 @@
 package net.xlea99.lifeguard.boot;
 
 import java.util.List;
+import net.xlea99.lifeguard.entry.planned.Planned;
 import net.xlea99.lifeguard.entry.quark_elytra_duplication_crash.QuarkElytraDuplicationCrash;
 
 /**
@@ -12,7 +13,8 @@ import net.xlea99.lifeguard.entry.quark_elytra_duplication_crash.QuarkElytraDupl
  */
 public final class Catalog {
     private static final List<Class<?>> DECLARATIONS = List.of(
-        QuarkElytraDuplicationCrash.class
+        QuarkElytraDuplicationCrash.class,
+        Planned.class
     );
 
     private Catalog() {

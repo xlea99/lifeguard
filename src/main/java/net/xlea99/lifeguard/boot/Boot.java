@@ -100,11 +100,12 @@ public final class Boot {
         return config;
     }
 
+    /** The installed mod's display name, or null when it isn't installed (Texts then falls back to our lang file). */
     private static String modName(String modId) {
         for (ModInfo mod : LoadingModList.get().getMods())
             if (mod.getModId().equals(modId))
                 return mod.getDisplayName();
-        return modId;
+        return null;
     }
 
     private static String summary(Registry registry) {

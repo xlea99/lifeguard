@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
  * loudly, listing every problem, before anything can ask an entry whether it is active. A declaration that is wrong
  * crashes in development; it never becomes a silent default.
  */
-public final class Registry {
+public final class Registry implements SettingsView {
     private static final Pattern NAME = Pattern.compile("[a-z][a-z0-9_]*");
     // A child with one of these names would share a lang key with its parent's description or sub-values.
     private static final Set<String> RESERVED_NAMES = Set.of("desc", "value");
@@ -300,6 +300,18 @@ public final class Registry {
 
     // --- the state entries resolve against -----------------------------------------------------------------------------
 
+    /** The live switch: the registry is the view of what this session runs with. */
+    @Override
+    public Switch setting(Entry entry) {
+        return entry.setting();
+    }
+
+    @Override
+    public <T> T value(SubValue<T> value) {
+        return value.get();
+    }
+
+    @Override
     public Profile profile(Side side) {
         return profiles.get(side);
     }

@@ -12,9 +12,9 @@ import java.util.Set;
  * menu, mixin gating, the mod page) reads from that declaration:
  *
  * <pre>{@code
- * Entry JUKEBOX = Entries.feature("jukebox", Taste.SUBTLE)
+ * Entry JUKEBOX = Entries.feature("jukebox", Taste.LIGHT)
  *     .side(Side.SERVER).restart(Restart.GAME);
- * Entry JUKEBOX_SPEAKERS = Entries.compat("speakers", Taste.SUBTLE)
+ * Entry JUKEBOX_SPEAKERS = Entries.compat("speakers", Taste.LIGHT)
  *     .parent(JUKEBOX).requiresMods("supplementaries")
  *     .side(Side.SERVER).restart(Restart.GAME)
  *     .values(MAX_SPEAKERS);
@@ -208,12 +208,17 @@ public final class Entry {
         }
     }
 
-    /** Whether the switch says on: an override, or Auto with the side's profile reaching this entry's taste. */
+    /** Whether the live switch says on: an override, or Auto with the side's profile reaching this entry's taste. */
     public boolean switchedOn() {
-        return switch (setting) {
+        return switchedOnUnder(registry);
+    }
+
+    /** The same question against any state, e.g. a draft the menu is editing. */
+    public boolean switchedOnUnder(SettingsView view) {
+        return switch (view.setting(this)) {
             case ON -> true;
             case OFF -> false;
-            case AUTO -> registry.profile(side).turnsOn(taste);
+            case AUTO -> view.profile(side).turnsOn(taste);
         };
     }
 
@@ -250,22 +255,27 @@ public final class Entry {
         registry.requireFrozen();
         int generation = registry.generation();
         if (cachedGeneration != generation) {
-            cachedActive = resolve();
+            cachedActive = activeUnder(registry);
             cachedGeneration = generation;
         }
         return cachedActive;
     }
 
-    private boolean resolve() {
-        if (parent != null && !parent.active())
+    /**
+     * The rule behind {@link #active()}, against any state: the live registry, or a draft. There is only this one copy
+     * of it, so what the menu predicts is exactly what the next restart will do.
+     */
+    public boolean activeUnder(SettingsView view) {
+        registry.requireFrozen();
+        if (parent != null && !parent.activeUnder(view))
             return false;
         for (String modId : requiredMods)
             if (!registry.modPresent(modId))
                 return false;
         for (Entry required : requiredEntries)
-            if (!required.active())
+            if (!required.activeUnder(view))
                 return false;
-        return switchedOn();
+        return switchedOnUnder(view);
     }
 
     @Override
