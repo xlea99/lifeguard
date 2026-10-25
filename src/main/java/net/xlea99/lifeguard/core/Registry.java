@@ -22,6 +22,7 @@ import java.util.regex.Pattern;
  */
 public final class Registry implements SettingsView {
     private static final Pattern NAME = Pattern.compile("[a-z][a-z0-9_]*");
+    private static final Pattern RECIPE_ID = Pattern.compile("[a-z0-9_.-]+:[a-z0-9_./-]+");
     // A child with one of these names would share a lang key with its parent's description or sub-values.
     private static final Set<String> RESERVED_NAMES = Set.of("desc", "value");
     // The mixin package of that name holds infrastructure that is always on, so no entry may own it.
@@ -147,6 +148,15 @@ public final class Registry implements SettingsView {
                 problems.add(id + ": registry-shaping entries need a game restart");
             if (entry.gating() != Gating.LOAD)
                 problems.add(id + ": registry-shaping entries are load-gated (what loaded is what the client has)");
+        }
+        if (!entry.recipeEdits().isEmpty() && entry.side() != null && entry.side() != Side.SERVER)
+            problems.add(id + ": only server entries edit recipes (the server decides what's in a datapack)");
+        Set<String> editedRecipes = new HashSet<>();
+        for (String recipeId : entry.recipeEdits()) {
+            if (!RECIPE_ID.matcher(recipeId).matches())
+                problems.add(id + ": '" + recipeId + "' isn't a recipe id (namespace:path)");
+            if (!editedRecipes.add(recipeId))
+                problems.add(id + ": edits " + recipeId + " twice");
         }
         if (entry.kind() == EntryClass.FIX && entry.requiredMods().size() > 1)
             problems.add(id + ": a fix requires at most one mod; one that needs " + entry.requiredMods()

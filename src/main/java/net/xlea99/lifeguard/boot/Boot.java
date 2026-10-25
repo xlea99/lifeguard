@@ -60,6 +60,17 @@ public final class Boot {
             throw new IllegalStateException("Lifeguard entries declare a resource pack the jar doesn't have: " + missing);
     }
 
+    /** Every recipe edit an entry declares ships its file: a missing one is a Lifeguard bug, caught at startup. */
+    private static void checkRecipeEdits(Registry registry) {
+        List<String> missing = new ArrayList<>();
+        for (Entry entry : registry.entries())
+            for (String recipeId : entry.recipeEdits())
+                if (Boot.class.getResource("/" + entry.recipeEditPath(recipeId)) == null)
+                    missing.add(entry.id() + " (/" + entry.recipeEditPath(recipeId) + ")");
+        if (!missing.isEmpty())
+            throw new IllegalStateException("Lifeguard entries declare recipe edits the jar doesn't have: " + missing);
+    }
+
     public static synchronized void start() {
         if (started)
             return;
@@ -72,6 +83,7 @@ public final class Boot {
         // Throws, listing every problem, if a declaration is wrong: a crash here is a bug in Lifeguard, found early.
         registry.freeze(lang.keySet(), !FMLLoader.isProduction());
         checkResourcePacks(registry);
+        checkRecipeEdits(registry);
 
         Texts texts = new Texts(lang, Boot::modName);
         Path dir = FMLPaths.CONFIGDIR.get();

@@ -7,6 +7,7 @@ import net.xlea99.lifeguard.entry.am_lava_vision_fallback.AmLavaVisionFallback;
 import net.xlea99.lifeguard.entry.amendments_lava_drip_layers.AmendmentsLavaDripLayers;
 import net.xlea99.lifeguard.entry.amendments_lava_layers.AmendmentsLavaLayers;
 import net.xlea99.lifeguard.entry.cauldron_fourths.CauldronFourths;
+import net.xlea99.lifeguard.entry.citadel_animation_smoothing.CitadelAnimationSmoothing;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
 import net.xlea99.lifeguard.entry.dye_depot_runes.DyeDepotRunes;
 import net.xlea99.lifeguard.entry.enderman_head_reach.EndermanHeadReach;
@@ -51,6 +52,7 @@ public final class Catalog {
         AmendmentsLavaDripLayers.class,
         AmendmentsLavaLayers.class,
         CauldronFourths.class,
+        CitadelAnimationSmoothing.class,
         CcCannonBackfire.class,
         DyeDepotRunes.class,
         EndermanHeadReach.class,

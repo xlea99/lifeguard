@@ -37,6 +37,7 @@ public final class Entry {
     private boolean planned;
     private boolean registryShaping;
     private boolean resourcePack;
+    private final List<String> recipeEdits = new ArrayList<>();
     private final Set<String> requiredMods = new LinkedHashSet<>();
     private final List<Entry> requiredEntries = new ArrayList<>();
     private final List<SubValue<?>> values = new ArrayList<>();
@@ -109,6 +110,18 @@ public final class Entry {
     public Entry resourcePack() {
         declaring();
         this.resourcePack = true;
+        return this;
+    }
+
+    /**
+     * Edits other mods' recipes, by id ({@code neapolitan:milk_bottle}), while the entry is active. Each ships
+     * {@code recipe_edits/<entry id>/<namespace>/<path>.json} holding the recipe's {@code original} JSON and its
+     * {@code replacement}. A recipe is only replaced while it is still exactly the original: one a datapack (or a mod
+     * update) changed or removed is left alone, so datapacks keep the last word.
+     */
+    public Entry editsRecipe(String... recipeIds) {
+        declaring();
+        Collections.addAll(recipeEdits, recipeIds);
         return this;
     }
 
@@ -195,6 +208,16 @@ public final class Entry {
     /** {@code resourcepacks/<id>}: where the entry's pack lives in the jar, if it has one. */
     public String resourcePackPath() {
         return "resourcepacks/" + id();
+    }
+
+    public List<String> recipeEdits() {
+        return Collections.unmodifiableList(recipeEdits);
+    }
+
+    /** {@code recipe_edits/<id>/<namespace>/<path>.json}: where the jar holds one recipe edit of this entry's. */
+    public String recipeEditPath(String recipeId) {
+        int colon = recipeId.indexOf(':');
+        return "recipe_edits/" + id() + "/" + recipeId.substring(0, colon) + "/" + recipeId.substring(colon + 1) + ".json";
     }
 
     public Set<String> requiredMods() {
