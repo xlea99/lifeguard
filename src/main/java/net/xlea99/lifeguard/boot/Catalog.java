@@ -9,9 +9,12 @@ import net.xlea99.lifeguard.entry.amendments_lava_layers.AmendmentsLavaLayers;
 import net.xlea99.lifeguard.entry.cauldron_fourths.CauldronFourths;
 import net.xlea99.lifeguard.entry.citadel_animation_smoothing.CitadelAnimationSmoothing;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
+import net.xlea99.lifeguard.entry.cc_golden_bucket_compat.CcGoldenBucketCompat;
+import net.xlea99.lifeguard.entry.cc_golden_milk_follows_neapolitan.CcGoldenMilkFollowsNeapolitan;
 import net.xlea99.lifeguard.entry.dye_depot_runes.DyeDepotRunes;
 import net.xlea99.lifeguard.entry.enderman_head_reach.EndermanHeadReach;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
+import net.xlea99.lifeguard.entry.neapolitan_amendments_milkshakes.NeapolitanAmendmentsMilkshakes;
 import net.xlea99.lifeguard.entry.no_supps_jar_fish.NoSuppsJarFish;
 import net.xlea99.lifeguard.entry.quark_amethyst_beacon_tint.QuarkAmethystBeaconTint;
 import net.xlea99.lifeguard.entry.quark_donkey_chests.QuarkDonkeyChests;
@@ -54,9 +57,12 @@ public final class Catalog {
         CauldronFourths.class,
         CitadelAnimationSmoothing.class,
         CcCannonBackfire.class,
+        CcGoldenBucketCompat.class,
+        CcGoldenMilkFollowsNeapolitan.class,
         DyeDepotRunes.class,
         EndermanHeadReach.class,
         FaucetPouringRecipes.class,
+        NeapolitanAmendmentsMilkshakes.class,
         NoSuppsJarFish.class,
         QuarkAmethystBeaconTint.class,
         QuarkDonkeyChests.class,
