@@ -133,6 +133,7 @@ dependencies {
     runtimeOnly "maven.modrinth:neapolitan:${neapolitan_version}"
     compileOnly "maven.modrinth:jade:${jade_version}"
     runtimeOnly "maven.modrinth:jade:${jade_version}"
+    runtimeOnly "maven.modrinth:scholar:${scholar_version}"
 
     // Example mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime

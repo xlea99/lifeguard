@@ -28,6 +28,7 @@ import net.xlea99.lifeguard.entry.quark_donkey_chests.QuarkDonkeyChests;
 import net.xlea99.lifeguard.entry.quark_elytra_duplication_crash.QuarkElytraDuplicationCrash;
 import net.xlea99.lifeguard.entry.quark_parrot_egg_dispensing.QuarkParrotEggDispensing;
 import net.xlea99.lifeguard.entry.quark_tool_restock_enchantments.QuarkToolRestockEnchantments;
+import net.xlea99.lifeguard.entry.scholar_amendments_lectern_sync.ScholarAmendmentsLecternSync;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
 import net.xlea99.lifeguard.entry.supplementaries_grouper_open_sides.SupplementariesGrouperOpenSides;
 import net.xlea99.lifeguard.entry.supps_blue_bomb_dispensing.SuppsBlueBombDispensing;
@@ -87,6 +88,7 @@ public final class Catalog {
         QuarkElytraDuplicationCrash.class,
         QuarkParrotEggDispensing.class,
         QuarkToolRestockEnchantments.class,
+        ScholarAmendmentsLecternSync.class,
         SexyRunicGlints.class,
         SupplementariesGrouperOpenSides.class,
         SuppsBlueBombDispensing.class,

@@ -124,6 +124,7 @@
   "lifeguard.mod.moonlight": "Moonlight",
   "lifeguard.mod.neapolitan": "Neapolitan",
   "lifeguard.mod.quark": "Quark",
+  "lifeguard.mod.scholar": "Scholar",
   "lifeguard.mod.supplementaries": "Supplementaries",
   "lifeguard.mod.zeta": "Zeta",
 
@@ -209,6 +210,8 @@
   "lifeguard.entry.quark_parrot_egg_dispensing.desc": "Fixes dispensers no longer throwing Quark's parrot eggs, following the setting in quark's config.",
   "lifeguard.entry.quark_tool_restock_enchantments": "Tool restock w/ enchantments fix",
   "lifeguard.entry.quark_tool_restock_enchantments.desc": "Fixes a bug causing Quark's Automatic Tool restock to sometimes ignore enchantments, dependent on where there are in your inventory.",
+  "lifeguard.entry.scholar_amendments_lectern_sync": "Scholar lectern books with Amendments",
+  "lifeguard.entry.scholar_amendments_lectern_sync.desc": "Fixes a book taken off a lectern staying drawn on it (Scholar's lectern books) when Amendments is installed.",
   "lifeguard.entry.sexy_runic_glints": "Sexy runic glints",
   "lifeguard.entry.sexy_runic_glints.desc": "Remake of most of the 17 (33 if DD is installed and dyeDepotRunes is on) enchantment glints with cool new looks, in a very distinctive new style. Switches back to plain Quark glints when a shaderpack is on to avoid rendering issues.",
 
