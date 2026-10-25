@@ -287,6 +287,10 @@ public final class Registry implements SettingsView {
         for (SubValue<?> value : entry.values())
             if (!langKeys.contains(value.nameKey()))
                 problems.add(entry.id() + "." + value.name() + ": no name in en_us.json (" + value.nameKey() + ")");
+        // The menu groups entries under their mods' names, falling back to the bare mod id ("scholar").
+        for (String modId : entry.requiredMods())
+            if (!langKeys.contains("lifeguard.mod." + modId))
+                problems.add(entry.id() + ": no name for required mod " + modId + " in en_us.json (lifeguard.mod." + modId + ")");
     }
 
     // --- reading -------------------------------------------------------------------------------------------------------
