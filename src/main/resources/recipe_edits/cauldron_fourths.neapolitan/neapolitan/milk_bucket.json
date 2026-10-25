@@ -1,0 +1,49 @@
+{
+  "original": {
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+      {
+        "item": "neapolitan:milk_bottle"
+      },
+      {
+        "item": "neapolitan:milk_bottle"
+      },
+      {
+        "item": "neapolitan:milk_bottle"
+      },
+      {
+        "item": "minecraft:bucket"
+      }
+    ],
+    "result": {
+      "count": 1,
+      "id": "minecraft:milk_bucket"
+    }
+  },
+  "replacement": {
+    "type": "minecraft:crafting_shapeless",
+    "category": "misc",
+    "ingredients": [
+      {
+        "item": "neapolitan:milk_bottle"
+      },
+      {
+        "item": "neapolitan:milk_bottle"
+      },
+      {
+        "item": "neapolitan:milk_bottle"
+      },
+      {
+        "item": "neapolitan:milk_bottle"
+      },
+      {
+        "item": "minecraft:bucket"
+      }
+    ],
+    "result": {
+      "count": 1,
+      "id": "minecraft:milk_bucket"
+    }
+  }
+}

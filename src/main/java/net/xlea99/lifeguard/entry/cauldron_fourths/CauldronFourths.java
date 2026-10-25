@@ -30,16 +30,18 @@ public final class CauldronFourths {
         .requiresMods("supplementaries")
         .side(Side.SERVER).restart(Restart.GAME);
 
-    /** Milk and milkshake cauldrons at four levels, with their models. */
+    /** Milk and milkshake cauldrons at four levels, with their models; a milk bucket crafts to and from four bottles. */
     public static final Entry NEAPOLITAN = Entries.compat("neapolitan", Taste.NONE).parent(ENTRY)
         .requiresMods("neapolitan")
         .side(Side.SERVER).restart(Restart.GAME)
-        .resourcePack();
+        .resourcePack()
+        .editsRecipe("neapolitan:milk_bottle", "neapolitan:milk_bucket");
 
-    /** Golden buckets pour and scoop full cauldrons at four. */
+    /** Golden buckets pour and scoop full cauldrons at four; a golden milk bucket takes four bottles. */
     public static final Entry CAVERNS_AND_CHASMS = Entries.compat("caverns_and_chasms", Taste.NONE).parent(ENTRY)
         .requiresMods("caverns_and_chasms")
-        .side(Side.SERVER).restart(Restart.GAME);
+        .side(Side.SERVER).restart(Restart.GAME)
+        .editsRecipe("caverns_and_chasms:golden_milk_bucket");
 
     /** The Tremorsaurus' ripple sits on a cauldron's four-level surface. */
     public static final Entry ALEXS_CAVES = Entries.compat("alexs_caves", Taste.NONE).parent(ENTRY)

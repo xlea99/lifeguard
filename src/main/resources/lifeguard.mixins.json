@@ -5,6 +5,7 @@
   "plugin": "net.xlea99.lifeguard.boot.LifeguardMixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "core.RecipeManagerMixin",
     "ac_infinite_soda.faucets.LiquidBlockInteractionMixin",
     "am_lava_bottle_dupe.FluidContainerListCategoryMixin",
     "am_lava_vision_fallback.PotionBrewingBuilderAccessor",
@@ -17,6 +18,7 @@
     "amendments_lava_layers.cooking_heat.SkilletItemMixin",
     "amendments_lava_layers.faucets.FullBucketCauldronInteractionMixin",
     "cauldron_fourths.BlockStatePropertiesMixin",
+    "cauldron_fourths.FluidContainerListCategoryMixin",
     "cauldron_fourths.LayeredCauldronBlockMixin",
     "cauldron_fourths.alexs_caves.TremorsaurusEntityMixin",
     "cauldron_fourths.amendments.BoilingWaterCauldronBlockMixin",
@@ -56,6 +58,8 @@
     "zeta_instance_race.ZetaListMixin"
   ],
   "client": [
+    "citadel_animation_smoothing.CitadelItemstackRendererMixin",
+    "citadel_animation_smoothing.ModelAnimatorMixin",
     "themed_candle_holder_flames.CandleHolderBlockMixin",
     "themed_candle_holder_flames.cupric.AbstractCandleBlockMixin",
     "themed_candle_holder_flames.cupric.CandleHolderBlockMixin",
