@@ -1,0 +1,53 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:paletted_permutations",
+      "textures": [
+        "minecraft:block/flower_pot"
+      ],
+      "palette_key": "lifeguard:palettes/flower_pot/key",
+      "permutations": {
+        "amber": "lifeguard:palettes/flower_pot/amber",
+        "aqua": "lifeguard:palettes/flower_pot/aqua",
+        "beige": "lifeguard:palettes/flower_pot/beige",
+        "black": "lifeguard:palettes/flower_pot/black",
+        "blue": "lifeguard:palettes/flower_pot/blue",
+        "brown": "lifeguard:palettes/flower_pot/brown",
+        "coral": "lifeguard:palettes/flower_pot/coral",
+        "cyan": "lifeguard:palettes/flower_pot/cyan",
+        "forest": "lifeguard:palettes/flower_pot/forest",
+        "ginger": "lifeguard:palettes/flower_pot/ginger",
+        "gray": "lifeguard:palettes/flower_pot/gray",
+        "green": "lifeguard:palettes/flower_pot/green",
+        "indigo": "lifeguard:palettes/flower_pot/indigo",
+        "light_blue": "lifeguard:palettes/flower_pot/light_blue",
+        "light_gray": "lifeguard:palettes/flower_pot/light_gray",
+        "lime": "lifeguard:palettes/flower_pot/lime",
+        "magenta": "lifeguard:palettes/flower_pot/magenta",
+        "maroon": "lifeguard:palettes/flower_pot/maroon",
+        "mint": "lifeguard:palettes/flower_pot/mint",
+        "navy": "lifeguard:palettes/flower_pot/navy",
+        "olive": "lifeguard:palettes/flower_pot/olive",
+        "orange": "lifeguard:palettes/flower_pot/orange",
+        "pink": "lifeguard:palettes/flower_pot/pink",
+        "purple": "lifeguard:palettes/flower_pot/purple",
+        "red": "lifeguard:palettes/flower_pot/red",
+        "rose": "lifeguard:palettes/flower_pot/rose",
+        "slate": "lifeguard:palettes/flower_pot/slate",
+        "tan": "lifeguard:palettes/flower_pot/tan",
+        "teal": "lifeguard:palettes/flower_pot/teal",
+        "verdant": "lifeguard:palettes/flower_pot/verdant",
+        "white": "lifeguard:palettes/flower_pot/white",
+        "yellow": "lifeguard:palettes/flower_pot/yellow"
+      }
+    },
+    {
+      "type": "lifeguard:trim_designs",
+      "textures": [
+        "lifeguard:block/flower_pot_designs/stitch",
+        "lifeguard:block/flower_pot_designs/triad",
+        "lifeguard:block/flower_pot_designs/bordered"
+      ]
+    }
+  ]
+}

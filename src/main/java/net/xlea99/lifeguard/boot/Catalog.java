@@ -17,6 +17,7 @@ import net.xlea99.lifeguard.entry.citadel_animation_smoothing.CitadelAnimationSm
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
 import net.xlea99.lifeguard.entry.cc_golden_bucket_compat.CcGoldenBucketCompat;
 import net.xlea99.lifeguard.entry.cc_golden_milk_follows_neapolitan.CcGoldenMilkFollowsNeapolitan;
+import net.xlea99.lifeguard.entry.clayworks_flower_pots.ClayworksFlowerPots;
 import net.xlea99.lifeguard.entry.dye_depot_runes.DyeDepotRunes;
 import net.xlea99.lifeguard.entry.enderman_head_reach.EndermanHeadReach;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
@@ -78,6 +79,7 @@ public final class Catalog {
         CcCannonBackfire.class,
         CcGoldenBucketCompat.class,
         CcGoldenMilkFollowsNeapolitan.class,
+        ClayworksFlowerPots.class,
         DyeDepotRunes.class,
         EndermanHeadReach.class,
         FaucetPouringRecipes.class,
