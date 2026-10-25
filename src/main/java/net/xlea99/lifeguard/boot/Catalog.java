@@ -25,6 +25,7 @@ import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
 import net.xlea99.lifeguard.entry.supplementaries_grouper_open_sides.SupplementariesGrouperOpenSides;
 import net.xlea99.lifeguard.entry.supps_blue_bomb_dispensing.SuppsBlueBombDispensing;
 import net.xlea99.lifeguard.entry.supps_cannon_comparator.SuppsCannonComparator;
+import net.xlea99.lifeguard.entry.supps_continuous_hand_ropes.SuppsContinuousHandRopes;
 import net.xlea99.lifeguard.entry.supps_drinkables_sip_pacing.SuppsDrinkablesSipPacing;
 import net.xlea99.lifeguard.entry.supps_captured_mob_jitter.SuppsCapturedMobJitter;
 import net.xlea99.lifeguard.entry.supps_faucet_cauldron_levels.SuppsFaucetCauldronLevels;
@@ -32,6 +33,9 @@ import net.xlea99.lifeguard.entry.supps_faucet_honey.SuppsFaucetHoney;
 import net.xlea99.lifeguard.entry.supps_faucet_toggle.SuppsFaucetToggle;
 import net.xlea99.lifeguard.entry.supps_gunpowder_lights_nuke.SuppsGunpowderLightsNuke;
 import net.xlea99.lifeguard.entry.supps_lumisene_burn_time.SuppsLumiseneBurnTime;
+import net.xlea99.lifeguard.entry.supps_moved_block_entities.SuppsMovedBlockEntities;
+import net.xlea99.lifeguard.entry.supps_moved_cauldron_filling.SuppsMovedCauldronFilling;
+import net.xlea99.lifeguard.entry.supps_moving_block_contents.SuppsMovingBlockContents;
 import net.xlea99.lifeguard.entry.supps_notice_board_comparator.SuppsNoticeBoardComparator;
 import net.xlea99.lifeguard.entry.supps_pedestal_compat.SuppsPedestalCompat;
 import net.xlea99.lifeguard.entry.supps_plunderer_raid_weapon.SuppsPlundererRaidWeapon;
@@ -74,12 +78,16 @@ public final class Catalog {
         SuppsBlueBombDispensing.class,
         SuppsCannonComparator.class,
         SuppsCapturedMobJitter.class,
+        SuppsContinuousHandRopes.class,
         SuppsDrinkablesSipPacing.class,
         SuppsFaucetCauldronLevels.class,
         SuppsFaucetHoney.class,
         SuppsFaucetToggle.class,
         SuppsGunpowderLightsNuke.class,
         SuppsLumiseneBurnTime.class,
+        SuppsMovedBlockEntities.class,
+        SuppsMovedCauldronFilling.class,
+        SuppsMovingBlockContents.class,
         SuppsNoticeBoardComparator.class,
         SuppsPedestalCompat.class,
         SuppsPlundererRaidWeapon.class,
