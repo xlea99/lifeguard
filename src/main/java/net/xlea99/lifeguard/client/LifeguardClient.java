@@ -13,6 +13,8 @@ import net.xlea99.lifeguard.entry.clayworks_flower_pots.ClayworksFlowerPots;
 import net.xlea99.lifeguard.entry.clayworks_flower_pots.FlowerPotsClient;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.GlintsClient;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
+import net.xlea99.lifeguard.entry.whiter_labels.WhiterLabels;
+import net.xlea99.lifeguard.entry.whiter_labels.WhiterPaper;
 
 /**
  * Lifeguard's client-only entry point: the menu, opened from the Config button in NeoForge's Mods list, and client setup
@@ -30,5 +32,7 @@ public final class LifeguardClient {
             GlintsClient.register(modEventBus);
         if (ClayworksFlowerPots.ENTRY.installed())
             FlowerPotsClient.register(modEventBus);
+        if (WhiterLabels.ENTRY.active())
+            WhiterPaper.register(modEventBus);
     }
 }
