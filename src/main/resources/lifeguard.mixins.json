@@ -5,6 +5,7 @@
   "plugin": "net.xlea99.lifeguard.boot.LifeguardMixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "amendments_potion_dilution.LiquidMixerMixin",
     "core.RecipeManagerMixin",
     "ac_infinite_soda.faucets.LiquidBlockInteractionMixin",
     "am_lava_bottle_dupe.FluidContainerListCategoryMixin",
@@ -35,6 +36,7 @@
     "cc_golden_bucket_compat.SoftFluidTankMixin",
     "cc_golden_bucket_compat.amendments.AbstractCauldronBlockMixin",
     "cc_golden_milk_follows_neapolitan.CCCauldronInteractionsMixin",
+    "moonlight_provider_race.DynamicResourcesInternalsMixin",
     "neapolitan_amendments_milkshakes.ModCauldronBlockMixin",
     "supps_continuous_hand_ropes.AbstractRopeBlockMixin",
     "supps_continuous_hand_ropes.BlockStateBaseMixin",
