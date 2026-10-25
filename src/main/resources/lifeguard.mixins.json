@@ -42,6 +42,7 @@
     "moonlight_registration_races.DynamicResourcesInternalsMixin",
     "moonlight_registration_races.MoonlightMixin",
     "neapolitan_amendments_milkshakes.ModCauldronBlockMixin",
+    "scholar_amendments_lectern_sync.LecternBlockEntityMixin",
     "supps_continuous_hand_ropes.AbstractRopeBlockMixin",
     "supps_continuous_hand_ropes.BlockStateBaseMixin",
     "supps_faucet_toggle.FaucetBlockMixin",
