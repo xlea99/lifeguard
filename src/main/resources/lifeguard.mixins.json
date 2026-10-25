@@ -5,6 +5,8 @@
   "plugin": "net.xlea99.lifeguard.boot.LifeguardMixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "amendments_cauldron_dispensing.DispenserBehaviorMixin",
+    "amendments_mixed_potion_brewing.PotionBrewingMixin",
     "amendments_potion_dilution.LiquidMixerMixin",
     "core.RecipeManagerMixin",
     "ac_infinite_soda.faucets.LiquidBlockInteractionMixin",

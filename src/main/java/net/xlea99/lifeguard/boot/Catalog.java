@@ -4,10 +4,12 @@ import java.util.List;
 import net.xlea99.lifeguard.entry.ac_infinite_soda.AcInfiniteSoda;
 import net.xlea99.lifeguard.entry.am_lava_bottle_dupe.AmLavaBottleDupe;
 import net.xlea99.lifeguard.entry.am_lava_vision_fallback.AmLavaVisionFallback;
-import net.xlea99.lifeguard.entry.amendments_double_cake_slicing.AmendmentsDoubleCakeSlicing;
+import net.xlea99.lifeguard.entry.amendments_cake_slicing.AmendmentsCakeSlicing;
+import net.xlea99.lifeguard.entry.amendments_cauldron_dispensing.AmendmentsCauldronDispensing;
 import net.xlea99.lifeguard.entry.amendments_hanging_pot_names.AmendmentsHangingPotNames;
 import net.xlea99.lifeguard.entry.amendments_lava_drip_layers.AmendmentsLavaDripLayers;
 import net.xlea99.lifeguard.entry.amendments_lava_layers.AmendmentsLavaLayers;
+import net.xlea99.lifeguard.entry.amendments_mixed_potion_brewing.AmendmentsMixedPotionBrewing;
 import net.xlea99.lifeguard.entry.amendments_potion_dilution.AmendmentsPotionDilution;
 import net.xlea99.lifeguard.entry.cauldron_fourths.CauldronFourths;
 import net.xlea99.lifeguard.entry.citadel_animation_smoothing.CitadelAnimationSmoothing;
@@ -61,10 +63,12 @@ public final class Catalog {
         AcInfiniteSoda.class,
         AmLavaBottleDupe.class,
         AmLavaVisionFallback.class,
-        AmendmentsDoubleCakeSlicing.class,
+        AmendmentsCakeSlicing.class,
+        AmendmentsCauldronDispensing.class,
         AmendmentsHangingPotNames.class,
         AmendmentsLavaDripLayers.class,
         AmendmentsLavaLayers.class,
+        AmendmentsMixedPotionBrewing.class,
         AmendmentsPotionDilution.class,
         CauldronFourths.class,
         CitadelAnimationSmoothing.class,
