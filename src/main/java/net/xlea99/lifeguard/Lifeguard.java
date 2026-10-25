@@ -17,6 +17,8 @@ import net.xlea99.lifeguard.entry.cauldron_fourths.CauldronFourths;
 import net.xlea99.lifeguard.entry.cauldron_fourths.FourLevelInteractions;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CannonBackfire;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
+import net.xlea99.lifeguard.entry.clayworks_flower_pots.ClayworksFlowerPots;
+import net.xlea99.lifeguard.entry.clayworks_flower_pots.FlowerPots;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.PouringRecipesPayload;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.PouringRecipes;
@@ -53,6 +55,9 @@ public class Lifeguard {
             CakeSlicing.register();
         if (CauldronFourths.ENTRY.active())
             FourLevelInteractions.register(modEventBus);
+        // Registered whenever Clayworks is there, never by the switch: placed pots keep their looks while it's off.
+        if (ClayworksFlowerPots.ENTRY.installed())
+            FlowerPots.register(modEventBus);
         modEventBus.addListener(Sync::registerPayloads);
         if (FaucetPouringRecipes.ENTRY.installed())
             modEventBus.addListener(PouringRecipesPayload::register);

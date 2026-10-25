@@ -9,6 +9,8 @@ import net.xlea99.lifeguard.Lifeguard;
 import net.xlea99.lifeguard.client.menu.LifeguardScreen;
 import net.xlea99.lifeguard.entry.cauldron_fourths.CauldronFourths;
 import net.xlea99.lifeguard.entry.cauldron_fourths.FourthsClient;
+import net.xlea99.lifeguard.entry.clayworks_flower_pots.ClayworksFlowerPots;
+import net.xlea99.lifeguard.entry.clayworks_flower_pots.FlowerPotsClient;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.GlintsClient;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
 
@@ -26,5 +28,7 @@ public final class LifeguardClient {
             FourthsClient.register();
         if (SexyRunicGlints.ENTRY.active())
             GlintsClient.register(modEventBus);
+        if (ClayworksFlowerPots.ENTRY.installed())
+            FlowerPotsClient.register(modEventBus);
     }
 }
