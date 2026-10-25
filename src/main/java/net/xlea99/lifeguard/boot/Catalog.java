@@ -12,6 +12,7 @@ import net.xlea99.lifeguard.entry.amendments_lava_layers.AmendmentsLavaLayers;
 import net.xlea99.lifeguard.entry.amendments_mixed_potion_brewing.AmendmentsMixedPotionBrewing;
 import net.xlea99.lifeguard.entry.amendments_potion_dilution.AmendmentsPotionDilution;
 import net.xlea99.lifeguard.entry.cauldron_fourths.CauldronFourths;
+import net.xlea99.lifeguard.entry.cc_tether_potion_compat.CcTetherPotionCompat;
 import net.xlea99.lifeguard.entry.citadel_animation_smoothing.CitadelAnimationSmoothing;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
 import net.xlea99.lifeguard.entry.cc_golden_bucket_compat.CcGoldenBucketCompat;
@@ -72,6 +73,7 @@ public final class Catalog {
         AmendmentsMixedPotionBrewing.class,
         AmendmentsPotionDilution.class,
         CauldronFourths.class,
+        CcTetherPotionCompat.class,
         CitadelAnimationSmoothing.class,
         CcCannonBackfire.class,
         CcGoldenBucketCompat.class,
