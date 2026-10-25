@@ -1,8 +1,7 @@
-package net.xlea99.lifeguard.entry.amendments_double_cake_slicing;
+package net.xlea99.lifeguard.entry.amendments_cake_slicing;
 
 import javax.annotation.Nullable;
 import net.mehvahdjukaar.amendments.common.block.DirectionalCakeBlock;
-import net.mehvahdjukaar.amendments.common.block.DoubleCakeBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -20,41 +19,42 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.ServerTickEvent;
 
 /**
- * A knife slices the top cake of Amendments' stacked cake as it would a single cake.
+ * A knife slices Amendments' cakes as it would a plain cake: a stacked cake's top cake, and a cake eaten from a side
+ * (which Amendments turns into its own directional cake).
  *
  * <p>Knives slice cakes through each mod's own right-click handling (Farmer's Delight for vanilla cake, Abnormals
- * Delight for Neapolitan's, ...), and each knows only its own plain cake. A stacked cake is Amendments' own block, so
- * none of them knew it, and the click went on to the stacked cake, which eats a slice of the top cake whenever the
- * player can eat. So for a knife's right-click on a stacked cake, the plain top cake (bitten as far as the top is)
- * stands in for it while every mod's handler runs. If one took a slice, the stacked cake comes back with a slice off
- * its top cake, by Amendments' own bite (it faces the player, and the stack becomes a single cake once the top is
- * gone); if none did, it comes back as it was, and Amendments carries on as before. It's the trick Amendments' stacked
- * cake uses for its own right-click, earlier in the click. The stand-in is placed and taken back without telling
- * clients or neighbors, so nobody sees it unless a handler changes it.
+ * Delight for Neapolitan's, ...), and each knows only its own plain cake. Amendments' cakes are its own blocks, so none
+ * of them knew them, and the click went on to the cake, which eats a slice whenever the player can eat (Amendments
+ * 1.20.1 sliced its directional cake for Farmer's Delight itself; 1.21 never calls that). So for a knife's right-click
+ * on one, the plain cake (bitten as far as it is) stands in for it while every mod's handler runs. If one took a slice,
+ * Amendments' cake comes back with a slice off by Amendments' own bite (it faces the player; a stack becomes a single
+ * cake once the top is gone); if none did, it comes back as it was, and Amendments carries on as before. It's the trick
+ * Amendments' stacked cake uses for its own right-click, earlier in the click. The stand-in is placed and taken back
+ * without telling clients or neighbors, so nobody sees it unless a handler changes it.
  */
-public final class StackedCakeSlicing {
+public final class CakeSlicing {
     /** Knives as Farmer's Delight tells them (its tag or the knife ability), and the common tag. */
     private static final TagKey<Item> COMMON_KNIVES = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("c", "tools/knife"));
     private static final TagKey<Item> FD_KNIVES = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("farmersdelight", "tools/knives"));
     private static final ItemAbility KNIFE_HARVEST = ItemAbility.get("knife_harvest");
     private static final int QUIET = Block.UPDATE_INVISIBLE | Block.UPDATE_KNOWN_SHAPE;
 
-    /** The click in progress: the stacked cake taken out of the world, and the top cake standing in for it. */
+    /** The click in progress: Amendments' cake taken out of the world, and the plain cake standing in for it. */
     private record StandIn(Level level, BlockPos pos, BlockState stacked, BlockState top) {
     }
 
     @Nullable
     private static StandIn standIn;
 
-    private StackedCakeSlicing() {
+    private CakeSlicing() {
     }
 
     public static void register() {
         NeoForge.EVENT_BUS.addListener(EventPriority.HIGHEST, false, PlayerInteractEvent.RightClickBlock.class,
-            StackedCakeSlicing::onRightClickFirst);
+            CakeSlicing::onRightClickFirst);
         NeoForge.EVENT_BUS.addListener(EventPriority.LOWEST, true, PlayerInteractEvent.RightClickBlock.class,
-            StackedCakeSlicing::onRightClickLast);
-        NeoForge.EVENT_BUS.addListener(StackedCakeSlicing::onServerTick);
+            CakeSlicing::onRightClickLast);
+        NeoForge.EVENT_BUS.addListener(CakeSlicing::onServerTick);
     }
 
     private static boolean isKnife(ItemStack stack) {
@@ -75,7 +75,7 @@ public final class StackedCakeSlicing {
             putBack();
         BlockPos pos = event.getPos();
         BlockState stacked = level.getBlockState(pos);
-        if (!(stacked.getBlock() instanceof DoubleCakeBlock cake))
+        if (!(stacked.getBlock() instanceof DirectionalCakeBlock cake))
             return;
         if (level.isClientSide()) {
             event.setCancellationResult(InteractionResult.SUCCESS);
@@ -96,13 +96,13 @@ public final class StackedCakeSlicing {
             click.level().setBlock(click.pos(), click.stacked(), QUIET);
             return;
         }
-        ((DoubleCakeBlock) click.stacked().getBlock()).removeSlice(click.stacked(), click.pos(), click.level(),
+        ((DirectionalCakeBlock) click.stacked().getBlock()).removeSlice(click.stacked(), click.pos(), click.level(),
             event.getEntity(), DirectionalCakeBlock.getHitDir(event.getEntity(), event.getHitVec()));
         event.setCancellationResult(InteractionResult.SUCCESS);
         event.setCanceled(true);
     }
 
-    /** A handler that threw ended the click before {@link #onRightClickLast}: put the stacked cake back as it was. */
+    /** A handler that threw ended the click before {@link #onRightClickLast}: put Amendments' cake back as it was. */
     private static void onServerTick(ServerTickEvent.Post event) {
         putBack();
     }

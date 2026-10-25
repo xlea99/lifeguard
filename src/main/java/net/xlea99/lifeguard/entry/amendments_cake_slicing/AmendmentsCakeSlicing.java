@@ -1,4 +1,4 @@
-package net.xlea99.lifeguard.entry.amendments_double_cake_slicing;
+package net.xlea99.lifeguard.entry.amendments_cake_slicing;
 
 import net.xlea99.lifeguard.core.Entries;
 import net.xlea99.lifeguard.core.Entry;
@@ -6,12 +6,12 @@ import net.xlea99.lifeguard.core.Restart;
 import net.xlea99.lifeguard.core.Side;
 import net.xlea99.lifeguard.core.Taste;
 
-public final class AmendmentsDoubleCakeSlicing {
+public final class AmendmentsCakeSlicing {
     /** The server slices; the client only holds back its guess. */
-    public static final Entry ENTRY = Entries.compat("amendments_double_cake_slicing", Taste.NONE)
+    public static final Entry ENTRY = Entries.compat("amendments_cake_slicing", Taste.NONE)
         .requiresMods("amendments")
         .side(Side.SERVER).restart(Restart.GAME);
 
-    private AmendmentsDoubleCakeSlicing() {
+    private AmendmentsCakeSlicing() {
     }
 }
