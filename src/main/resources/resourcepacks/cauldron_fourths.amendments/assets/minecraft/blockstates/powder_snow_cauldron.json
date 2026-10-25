@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "level=1": {
+      "model": "amendments:block/powder_snow_cauldron_level1"
+    },
+    "level=2": {
+      "model": "lifeguard:block/amendments_powder_snow_cauldron_level_11"
+    },
+    "level=3": {
+      "model": "lifeguard:block/amendments_powder_snow_cauldron_level_13"
+    },
+    "level=4": {
+      "model": "amendments:block/powder_snow_cauldron_full"
+    }
+  }
+}

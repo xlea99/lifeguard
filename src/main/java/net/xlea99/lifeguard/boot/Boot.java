@@ -3,9 +3,13 @@ package net.xlea99.lifeguard.boot;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.fml.loading.FMLPaths;
 import net.neoforged.fml.loading.LoadingModList;
@@ -33,8 +37,27 @@ public final class Boot {
     private static volatile boolean started;
     private static EntryConfig clientConfig;
     private static EntryConfig serverConfig;
+    private static Set<String> loadedRegistryShapers = Set.of();
 
     private Boot() {
+    }
+
+    /**
+     * The registry-shaping entries this game loaded at startup, by id. Fixed for the session: switching one needs a
+     * restart, so this, not the live switch, is what this game's registries actually look like.
+     */
+    public static Set<String> loadedRegistryShapers() {
+        return loadedRegistryShapers;
+    }
+
+    /** Every entry that declares a resource pack ships one: a missing folder is a Lifeguard bug, caught at startup. */
+    private static void checkResourcePacks(Registry registry) {
+        List<String> missing = new ArrayList<>();
+        for (Entry entry : registry.entries())
+            if (entry.hasResourcePack() && Boot.class.getResource("/" + entry.resourcePackPath() + "/pack.mcmeta") == null)
+                missing.add(entry.id() + " (/" + entry.resourcePackPath() + "/pack.mcmeta)");
+        if (!missing.isEmpty())
+            throw new IllegalStateException("Lifeguard entries declare a resource pack the jar doesn't have: " + missing);
     }
 
     public static synchronized void start() {
@@ -48,6 +71,7 @@ public final class Boot {
         registry.setModPresence(modId -> mods.getModFileById(modId) != null);
         // Throws, listing every problem, if a declaration is wrong: a crash here is a bug in Lifeguard, found early.
         registry.freeze(lang.keySet(), !FMLLoader.isProduction());
+        checkResourcePacks(registry);
 
         Texts texts = new Texts(lang, Boot::modName);
         Path dir = FMLPaths.CONFIGDIR.get();
@@ -55,6 +79,13 @@ public final class Boot {
         // A dedicated server never reads or writes the client file: those choices belong to each player.
         if (FMLLoader.getDist().isClient())
             clientConfig = open(new EntryConfig(dir.resolve("lifeguard-client.toml"), Side.CLIENT, registry, texts));
+
+        // Mixins are decided right after this, from these same answers, so this is exactly what loaded.
+        Set<String> shaping = new LinkedHashSet<>();
+        for (Entry entry : registry.entries())
+            if (entry.isRegistryShaping() && entry.active())
+                shaping.add(entry.id());
+        loadedRegistryShapers = Collections.unmodifiableSet(shaping);
 
         started = true;
         LOGGER.info("Lifeguard: {}", summary(registry));

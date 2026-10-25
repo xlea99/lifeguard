@@ -4,6 +4,9 @@ import java.util.List;
 import net.xlea99.lifeguard.entry.ac_infinite_soda.AcInfiniteSoda;
 import net.xlea99.lifeguard.entry.am_lava_bottle_dupe.AmLavaBottleDupe;
 import net.xlea99.lifeguard.entry.am_lava_vision_fallback.AmLavaVisionFallback;
+import net.xlea99.lifeguard.entry.amendments_lava_drip_layers.AmendmentsLavaDripLayers;
+import net.xlea99.lifeguard.entry.amendments_lava_layers.AmendmentsLavaLayers;
+import net.xlea99.lifeguard.entry.cauldron_fourths.CauldronFourths;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
 import net.xlea99.lifeguard.entry.dye_depot_runes.DyeDepotRunes;
 import net.xlea99.lifeguard.entry.enderman_head_reach.EndermanHeadReach;
@@ -22,6 +25,7 @@ import net.xlea99.lifeguard.entry.supps_drinkables_sip_pacing.SuppsDrinkablesSip
 import net.xlea99.lifeguard.entry.supps_captured_mob_jitter.SuppsCapturedMobJitter;
 import net.xlea99.lifeguard.entry.supps_faucet_cauldron_levels.SuppsFaucetCauldronLevels;
 import net.xlea99.lifeguard.entry.supps_faucet_honey.SuppsFaucetHoney;
+import net.xlea99.lifeguard.entry.supps_faucet_toggle.SuppsFaucetToggle;
 import net.xlea99.lifeguard.entry.supps_gunpowder_lights_nuke.SuppsGunpowderLightsNuke;
 import net.xlea99.lifeguard.entry.supps_lumisene_burn_time.SuppsLumiseneBurnTime;
 import net.xlea99.lifeguard.entry.supps_notice_board_comparator.SuppsNoticeBoardComparator;
@@ -44,6 +48,9 @@ public final class Catalog {
         AcInfiniteSoda.class,
         AmLavaBottleDupe.class,
         AmLavaVisionFallback.class,
+        AmendmentsLavaDripLayers.class,
+        AmendmentsLavaLayers.class,
+        CauldronFourths.class,
         CcCannonBackfire.class,
         DyeDepotRunes.class,
         EndermanHeadReach.class,
@@ -62,6 +69,7 @@ public final class Catalog {
         SuppsDrinkablesSipPacing.class,
         SuppsFaucetCauldronLevels.class,
         SuppsFaucetHoney.class,
+        SuppsFaucetToggle.class,
         SuppsGunpowderLightsNuke.class,
         SuppsLumiseneBurnTime.class,
         SuppsNoticeBoardComparator.class,

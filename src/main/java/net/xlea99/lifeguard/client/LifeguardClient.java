@@ -7,6 +7,8 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 import net.xlea99.lifeguard.Lifeguard;
 import net.xlea99.lifeguard.client.menu.LifeguardScreen;
+import net.xlea99.lifeguard.entry.cauldron_fourths.CauldronFourths;
+import net.xlea99.lifeguard.entry.cauldron_fourths.FourthsClient;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.GlintsClient;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
 
@@ -18,6 +20,10 @@ import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
 public final class LifeguardClient {
     public LifeguardClient(IEventBus modEventBus, ModContainer container) {
         container.registerExtensionPoint(IConfigScreenFactory.class, (mod, parent) -> new LifeguardScreen(parent));
+        EntryPacks.register(modEventBus, container);
+        ClientChecks.register(modEventBus);
+        if (CauldronFourths.ENTRY.active())
+            FourthsClient.register();
         if (SexyRunicGlints.ENTRY.active())
             GlintsClient.register(modEventBus);
     }

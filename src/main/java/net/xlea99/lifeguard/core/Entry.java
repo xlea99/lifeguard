@@ -35,6 +35,8 @@ public final class Entry {
     private Restart restart;
     private Gating gating = Gating.LOAD;
     private boolean planned;
+    private boolean registryShaping;
+    private boolean resourcePack;
     private final Set<String> requiredMods = new LinkedHashSet<>();
     private final List<Entry> requiredEntries = new ArrayList<>();
     private final List<SubValue<?>> values = new ArrayList<>();
@@ -86,6 +88,27 @@ public final class Entry {
     public Entry planned() {
         declaring();
         this.planned = true;
+        return this;
+    }
+
+    /**
+     * Changes the shape of the game's registries (a block's states, say), so a client and the server it joins must
+     * agree on it: a mismatched client is turned away at login with a message saying what to match. Only a load-gated
+     * server entry that needs a game restart can be one.
+     */
+    public Entry registryShaping() {
+        declaring();
+        this.registryShaping = true;
+        return this;
+    }
+
+    /**
+     * Ships client assets in the jar's {@code resourcepacks/<id>} folder, loaded as a required pack (on top, can't be
+     * turned off or moved) whenever the entry is active when the game starts.
+     */
+    public Entry resourcePack() {
+        declaring();
+        this.resourcePack = true;
         return this;
     }
 
@@ -159,6 +182,19 @@ public final class Entry {
 
     public boolean isPlanned() {
         return planned;
+    }
+
+    public boolean isRegistryShaping() {
+        return registryShaping;
+    }
+
+    public boolean hasResourcePack() {
+        return resourcePack;
+    }
+
+    /** {@code resourcepacks/<id>}: where the entry's pack lives in the jar, if it has one. */
+    public String resourcePackPath() {
+        return "resourcepacks/" + id();
     }
 
     public Set<String> requiredMods() {
