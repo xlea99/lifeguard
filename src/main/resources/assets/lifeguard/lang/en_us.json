@@ -160,6 +160,9 @@
   "lifeguard.entry.citadel_animation_smoothing": "Animation smoothing fix",
   "lifeguard.entry.citadel_animation_smoothing.desc": "Fixes keyframed animations from Citadel mods snapping once per tick instead of moving smoothly.",
 
+  "lifeguard.entry.neapolitan_amendments_milkshakes": "Milkshakes in Amendments cauldrons",
+  "lifeguard.entry.neapolitan_amendments_milkshakes.desc": "Allows you to craft neapolitan milkshakes in Amendments liquid cauldrons.",
+
   "lifeguard.entry.dye_depot_runes": "Dye Depot runes",
   "lifeguard.entry.dye_depot_runes.desc": "Dye Depot dyes can now be used as Quark runic glint colors. Each glint is styled off of base quark's design.",
   "rune.quark.maroon": "Maroon Runic Etching",
@@ -193,6 +196,12 @@
 
   "lifeguard.entry.cc_cannon_backfire": "Cannon backfire",
   "lifeguard.entry.cc_cannon_backfire.desc": "Cannons can now backfire (causing a large explosion) any blocks in lifeguard:cannon_backfires, notably C&C's gunpowder.",
+  "lifeguard.entry.cc_golden_bucket_compat": "Golden buckets in jars and cauldrons",
+  "lifeguard.entry.cc_golden_bucket_compat.desc": "Golden buckets pour a bucket into, or scoop a bucket out of, jars, Amendments' cauldrons and other Moonlight tanks, for any liquid, keeping the golden bucket and the buckets still in it (Moonlight treated them as plain buckets, losing them).",
+  "lifeguard.entry.cc_golden_bucket_compat.amendments": "Into empty cauldrons",
+  "lifeguard.entry.cc_golden_bucket_compat.amendments.desc": "A filled golden bucket of a liquid Caverns & Chasms doesn't pour itself (like milk, or purple soda) pours into an empty cauldron as an Amendments cauldron, like a plain bucket of it, instead of being drunk or doing nothing.",
+  "lifeguard.entry.cc_golden_milk_follows_neapolitan": "Golden milk bucket follows Neapolitan",
+  "lifeguard.entry.cc_golden_milk_follows_neapolitan.desc": "A golden milk bucket only fills a cauldron with Neapolitan's milk cauldron while Neapolitan's Milk Cauldron setting is on, like a regular milk bucket.",
   "lifeguard.entry.supplementaries_grouper_open_sides": "Grouper handles open sides",
   "lifeguard.entry.supplementaries_grouper_open_sides.desc": "Fixes groupers between two chests, slabs, flowers or other blocks without a full side comparing entities instead of the blocks. Only air or liquid on both sides switches a grouper to comparing entities.",
   "lifeguard.entry.faucet_pouring_recipes": "Faucet pouring recipes",
