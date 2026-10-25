@@ -46,7 +46,9 @@
       "textures": [
         "lifeguard:block/flower_pot_designs/stitch",
         "lifeguard:block/flower_pot_designs/triad",
-        "lifeguard:block/flower_pot_designs/bordered"
+        "lifeguard:block/flower_pot_designs/bordered",
+        "lifeguard:block/flower_pot_designs/jaws",
+        "lifeguard:block/flower_pot_designs/banded"
       ]
     }
   ]
