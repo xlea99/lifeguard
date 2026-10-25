@@ -126,6 +126,11 @@ dependencies {
     runtimeOnly "maven.modrinth:blueprint:${blueprint_version}"
     compileOnly "maven.modrinth:emi:${emi_version}"
     runtimeOnly "maven.modrinth:emi:${emi_version}"
+    compileOnly "maven.modrinth:amendments:${amendments_version}"
+    runtimeOnly "maven.modrinth:amendments:${amendments_version}"
+    compileOnly "maven.modrinth:farmers-delight:${farmers_delight_version}"
+    runtimeOnly "maven.modrinth:farmers-delight:${farmers_delight_version}"
+    runtimeOnly "maven.modrinth:neapolitan:${neapolitan_version}"
 
     // Example mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime

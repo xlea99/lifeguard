@@ -140,6 +140,14 @@ public final class Registry implements SettingsView {
             problems.add(id + ": no side declared (client or server)");
         if (entry.restart() == null)
             problems.add(id + ": no restart declared (game or world)");
+        if (entry.isRegistryShaping()) {
+            if (entry.side() != null && entry.side() != Side.SERVER)
+                problems.add(id + ": registry-shaping entries are server entries (the server decides; clients must match)");
+            if (entry.restart() != null && entry.restart() != Restart.GAME)
+                problems.add(id + ": registry-shaping entries need a game restart");
+            if (entry.gating() != Gating.LOAD)
+                problems.add(id + ": registry-shaping entries are load-gated (what loaded is what the client has)");
+        }
         if (entry.kind() == EntryClass.FIX && entry.requiredMods().size() > 1)
             problems.add(id + ": a fix requires at most one mod; one that needs " + entry.requiredMods()
                 + " is compat, or a fix on the mod that is actually broken");

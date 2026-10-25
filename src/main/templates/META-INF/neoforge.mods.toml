@@ -72,6 +72,14 @@ versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
+# Load after Moonlight, so the data files Lifeguard corrects in its namespace win over Moonlight's own.
+[[dependencies."${mod_id}"]]
+modId = "moonlight"
+type = "optional"
+versionRange = "*"
+ordering = "AFTER"
+side = "BOTH"
+
 # Load after Supplementaries, so the data files Lifeguard corrects in its namespace win over Supplementaries' own.
 [[dependencies."${mod_id}"]]
 modId = "supplementaries"

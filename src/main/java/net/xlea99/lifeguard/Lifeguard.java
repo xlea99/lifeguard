@@ -11,6 +11,8 @@ import net.xlea99.lifeguard.entry.ac_infinite_soda.AcInfiniteSoda;
 import net.xlea99.lifeguard.entry.ac_infinite_soda.InfiniteSoda;
 import net.xlea99.lifeguard.entry.am_lava_vision_fallback.AmLavaVisionFallback;
 import net.xlea99.lifeguard.entry.am_lava_vision_fallback.LavaVision;
+import net.xlea99.lifeguard.entry.cauldron_fourths.CauldronFourths;
+import net.xlea99.lifeguard.entry.cauldron_fourths.FourLevelInteractions;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CannonBackfire;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
@@ -45,6 +47,8 @@ public class Lifeguard {
             InfiniteSoda.register();
         if (AmLavaVisionFallback.ENTRY.active())
             LavaVision.register();
+        if (CauldronFourths.ENTRY.active())
+            FourLevelInteractions.register(modEventBus);
         modEventBus.addListener(Sync::registerPayloads);
         if (FaucetPouringRecipes.ENTRY.installed())
             modEventBus.addListener(PouringRecipesPayload::register);
