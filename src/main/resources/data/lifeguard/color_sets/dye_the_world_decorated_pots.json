@@ -1,0 +1,23 @@
+{
+  "id": "clayworks:decorated_pot",
+  "colors": {
+    "default": "minecraft:decorated_pot",
+    "amber": "dye_the_world:amber_decorated_pot",
+    "aqua": "dye_the_world:aqua_decorated_pot",
+    "beige": "dye_the_world:beige_decorated_pot",
+    "coral": "dye_the_world:coral_decorated_pot",
+    "forest": "dye_the_world:forest_decorated_pot",
+    "ginger": "dye_the_world:ginger_decorated_pot",
+    "indigo": "dye_the_world:indigo_decorated_pot",
+    "maroon": "dye_the_world:maroon_decorated_pot",
+    "mint": "dye_the_world:mint_decorated_pot",
+    "navy": "dye_the_world:navy_decorated_pot",
+    "olive": "dye_the_world:olive_decorated_pot",
+    "rose": "dye_the_world:rose_decorated_pot",
+    "slate": "dye_the_world:slate_decorated_pot",
+    "tan": "dye_the_world:tan_decorated_pot",
+    "teal": "dye_the_world:teal_decorated_pot",
+    "verdant": "dye_the_world:verdant_decorated_pot"
+  },
+  "replace": false
+}
