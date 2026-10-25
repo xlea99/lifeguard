@@ -190,10 +190,51 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
         graphics.fill(getX(), top + HEADER_HEIGHT - 1, getRight(), top + HEADER_HEIGHT, RULE);
         int y = top + 2;
         int color = 0xFF8A8A8A;
-        graphics.drawString(font, Component.translatable("lifeguard.menu.col.entry"), glyphLeft(), y, color, false);
+        Component entryTitle = Component.translatable("lifeguard.menu.col.entry");
+        graphics.drawString(font, entryTitle, glyphLeft(), y, color, false);
+        // Expand all and collapse all, after the title: they act on the mod groups below.
+        boolean usable = !screen.collapseIgnored();
+        expandAllLeft = glyphLeft() + font.width(entryTitle) + 8;
+        collapseAllLeft = expandAllLeft + font.width(EXPAND_ALL) + 6;
+        headerTop = top;
+        drawHeaderButton(graphics, EXPAND_ALL, expandAllLeft, y, usable, mouseX, mouseY, "lifeguard.menu.expand_all");
+        drawHeaderButton(graphics, COLLAPSE_ALL, collapseAllLeft, y, usable, mouseX, mouseY, "lifeguard.menu.collapse_all");
         graphics.drawString(font, Component.translatable("lifeguard.menu.col.class"), classLeft(left, width), y, color, false);
         graphics.drawString(font, Component.translatable("lifeguard.menu.col.side"), sideLeft(left, width) + 2, y, color, false);
         graphics.drawString(font, Component.translatable("lifeguard.menu.col.switch"), switchLeft(left, width) + 2, y, color, false);
+    }
+
+    private static final String EXPAND_ALL = "▾▾";
+    private static final String COLLAPSE_ALL = "▸▸";
+    private int expandAllLeft = -1;
+    private int collapseAllLeft = -1;
+    private int headerTop = -1;
+
+    private void drawHeaderButton(GuiGraphics graphics, String glyph, int x, int y, boolean usable, int mouseX, int mouseY,
+                                  String tooltipKey) {
+        boolean hover = usable && overHeaderButton(glyph, x, mouseX, mouseY);
+        graphics.drawString(minecraft.font, glyph, x, y, !usable ? 0xFF4A4A4A : hover ? 0xFFE0C060 : 0xFFB09A60, false);
+        if (hover)
+            screen.setTooltipForNextRenderPass(Component.translatable(tooltipKey));
+    }
+
+    private boolean overHeaderButton(String glyph, int x, double mouseX, double mouseY) {
+        return x >= 0 && mouseX >= x - 2 && mouseX < x + minecraft.font.width(glyph) + 2 && mouseY >= headerTop
+            && mouseY < headerTop + HEADER_HEIGHT;
+    }
+
+    /** A click on the pinned header's expand all / collapse all; true if it was one. */
+    boolean headerClick(double mouseX, double mouseY) {
+        if (screen.collapseIgnored())
+            return false;
+        if (overHeaderButton(EXPAND_ALL, expandAllLeft, mouseX, mouseY))
+            screen.model().expandAllMods();
+        else if (overHeaderButton(COLLAPSE_ALL, collapseAllLeft, mouseX, mouseY))
+            screen.model().collapseAllMods();
+        else
+            return false;
+        screen.rebuildRows();
+        return true;
     }
 
     // --- rows ---------------------------------------------------------------------------------------------------------

@@ -306,7 +306,7 @@ public final class LifeguardScreen extends Screen {
 
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
-        if (button == 0 && (filterPane.click(mouseX, mouseY) || details.click(mouseX, mouseY)))
+        if (button == 0 && (filterPane.click(mouseX, mouseY) || details.click(mouseX, mouseY) || list.headerClick(mouseX, mouseY)))
             return true;
         if (button == 1 && list.rightClick(mouseX, mouseY))
             return true;
