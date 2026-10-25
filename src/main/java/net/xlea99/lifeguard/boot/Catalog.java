@@ -29,11 +29,14 @@ import net.xlea99.lifeguard.entry.quark_amethyst_beacon_tint.QuarkAmethystBeacon
 import net.xlea99.lifeguard.entry.quark_donkey_chests.QuarkDonkeyChests;
 import net.xlea99.lifeguard.entry.quark_elytra_duplication_crash.QuarkElytraDuplicationCrash;
 import net.xlea99.lifeguard.entry.quark_parrot_egg_dispensing.QuarkParrotEggDispensing;
+import net.xlea99.lifeguard.entry.paper_labels.PaperLabels;
 import net.xlea99.lifeguard.entry.quark_tool_restock_enchantments.QuarkToolRestockEnchantments;
 import net.xlea99.lifeguard.entry.scholar_amendments_lectern_sync.ScholarAmendmentsLecternSync;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
 import net.xlea99.lifeguard.entry.supplementaries_grouper_open_sides.SupplementariesGrouperOpenSides;
 import net.xlea99.lifeguard.entry.supps_blue_bomb_dispensing.SuppsBlueBombDispensing;
+import net.xlea99.lifeguard.entry.supps_soap_washes_labels.SuppsSoapWashesLabels;
+import net.xlea99.lifeguard.entry.whiter_labels.WhiterLabels;
 import net.xlea99.lifeguard.entry.supps_cannon_comparator.SuppsCannonComparator;
 import net.xlea99.lifeguard.entry.supps_continuous_hand_ropes.SuppsContinuousHandRopes;
 import net.xlea99.lifeguard.entry.supps_drinkables_sip_pacing.SuppsDrinkablesSipPacing;
@@ -91,11 +94,14 @@ public final class Catalog {
         QuarkDonkeyChests.class,
         QuarkElytraDuplicationCrash.class,
         QuarkParrotEggDispensing.class,
+        PaperLabels.class,
         QuarkToolRestockEnchantments.class,
         ScholarAmendmentsLecternSync.class,
         SexyRunicGlints.class,
         SupplementariesGrouperOpenSides.class,
         SuppsBlueBombDispensing.class,
+        SuppsSoapWashesLabels.class,
+        WhiterLabels.class,
         SuppsCannonComparator.class,
         SuppsCapturedMobJitter.class,
         SuppsContinuousHandRopes.class,

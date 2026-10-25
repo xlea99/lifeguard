@@ -127,6 +127,7 @@
   "lifeguard.mod.emi": "EMI",
   "lifeguard.mod.farmersdelight": "Farmer's Delight",
   "lifeguard.mod.jade": "Jade",
+  "lifeguard.mod.labels": "Labels",
   "lifeguard.mod.moonlight": "Moonlight",
   "lifeguard.mod.neapolitan": "Neapolitan",
   "lifeguard.mod.quark": "Quark",
@@ -218,6 +219,8 @@
   "rune.quark.forest": "Forest Runic Etching",
   "rune.quark.ginger": "Ginger Runic Etching",
   "rune.quark.tan": "Tan Runic Etching",
+  "lifeguard.entry.paper_labels": "Paper places labels",
+  "lifeguard.entry.paper_labels.desc": "Use paper on a block to stick a Label label on it, and broken labels give paper back.",
   "lifeguard.entry.quark_amethyst_beacon_tint": "Amethyst beacon tint correction",
   "lifeguard.entry.quark_amethyst_beacon_tint.desc": "Fixes beacon beams going dark when an amethyst cluster redirects them (with Corundum beacon redirection off).",
   "lifeguard.entry.quark_donkey_chests": "Donkey variant chests fix",
@@ -271,6 +274,8 @@
   "lifeguard.entry.supps_slice_maps_keep_the_altimeter.desc": "The slice map recipe hands the altimeter back instead of using it up: the map turns into a slice map and the altimeter (Caverns & Chasms' depth gauge counts) stays in the crafting grid.",
   "lifeguard.entry.supps_blue_bomb_dispensing": "Blue bomb dispenser fix",
   "lifeguard.entry.supps_blue_bomb_dispensing.desc": "Fixes dispensers dropping blue bombs instead of throwing them. Loading one into a container in front still works.",
+  "lifeguard.entry.supps_soap_washes_labels": "Soap washes labels",
+  "lifeguard.entry.supps_soap_washes_labels.desc": "Supplementaries' soap washes the dye off a label.",
   "lifeguard.entry.supps_cannon_comparator": "Cannon comparator fix",
   "lifeguard.entry.supps_cannon_comparator.desc": "Fixes comparators reading 3 extra from every cannon, so an empty cannon read 3 and any amount of gunpowder past 4 read the same.",
   "lifeguard.entry.supps_faucet_cauldron_levels": "More sensible faucet cauldron levels",
@@ -296,6 +301,8 @@
   "lifeguard.entry.supps_respects_mob_griefing": "Supplementaries respects mob griefing",
   "lifeguard.entry.supps_respects_mob_griefing.desc": "Cannonballs fired by mobs, like Plunderers turning a cannon on you, break no blocks while the mobGriefing gamerule is off, like every other mob explosion. Still hurt though.",
 
+  "lifeguard.entry.whiter_labels": "Whiter labels",
+  "lifeguard.entry.whiter_labels.desc": "Placed labels look more like plain white paper instead of Labels' default tan. You probably only want this if you're also making paper place labels.",
   "lifeguard.entry.zeta_instance_race": "Zeta instance race",
   "lifeguard.entry.zeta_instance_race.desc": "Fixes a rare race condition that can happen on launch where Quark drops out of Zeta's list of loaded mods."
 }
