@@ -135,6 +135,10 @@
   "lifeguard.entry.am_lava_vision_fallback": "Lava Vision without lava bottles",
   "lifeguard.entry.am_lava_vision_fallback.desc": "With Alex's Mobs' lava bottles turned off, Lava Vision brews from a Potion of Night Vision and a Bone Serpent Tooth instead.",
 
+  "lifeguard.entry.amendments_double_cake_slicing": "Stacked cake slicing",
+  "lifeguard.entry.amendments_double_cake_slicing.desc": "Lets knives slice the top cake of an Amendments stacked cake, for any cake a mod lets knives slice on its own (Farmer's Delight's cake, Abnormals Delight's Neapolitan cakes, ...), instead of eating a slice.",
+  "lifeguard.entry.amendments_hanging_pot_names": "Hanging pot names in Jade",
+  "lifeguard.entry.amendments_hanging_pot_names.desc": "Makes Jade name an Amendments hanging flower pot after what is planted in it, like a standing pot (\"Potted Poppy\"), instead of always \"Hanging Flower Pot\".",
   "lifeguard.entry.amendments_lava_drip_layers": "Lava drip layers fix",
   "lifeguard.entry.amendments_lava_drip_layers.desc": "Fixes Amendments' consistent_lava_layers config doing nothing for an empty cauldron, where a dripstone drip would still fill it instantly.",
   "lifeguard.entry.amendments_lava_layers": "Lava layers",
@@ -144,6 +148,10 @@
   "lifeguard.entry.amendments_lava_layers.faucets": "Faucets",
   "lifeguard.entry.amendments_lava_layers.faucets.desc": "Makes faucets pour lava into an empty cauldron a layer at a time, again just like any other Moonlight liquid, instead of a whole bucket at once.",
 
+  "lifeguard.entry.amendments_potion_dilution": "Potion dilution fix",
+  "lifeguard.entry.amendments_potion_dilution.desc": "Fixes mixing potions in an Amendments cauldron copying instant effects into every bottle (one Instant Health potion and three Awkward Potions made four Instant Health potions). A level II potion counts as two doses of level I, shared out between the bottles; a leftover part of a dose fizzles out, leaving an Awkward Potion if nothing else remains.",
+  "lifeguard.entry.amendments_potion_dilution.leftovers": "Leftovers",
+  "lifeguard.entry.amendments_potion_dilution.leftovers.desc": "A leftover part of a dose of Instant Health becomes as much Regeneration, and of Harming as much Poison, instead of fizzling out.",
   "lifeguard.entry.cauldron_fourths": "Cauldron fourths",
   "lifeguard.entry.cauldron_fourths.desc": "Water and powdered snow cauldrons now hold a bucket as FOUR levels instead of three, with each bottle holding 250mb instead of 333mb, just like every other Moonlight container. This is an extremely invasive change and can break a LOT, so only turn this on if you are prepared for some serious whackamole. Heads up: recipes from other mods that turn a bucket into bottles (or bottles into a bucket) usually still count three, so they no longer match a cauldron.",
   "lifeguard.entry.cauldron_fourths.alexs_caves": "Alex's Caves",
@@ -160,6 +168,10 @@
   "lifeguard.entry.citadel_animation_smoothing": "Animation smoothing fix",
   "lifeguard.entry.citadel_animation_smoothing.desc": "Fixes keyframed animations from Citadel mods snapping once per tick instead of moving smoothly.",
 
+  "lifeguard.entry.moonlight_provider_race": "Moonlight resource race fix",
+  "lifeguard.entry.moonlight_provider_race.desc": "Fixes a bug where a Moonlight mod's generated resources randomly going missing for a whole launch and you get walls of purple-black goo.",
+  "lifeguard.entry.moonlight_jade_contents": "Container contents in Jade",
+  "lifeguard.entry.moonlight_jade_contents.desc": "Makes Jade show what is in Supplementaries' jars and goblets and Amendments' cauldrons by name (\"Splash Potion of Swiftness\", \"Milk\", \"Red Dye\") with how much, where it showed potions, milk or dye as empty and jars and goblets as nothing. Follows Jade's own Fluid Storage settings.",
   "lifeguard.entry.neapolitan_amendments_milkshakes": "Milkshakes in Amendments cauldrons",
   "lifeguard.entry.neapolitan_amendments_milkshakes.desc": "Allows you to craft neapolitan milkshakes in Amendments liquid cauldrons.",
 

@@ -4,8 +4,11 @@ import java.util.List;
 import net.xlea99.lifeguard.entry.ac_infinite_soda.AcInfiniteSoda;
 import net.xlea99.lifeguard.entry.am_lava_bottle_dupe.AmLavaBottleDupe;
 import net.xlea99.lifeguard.entry.am_lava_vision_fallback.AmLavaVisionFallback;
+import net.xlea99.lifeguard.entry.amendments_double_cake_slicing.AmendmentsDoubleCakeSlicing;
+import net.xlea99.lifeguard.entry.amendments_hanging_pot_names.AmendmentsHangingPotNames;
 import net.xlea99.lifeguard.entry.amendments_lava_drip_layers.AmendmentsLavaDripLayers;
 import net.xlea99.lifeguard.entry.amendments_lava_layers.AmendmentsLavaLayers;
+import net.xlea99.lifeguard.entry.amendments_potion_dilution.AmendmentsPotionDilution;
 import net.xlea99.lifeguard.entry.cauldron_fourths.CauldronFourths;
 import net.xlea99.lifeguard.entry.citadel_animation_smoothing.CitadelAnimationSmoothing;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
@@ -14,6 +17,8 @@ import net.xlea99.lifeguard.entry.cc_golden_milk_follows_neapolitan.CcGoldenMilk
 import net.xlea99.lifeguard.entry.dye_depot_runes.DyeDepotRunes;
 import net.xlea99.lifeguard.entry.enderman_head_reach.EndermanHeadReach;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
+import net.xlea99.lifeguard.entry.moonlight_jade_contents.MoonlightJadeContents;
+import net.xlea99.lifeguard.entry.moonlight_provider_race.MoonlightProviderRace;
 import net.xlea99.lifeguard.entry.neapolitan_amendments_milkshakes.NeapolitanAmendmentsMilkshakes;
 import net.xlea99.lifeguard.entry.no_supps_jar_fish.NoSuppsJarFish;
 import net.xlea99.lifeguard.entry.quark_amethyst_beacon_tint.QuarkAmethystBeaconTint;
@@ -56,8 +61,11 @@ public final class Catalog {
         AcInfiniteSoda.class,
         AmLavaBottleDupe.class,
         AmLavaVisionFallback.class,
+        AmendmentsDoubleCakeSlicing.class,
+        AmendmentsHangingPotNames.class,
         AmendmentsLavaDripLayers.class,
         AmendmentsLavaLayers.class,
+        AmendmentsPotionDilution.class,
         CauldronFourths.class,
         CitadelAnimationSmoothing.class,
         CcCannonBackfire.class,
@@ -66,6 +74,8 @@ public final class Catalog {
         DyeDepotRunes.class,
         EndermanHeadReach.class,
         FaucetPouringRecipes.class,
+        MoonlightJadeContents.class,
+        MoonlightProviderRace.class,
         NeapolitanAmendmentsMilkshakes.class,
         NoSuppsJarFish.class,
         QuarkAmethystBeaconTint.class,

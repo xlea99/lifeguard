@@ -11,6 +11,8 @@ import net.xlea99.lifeguard.entry.ac_infinite_soda.AcInfiniteSoda;
 import net.xlea99.lifeguard.entry.ac_infinite_soda.InfiniteSoda;
 import net.xlea99.lifeguard.entry.am_lava_vision_fallback.AmLavaVisionFallback;
 import net.xlea99.lifeguard.entry.am_lava_vision_fallback.LavaVision;
+import net.xlea99.lifeguard.entry.amendments_double_cake_slicing.AmendmentsDoubleCakeSlicing;
+import net.xlea99.lifeguard.entry.amendments_double_cake_slicing.StackedCakeSlicing;
 import net.xlea99.lifeguard.entry.cauldron_fourths.CauldronFourths;
 import net.xlea99.lifeguard.entry.cauldron_fourths.FourLevelInteractions;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CannonBackfire;
@@ -47,6 +49,8 @@ public class Lifeguard {
             InfiniteSoda.register();
         if (AmLavaVisionFallback.ENTRY.active())
             LavaVision.register();
+        if (AmendmentsDoubleCakeSlicing.ENTRY.active())
+            StackedCakeSlicing.register();
         if (CauldronFourths.ENTRY.active())
             FourLevelInteractions.register(modEventBus);
         modEventBus.addListener(Sync::registerPayloads);
