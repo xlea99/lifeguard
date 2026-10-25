@@ -172,8 +172,8 @@
   "lifeguard.entry.citadel_animation_smoothing": "Animation smoothing fix",
   "lifeguard.entry.citadel_animation_smoothing.desc": "Fixes keyframed animations from Citadel mods snapping once per tick instead of moving smoothly.",
 
-  "lifeguard.entry.moonlight_provider_race": "Moonlight resource race fix",
-  "lifeguard.entry.moonlight_provider_race.desc": "Fixes a bug where a Moonlight mod's generated resources randomly going missing for a whole launch and you get walls of purple-black goo.",
+  "lifeguard.entry.moonlight_registration_races": "Moonlight registration races fix",
+  "lifeguard.entry.moonlight_registration_races.desc": "Fixes bugs where Moonlight mods randomly lose things they register while the game starts: generated resources going missing for a whole launch (walls of purple-black goo), a mod's dispenser behaviors vanishing, or a crash on launch.",
   "lifeguard.entry.moonlight_jade_contents": "Container contents in Jade",
   "lifeguard.entry.moonlight_jade_contents.desc": "Makes Jade show what is in Supplementaries' jars and goblets and Amendments' cauldrons by name (\"Splash Potion of Swiftness\", \"Milk\", \"Red Dye\") with how much, where it showed potions, milk or dye as empty and jars and goblets as nothing. Follows Jade's own Fluid Storage settings.",
   "lifeguard.entry.neapolitan_amendments_milkshakes": "Milkshakes in Amendments cauldrons",

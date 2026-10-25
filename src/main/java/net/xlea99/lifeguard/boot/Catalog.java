@@ -20,7 +20,7 @@ import net.xlea99.lifeguard.entry.dye_depot_runes.DyeDepotRunes;
 import net.xlea99.lifeguard.entry.enderman_head_reach.EndermanHeadReach;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
 import net.xlea99.lifeguard.entry.moonlight_jade_contents.MoonlightJadeContents;
-import net.xlea99.lifeguard.entry.moonlight_provider_race.MoonlightProviderRace;
+import net.xlea99.lifeguard.entry.moonlight_registration_races.MoonlightRegistrationRaces;
 import net.xlea99.lifeguard.entry.neapolitan_amendments_milkshakes.NeapolitanAmendmentsMilkshakes;
 import net.xlea99.lifeguard.entry.no_supps_jar_fish.NoSuppsJarFish;
 import net.xlea99.lifeguard.entry.quark_amethyst_beacon_tint.QuarkAmethystBeaconTint;
@@ -79,7 +79,7 @@ public final class Catalog {
         EndermanHeadReach.class,
         FaucetPouringRecipes.class,
         MoonlightJadeContents.class,
-        MoonlightProviderRace.class,
+        MoonlightRegistrationRaces.class,
         NeapolitanAmendmentsMilkshakes.class,
         NoSuppsJarFish.class,
         QuarkAmethystBeaconTint.class,
