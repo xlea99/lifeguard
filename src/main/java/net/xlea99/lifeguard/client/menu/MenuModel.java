@@ -61,6 +61,8 @@ final class MenuModel {
         Boot.clientConfig().ifPresent(this::read);
         serverBroken = !following && Boot.serverConfig().broken();
         clientBroken = Boot.clientConfig().map(EntryConfig::broken).orElse(true);
+        // The list is long: it opens with every mod group closed.
+        collapseAllMods();
     }
 
     private void read(EntryConfig config) {
@@ -220,6 +222,15 @@ final class MenuModel {
 
     boolean modCollapsed(String mod) {
         return collapsedMods.contains(mod);
+    }
+
+    void collapseAllMods() {
+        for (Entry root : registry.roots())
+            collapsedMods.add(homeMod(root));
+    }
+
+    void expandAllMods() {
+        collapsedMods.clear();
     }
 
     void toggleModCollapsed(String mod) {
