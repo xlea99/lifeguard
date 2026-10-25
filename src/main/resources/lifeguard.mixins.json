@@ -8,6 +8,8 @@
     "amendments_cauldron_dispensing.DispenserBehaviorMixin",
     "amendments_mixed_potion_brewing.PotionBrewingMixin",
     "amendments_potion_dilution.LiquidMixerMixin",
+    "cc_tether_potion_compat.SoftFluidTankMixin",
+    "cc_tether_potion_compat.amendments.AbstractCauldronBlockMixin",
     "core.RecipeManagerMixin",
     "ac_infinite_soda.faucets.LiquidBlockInteractionMixin",
     "am_lava_bottle_dupe.FluidContainerListCategoryMixin",

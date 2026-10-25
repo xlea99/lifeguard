@@ -172,6 +172,10 @@
   "lifeguard.entry.cauldron_fourths.supplementaries": "Supplementaries",
   "lifeguard.entry.cauldron_fourths.supplementaries.desc": "Faucets fill water and powdered snow cauldrons to four levels, and a cauldron moved into water fills to four.",
 
+  "lifeguard.entry.cc_tether_potion_compat": "Breakable rigged potions w/ Moonlight",
+  "lifeguard.entry.cc_tether_potion_compat.desc": "Lets you smash C&C's tether, impact and trail potions into Moonlight jars, goblets, and cauldrons, pouring in as a regular, splash or lingering potion. You get the bottle back, but the spinel is gone.",
+  "lifeguard.entry.cc_tether_potion_compat.amendments": "Empty cauldrons",
+  "lifeguard.entry.cc_tether_potion_compat.amendments.desc": "Works on empty cauldrons too, turning them into Amendments potion cauldrons.",
   "lifeguard.entry.citadel_animation_smoothing": "Animation smoothing fix",
   "lifeguard.entry.citadel_animation_smoothing.desc": "Fixes keyframed animations from Citadel mods snapping once per tick instead of moving smoothly.",
 
