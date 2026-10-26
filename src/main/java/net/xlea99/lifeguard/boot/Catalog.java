@@ -35,6 +35,9 @@ import net.xlea99.lifeguard.entry.quark_tool_restock_enchantments.QuarkToolResto
 import net.xlea99.lifeguard.entry.scholar_amendments_lectern_sync.ScholarAmendmentsLecternSync;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
 import net.xlea99.lifeguard.entry.sleep_tight_kill_stats.SleepTightKillStats;
+import net.xlea99.lifeguard.entry.snowy_spirit_brighter_ginger.SnowySpiritBrighterGinger;
+import net.xlea99.lifeguard.entry.snowy_spirit_edible_treats.SnowySpiritEdibleTreats;
+import net.xlea99.lifeguard.entry.snowy_spirit_eggnog_nerf.SnowySpiritEggnogNerf;
 import net.xlea99.lifeguard.entry.sleep_tight_spawn_events.SleepTightSpawnEvents;
 import net.xlea99.lifeguard.entry.supplementaries_grouper_open_sides.SupplementariesGrouperOpenSides;
 import net.xlea99.lifeguard.entry.supps_blue_bomb_dispensing.SuppsBlueBombDispensing;
@@ -104,6 +107,9 @@ public final class Catalog {
         SexyRunicGlints.class,
         SleepTightKillStats.class,
         SleepTightSpawnEvents.class,
+        SnowySpiritBrighterGinger.class,
+        SnowySpiritEdibleTreats.class,
+        SnowySpiritEggnogNerf.class,
         SupplementariesGrouperOpenSides.class,
         SuppsBlueBombDispensing.class,
         SuppsSoapWashesLabels.class,

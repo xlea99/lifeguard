@@ -13,6 +13,10 @@ import net.xlea99.lifeguard.entry.clayworks_flower_pots.ClayworksFlowerPots;
 import net.xlea99.lifeguard.entry.clayworks_flower_pots.FlowerPotsClient;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.GlintsClient;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
+import net.xlea99.lifeguard.entry.snowy_spirit_brighter_ginger.GingerPack;
+import net.xlea99.lifeguard.entry.snowy_spirit_brighter_ginger.SnowySpiritBrighterGinger;
+import net.xlea99.lifeguard.entry.snowy_spirit_edible_treats.GumdropCrumbs;
+import net.xlea99.lifeguard.entry.snowy_spirit_edible_treats.SnowySpiritEdibleTreats;
 import net.xlea99.lifeguard.entry.whiter_labels.WhiterLabels;
 import net.xlea99.lifeguard.entry.whiter_labels.WhiterPaper;
 
@@ -34,5 +38,9 @@ public final class LifeguardClient {
             FlowerPotsClient.register(modEventBus);
         if (WhiterLabels.ENTRY.active())
             WhiterPaper.register(modEventBus);
+        if (SnowySpiritEdibleTreats.ENTRY.active())
+            GumdropCrumbs.register(modEventBus);
+        if (SnowySpiritBrighterGinger.ENTRY.active())
+            GingerPack.register();
     }
 }
