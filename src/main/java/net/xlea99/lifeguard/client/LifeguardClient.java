@@ -12,6 +12,8 @@ import net.xlea99.lifeguard.entry.cauldron_fourths.FourthsClient;
 import net.xlea99.lifeguard.entry.clayworks_flower_pots.ClayworksFlowerPots;
 import net.xlea99.lifeguard.entry.clayworks_flower_pots.FlowerPotsClient;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.GlintsClient;
+import net.xlea99.lifeguard.entry.haunted_harvest_mask_limit.HauntedHarvestMaskLimit;
+import net.xlea99.lifeguard.entry.haunted_harvest_mask_limit.HollowPumpkins;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
 import net.xlea99.lifeguard.entry.snowy_spirit_brighter_ginger.GingerPack;
 import net.xlea99.lifeguard.entry.snowy_spirit_brighter_ginger.SnowySpiritBrighterGinger;
@@ -42,5 +44,8 @@ public final class LifeguardClient {
             GumdropCrumbs.register(modEventBus);
         if (SnowySpiritBrighterGinger.ENTRY.active())
             GingerPack.register();
+        // The server owns this one: the tooltip checks the synced value each time.
+        if (HauntedHarvestMaskLimit.ENTRY.installed())
+            HollowPumpkins.registerTooltip();
     }
 }

@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "hauntedharvest:jack_o_lantern",
+      "required": false
+    },
+    {
+      "id": "hauntedharvest:soul_jack_o_lantern",
+      "required": false
+    },
+    {
+      "id": "hauntedharvest:redstone_jack_o_lantern",
+      "required": false
+    },
+    {
+      "id": "hauntedharvest:cupric_jack_o_lantern",
+      "required": false
+    },
+    {
+      "id": "hauntedharvest:ender_jack_o_lantern",
+      "required": false
+    }
+  ]
+}
