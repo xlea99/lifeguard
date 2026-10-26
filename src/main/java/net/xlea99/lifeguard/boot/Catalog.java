@@ -28,6 +28,7 @@ import net.xlea99.lifeguard.entry.haunted_harvest_torch_lanterns.HauntedHarvestT
 import net.xlea99.lifeguard.entry.haunted_harvest_unified_carved_pumpkin.HauntedHarvestUnifiedCarvedPumpkin;
 import net.xlea99.lifeguard.entry.enderman_head_reach.EndermanHeadReach;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
+import net.xlea99.lifeguard.entry.map_atlases_fixes.MapAtlasesFixes;
 import net.xlea99.lifeguard.entry.moonlight_jade_contents.MoonlightJadeContents;
 import net.xlea99.lifeguard.entry.moonlight_registration_races.MoonlightRegistrationRaces;
 import net.xlea99.lifeguard.entry.neapolitan_amendments_milkshakes.NeapolitanAmendmentsMilkshakes;
@@ -40,6 +41,7 @@ import net.xlea99.lifeguard.entry.no_end_cave_sounds.NoEndCaveSounds;
 import net.xlea99.lifeguard.entry.paper_labels.PaperLabels;
 import net.xlea99.lifeguard.entry.quark_tool_restock_enchantments.QuarkToolRestockEnchantments;
 import net.xlea99.lifeguard.entry.scholar_amendments_lectern_sync.ScholarAmendmentsLecternSync;
+import net.xlea99.lifeguard.entry.scholar_lectern_atlases.ScholarLecternAtlases;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
 import net.xlea99.lifeguard.entry.sleep_tight_kill_stats.SleepTightKillStats;
 import net.xlea99.lifeguard.entry.snowy_spirit_brighter_ginger.SnowySpiritBrighterGinger;
@@ -107,6 +109,7 @@ public final class Catalog {
         HauntedHarvestUnifiedCarvedPumpkin.class,
         EndermanHeadReach.class,
         FaucetPouringRecipes.class,
+        MapAtlasesFixes.class,
         MoonlightJadeContents.class,
         MoonlightRegistrationRaces.class,
         NeapolitanAmendmentsMilkshakes.class,
@@ -119,6 +122,7 @@ public final class Catalog {
         PaperLabels.class,
         QuarkToolRestockEnchantments.class,
         ScholarAmendmentsLecternSync.class,
+        ScholarLecternAtlases.class,
         SexyRunicGlints.class,
         SleepTightKillStats.class,
         SleepTightSpawnEvents.class,
