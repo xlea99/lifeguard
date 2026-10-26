@@ -12,6 +12,7 @@ import net.xlea99.lifeguard.entry.advancement_frames_packet_checks.AdvancementFr
 import net.xlea99.lifeguard.entry.amendments_lava_layers.AmendmentsLavaLayers;
 import net.xlea99.lifeguard.entry.amendments_mixed_potion_brewing.AmendmentsMixedPotionBrewing;
 import net.xlea99.lifeguard.entry.amendments_potion_dilution.AmendmentsPotionDilution;
+import net.xlea99.lifeguard.entry.bucket_mob_flicker.BucketMobFlicker;
 import net.xlea99.lifeguard.entry.cauldron_fourths.CauldronFourths;
 import net.xlea99.lifeguard.entry.cc_tether_potion_compat.CcTetherPotionCompat;
 import net.xlea99.lifeguard.entry.citadel_animation_smoothing.CitadelAnimationSmoothing;
@@ -35,6 +36,7 @@ import net.xlea99.lifeguard.entry.quark_amethyst_beacon_tint.QuarkAmethystBeacon
 import net.xlea99.lifeguard.entry.quark_donkey_chests.QuarkDonkeyChests;
 import net.xlea99.lifeguard.entry.quark_elytra_duplication_crash.QuarkElytraDuplicationCrash;
 import net.xlea99.lifeguard.entry.quark_parrot_egg_dispensing.QuarkParrotEggDispensing;
+import net.xlea99.lifeguard.entry.no_end_cave_sounds.NoEndCaveSounds;
 import net.xlea99.lifeguard.entry.paper_labels.PaperLabels;
 import net.xlea99.lifeguard.entry.quark_tool_restock_enchantments.QuarkToolRestockEnchantments;
 import net.xlea99.lifeguard.entry.scholar_amendments_lectern_sync.ScholarAmendmentsLecternSync;
@@ -47,6 +49,7 @@ import net.xlea99.lifeguard.entry.sleep_tight_spawn_events.SleepTightSpawnEvents
 import net.xlea99.lifeguard.entry.supplementaries_grouper_open_sides.SupplementariesGrouperOpenSides;
 import net.xlea99.lifeguard.entry.supps_blue_bomb_dispensing.SuppsBlueBombDispensing;
 import net.xlea99.lifeguard.entry.supps_soap_washes_labels.SuppsSoapWashesLabels;
+import net.xlea99.lifeguard.entry.warden_roar_loop.WardenRoarLoop;
 import net.xlea99.lifeguard.entry.whiter_labels.WhiterLabels;
 import net.xlea99.lifeguard.entry.supps_cannon_comparator.SuppsCannonComparator;
 import net.xlea99.lifeguard.entry.supps_continuous_hand_ropes.SuppsContinuousHandRopes;
@@ -88,6 +91,7 @@ public final class Catalog {
         AdvancementFramesPacketChecks.class,
         AmendmentsMixedPotionBrewing.class,
         AmendmentsPotionDilution.class,
+        BucketMobFlicker.class,
         CauldronFourths.class,
         CcTetherPotionCompat.class,
         CitadelAnimationSmoothing.class,
@@ -111,6 +115,7 @@ public final class Catalog {
         QuarkDonkeyChests.class,
         QuarkElytraDuplicationCrash.class,
         QuarkParrotEggDispensing.class,
+        NoEndCaveSounds.class,
         PaperLabels.class,
         QuarkToolRestockEnchantments.class,
         ScholarAmendmentsLecternSync.class,
@@ -123,6 +128,7 @@ public final class Catalog {
         SupplementariesGrouperOpenSides.class,
         SuppsBlueBombDispensing.class,
         SuppsSoapWashesLabels.class,
+        WardenRoarLoop.class,
         WhiterLabels.class,
         SuppsCannonComparator.class,
         SuppsCapturedMobJitter.class,
