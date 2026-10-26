@@ -20,6 +20,10 @@ import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
 import net.xlea99.lifeguard.entry.clayworks_flower_pots.ClayworksFlowerPots;
 import net.xlea99.lifeguard.entry.clayworks_flower_pots.FlowerPots;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
+import net.xlea99.lifeguard.entry.snowy_spirit_edible_treats.SnowySpiritEdibleTreats;
+import net.xlea99.lifeguard.entry.snowy_spirit_edible_treats.Treats;
+import net.xlea99.lifeguard.entry.snowy_spirit_eggnog_nerf.EggnogNerf;
+import net.xlea99.lifeguard.entry.snowy_spirit_eggnog_nerf.SnowySpiritEggnogNerf;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.PouringRecipesPayload;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.PouringRecipes;
 import net.xlea99.lifeguard.entry.quark_parrot_egg_dispensing.ParrotEggDispensers;
@@ -58,6 +62,10 @@ public class Lifeguard {
         // Registered whenever Clayworks is there, never by the switch: placed pots keep their looks while it's off.
         if (ClayworksFlowerPots.ENTRY.installed())
             FlowerPots.register(modEventBus);
+        if (SnowySpiritEdibleTreats.ENTRY.active())
+            Treats.register(modEventBus);
+        if (SnowySpiritEggnogNerf.ENTRY.active())
+            EggnogNerf.register(modEventBus);
         modEventBus.addListener(Sync::registerPayloads);
         if (FaucetPouringRecipes.ENTRY.installed())
             modEventBus.addListener(PouringRecipesPayload::register);

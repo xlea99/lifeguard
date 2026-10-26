@@ -142,6 +142,8 @@ dependencies {
     runtimeOnly "maven.modrinth:sleep-tight:${sleep_tight_version}"
     compileOnly "maven.modrinth:advancement-frames:${advancement_frames_version}"
     runtimeOnly "maven.modrinth:advancement-frames:${advancement_frames_version}"
+    compileOnly "maven.modrinth:snowy-spirit:${snowy_spirit_version}"
+    runtimeOnly "maven.modrinth:snowy-spirit:${snowy_spirit_version}"
 
     // Example mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime

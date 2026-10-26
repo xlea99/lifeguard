@@ -1,0 +1,191 @@
+{
+  "_comment": "snowy_spirit_brighter_ginger (from lnod_glue's brighterGingerColors, tools/ginger_recolor/make_spec.py): Snowy Spirit's gingerbread and ginger in Alex's Caves' burnt orange (hue -12.5, sat x0.92, brighter); icing and candy bits map to themselves. Our numbers, applied to the player's installed Snowy Spirit textures. Paths are relative to textures/.",
+  "textures": [
+    {
+      "texture": "snowyspirit:block/gingerbread_block",
+      "colors": {
+        "#6B3C0E": "#8B3C1C",
+        "#80470B": "#A6451A",
+        "#8A5014": "#B35026",
+        "#925912": "#B95724",
+        "#986216": "#BD6028",
+        "#9C6518": "#C0632B",
+        "#A0681A": "#C3652D"
+      }
+    },
+    {
+      "texture": "snowyspirit:block/gingerbread_frosted_block",
+      "colors": {
+        "#6B3C0E": "#8B3C1C",
+        "#80470B": "#A6451A",
+        "#8A5014": "#B35026",
+        "#8F7750": "#A68361",
+        "#925912": "#B95724",
+        "#986216": "#BD6028",
+        "#9C6518": "#C0632B",
+        "#A0681A": "#C3652D",
+        "#AF966E": "#B59973",
+        "#BEC4C2": "#BEC4C2",
+        "#CFD7CA": "#CFD7CA"
+      }
+    },
+    {
+      "texture": "snowyspirit:block/gingerbread_door_bottom",
+      "colors": {
+        "#6B3C0E": "#8B3C1C",
+        "#80470B": "#A6451A",
+        "#8A5014": "#B35026",
+        "#8F7750": "#A68361",
+        "#925912": "#B95724",
+        "#986216": "#BD6028",
+        "#9C6518": "#C0632B",
+        "#A0681A": "#C3652D",
+        "#AF966E": "#B59973",
+        "#BEC4C2": "#BEC4C2",
+        "#CFD7CA": "#CFD7CA"
+      }
+    },
+    {
+      "texture": "snowyspirit:block/gingerbread_door_top",
+      "colors": {
+        "#6B3C0E": "#8B3C1C",
+        "#80470B": "#A6451A",
+        "#8A5014": "#B35026",
+        "#925912": "#B95724",
+        "#986216": "#BD6028",
+        "#9C6518": "#C0632B",
+        "#A0681A": "#C3652D",
+        "#AF966E": "#B59973",
+        "#BEC4C2": "#BEC4C2",
+        "#CFD7CA": "#CFD7CA"
+      }
+    },
+    {
+      "texture": "snowyspirit:block/gingerbread_trapdoor",
+      "colors": {
+        "#6B3C0E": "#8B3C1C",
+        "#80470B": "#A6451A",
+        "#8A5014": "#B35026",
+        "#8F7750": "#A68361",
+        "#925912": "#B95724",
+        "#986216": "#BD6028",
+        "#9C6518": "#C0632B",
+        "#A0681A": "#C3652D",
+        "#AF966E": "#B59973",
+        "#BEC4C2": "#BEC4C2",
+        "#CFD7CA": "#CFD7CA"
+      }
+    },
+    {
+      "texture": "snowyspirit:block/ginger_crate_side",
+      "colors": {
+        "#402913": "#532C1D",
+        "#553A1F": "#6E412E",
+        "#623A00": "#7F370A",
+        "#664D28": "#85573A",
+        "#785836": "#9C654D",
+        "#805E36": "#A66B4E",
+        "#885008": "#B14E18",
+        "#8B673C": "#B47556",
+        "#997140": "#BE7B58",
+        "#A2660B": "#C45E1C",
+        "#B07824": "#CE7237",
+        "#C38F44": "#CF8A4F",
+        "#CEA86F": "#CEA86F"
+      }
+    },
+    {
+      "texture": "snowyspirit:block/ginger_crate_top",
+      "colors": {
+        "#402913": "#532C1D",
+        "#553A1F": "#6E412E",
+        "#623A00": "#7F370A",
+        "#785836": "#9C654D",
+        "#805E36": "#A66B4E",
+        "#885008": "#B14E18",
+        "#8B673C": "#B47556",
+        "#A2660B": "#C45E1C",
+        "#B07824": "#CE7237",
+        "#C38F44": "#CF8A4F",
+        "#CEA86F": "#CEA86F"
+      }
+    },
+    {
+      "texture": "snowyspirit:item/gingerbread_door",
+      "colors": {
+        "#602E08": "#7D2B14",
+        "#975C16": "#BC5A28",
+        "#C4B298": "#C4B298"
+      }
+    },
+    {
+      "texture": "snowyspirit:item/gingerbread_cookie_0",
+      "colors": {
+        "#442201": "#581F08",
+        "#80410B": "#A63E1A",
+        "#9A550F": "#BE4F20",
+        "#A25F1C": "#C45A2F",
+        "#A31922": "#A31922",
+        "#A86827": "#C8653B",
+        "#BB8047": "#D67E5C",
+        "#BD2606": "#BD2606",
+        "#CEA86F": "#CEA86F",
+        "#E5C3A0": "#E5C3A0"
+      }
+    },
+    {
+      "texture": "snowyspirit:item/gingerbread_cookie_1",
+      "colors": {
+        "#442201": "#581F08",
+        "#80410B": "#A63E1A",
+        "#9A550F": "#BE4F20",
+        "#A25F1C": "#C45A2F",
+        "#A86827": "#C8653B",
+        "#BB8047": "#D67E5C",
+        "#CEA86F": "#CEA86F",
+        "#E5C3A0": "#E5C3A0",
+        "#E86F06": "#E86F06",
+        "#EE7B05": "#EE7B05"
+      }
+    },
+    {
+      "texture": "snowyspirit:item/gingerbread_cookie_2",
+      "colors": {
+        "#442201": "#581F08",
+        "#80410B": "#A63E1A",
+        "#9A550F": "#BE4F20",
+        "#A25F1C": "#C45A2F",
+        "#A86827": "#C8653B",
+        "#BB8047": "#D67E5C",
+        "#CEA86F": "#CEA86F",
+        "#E5C3A0": "#E5C3A0"
+      }
+    },
+    {
+      "texture": "snowyspirit:item/gingerbread_cookie_3",
+      "colors": {
+        "#442201": "#581F08",
+        "#80410B": "#A63E1A",
+        "#8A8D37": "#8A8D37",
+        "#8F9E3F": "#8F9E3F",
+        "#977D30": "#977D30",
+        "#9A550F": "#BE4F20",
+        "#A25F1C": "#C45A2F",
+        "#A86827": "#C8653B",
+        "#BB8047": "#D67E5C",
+        "#E7AE04": "#E7AE04"
+      }
+    },
+    {
+      "texture": "snowyspirit:item/ginger",
+      "colors": {
+        "#623A00": "#7F370A",
+        "#885008": "#B14E18",
+        "#A2660B": "#C45E1C",
+        "#B07824": "#CE7237",
+        "#C38F44": "#D68756",
+        "#CEA86F": "#D69F7B"
+      }
+    }
+  ]
+}

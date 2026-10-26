@@ -134,6 +134,7 @@
   "lifeguard.mod.quark": "Quark",
   "lifeguard.mod.scholar": "Scholar",
   "lifeguard.mod.sleep_tight": "Sleep Tight",
+  "lifeguard.mod.snowyspirit": "Snowy Spirit",
   "lifeguard.mod.supplementaries": "Supplementaries",
   "lifeguard.mod.zeta": "Zeta",
 
@@ -241,6 +242,12 @@
   "lifeguard.entry.sleep_tight_kill_stats.desc": "Fixes every kill you make counting twice in your mob statistics.",
   "lifeguard.entry.sleep_tight_spawn_events": "Wake-up spawns fix",
   "lifeguard.entry.sleep_tight_spawn_events.desc": "Fixes mobs that wake you up and bedbugs skipping the spawn checks every other mob goes through, so other mods' spawn rules and mob swaps never saw them.",
+  "lifeguard.entry.snowy_spirit_brighter_ginger": "Brighter gingerbread",
+  "lifeguard.entry.snowy_spirit_brighter_ginger.desc": "Repaints Snowy Spirit's gingerbread and ginger in Alex's Caves' brighter, burnt orange so the two match.",
+  "lifeguard.entry.snowy_spirit_edible_treats": "Edible treats",
+  "lifeguard.entry.snowy_spirit_edible_treats.desc": "Snowy Spirit's gumdrops, gingerbread and candy cane blocks are edible, just like Alex's Caves' candy (Sugar Rush included). Right-click the air to eat one.",
+  "lifeguard.entry.snowy_spirit_eggnog_nerf": "Eggnog nerf",
+  "lifeguard.entry.snowy_spirit_eggnog_nerf.desc": "Eggnog is a treat, not a staple: 2 hunger and 6 saturation instead of more than a golden carrot.",
   "lifeguard.entry.sexy_runic_glints": "Sexy runic glints",
   "lifeguard.entry.sexy_runic_glints.desc": "Remake of most of the 17 (33 if DD is installed and dyeDepotRunes is on) enchantment glints with cool new looks, in a very distinctive new style. Switches back to plain Quark glints when a shaderpack is on to avoid rendering issues.",
 
