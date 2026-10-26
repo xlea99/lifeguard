@@ -22,7 +22,9 @@ import net.xlea99.lifeguard.entry.clayworks_flower_pots.ClayworksFlowerPots;
 import net.xlea99.lifeguard.entry.dye_depot_runes.DyeDepotRunes;
 import net.xlea99.lifeguard.entry.emf_haunted_harvest_masks.EmfHauntedHarvestMasks;
 import net.xlea99.lifeguard.entry.haunted_harvest_mask_limit.HauntedHarvestMaskLimit;
+import net.xlea99.lifeguard.entry.haunted_harvest_pumpkin_compat.HauntedHarvestPumpkinCompat;
 import net.xlea99.lifeguard.entry.haunted_harvest_torch_lanterns.HauntedHarvestTorchLanterns;
+import net.xlea99.lifeguard.entry.haunted_harvest_unified_carved_pumpkin.HauntedHarvestUnifiedCarvedPumpkin;
 import net.xlea99.lifeguard.entry.enderman_head_reach.EndermanHeadReach;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
 import net.xlea99.lifeguard.entry.moonlight_jade_contents.MoonlightJadeContents;
@@ -96,7 +98,9 @@ public final class Catalog {
         DyeDepotRunes.class,
         EmfHauntedHarvestMasks.class,
         HauntedHarvestMaskLimit.class,
+        HauntedHarvestPumpkinCompat.class,
         HauntedHarvestTorchLanterns.class,
+        HauntedHarvestUnifiedCarvedPumpkin.class,
         EndermanHeadReach.class,
         FaucetPouringRecipes.class,
         MoonlightJadeContents.class,
