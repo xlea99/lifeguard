@@ -8,6 +8,7 @@ import net.xlea99.lifeguard.entry.amendments_cake_slicing.AmendmentsCakeSlicing;
 import net.xlea99.lifeguard.entry.amendments_cauldron_dispensing.AmendmentsCauldronDispensing;
 import net.xlea99.lifeguard.entry.amendments_hanging_pot_names.AmendmentsHangingPotNames;
 import net.xlea99.lifeguard.entry.amendments_lava_drip_layers.AmendmentsLavaDripLayers;
+import net.xlea99.lifeguard.entry.advancement_frames_packet_checks.AdvancementFramesPacketChecks;
 import net.xlea99.lifeguard.entry.amendments_lava_layers.AmendmentsLavaLayers;
 import net.xlea99.lifeguard.entry.amendments_mixed_potion_brewing.AmendmentsMixedPotionBrewing;
 import net.xlea99.lifeguard.entry.amendments_potion_dilution.AmendmentsPotionDilution;
@@ -76,6 +77,7 @@ public final class Catalog {
         AmendmentsHangingPotNames.class,
         AmendmentsLavaDripLayers.class,
         AmendmentsLavaLayers.class,
+        AdvancementFramesPacketChecks.class,
         AmendmentsMixedPotionBrewing.class,
         AmendmentsPotionDilution.class,
         CauldronFourths.class,

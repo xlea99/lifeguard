@@ -117,6 +117,7 @@
   "lifeguard.check.failed": "%s isn't working",
   "lifeguard.pack.entries": "Lifeguard entries",
 
+  "lifeguard.mod.advancementframes": "Advancement Frames",
   "lifeguard.mod.alexscaves": "Alex's Caves",
   "lifeguard.mod.alexsmobs": "Alex's Mobs",
   "lifeguard.mod.amendments": "Amendments",
@@ -136,6 +137,8 @@
   "lifeguard.mod.supplementaries": "Supplementaries",
   "lifeguard.mod.zeta": "Zeta",
 
+  "lifeguard.entry.advancement_frames_packet_checks": "Frame cheating fix",
+  "lifeguard.entry.advancement_frames_packet_checks.desc": "Fixes players being able to fill or steal anyone's advancement and stat frames from anywhere, or frame advancements they never earned. Multiplayer only.",
   "lifeguard.entry.ac_infinite_soda": "Infinite purple soda",
   "lifeguard.entry.ac_infinite_soda.desc": "Makes purple soda infinite exactly like water, where two sources make a third.",
   "lifeguard.entry.ac_infinite_soda.faucets": "Faucets",
