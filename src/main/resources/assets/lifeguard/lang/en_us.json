@@ -132,6 +132,7 @@
   "lifeguard.mod.neapolitan": "Neapolitan",
   "lifeguard.mod.quark": "Quark",
   "lifeguard.mod.scholar": "Scholar",
+  "lifeguard.mod.sleep_tight": "Sleep Tight",
   "lifeguard.mod.supplementaries": "Supplementaries",
   "lifeguard.mod.zeta": "Zeta",
 
@@ -233,6 +234,10 @@
   "lifeguard.entry.quark_tool_restock_enchantments.desc": "Fixes a bug causing Quark's Automatic Tool restock to sometimes ignore enchantments, dependent on where there are in your inventory.",
   "lifeguard.entry.scholar_amendments_lectern_sync": "Scholar lectern books with Amendments",
   "lifeguard.entry.scholar_amendments_lectern_sync.desc": "Fixes a book taken off a lectern staying drawn on it (Scholar's lectern books) when Amendments is installed.",
+  "lifeguard.entry.sleep_tight_kill_stats": "Double kill stats fix",
+  "lifeguard.entry.sleep_tight_kill_stats.desc": "Fixes every kill you make counting twice in your mob statistics.",
+  "lifeguard.entry.sleep_tight_spawn_events": "Wake-up spawns fix",
+  "lifeguard.entry.sleep_tight_spawn_events.desc": "Fixes mobs that wake you up and bedbugs skipping the spawn checks every other mob goes through, so other mods' spawn rules and mob swaps never saw them.",
   "lifeguard.entry.sexy_runic_glints": "Sexy runic glints",
   "lifeguard.entry.sexy_runic_glints.desc": "Remake of most of the 17 (33 if DD is installed and dyeDepotRunes is on) enchantment glints with cool new looks, in a very distinctive new style. Switches back to plain Quark glints when a shaderpack is on to avoid rendering issues.",
 
