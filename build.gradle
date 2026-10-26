@@ -22,6 +22,18 @@ repositories {
             includeGroup 'maven.modrinth'
         }
     }
+    // MixinSquared (MIT): mixins into other mods' mixins. Compile-only; at runtime it comes with the mods that ship it.
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'Bawnorton'
+                url = 'https://maven.bawnorton.com/releases'
+            }
+        }
+        filter {
+            includeGroup 'com.github.bawnorton.mixinsquared'
+        }
+    }
 }
 
 base {
@@ -146,6 +158,7 @@ dependencies {
     runtimeOnly "maven.modrinth:snowy-spirit:${snowy_spirit_version}"
     compileOnly "maven.modrinth:haunted-harvest:${haunted_harvest_version}"
     runtimeOnly "maven.modrinth:haunted-harvest:${haunted_harvest_version}"
+    compileOnly "com.github.bawnorton.mixinsquared:mixinsquared-common:${mixinsquared_version}"
 
     // Example mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime

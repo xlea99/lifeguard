@@ -20,6 +20,11 @@ import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
 import net.xlea99.lifeguard.entry.clayworks_flower_pots.ClayworksFlowerPots;
 import net.xlea99.lifeguard.entry.clayworks_flower_pots.FlowerPots;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
+import net.xlea99.lifeguard.entry.haunted_harvest_pumpkin_compat.HauntedHarvestPumpkinCompat;
+import net.xlea99.lifeguard.entry.haunted_harvest_pumpkin_compat.Pumpkins;
+import net.xlea99.lifeguard.entry.haunted_harvest_unified_carved_pumpkin.CarvingPools;
+import net.xlea99.lifeguard.entry.haunted_harvest_unified_carved_pumpkin.HauntedHarvestUnifiedCarvedPumpkin;
+import net.xlea99.lifeguard.entry.haunted_harvest_unified_carved_pumpkin.UnifiedPumpkin;
 import net.xlea99.lifeguard.entry.snowy_spirit_edible_treats.SnowySpiritEdibleTreats;
 import net.xlea99.lifeguard.entry.snowy_spirit_edible_treats.Treats;
 import net.xlea99.lifeguard.entry.snowy_spirit_eggnog_nerf.EggnogNerf;
@@ -67,6 +72,13 @@ public class Lifeguard {
         if (SnowySpiritEggnogNerf.ENTRY.active())
             EggnogNerf.register(modEventBus);
         modEventBus.addListener(Sync::registerPayloads);
+        if (HauntedHarvestPumpkinCompat.ENTRY.active())
+            Pumpkins.register(modEventBus);
+        // Runtime-gated: the listeners check the switch, so a server can turn it on or off for its world.
+        if (HauntedHarvestUnifiedCarvedPumpkin.ENTRY.installed()) {
+            UnifiedPumpkin.register();
+            CarvingPools.register();
+        }
         if (FaucetPouringRecipes.ENTRY.installed())
             modEventBus.addListener(PouringRecipesPayload::register);
         modEventBus.addListener(Sync::registerTasks);
