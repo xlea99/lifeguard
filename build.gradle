@@ -138,6 +138,8 @@ dependencies {
     runtimeOnly "maven.modrinth:clayworks:${clayworks_version}"
     compileOnly "maven.modrinth:labels:${labels_version}"
     runtimeOnly "maven.modrinth:labels:${labels_version}"
+    compileOnly "maven.modrinth:sleep-tight:${sleep_tight_version}"
+    runtimeOnly "maven.modrinth:sleep-tight:${sleep_tight_version}"
 
     // Example mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
