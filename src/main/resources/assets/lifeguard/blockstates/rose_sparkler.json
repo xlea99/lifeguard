@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "lifeguard:block/rose_sparkler"
+    },
+    "lit=true": {
+      "model": "lifeguard:block/rose_sparkler_lit"
+    }
+  }
+}

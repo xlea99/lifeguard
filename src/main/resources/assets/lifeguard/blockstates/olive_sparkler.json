@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "lifeguard:block/olive_sparkler"
+    },
+    "lit=true": {
+      "model": "lifeguard:block/olive_sparkler_lit"
+    }
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "lifeguard:rock_candy_maroon",
+      "required": false
+    },
+    {
+      "id": "lifeguard:rock_candy_rose",
+      "required": false
+    },
+    {
+      "id": "lifeguard:rock_candy_coral",
+      "required": false
+    },
+    {
+      "id": "lifeguard:rock_candy_indigo",
+      "required": false
+    },
+    {
+      "id": "lifeguard:rock_candy_navy",
+      "required": false
+    },
+    {
+      "id": "lifeguard:rock_candy_slate",
+      "required": false
+    },
+    {
+      "id": "lifeguard:rock_candy_olive",
+      "required": false
+    },
+    {
+      "id": "lifeguard:rock_candy_amber",
+      "required": false
+    },
+    {
+      "id": "lifeguard:rock_candy_beige",
+      "required": false
+    },
+    {
+      "id": "lifeguard:rock_candy_teal",
+      "required": false
+    },
+    {
+      "id": "lifeguard:rock_candy_mint",
+      "required": false
+    },
+    {
+      "id": "lifeguard:rock_candy_aqua",
+      "required": false
+    },
+    {
+      "id": "lifeguard:rock_candy_verdant",
+      "required": false
+    },
+    {
+      "id": "lifeguard:rock_candy_forest",
+      "required": false
+    },
+    {
+      "id": "lifeguard:rock_candy_ginger",
+      "required": false
+    },
+    {
+      "id": "lifeguard:rock_candy_tan",
+      "required": false
+    }
+  ]
+}

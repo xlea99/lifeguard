@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "lifeguard:block/slate_sparkler"
+    },
+    "lit=true": {
+      "model": "lifeguard:block/slate_sparkler_lit"
+    }
+  }
+}

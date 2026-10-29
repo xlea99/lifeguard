@@ -1,0 +1,69 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "lifeguard:maroon_sparkler",
+      "required": false
+    },
+    {
+      "id": "lifeguard:rose_sparkler",
+      "required": false
+    },
+    {
+      "id": "lifeguard:coral_sparkler",
+      "required": false
+    },
+    {
+      "id": "lifeguard:indigo_sparkler",
+      "required": false
+    },
+    {
+      "id": "lifeguard:navy_sparkler",
+      "required": false
+    },
+    {
+      "id": "lifeguard:slate_sparkler",
+      "required": false
+    },
+    {
+      "id": "lifeguard:olive_sparkler",
+      "required": false
+    },
+    {
+      "id": "lifeguard:amber_sparkler",
+      "required": false
+    },
+    {
+      "id": "lifeguard:beige_sparkler",
+      "required": false
+    },
+    {
+      "id": "lifeguard:teal_sparkler",
+      "required": false
+    },
+    {
+      "id": "lifeguard:mint_sparkler",
+      "required": false
+    },
+    {
+      "id": "lifeguard:aqua_sparkler",
+      "required": false
+    },
+    {
+      "id": "lifeguard:verdant_sparkler",
+      "required": false
+    },
+    {
+      "id": "lifeguard:forest_sparkler",
+      "required": false
+    },
+    {
+      "id": "lifeguard:ginger_sparkler",
+      "required": false
+    },
+    {
+      "id": "lifeguard:tan_sparkler",
+      "required": false
+    }
+  ]
+}

@@ -21,6 +21,8 @@ import net.xlea99.lifeguard.entry.cc_golden_bucket_compat.CcGoldenBucketCompat;
 import net.xlea99.lifeguard.entry.cc_golden_milk_follows_neapolitan.CcGoldenMilkFollowsNeapolitan;
 import net.xlea99.lifeguard.entry.clayworks_flower_pots.ClayworksFlowerPots;
 import net.xlea99.lifeguard.entry.dye_depot_runes.DyeDepotRunes;
+import net.xlea99.lifeguard.entry.dye_depot_rock_candy.DyeDepotRockCandy;
+import net.xlea99.lifeguard.entry.dye_depot_sparklers.DyeDepotSparklers;
 import net.xlea99.lifeguard.entry.emf_haunted_harvest_masks.EmfHauntedHarvestMasks;
 import net.xlea99.lifeguard.entry.haunted_harvest_mask_limit.HauntedHarvestMaskLimit;
 import net.xlea99.lifeguard.entry.haunted_harvest_pumpkin_compat.HauntedHarvestPumpkinCompat;
@@ -106,6 +108,8 @@ public final class Catalog {
         CcGoldenMilkFollowsNeapolitan.class,
         ClayworksFlowerPots.class,
         DyeDepotRunes.class,
+        DyeDepotRockCandy.class,
+        DyeDepotSparklers.class,
         EmfHauntedHarvestMasks.class,
         HauntedHarvestMaskLimit.class,
         HauntedHarvestPumpkinCompat.class,

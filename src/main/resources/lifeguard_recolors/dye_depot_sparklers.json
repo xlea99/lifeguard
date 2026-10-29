@@ -1,0 +1,828 @@
+{
+  "_comment": "Colors only: the textures are Caverns & Chasms' own, read from the player's install and recolored at runtime by client/RecolorPack (Abnormals License). Every color of the source is listed, so a C&C texture change shows up as an error in the log.",
+  "requires": [
+    "caverns_and_chasms",
+    "dye_depot"
+  ],
+  "textures": [
+    {
+      "output": "lifeguard:textures/block/maroon_sparkler.png",
+      "source": "caverns_and_chasms:textures/block/brown_sparkler.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler.png",
+      "colors": {
+        "#44290F": "#3C1C15",
+        "#54331A": "#4E251F",
+        "#664028": "#642F29",
+        "#754B33": "#783D35",
+        "#8C5E43": "#925148"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/maroon_sparkler_lit.png",
+      "source": "caverns_and_chasms:textures/block/brown_sparkler_lit.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler_lit.png",
+      "colors": {
+        "#44290F": "#4E210D",
+        "#664028": "#6C3226",
+        "#8C5E43": "#944E41",
+        "#965749": "#9C4551",
+        "#B2765B": "#BC645D",
+        "#F2B396": "#FDA197",
+        "#FFECCC": "#FFE2CB"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/maroon_sparkler_spark_0.png",
+      "source": "caverns_and_chasms:textures/particle/brown_sparkler_spark_0.png",
+      "colors": {
+        "#965749": "#A24B56",
+        "#B2765B": "#BC645D",
+        "#F2B396": "#FDA197",
+        "#FFECCC": "#FFE2CB",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/maroon_sparkler_spark_1.png",
+      "source": "caverns_and_chasms:textures/particle/brown_sparkler_spark_1.png",
+      "colors": {
+        "#965749": "#A24B56",
+        "#B2765B": "#BC645D",
+        "#F2B396": "#FDA197",
+        "#FFECCC": "#FFE2CB",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/rose_sparkler.png",
+      "source": "caverns_and_chasms:textures/block/orange_sparkler.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler.png",
+      "colors": {
+        "#422C1E": "#52252E",
+        "#5B301E": "#6E273B",
+        "#724222": "#892D43",
+        "#995130": "#A83958",
+        "#AD6E30": "#C84F5E"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/rose_sparkler_lit.png",
+      "source": "caverns_and_chasms:textures/block/orange_sparkler_lit.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler_lit.png",
+      "colors": {
+        "#422C1E": "#4B242A",
+        "#724222": "#742637",
+        "#AD6E30": "#B04954",
+        "#E27756": "#DA527D",
+        "#FFA66B": "#FF7C99",
+        "#FFD7A8": "#FFC1C2"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/rose_sparkler_spark_0.png",
+      "source": "caverns_and_chasms:textures/particle/orange_sparkler_spark_0.png",
+      "colors": {
+        "#E27756": "#ED648D",
+        "#FFA66B": "#FF7C99",
+        "#FFD7A8": "#FFC1C2",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/rose_sparkler_spark_1.png",
+      "source": "caverns_and_chasms:textures/particle/orange_sparkler_spark_1.png",
+      "colors": {
+        "#E27756": "#ED648D",
+        "#FFA66B": "#FF7C99",
+        "#FFD7A8": "#FFC1C2",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/coral_sparkler.png",
+      "source": "caverns_and_chasms:textures/block/orange_sparkler.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler.png",
+      "colors": {
+        "#422C1E": "#4D2D29",
+        "#5B301E": "#65312F",
+        "#724222": "#7E3F36",
+        "#995130": "#A34D4B",
+        "#AD6E30": "#BE674E"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/coral_sparkler_lit.png",
+      "source": "caverns_and_chasms:textures/block/orange_sparkler_lit.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler_lit.png",
+      "colors": {
+        "#422C1E": "#462924",
+        "#724222": "#6D332A",
+        "#AD6E30": "#AB5B43",
+        "#E27756": "#D9656E",
+        "#FFA66B": "#FE9482",
+        "#FFD7A8": "#FFC9B4"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/coral_sparkler_spark_0.png",
+      "source": "caverns_and_chasms:textures/particle/orange_sparkler_spark_0.png",
+      "colors": {
+        "#E27756": "#E57078",
+        "#FFA66B": "#FE9482",
+        "#FFD7A8": "#FFC9B4",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/coral_sparkler_spark_1.png",
+      "source": "caverns_and_chasms:textures/particle/orange_sparkler_spark_1.png",
+      "colors": {
+        "#E27756": "#E57078",
+        "#FFA66B": "#FE9482",
+        "#FFD7A8": "#FFC9B4",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/ginger_sparkler.png",
+      "source": "caverns_and_chasms:textures/block/red_sparkler.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler.png",
+      "colors": {
+        "#472123": "#4E2A20",
+        "#5B252C": "#642F25",
+        "#7F2A35": "#853826",
+        "#993A40": "#9F4730",
+        "#B25053": "#B85E40"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/ginger_sparkler_lit.png",
+      "source": "caverns_and_chasms:textures/block/red_sparkler_lit.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler_lit.png",
+      "colors": {
+        "#472123": "#45241A",
+        "#7F2A35": "#702715",
+        "#B25053": "#A24D30",
+        "#D3505B": "#C55134",
+        "#FF8490": "#F08068",
+        "#FFCCCC": "#F2C2B2"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/ginger_sparkler_spark_0.png",
+      "source": "caverns_and_chasms:textures/particle/red_sparkler_spark_0.png",
+      "colors": {
+        "#D3505B": "#CE593D",
+        "#FF8490": "#F08068",
+        "#FFCCCC": "#F2C2B2",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/ginger_sparkler_spark_1.png",
+      "source": "caverns_and_chasms:textures/particle/red_sparkler_spark_1.png",
+      "colors": {
+        "#D3505B": "#CE593D",
+        "#FF8490": "#F08068",
+        "#FFCCCC": "#F2C2B2",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/tan_sparkler.png",
+      "source": "caverns_and_chasms:textures/block/orange_sparkler.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler.png",
+      "colors": {
+        "#422C1E": "#4A3326",
+        "#5B301E": "#5D3C28",
+        "#724222": "#744930",
+        "#995130": "#955C3F",
+        "#AD6E30": "#AC764C"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/tan_sparkler_lit.png",
+      "source": "caverns_and_chasms:textures/block/orange_sparkler_lit.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler_lit.png",
+      "colors": {
+        "#422C1E": "#442B1F",
+        "#724222": "#693A25",
+        "#AD6E30": "#A26540",
+        "#E27756": "#D1725C",
+        "#FFA66B": "#F6A37A",
+        "#FFD7A8": "#FDD2B4"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/tan_sparkler_spark_0.png",
+      "source": "caverns_and_chasms:textures/particle/orange_sparkler_spark_0.png",
+      "colors": {
+        "#E27756": "#DB7B64",
+        "#FFA66B": "#F6A37A",
+        "#FFD7A8": "#FDD2B4",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/tan_sparkler_spark_1.png",
+      "source": "caverns_and_chasms:textures/particle/orange_sparkler_spark_1.png",
+      "colors": {
+        "#E27756": "#DB7B64",
+        "#FFA66B": "#F6A37A",
+        "#FFD7A8": "#FDD2B4",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/beige_sparkler.png",
+      "source": "caverns_and_chasms:textures/block/yellow_sparkler.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler.png",
+      "colors": {
+        "#493418": "#4D4032",
+        "#5B3E0E": "#5D4B37",
+        "#754917": "#725B43",
+        "#996416": "#917353",
+        "#AA7F20": "#A88D67"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/beige_sparkler_lit.png",
+      "source": "caverns_and_chasms:textures/block/yellow_sparkler_lit.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler_lit.png",
+      "colors": {
+        "#493418": "#4D3E2E",
+        "#754917": "#73593E",
+        "#AA7F20": "#A78A5C",
+        "#D18E32": "#CF9C6F",
+        "#EFC962": "#F2CC94",
+        "#FFF4A3": "#FFF5E1"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/beige_sparkler_spark_0.png",
+      "source": "caverns_and_chasms:textures/particle/yellow_sparkler_spark_0.png",
+      "colors": {
+        "#D18E32": "#CD9B6B",
+        "#EFC962": "#F2CC94",
+        "#FFF4A3": "#FFF5E1",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/beige_sparkler_spark_1.png",
+      "source": "caverns_and_chasms:textures/particle/yellow_sparkler_spark_1.png",
+      "colors": {
+        "#D18E32": "#CD9B6B",
+        "#EFC962": "#F2CC94",
+        "#FFF4A3": "#FFF5E1",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/amber_sparkler.png",
+      "source": "caverns_and_chasms:textures/block/orange_sparkler.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler.png",
+      "colors": {
+        "#422C1E": "#473A24",
+        "#5B301E": "#5A4526",
+        "#724222": "#70552E",
+        "#995130": "#926E36",
+        "#AD6E30": "#A98A4C"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/amber_sparkler_lit.png",
+      "source": "caverns_and_chasms:textures/block/orange_sparkler_lit.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler_lit.png",
+      "colors": {
+        "#422C1E": "#3D2F15",
+        "#724222": "#654A19",
+        "#AD6E30": "#957C26",
+        "#E27756": "#BA8738",
+        "#FFA66B": "#D5B354",
+        "#FFD7A8": "#EADC9E"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/amber_sparkler_spark_0.png",
+      "source": "caverns_and_chasms:textures/particle/orange_sparkler_spark_0.png",
+      "colors": {
+        "#E27756": "#C09136",
+        "#FFA66B": "#D5B354",
+        "#FFD7A8": "#EADC9E",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/amber_sparkler_spark_1.png",
+      "source": "caverns_and_chasms:textures/particle/orange_sparkler_spark_1.png",
+      "colors": {
+        "#E27756": "#C09136",
+        "#FFA66B": "#D5B354",
+        "#FFD7A8": "#EADC9E",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/olive_sparkler.png",
+      "source": "caverns_and_chasms:textures/block/green_sparkler.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler.png",
+      "colors": {
+        "#2A4723": "#3F4421",
+        "#405630": "#51522C",
+        "#3D662B": "#5E6129",
+        "#568937": "#7A7E32",
+        "#74AD58": "#979E4F"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/olive_sparkler_lit.png",
+      "source": "caverns_and_chasms:textures/block/green_sparkler_lit.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler_lit.png",
+      "colors": {
+        "#2A4723": "#3C4222",
+        "#3D662B": "#525722",
+        "#5AA344": "#7D8E39",
+        "#74AD58": "#93994A",
+        "#76CE65": "#A6B958",
+        "#BDF4AB": "#D3E1A2"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/olive_sparkler_spark_0.png",
+      "source": "caverns_and_chasms:textures/particle/green_sparkler_spark_0.png",
+      "colors": {
+        "#5AA344": "#8A973D",
+        "#76CE65": "#A6B958",
+        "#BDF4AB": "#D3E1A2",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/olive_sparkler_spark_1.png",
+      "source": "caverns_and_chasms:textures/particle/green_sparkler_spark_1.png",
+      "colors": {
+        "#5AA344": "#8A973D",
+        "#76CE65": "#A6B958",
+        "#BDF4AB": "#D3E1A2",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/forest_sparkler.png",
+      "source": "caverns_and_chasms:textures/block/lime_sparkler.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler.png",
+      "colors": {
+        "#49491C": "#2E421E",
+        "#595727": "#385225",
+        "#756E32": "#4D6528",
+        "#808C36": "#548335",
+        "#AAA64E": "#79A049"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/forest_sparkler_lit.png",
+      "source": "caverns_and_chasms:textures/block/lime_sparkler_lit.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler_lit.png",
+      "colors": {
+        "#49491C": "#3A4D2A",
+        "#756E32": "#455D23",
+        "#84A843": "#449349",
+        "#AAA64E": "#739D43",
+        "#BAD354": "#85C45D",
+        "#EBF7A0": "#BCE7A1"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/forest_sparkler_spark_0.png",
+      "source": "caverns_and_chasms:textures/particle/lime_sparkler_spark_0.png",
+      "colors": {
+        "#84A843": "#62AF57",
+        "#BAD354": "#85C45D",
+        "#EBF7A0": "#BCE7A1",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/forest_sparkler_spark_1.png",
+      "source": "caverns_and_chasms:textures/particle/lime_sparkler_spark_1.png",
+      "colors": {
+        "#84A843": "#62AF57",
+        "#BAD354": "#85C45D",
+        "#EBF7A0": "#BCE7A1",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/verdant_sparkler.png",
+      "source": "caverns_and_chasms:textures/block/green_sparkler.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler.png",
+      "colors": {
+        "#2A4723": "#17301C",
+        "#405630": "#1D4029",
+        "#3D662B": "#294C29",
+        "#568937": "#38673B",
+        "#74AD58": "#568451"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/verdant_sparkler_lit.png",
+      "source": "caverns_and_chasms:textures/block/green_sparkler_lit.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler_lit.png",
+      "colors": {
+        "#2A4723": "#2A4635",
+        "#3D662B": "#17492D",
+        "#5AA344": "#0F6F4C",
+        "#74AD58": "#2D8258",
+        "#76CE65": "#56A16A",
+        "#BDF4AB": "#98C59F"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/verdant_sparkler_spark_0.png",
+      "source": "caverns_and_chasms:textures/particle/green_sparkler_spark_0.png",
+      "colors": {
+        "#5AA344": "#44A376",
+        "#76CE65": "#56A16A",
+        "#BDF4AB": "#98C59F",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/verdant_sparkler_spark_1.png",
+      "source": "caverns_and_chasms:textures/particle/green_sparkler_spark_1.png",
+      "colors": {
+        "#5AA344": "#44A376",
+        "#76CE65": "#56A16A",
+        "#BDF4AB": "#98C59F",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/teal_sparkler.png",
+      "source": "caverns_and_chasms:textures/block/cyan_sparkler.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler.png",
+      "colors": {
+        "#2F4247": "#203531",
+        "#3B4D68": "#1F4547",
+        "#375B5E": "#2E5046",
+        "#406E7A": "#38675E",
+        "#558C8B": "#558472"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/teal_sparkler_lit.png",
+      "source": "caverns_and_chasms:textures/block/cyan_sparkler_lit.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler_lit.png",
+      "colors": {
+        "#2F4247": "#2D4341",
+        "#406E7A": "#184843",
+        "#55819E": "#266B6D",
+        "#60ABD1": "#26888B",
+        "#96DDD6": "#6AAC99",
+        "#D3FFFA": "#A5CFC1"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/teal_sparkler_spark_0.png",
+      "source": "caverns_and_chasms:textures/particle/cyan_sparkler_spark_0.png",
+      "colors": {
+        "#60ABD1": "#52B2B6",
+        "#96DDD6": "#6DB09C",
+        "#D3FFFA": "#A5CFC1",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/teal_sparkler_spark_1.png",
+      "source": "caverns_and_chasms:textures/particle/cyan_sparkler_spark_1.png",
+      "colors": {
+        "#60ABD1": "#52B2B6",
+        "#96DDD6": "#6DB09C",
+        "#D3FFFA": "#A5CFC1",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/mint_sparkler.png",
+      "source": "caverns_and_chasms:textures/block/lime_sparkler.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler.png",
+      "colors": {
+        "#49491C": "#294A32",
+        "#595727": "#295B40",
+        "#756E32": "#426E44",
+        "#808C36": "#3B8B5D",
+        "#AAA64E": "#68A76C"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/mint_sparkler_lit.png",
+      "source": "caverns_and_chasms:textures/block/lime_sparkler_lit.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler_lit.png",
+      "colors": {
+        "#49491C": "#304F37",
+        "#756E32": "#3E6B41",
+        "#84A843": "#309E71",
+        "#AAA64E": "#47AE73",
+        "#BAD354": "#70D48F",
+        "#EBF7A0": "#B6F5C3"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/mint_sparkler_spark_0.png",
+      "source": "caverns_and_chasms:textures/particle/lime_sparkler_spark_0.png",
+      "colors": {
+        "#84A843": "#00B485",
+        "#BAD354": "#70D48F",
+        "#EBF7A0": "#B6F5C3",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/mint_sparkler_spark_1.png",
+      "source": "caverns_and_chasms:textures/particle/lime_sparkler_spark_1.png",
+      "colors": {
+        "#84A843": "#00B485",
+        "#BAD354": "#70D48F",
+        "#EBF7A0": "#B6F5C3",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/aqua_sparkler.png",
+      "source": "caverns_and_chasms:textures/block/light_blue_sparkler.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler.png",
+      "colors": {
+        "#273947": "#30534C",
+        "#284660": "#246460",
+        "#2B5A75": "#387766",
+        "#39688C": "#349083",
+        "#4D84A5": "#54AC98"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/aqua_sparkler_lit.png",
+      "source": "caverns_and_chasms:textures/block/light_blue_sparkler_lit.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler_lit.png",
+      "colors": {
+        "#273947": "#38564A",
+        "#2B5A75": "#477F63",
+        "#4D84A5": "#51AE97",
+        "#6D84E0": "#29C8AF",
+        "#87BAED": "#89F1CE",
+        "#BFDBFF": "#FEFFFF"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/aqua_sparkler_spark_0.png",
+      "source": "caverns_and_chasms:textures/particle/light_blue_sparkler_spark_0.png",
+      "colors": {
+        "#6D84E0": "#00C6B5",
+        "#87BAED": "#89F1CE",
+        "#BFDBFF": "#FEFFFF",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/aqua_sparkler_spark_1.png",
+      "source": "caverns_and_chasms:textures/particle/light_blue_sparkler_spark_1.png",
+      "colors": {
+        "#6D84E0": "#00C6B5",
+        "#87BAED": "#89F1CE",
+        "#BFDBFF": "#FEFFFF",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/slate_sparkler.png",
+      "source": "caverns_and_chasms:textures/block/cyan_sparkler.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler.png",
+      "colors": {
+        "#2F4247": "#2D323E",
+        "#3B4D68": "#3D3C51",
+        "#375B5E": "#414B5E",
+        "#406E7A": "#4D566F",
+        "#558C8B": "#63748F"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/slate_sparkler_lit.png",
+      "source": "caverns_and_chasms:textures/block/cyan_sparkler_lit.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler_lit.png",
+      "colors": {
+        "#2F4247": "#3A3D4E",
+        "#406E7A": "#3D415D",
+        "#55819E": "#5F5D85",
+        "#60ABD1": "#796FA9",
+        "#96DDD6": "#8C9CCB",
+        "#D3FFFA": "#C0CBE5"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/slate_sparkler_spark_0.png",
+      "source": "caverns_and_chasms:textures/particle/cyan_sparkler_spark_0.png",
+      "colors": {
+        "#60ABD1": "#A097D4",
+        "#96DDD6": "#8F9FCE",
+        "#D3FFFA": "#C0CBE5",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/slate_sparkler_spark_1.png",
+      "source": "caverns_and_chasms:textures/particle/cyan_sparkler_spark_1.png",
+      "colors": {
+        "#60ABD1": "#A097D4",
+        "#96DDD6": "#8F9FCE",
+        "#D3FFFA": "#C0CBE5",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/navy_sparkler.png",
+      "source": "caverns_and_chasms:textures/block/blue_sparkler.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler.png",
+      "colors": {
+        "#1D2356": "#1C212D",
+        "#282B66": "#292A3E",
+        "#353E72": "#303849",
+        "#2D3A99": "#384157",
+        "#4D5CCC": "#4F5D78"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/navy_sparkler_lit.png",
+      "source": "caverns_and_chasms:textures/block/blue_sparkler_lit.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler_lit.png",
+      "colors": {
+        "#1D2356": "#25283A",
+        "#353E72": "#252941",
+        "#4D5CCC": "#43446C",
+        "#6066D6": "#545789",
+        "#7C81FF": "#6B7BAB",
+        "#BACEFF": "#A5B1C7"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/navy_sparkler_spark_0.png",
+      "source": "caverns_and_chasms:textures/particle/blue_sparkler_spark_0.png",
+      "colors": {
+        "#6066D6": "#6C70A4",
+        "#7C81FF": "#6B7BAB",
+        "#BACEFF": "#A5B1C7",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/navy_sparkler_spark_1.png",
+      "source": "caverns_and_chasms:textures/particle/blue_sparkler_spark_1.png",
+      "colors": {
+        "#6066D6": "#6C70A4",
+        "#7C81FF": "#6B7BAB",
+        "#BACEFF": "#A5B1C7",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/indigo_sparkler.png",
+      "source": "caverns_and_chasms:textures/block/blue_sparkler.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler.png",
+      "colors": {
+        "#1D2356": "#1B1827",
+        "#282B66": "#262236",
+        "#353E72": "#343046",
+        "#2D3A99": "#3D3753",
+        "#4D5CCC": "#575172"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/block/indigo_sparkler_lit.png",
+      "source": "caverns_and_chasms:textures/block/blue_sparkler_lit.png",
+      "only_where_differs_from": "caverns_and_chasms:textures/block/sparkler_lit.png",
+      "colors": {
+        "#1D2356": "#2A263C",
+        "#353E72": "#2A2541",
+        "#4D5CCC": "#433866",
+        "#6066D6": "#50457A",
+        "#7C81FF": "#70659C",
+        "#BACEFF": "#A1A0B7"
+      },
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/indigo_sparkler_spark_0.png",
+      "source": "caverns_and_chasms:textures/particle/blue_sparkler_spark_0.png",
+      "colors": {
+        "#6066D6": "#766CA4",
+        "#7C81FF": "#776CA4",
+        "#BACEFF": "#A1A0B7",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    },
+    {
+      "output": "lifeguard:textures/particle/indigo_sparkler_spark_1.png",
+      "source": "caverns_and_chasms:textures/particle/blue_sparkler_spark_1.png",
+      "colors": {
+        "#6066D6": "#766CA4",
+        "#7C81FF": "#776CA4",
+        "#BACEFF": "#A1A0B7",
+        "#FFFFFF": "#FFFFFF"
+      },
+      "with_mcmeta": true,
+      "strict": true
+    }
+  ]
+}

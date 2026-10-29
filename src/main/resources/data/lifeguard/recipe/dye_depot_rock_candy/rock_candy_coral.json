@@ -1,0 +1,29 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "lifeguard:entry",
+      "entry": "dye_depot_rock_candy"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "SPS",
+    "PDP",
+    "SPS"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "P": {
+      "item": "alexscaves:peppermint_powder"
+    },
+    "D": {
+      "tag": "c:dyes/coral"
+    }
+  },
+  "result": {
+    "count": 4,
+    "id": "lifeguard:rock_candy_coral"
+  }
+}
