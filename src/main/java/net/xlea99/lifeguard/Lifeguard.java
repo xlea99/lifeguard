@@ -33,6 +33,8 @@ import net.xlea99.lifeguard.entry.faucet_pouring_recipes.PouringRecipesPayload;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.PouringRecipes;
 import net.xlea99.lifeguard.entry.quark_parrot_egg_dispensing.ParrotEggDispensers;
 import net.xlea99.lifeguard.entry.quark_parrot_egg_dispensing.QuarkParrotEggDispensing;
+import net.xlea99.lifeguard.entry.twigs_pebble_dispensing.PebbleDispensers;
+import net.xlea99.lifeguard.entry.twigs_pebble_dispensing.TwigsPebbleDispensing;
 import net.xlea99.lifeguard.entry.supps_respects_mob_griefing.MobFiredCannonballs;
 import net.xlea99.lifeguard.entry.supps_respects_mob_griefing.SuppsRespectsMobGriefing;
 import net.xlea99.lifeguard.sync.Sync;
@@ -50,6 +52,8 @@ public class Lifeguard {
         DataConditions.register(modEventBus);
         if (QuarkParrotEggDispensing.ENTRY.active())
             ParrotEggDispensers.register(modEventBus);
+        if (TwigsPebbleDispensing.ENTRY.active())
+            PebbleDispensers.register(modEventBus);
         if (SuppsRespectsMobGriefing.ENTRY.active())
             MobFiredCannonballs.register();
         if (CcCannonBackfire.ENTRY.active())
