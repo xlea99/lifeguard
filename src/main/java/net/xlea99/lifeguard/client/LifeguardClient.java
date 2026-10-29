@@ -18,6 +18,8 @@ import net.xlea99.lifeguard.entry.haunted_harvest_mask_limit.HauntedHarvestMaskL
 import net.xlea99.lifeguard.entry.haunted_harvest_mask_limit.HollowPumpkins;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
 import net.xlea99.lifeguard.entry.snowy_spirit_brighter_ginger.GingerPack;
+import net.xlea99.lifeguard.entry.etcetera_shimmering_bismuth_trims.EtceteraShimmeringBismuthTrims;
+import net.xlea99.lifeguard.entry.etcetera_shimmering_bismuth_trims.ShimmerTrims;
 import net.xlea99.lifeguard.entry.snowy_spirit_brighter_ginger.SnowySpiritBrighterGinger;
 import net.xlea99.lifeguard.entry.snowy_spirit_edible_treats.GumdropCrumbs;
 import net.xlea99.lifeguard.entry.snowy_spirit_edible_treats.SnowySpiritEdibleTreats;
@@ -49,6 +51,8 @@ public final class LifeguardClient {
             GumdropCrumbs.register(modEventBus);
         if (SnowySpiritBrighterGinger.ENTRY.active())
             GingerPack.register();
+        if (EtceteraShimmeringBismuthTrims.ENTRY.active())
+            ShimmerTrims.register(modEventBus);
         // The server owns this one: the tooltip checks the synced value each time.
         if (HauntedHarvestMaskLimit.ENTRY.installed())
             HollowPumpkins.registerTooltip();

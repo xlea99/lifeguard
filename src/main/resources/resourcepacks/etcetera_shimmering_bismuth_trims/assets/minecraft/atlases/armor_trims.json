@@ -1,0 +1,8 @@
+{
+  "sources": [
+    {
+      "type": "lifeguard:shimmering_trims",
+      "atlas": "minecraft:armor_trims"
+    }
+  ]
+}
