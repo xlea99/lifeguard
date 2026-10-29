@@ -1,0 +1,99 @@
+{
+  "targets": [
+    "swap",
+    { "name": "glow", "width": 480, "height": 270 },
+    { "name": "glow_swap", "width": 480, "height": 270 },
+    { "name": "streak", "width": 480, "height": 270 }
+  ],
+  "passes": [
+    {
+      "name": "lifeguard:peeper_bright",
+      "intarget": "minecraft:main",
+      "outtarget": "glow",
+      "use_linear_filter": true
+    },
+    {
+      "name": "lifeguard:peeper_spread",
+      "intarget": "glow",
+      "outtarget": "glow_swap",
+      "uniforms": [
+        { "name": "Dir", "values": [ 1.0, 0.0 ] },
+        { "name": "Radius", "values": [ 4.0 ] }
+      ]
+    },
+    {
+      "name": "lifeguard:peeper_spread",
+      "intarget": "glow_swap",
+      "outtarget": "glow",
+      "uniforms": [
+        { "name": "Dir", "values": [ 0.0, 1.0 ] },
+        { "name": "Radius", "values": [ 4.0 ] }
+      ]
+    },
+    {
+      "name": "lifeguard:peeper_spread",
+      "intarget": "glow",
+      "outtarget": "streak",
+      "uniforms": [
+        { "name": "Dir", "values": [ 1.0, 0.0 ] },
+        { "name": "Radius", "values": [ 60.0 ] },
+        { "name": "Decay", "values": [ 3.0 ] }
+      ]
+    },
+    {
+      "name": "lifeguard:fit_box_blur",
+      "intarget": "glow",
+      "outtarget": "glow_swap",
+      "use_linear_filter": true,
+      "uniforms": [
+        { "name": "BlurDir", "values": [ 1.0, 0.0 ] },
+        { "name": "Radius", "values": [ 9.0 ] }
+      ]
+    },
+    {
+      "name": "lifeguard:fit_box_blur",
+      "intarget": "glow_swap",
+      "outtarget": "glow",
+      "use_linear_filter": true,
+      "uniforms": [
+        { "name": "BlurDir", "values": [ 0.0, 1.0 ] },
+        { "name": "Radius", "values": [ 9.0 ] }
+      ]
+    },
+    {
+      "name": "lifeguard:fit_box_blur",
+      "intarget": "glow",
+      "outtarget": "glow_swap",
+      "use_linear_filter": true,
+      "uniforms": [
+        { "name": "BlurDir", "values": [ 1.0, 0.0 ] },
+        { "name": "Radius", "values": [ 9.0 ] }
+      ]
+    },
+    {
+      "name": "lifeguard:fit_box_blur",
+      "intarget": "glow_swap",
+      "outtarget": "glow",
+      "use_linear_filter": true,
+      "uniforms": [
+        { "name": "BlurDir", "values": [ 0.0, 1.0 ] },
+        { "name": "Radius", "values": [ 9.0 ] }
+      ]
+    },
+    {
+      "name": "lifeguard:peeper_vision",
+      "intarget": "minecraft:main",
+      "outtarget": "swap",
+      "use_linear_filter": true,
+      "auxtargets": [
+        { "name": "GlowSampler", "id": "glow" },
+        { "name": "StreakSampler", "id": "streak" }
+      ]
+    },
+    {
+      "name": "blit",
+      "intarget": "swap",
+      "outtarget": "minecraft:main"
+    }
+  ]
+}

@@ -124,6 +124,8 @@
     "zeta_instance_race.ZetaListMixin"
   ],
   "client": [
+    "ac_immediately_fast_gingerbread_stripes.TeamOverlayLayerMixin",
+    "cc_immediately_fast_rat_collars.RatCollarLayerMixin",
     "citadel_animation_smoothing.CitadelItemstackRendererMixin",
     "citadel_animation_smoothing.ModelAnimatorMixin",
     "clayworks_flower_pots.amendments.HangingPotBakedModelMixin",
@@ -134,6 +136,7 @@
     "supps_moving_block_contents.ClientHooksMixin",
     "supps_moving_block_contents.PistonHeadRendererMixin",
     "themed_candle_holder_flames.CandleHolderBlockMixin",
+    "vanilla_backport_resin_trim_icons.BlueprintTrimsMixin",
     "themed_candle_holder_flames.cupric.AbstractCandleBlockMixin",
     "themed_candle_holder_flames.cupric.CandleHolderBlockMixin",
     "whiter_labels.ColorManagerMixin",

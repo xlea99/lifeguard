@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "clayworks:pottery_table",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:dismantling_table",
+      "required": false
+    }
+  ]
+}

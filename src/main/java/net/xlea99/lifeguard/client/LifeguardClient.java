@@ -18,6 +18,10 @@ import net.xlea99.lifeguard.entry.haunted_harvest_mask_limit.HauntedHarvestMaskL
 import net.xlea99.lifeguard.entry.haunted_harvest_mask_limit.HollowPumpkins;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
 import net.xlea99.lifeguard.entry.snowy_spirit_brighter_ginger.GingerPack;
+import net.xlea99.lifeguard.entry.dye_the_world_glow_lights.DyeTheWorldGlowLights;
+import net.xlea99.lifeguard.entry.dye_the_world_glow_lights.GlowLightsPack;
+import net.xlea99.lifeguard.entry.dye_the_world_open_sacks.DyeTheWorldOpenSacks;
+import net.xlea99.lifeguard.entry.dye_the_world_open_sacks.OpenSacks;
 import net.xlea99.lifeguard.entry.etcetera_shimmering_bismuth_trims.EtceteraShimmeringBismuthTrims;
 import net.xlea99.lifeguard.entry.etcetera_shimmering_bismuth_trims.ShimmerTrims;
 import net.xlea99.lifeguard.entry.snowy_spirit_brighter_ginger.SnowySpiritBrighterGinger;
@@ -51,6 +55,10 @@ public final class LifeguardClient {
             GumdropCrumbs.register(modEventBus);
         if (SnowySpiritBrighterGinger.ENTRY.active())
             GingerPack.register();
+        if (DyeTheWorldGlowLights.ENTRY.active())
+            GlowLightsPack.register();
+        if (DyeTheWorldOpenSacks.ENTRY.active())
+            OpenSacks.register(modEventBus);
         if (EtceteraShimmeringBismuthTrims.ENTRY.active())
             ShimmerTrims.register(modEventBus);
         // The server owns this one: the tooltip checks the synced value each time.

@@ -1,0 +1,9 @@
+{
+  "items": [
+    "caverns_and_chasms:evendeeper_head"
+  ],
+  "entity_types": [
+    "caverns_and_chasms:evendeeper"
+  ],
+  "shader": "lifeguard:evendeeper_vision"
+}
