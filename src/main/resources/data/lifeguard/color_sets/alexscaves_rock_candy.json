@@ -1,0 +1,22 @@
+{
+  "id": "alexscaves:rock_candy",
+  "replace": false,
+  "colors": {
+    "maroon": "lifeguard:rock_candy_maroon",
+    "rose": "lifeguard:rock_candy_rose",
+    "coral": "lifeguard:rock_candy_coral",
+    "indigo": "lifeguard:rock_candy_indigo",
+    "navy": "lifeguard:rock_candy_navy",
+    "slate": "lifeguard:rock_candy_slate",
+    "olive": "lifeguard:rock_candy_olive",
+    "amber": "lifeguard:rock_candy_amber",
+    "beige": "lifeguard:rock_candy_beige",
+    "teal": "lifeguard:rock_candy_teal",
+    "mint": "lifeguard:rock_candy_mint",
+    "aqua": "lifeguard:rock_candy_aqua",
+    "verdant": "lifeguard:rock_candy_verdant",
+    "forest": "lifeguard:rock_candy_forest",
+    "ginger": "lifeguard:rock_candy_ginger",
+    "tan": "lifeguard:rock_candy_tan"
+  }
+}

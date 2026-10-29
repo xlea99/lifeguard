@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "lifeguard:entry",
+      "entry": "dye_depot_rock_candy"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LLL",
+    "LDL",
+    "LLL"
+  ],
+  "key": {
+    "L": {
+      "tag": "alexscaves:rock_candies"
+    },
+    "D": {
+      "tag": "c:dyes/beige"
+    }
+  },
+  "result": {
+    "count": 8,
+    "id": "lifeguard:rock_candy_beige"
+  }
+}

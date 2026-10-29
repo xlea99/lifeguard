@@ -1,0 +1,28 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "lifeguard:entry",
+      "entry": "dye_depot_sparklers"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "dyed_sparkler",
+  "key": {
+    "#": {
+      "item": "caverns_and_chasms:sparkler"
+    },
+    "X": {
+      "tag": "c:dyes/verdant"
+    }
+  },
+  "pattern": [
+    "###",
+    "#X#",
+    "###"
+  ],
+  "result": {
+    "count": 8,
+    "id": "lifeguard:verdant_sparkler"
+  }
+}

@@ -19,6 +19,10 @@ import net.xlea99.lifeguard.entry.cc_cannon_backfire.CannonBackfire;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
 import net.xlea99.lifeguard.entry.clayworks_flower_pots.ClayworksFlowerPots;
 import net.xlea99.lifeguard.entry.clayworks_flower_pots.FlowerPots;
+import net.xlea99.lifeguard.entry.dye_depot_rock_candy.DyeDepotRockCandy;
+import net.xlea99.lifeguard.entry.dye_depot_rock_candy.RockCandies;
+import net.xlea99.lifeguard.entry.dye_depot_sparklers.DyeDepotSparklers;
+import net.xlea99.lifeguard.entry.dye_depot_sparklers.Sparklers;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
 import net.xlea99.lifeguard.entry.haunted_harvest_pumpkin_compat.HauntedHarvestPumpkinCompat;
 import net.xlea99.lifeguard.entry.haunted_harvest_pumpkin_compat.Pumpkins;
@@ -60,6 +64,11 @@ public class Lifeguard {
             CannonBackfire.register();
         if (FaucetPouringRecipes.ENTRY.active())
             PouringRecipes.register();
+        // Registered whenever both mods are there, never by the switch: a world may hold the candies.
+        if (DyeDepotRockCandy.ENTRY.installed())
+            RockCandies.register(modEventBus);
+        if (DyeDepotRockCandy.ENTRY.active())
+            RockCandies.registerTab(modEventBus);
         if (AcInfiniteSoda.ENTRY.active())
             InfiniteSoda.register();
         if (AmLavaVisionFallback.ENTRY.active())
@@ -68,6 +77,9 @@ public class Lifeguard {
             CakeSlicing.register();
         if (CauldronFourths.ENTRY.active())
             FourLevelInteractions.register(modEventBus);
+        // Runtime-gated: registered whenever both mods are there (a world may hold the sparklers); the listeners check the switch.
+        if (DyeDepotSparklers.ENTRY.installed())
+            Sparklers.register(modEventBus);
         // Registered whenever Clayworks is there, never by the switch: placed pots keep their looks while it's off.
         if (ClayworksFlowerPots.ENTRY.installed())
             FlowerPots.register(modEventBus);

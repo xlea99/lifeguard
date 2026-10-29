@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "lifeguard:block/ginger_sparkler"
+    },
+    "lit=true": {
+      "model": "lifeguard:block/ginger_sparkler_lit"
+    }
+  }
+}

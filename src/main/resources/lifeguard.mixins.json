@@ -7,6 +7,8 @@
   "mixins": [
     "advancement_frames_packet_checks.ServerBoundSetAdvancementFramePacketMixin",
     "advancement_frames_packet_checks.ServerBoundSetStatFramePacketMixin",
+    "dye_depot_rock_candy.ConfectionOvenBlockEntityMixin",
+    "dye_depot_rock_candy.candy_cavity.DonutArchStructurePieceMixin",
     "amendments_cauldron_dispensing.DispenserBehaviorMixin",
     "bucket_mob_flicker.MobBucketItemMixin",
     "amendments_mixed_potion_brewing.PotionBrewingMixin",

@@ -1,0 +1,22 @@
+{
+  "id": "caverns_and_chasms:wall_sparkler",
+  "replace": false,
+  "colors": {
+    "maroon": "lifeguard:maroon_wall_sparkler",
+    "rose": "lifeguard:rose_wall_sparkler",
+    "coral": "lifeguard:coral_wall_sparkler",
+    "indigo": "lifeguard:indigo_wall_sparkler",
+    "navy": "lifeguard:navy_wall_sparkler",
+    "slate": "lifeguard:slate_wall_sparkler",
+    "olive": "lifeguard:olive_wall_sparkler",
+    "amber": "lifeguard:amber_wall_sparkler",
+    "beige": "lifeguard:beige_wall_sparkler",
+    "teal": "lifeguard:teal_wall_sparkler",
+    "mint": "lifeguard:mint_wall_sparkler",
+    "aqua": "lifeguard:aqua_wall_sparkler",
+    "verdant": "lifeguard:verdant_wall_sparkler",
+    "forest": "lifeguard:forest_wall_sparkler",
+    "ginger": "lifeguard:ginger_wall_sparkler",
+    "tan": "lifeguard:tan_wall_sparkler"
+  }
+}

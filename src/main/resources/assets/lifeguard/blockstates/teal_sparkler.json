@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "lifeguard:block/teal_sparkler"
+    },
+    "lit=true": {
+      "model": "lifeguard:block/teal_sparkler_lit"
+    }
+  }
+}
