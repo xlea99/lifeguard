@@ -3,6 +3,11 @@
 Lifeguard's code is under the Mozilla Public License 2.0 (see `LICENSE`). Some of its art is derived from other mods'
 art, under those mods' licenses, as listed here.
 
+## Bundled library
+
+Lifeguard's jar bundles [MixinSquared](https://github.com/Bawnorton/MixinSquared) (by Bawnorton and LlamaLad7), which lets
+an entry adjust another mod's own mixins. It is under the MIT License; its text is in `licenses/MixinSquared-MIT.txt`.
+
 ## Derived from Quark
 
 `assets/quark/textures/glint/enchanted_item_glint_<color>.png`, one for each of Dye Depot's 16 colors (amber, aqua,
