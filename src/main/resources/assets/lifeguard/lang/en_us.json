@@ -141,6 +141,7 @@
   "lifeguard.mod.snowyspirit": "Snowy Spirit",
   "lifeguard.mod.species": "Species",
   "lifeguard.mod.supplementaries": "Supplementaries",
+  "lifeguard.mod.twigs": "Twigs",
   "lifeguard.mod.vanillabackport": "Vanilla Backport",
   "lifeguard.mod.zeta": "Zeta",
 
@@ -356,5 +357,13 @@
   "lifeguard.entry.whiter_labels": "Whiter labels",
   "lifeguard.entry.whiter_labels.desc": "Placed labels look more like plain white paper instead of Labels' default tan. You probably only want this if you're also making paper place labels.",
   "lifeguard.entry.zeta_instance_race": "Zeta instance race",
-  "lifeguard.entry.zeta_instance_race.desc": "Fixes a rare race condition that can happen on launch where Quark drops out of Zeta's list of loaded mods."
+  "lifeguard.entry.zeta_instance_race.desc": "Fixes a rare race condition that can happen on launch where Quark drops out of Zeta's list of loaded mods.",
+  "lifeguard.entry.twigs_leaf_twigs": "Twigs from leaves",
+  "lifeguard.entry.twigs_leaf_twigs.desc": "Fixes leaves dropping sticks instead of twigs which stopped loading in 1.21.1.",
+  "lifeguard.entry.twigs_gravel_pebbles": "Pebbles from gravel",
+  "lifeguard.entry.twigs_gravel_pebbles.desc": "Fixes gravel never dropping pebbles, restoring exact behavior from before 1.21.",
+  "lifeguard.entry.twigs_pebble_dispensing": "Pebble dispensing",
+  "lifeguard.entry.twigs_pebble_dispensing.desc": "Fixes dispensers dropping pebbles instead of throwing them.",
+  "lifeguard.entry.twigs_bloodstone_obelisks": "Bloodstone obelisks",
+  "lifeguard.entry.twigs_bloodstone_obelisks.desc": "Fixes Bloodstone Obelisks generating empty."
 }

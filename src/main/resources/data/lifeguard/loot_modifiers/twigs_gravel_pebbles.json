@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "lifeguard:entry",
+      "entry": "twigs_gravel_pebbles"
+    }
+  ],
+  "type": "neoforge:add_table",
+  "conditions": [
+    {
+      "condition": "neoforge:loot_table_id",
+      "loot_table_id": "minecraft:blocks/gravel"
+    }
+  ],
+  "table": "lifeguard:twigs_gravel_pebbles/gravel_pebbles"
+}

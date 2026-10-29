@@ -1,0 +1,10 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "lifeguard:entry",
+      "entry": "twigs_leaf_twigs"
+    }
+  ],
+  "type": "twigs:twig_loot_modifier",
+  "conditions": []
+}

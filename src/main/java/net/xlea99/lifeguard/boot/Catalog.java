@@ -51,6 +51,10 @@ import net.xlea99.lifeguard.entry.sleep_tight_spawn_events.SleepTightSpawnEvents
 import net.xlea99.lifeguard.entry.supplementaries_grouper_open_sides.SupplementariesGrouperOpenSides;
 import net.xlea99.lifeguard.entry.supps_blue_bomb_dispensing.SuppsBlueBombDispensing;
 import net.xlea99.lifeguard.entry.supps_soap_washes_labels.SuppsSoapWashesLabels;
+import net.xlea99.lifeguard.entry.twigs_bloodstone_obelisks.TwigsBloodstoneObelisks;
+import net.xlea99.lifeguard.entry.twigs_gravel_pebbles.TwigsGravelPebbles;
+import net.xlea99.lifeguard.entry.twigs_leaf_twigs.TwigsLeafTwigs;
+import net.xlea99.lifeguard.entry.twigs_pebble_dispensing.TwigsPebbleDispensing;
 import net.xlea99.lifeguard.entry.warden_roar_loop.WardenRoarLoop;
 import net.xlea99.lifeguard.entry.whiter_labels.WhiterLabels;
 import net.xlea99.lifeguard.entry.supps_cannon_comparator.SuppsCannonComparator;
@@ -152,6 +156,10 @@ public final class Catalog {
         SuppsRespectsMobGriefing.class,
         SuppsSliceMapsKeepTheAltimeter.class,
         ThemedCandleHolderFlames.class,
+        TwigsBloodstoneObelisks.class,
+        TwigsGravelPebbles.class,
+        TwigsLeafTwigs.class,
+        TwigsPebbleDispensing.class,
         ZetaInstanceRace.class
     );
 

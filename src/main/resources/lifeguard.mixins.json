@@ -98,6 +98,7 @@
     "quark_tool_restock_enchantments.AutomaticToolRestockModuleMixin",
     "supplementaries_grouper_open_sides.GrouperBlockMixin",
     "supps_blue_bomb_dispensing.DispenserBehaviorsManagerMixin",
+    "twigs_bloodstone_obelisks.StructureTemplateManagerMixin",
     "warden_roar_loop.WardenMixin",
     "supps_soap_washes_labels.LabelEntityAccessor",
     "supps_soap_washes_labels.SoapItemMixin",
