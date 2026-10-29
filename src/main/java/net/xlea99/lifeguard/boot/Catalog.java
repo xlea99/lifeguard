@@ -29,6 +29,9 @@ import net.xlea99.lifeguard.entry.haunted_harvest_pumpkin_compat.HauntedHarvestP
 import net.xlea99.lifeguard.entry.haunted_harvest_torch_lanterns.HauntedHarvestTorchLanterns;
 import net.xlea99.lifeguard.entry.haunted_harvest_unified_carved_pumpkin.HauntedHarvestUnifiedCarvedPumpkin;
 import net.xlea99.lifeguard.entry.enderman_head_reach.EndermanHeadReach;
+import net.xlea99.lifeguard.entry.etcetera_easy_anvils_label_costs.EtceteraEasyAnvilsLabelCosts;
+import net.xlea99.lifeguard.entry.etcetera_label_wash_stacking.EtceteraLabelWashStacking;
+import net.xlea99.lifeguard.entry.etcetera_shimmering_bismuth_trims.EtceteraShimmeringBismuthTrims;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
 import net.xlea99.lifeguard.entry.map_atlases_fixes.MapAtlasesFixes;
 import net.xlea99.lifeguard.entry.moonlight_jade_contents.MoonlightJadeContents;
@@ -52,6 +55,8 @@ import net.xlea99.lifeguard.entry.snowy_spirit_eggnog_nerf.SnowySpiritEggnogNerf
 import net.xlea99.lifeguard.entry.sleep_tight_spawn_events.SleepTightSpawnEvents;
 import net.xlea99.lifeguard.entry.supplementaries_grouper_open_sides.SupplementariesGrouperOpenSides;
 import net.xlea99.lifeguard.entry.supps_blue_bomb_dispensing.SuppsBlueBombDispensing;
+import net.xlea99.lifeguard.entry.supps_soap_lore_first.SuppsSoapLoreFirst;
+import net.xlea99.lifeguard.entry.supps_soap_washes_etcetera_labels.SuppsSoapWashesEtceteraLabels;
 import net.xlea99.lifeguard.entry.supps_soap_washes_labels.SuppsSoapWashesLabels;
 import net.xlea99.lifeguard.entry.twigs_bloodstone_obelisks.TwigsBloodstoneObelisks;
 import net.xlea99.lifeguard.entry.twigs_gravel_pebbles.TwigsGravelPebbles;
@@ -116,6 +121,9 @@ public final class Catalog {
         HauntedHarvestTorchLanterns.class,
         HauntedHarvestUnifiedCarvedPumpkin.class,
         EndermanHeadReach.class,
+        EtceteraEasyAnvilsLabelCosts.class,
+        EtceteraLabelWashStacking.class,
+        EtceteraShimmeringBismuthTrims.class,
         FaucetPouringRecipes.class,
         MapAtlasesFixes.class,
         MoonlightJadeContents.class,
@@ -139,6 +147,8 @@ public final class Catalog {
         SnowySpiritEggnogNerf.class,
         SupplementariesGrouperOpenSides.class,
         SuppsBlueBombDispensing.class,
+        SuppsSoapLoreFirst.class,
+        SuppsSoapWashesEtceteraLabels.class,
         SuppsSoapWashesLabels.class,
         WardenRoarLoop.class,
         WhiterLabels.class,

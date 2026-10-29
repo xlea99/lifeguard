@@ -39,6 +39,10 @@ The `dye_depot_sparklers` entry's sparkler and spark textures are
 player's machine from their installed copy of Caverns & Chasms. Its Abnormals License forbids distributing modified
 copies, so none ship in this jar: only the color tables in `lifeguard_recolors/`, which are this mod's own.
 
+The `etcetera_shimmering_bismuth_trims` entry's animated bismuth trims are made the same way, on the player's machine
+from their installed [Etcetera](https://modrinth.com/mod/etcetera) (by Ninni, All Rights Reserved): its bismuth trim
+palette, hue-shifted per frame of its bismuth block. Nothing of Etcetera's is included.
+
 ## Original
 
 `indigo`, `navy` and `teal` in `assets/lifeguard/textures/glint/` are procedural glimmers, not derived from Quark's or

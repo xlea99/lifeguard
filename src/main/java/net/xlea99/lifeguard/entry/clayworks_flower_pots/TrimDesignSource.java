@@ -16,6 +16,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.xlea99.lifeguard.Lifeguard;
+import net.xlea99.lifeguard.entry.etcetera_shimmering_bismuth_trims.EtceteraShimmeringBismuthTrims;
+import net.xlea99.lifeguard.entry.etcetera_shimmering_bismuth_trims.ShimmerTrims;
 
 /**
  * Flower pot designs in every trim material there is: vanilla's palette permutations, run with whatever materials the
@@ -34,7 +36,11 @@ public record TrimDesignSource(List<ResourceLocation> textures) implements Sprit
 
     @Override
     public void run(ResourceManager manager, SpriteSource.Output output) {
-        new PalettedPermutations(this.textures, PALETTE_KEY, materials(manager)).run(manager, output);
+        Map<String, ResourceLocation> materials = materials(manager);
+        new PalettedPermutations(this.textures, PALETTE_KEY, materials).run(manager, output);
+        // Bismuth designs shimmer like bismuth armor trims do, replacing the still ones just made.
+        if (materials.containsKey(ShimmerTrims.MATERIAL) && EtceteraShimmeringBismuthTrims.ENTRY.active())
+            ShimmerTrims.addShimmering(manager, output, this.textures);
     }
 
     private static Map<String, ResourceLocation> materials(ResourceManager manager) {

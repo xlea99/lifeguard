@@ -1,0 +1,23 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "lifeguard:entry",
+      "entry": "supps_soap_washes_etcetera_labels",
+      "and": [
+        {
+          "type": "neoforge:not",
+          "value": {
+            "type": "supplementaries:flag",
+            "flag": "item_lore"
+          }
+        }
+      ]
+    }
+  ],
+  "type": "supplementaries:item_lore",
+  "category": "misc",
+  "ingredient": {
+    "item": "supplementaries:soap"
+  },
+  "set_lore": false
+}
