@@ -1,0 +1,9 @@
+{
+  "items": [
+    "caverns_and_chasms:peeper_head"
+  ],
+  "entity_types": [
+    "caverns_and_chasms:peeper"
+  ],
+  "shader": "lifeguard:peeper_vision"
+}

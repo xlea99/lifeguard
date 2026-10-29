@@ -1,6 +1,7 @@
 package net.xlea99.lifeguard.boot;
 
 import java.util.List;
+import net.xlea99.lifeguard.entry.ac_immediately_fast_gingerbread_stripes.AcImmediatelyFastGingerbreadStripes;
 import net.xlea99.lifeguard.entry.ac_infinite_soda.AcInfiniteSoda;
 import net.xlea99.lifeguard.entry.am_lava_bottle_dupe.AmLavaBottleDupe;
 import net.xlea99.lifeguard.entry.am_lava_vision_fallback.AmLavaVisionFallback;
@@ -14,6 +15,8 @@ import net.xlea99.lifeguard.entry.amendments_mixed_potion_brewing.AmendmentsMixe
 import net.xlea99.lifeguard.entry.amendments_potion_dilution.AmendmentsPotionDilution;
 import net.xlea99.lifeguard.entry.bucket_mob_flicker.BucketMobFlicker;
 import net.xlea99.lifeguard.entry.cauldron_fourths.CauldronFourths;
+import net.xlea99.lifeguard.entry.cc_head_vision.CcHeadVision;
+import net.xlea99.lifeguard.entry.cc_immediately_fast_rat_collars.CcImmediatelyFastRatCollars;
 import net.xlea99.lifeguard.entry.cc_tether_potion_compat.CcTetherPotionCompat;
 import net.xlea99.lifeguard.entry.citadel_animation_smoothing.CitadelAnimationSmoothing;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
@@ -23,6 +26,8 @@ import net.xlea99.lifeguard.entry.clayworks_flower_pots.ClayworksFlowerPots;
 import net.xlea99.lifeguard.entry.dye_depot_runes.DyeDepotRunes;
 import net.xlea99.lifeguard.entry.dye_depot_rock_candy.DyeDepotRockCandy;
 import net.xlea99.lifeguard.entry.dye_depot_sparklers.DyeDepotSparklers;
+import net.xlea99.lifeguard.entry.dye_the_world_glow_lights.DyeTheWorldGlowLights;
+import net.xlea99.lifeguard.entry.dye_the_world_open_sacks.DyeTheWorldOpenSacks;
 import net.xlea99.lifeguard.entry.emf_haunted_harvest_masks.EmfHauntedHarvestMasks;
 import net.xlea99.lifeguard.entry.haunted_harvest_mask_limit.HauntedHarvestMaskLimit;
 import net.xlea99.lifeguard.entry.haunted_harvest_pumpkin_compat.HauntedHarvestPumpkinCompat;
@@ -62,6 +67,7 @@ import net.xlea99.lifeguard.entry.twigs_bloodstone_obelisks.TwigsBloodstoneObeli
 import net.xlea99.lifeguard.entry.twigs_gravel_pebbles.TwigsGravelPebbles;
 import net.xlea99.lifeguard.entry.twigs_leaf_twigs.TwigsLeafTwigs;
 import net.xlea99.lifeguard.entry.twigs_pebble_dispensing.TwigsPebbleDispensing;
+import net.xlea99.lifeguard.entry.vanilla_backport_resin_trim_icons.VanillaBackportResinTrimIcons;
 import net.xlea99.lifeguard.entry.warden_roar_loop.WardenRoarLoop;
 import net.xlea99.lifeguard.entry.whiter_labels.WhiterLabels;
 import net.xlea99.lifeguard.entry.supps_cannon_comparator.SuppsCannonComparator;
@@ -93,6 +99,7 @@ import net.xlea99.lifeguard.entry.zeta_instance_race.ZetaInstanceRace;
  */
 public final class Catalog {
     private static final List<Class<?>> DECLARATIONS = List.of(
+        AcImmediatelyFastGingerbreadStripes.class,
         AcInfiniteSoda.class,
         AmLavaBottleDupe.class,
         AmLavaVisionFallback.class,
@@ -106,6 +113,8 @@ public final class Catalog {
         AmendmentsPotionDilution.class,
         BucketMobFlicker.class,
         CauldronFourths.class,
+        CcHeadVision.class,
+        CcImmediatelyFastRatCollars.class,
         CcTetherPotionCompat.class,
         CitadelAnimationSmoothing.class,
         CcCannonBackfire.class,
@@ -115,6 +124,8 @@ public final class Catalog {
         DyeDepotRunes.class,
         DyeDepotRockCandy.class,
         DyeDepotSparklers.class,
+        DyeTheWorldGlowLights.class,
+        DyeTheWorldOpenSacks.class,
         EmfHauntedHarvestMasks.class,
         HauntedHarvestMaskLimit.class,
         HauntedHarvestPumpkinCompat.class,
@@ -174,6 +185,7 @@ public final class Catalog {
         TwigsGravelPebbles.class,
         TwigsLeafTwigs.class,
         TwigsPebbleDispensing.class,
+        VanillaBackportResinTrimIcons.class,
         ZetaInstanceRace.class
     );
 
