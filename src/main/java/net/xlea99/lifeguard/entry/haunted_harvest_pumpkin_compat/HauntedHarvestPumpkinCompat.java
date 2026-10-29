@@ -24,9 +24,9 @@ public final class HauntedHarvestPumpkinCompat {
         .requiresMods("vanillabackport")
         .side(Side.SERVER).restart(Restart.GAME);
 
-    /** Species' Mammutilation ritual takes a Haunted Harvest pumpkin. The ritual lives in Species' own mixin, which only MixinSquared reaches. */
+    /** Species' Mammutilation ritual takes a Haunted Harvest pumpkin. The ritual lives in Species' own mixin, which MixinSquared (bundled) reaches. */
     public static final Entry SPECIES = Entries.compat("species", Taste.NONE).parent(ENTRY)
-        .requiresMods("species", "mixinsquared")
+        .requiresMods("species")
         .side(Side.SERVER).restart(Restart.GAME);
 
     private HauntedHarvestPumpkinCompat() {

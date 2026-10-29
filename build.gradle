@@ -22,7 +22,7 @@ repositories {
             includeGroup 'maven.modrinth'
         }
     }
-    // MixinSquared (MIT): mixins into other mods' mixins. Compile-only; at runtime it comes with the mods that ship it.
+    // MixinSquared (MIT): mixins into other mods' mixins. Bundled in Lifeguard's jar (jarJar, below).
     exclusiveContent {
         forRepository {
             maven {
@@ -135,6 +135,7 @@ dependencies {
     runtimeOnly "maven.modrinth:moonlight:${moonlight_version}"
     compileOnly "maven.modrinth:caverns-and-chasms:${caverns_and_chasms_version}"
     runtimeOnly "maven.modrinth:caverns-and-chasms:${caverns_and_chasms_version}"
+    compileOnly "maven.modrinth:blueprint:${blueprint_version}"
     runtimeOnly "maven.modrinth:blueprint:${blueprint_version}"
     compileOnly "maven.modrinth:emi:${emi_version}"
     runtimeOnly "maven.modrinth:emi:${emi_version}"
@@ -161,7 +162,25 @@ dependencies {
     runtimeOnly "maven.modrinth:haunted-harvest:${haunted_harvest_version}"
     compileOnly "maven.modrinth:map-atlases-forge:${map_atlases_version}"
     runtimeOnly "maven.modrinth:map-atlases-forge:${map_atlases_version}"
+    compileOnly "maven.modrinth:etcetera:${etcetera_version}"
+    runtimeOnly "maven.modrinth:etcetera:${etcetera_version}"
+    compileOnly "maven.modrinth:twigs:${twigs_version}"
+    runtimeOnly "maven.modrinth:twigs:${twigs_version}"
+    runtimeOnly "maven.modrinth:yacl:${yacl_version}"
+    compileOnly "maven.modrinth:easy-anvils:${easy_anvils_version}"
+    runtimeOnly "maven.modrinth:easy-anvils:${easy_anvils_version}"
+    compileOnly "maven.modrinth:puzzles-lib:${puzzles_lib_version}"
+    runtimeOnly "maven.modrinth:puzzles-lib:${puzzles_lib_version}"
+
+    // MixinSquared, bundled: entries that reach into another mod's own mixins need it whatever else is installed.
+    // The same artifact other mods bundle (AllTheLeaks does), so NeoForge keeps one copy, the newest in range.
     compileOnly "com.github.bawnorton.mixinsquared:mixinsquared-common:${mixinsquared_version}"
+    jarJar(implementation("com.github.bawnorton.mixinsquared:mixinsquared-neoforge")) {
+        version {
+            strictly "[0.3.3,)"
+            prefer "${mixinsquared_version}"
+        }
+    }
 
     // Example mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
@@ -253,7 +272,9 @@ idea {
     }
 }
 
-// Credits for third-party art (Quark-derived glints) ride along in the jar.
+// Credits for third-party art (Quark-derived glints, Alex's Caves-derived rock candy) ride along in the jar, with the
+// license texts the LGPL'd textures need.
 jar {
     from('NOTICE.md')
+    from('licenses') { into 'licenses' }
 }
