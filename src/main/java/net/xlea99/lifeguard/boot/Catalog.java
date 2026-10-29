@@ -2,6 +2,7 @@ package net.xlea99.lifeguard.boot;
 
 import java.util.List;
 import net.xlea99.lifeguard.entry.ac_immediately_fast_gingerbread_stripes.AcImmediatelyFastGingerbreadStripes;
+import net.xlea99.lifeguard.entry.ac_thornwood_very_slightly_lighter_planks.AcThornwoodVerySlightlyLighterPlanks;
 import net.xlea99.lifeguard.entry.ac_infinite_soda.AcInfiniteSoda;
 import net.xlea99.lifeguard.entry.am_lava_bottle_dupe.AmLavaBottleDupe;
 import net.xlea99.lifeguard.entry.am_lava_vision_fallback.AmLavaVisionFallback;
@@ -54,9 +55,11 @@ import net.xlea99.lifeguard.entry.scholar_amendments_lectern_sync.ScholarAmendme
 import net.xlea99.lifeguard.entry.scholar_lectern_atlases.ScholarLecternAtlases;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
 import net.xlea99.lifeguard.entry.sleep_tight_kill_stats.SleepTightKillStats;
+import net.xlea99.lifeguard.entry.ru_broken_sounds.RuBrokenSounds;
 import net.xlea99.lifeguard.entry.snowy_spirit_brighter_ginger.SnowySpiritBrighterGinger;
 import net.xlea99.lifeguard.entry.snowy_spirit_edible_treats.SnowySpiritEdibleTreats;
 import net.xlea99.lifeguard.entry.snowy_spirit_eggnog_nerf.SnowySpiritEggnogNerf;
+import net.xlea99.lifeguard.entry.spawn_ru_pineify_rotten_wood.SpawnRuPineifyRottenWood;
 import net.xlea99.lifeguard.entry.sleep_tight_spawn_events.SleepTightSpawnEvents;
 import net.xlea99.lifeguard.entry.supplementaries_grouper_open_sides.SupplementariesGrouperOpenSides;
 import net.xlea99.lifeguard.entry.supps_blue_bomb_dispensing.SuppsBlueBombDispensing;
@@ -100,6 +103,7 @@ import net.xlea99.lifeguard.entry.zeta_instance_race.ZetaInstanceRace;
 public final class Catalog {
     private static final List<Class<?>> DECLARATIONS = List.of(
         AcImmediatelyFastGingerbreadStripes.class,
+        AcThornwoodVerySlightlyLighterPlanks.class,
         AcInfiniteSoda.class,
         AmLavaBottleDupe.class,
         AmLavaVisionFallback.class,
@@ -148,6 +152,7 @@ public final class Catalog {
         NoEndCaveSounds.class,
         PaperLabels.class,
         QuarkToolRestockEnchantments.class,
+        RuBrokenSounds.class,
         ScholarAmendmentsLecternSync.class,
         ScholarLecternAtlases.class,
         SexyRunicGlints.class,
@@ -156,6 +161,7 @@ public final class Catalog {
         SnowySpiritBrighterGinger.class,
         SnowySpiritEdibleTreats.class,
         SnowySpiritEggnogNerf.class,
+        SpawnRuPineifyRottenWood.class,
         SupplementariesGrouperOpenSides.class,
         SuppsBlueBombDispensing.class,
         SuppsSoapLoreFirst.class,

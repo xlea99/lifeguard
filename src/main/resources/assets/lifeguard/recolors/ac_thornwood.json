@@ -1,0 +1,319 @@
+{
+  "_comment": "ac_thornwood_very_slightly_lighter_planks: thornwood's wood colors +0.02 OKLab lightness, color untouched; other colors map to themselves; 'keep' = wood-colored pixels that are bark. Our numbers, applied to the player's installed Alex's Caves textures. Written by claude-tools/woods/thornwood_spec.py from alexscaves-2.0.2.jar. Paths are relative to textures/.",
+  "textures": [
+    {
+      "texture": "alexscaves:block/thornwood/thornwood_planks",
+      "colors": {
+        "#2A241E": "#2F2923",
+        "#2D2821": "#322D26",
+        "#322D26": "#37322B",
+        "#393229": "#3E372E",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438"
+      }
+    },
+    {
+      "texture": "alexscaves:block/thornwood/stripped_thornwood_log",
+      "colors": {
+        "#322E26": "#37332B",
+        "#353129": "#3A362E",
+        "#3A342C": "#3F3931",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438"
+      }
+    },
+    {
+      "texture": "alexscaves:block/thornwood/stripped_thornwood_log_top",
+      "colors": {
+        "#2D2821": "#322D26",
+        "#322D26": "#37322B",
+        "#322E26": "#37332B",
+        "#393229": "#3E372E",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438"
+      }
+    },
+    {
+      "texture": "alexscaves:block/thornwood/thornwood_log_top",
+      "colors": {
+        "#231F1B": "#282420",
+        "#2A241E": "#2F2923",
+        "#2D2821": "#322D26",
+        "#322D26": "#37322B",
+        "#393229": "#3E372E",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438"
+      },
+      "keep": [
+        [
+          0,
+          0,
+          15,
+          0
+        ],
+        [
+          0,
+          15,
+          15,
+          15
+        ],
+        [
+          0,
+          0,
+          0,
+          15
+        ],
+        [
+          15,
+          0,
+          15,
+          15
+        ]
+      ]
+    },
+    {
+      "texture": "alexscaves:block/thornwood/thornwood_door_top",
+      "colors": {
+        "#26201B": "#2B2520",
+        "#2A241E": "#2F2923",
+        "#2D2821": "#322D26",
+        "#322D26": "#37322B",
+        "#393229": "#3E372E",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438",
+        "#504538": "#564A3D"
+      }
+    },
+    {
+      "texture": "alexscaves:block/thornwood/thornwood_door_bottom",
+      "colors": {
+        "#26201B": "#2B2520",
+        "#2A241E": "#2F2923",
+        "#2D2821": "#322D26",
+        "#322D26": "#37322B",
+        "#393229": "#3E372E",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438",
+        "#504538": "#564A3D"
+      }
+    },
+    {
+      "texture": "alexscaves:block/thornwood/thornwood_trapdoor",
+      "colors": {
+        "#26201B": "#2B2520",
+        "#2A241E": "#2F2923",
+        "#2D2821": "#322D26",
+        "#322D26": "#37322B",
+        "#393229": "#3E372E",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438",
+        "#504538": "#564A3D"
+      }
+    },
+    {
+      "texture": "alexscaves:entity/boat/thornwood_boat",
+      "colors": {
+        "#2A241E": "#2F2923",
+        "#2D2821": "#322D26",
+        "#322D26": "#37322B",
+        "#393229": "#3E372E",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438"
+      }
+    },
+    {
+      "texture": "alexscaves:entity/signs/thornwood",
+      "colors": {
+        "#16110D": "#16110D",
+        "#17130E": "#17130E",
+        "#1D1813": "#1D1813",
+        "#251F19": "#251F19",
+        "#2A241E": "#2F2923",
+        "#2D2821": "#322D26",
+        "#322D26": "#37322B",
+        "#393229": "#3E372E",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438"
+      },
+      "keep": [
+        [
+          0,
+          14,
+          7,
+          31
+        ]
+      ]
+    },
+    {
+      "texture": "alexscaves:entity/signs/hanging/thornwood",
+      "colors": {
+        "#252C3D": "#252C3D",
+        "#2A2720": "#2A2720",
+        "#2D2A23": "#2D2A23",
+        "#322E26": "#37332B",
+        "#353129": "#3A362E",
+        "#3A342C": "#3F3931",
+        "#3E4453": "#3E4453",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438",
+        "#495065": "#495065",
+        "#5B647C": "#5B647C"
+      }
+    },
+    {
+      "texture": "alexscaves:gui/hanging_signs/thornwood",
+      "colors": {
+        "#252C3D": "#252C3D",
+        "#2A2720": "#2A2720",
+        "#2D2A23": "#2D2A23",
+        "#322E26": "#37332B",
+        "#353129": "#3A362E",
+        "#3A342C": "#3F3931",
+        "#3E4453": "#3E4453",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438",
+        "#495065": "#495065"
+      }
+    },
+    {
+      "texture": "alexscaves:item/thornwood_boat",
+      "colors": {
+        "#1C1713": "#211C18",
+        "#2A241E": "#2F2923",
+        "#2D2821": "#322D26",
+        "#322D26": "#37322B",
+        "#393229": "#3E372E",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438",
+        "#504538": "#564A3D"
+      }
+    },
+    {
+      "texture": "alexscaves:item/thornwood_chest_boat",
+      "colors": {
+        "#1C1713": "#211C18",
+        "#281E0B": "#281E0B",
+        "#2A241E": "#2F2923",
+        "#2D2821": "#322D26",
+        "#322D26": "#37322B",
+        "#373127": "#373127",
+        "#393229": "#3E372E",
+        "#41392F": "#463E34",
+        "#422F0B": "#422F0B",
+        "#473725": "#473725",
+        "#493F33": "#4E4438",
+        "#504538": "#564A3D",
+        "#684E1E": "#684E1E",
+        "#7F5F22": "#7F5F22",
+        "#8F691D": "#8F691D",
+        "#A76E1F": "#A76E1F",
+        "#AB792D": "#AB792D"
+      }
+    },
+    {
+      "texture": "alexscaves:item/thornwood_door",
+      "colors": {
+        "#322D26": "#37322B",
+        "#393229": "#3E372E",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438",
+        "#504538": "#564A3D"
+      }
+    },
+    {
+      "texture": "alexscaves:item/thornwood_sign",
+      "colors": {
+        "#16110D": "#16110D",
+        "#17130E": "#17130E",
+        "#1D1813": "#1D1813",
+        "#251F19": "#251F19",
+        "#2A241E": "#2F2923",
+        "#2D2821": "#322D26",
+        "#322D26": "#37322B",
+        "#393229": "#3E372E",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438",
+        "#504538": "#564A3D"
+      },
+      "keep": [
+        [
+          7,
+          11,
+          9,
+          15
+        ]
+      ]
+    },
+    {
+      "texture": "alexscaves:item/thornwood_hanging_sign",
+      "colors": {
+        "#16110D": "#16110D",
+        "#2D2821": "#322D26",
+        "#322D26": "#37322B",
+        "#323232": "#323232",
+        "#393229": "#3E372E",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438",
+        "#4A4A4A": "#4A4A4A",
+        "#504538": "#564A3D",
+        "#5F5F5F": "#5F5F5F",
+        "#6F6F6F": "#6F6F6F"
+      }
+    },
+    {
+      "texture": "alexscaves:block/forsaken_idol_0",
+      "colors": {
+        "#2A241E": "#2F2923",
+        "#2D2821": "#322D26",
+        "#322D26": "#37322B",
+        "#393229": "#3E372E",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438"
+      }
+    },
+    {
+      "texture": "alexscaves:block/forsaken_idol_1",
+      "colors": {
+        "#2A241E": "#2F2923",
+        "#2D2821": "#322D26",
+        "#322D26": "#37322B",
+        "#393229": "#3E372E",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438",
+        "#EC1900": "#EC1900"
+      }
+    },
+    {
+      "texture": "alexscaves:block/forsaken_idol_2",
+      "colors": {
+        "#2A241E": "#2F2923",
+        "#2D2821": "#322D26",
+        "#322D26": "#37322B",
+        "#393229": "#3E372E",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438"
+      }
+    },
+    {
+      "texture": "alexscaves:block/forsaken_idol_3",
+      "colors": {
+        "#2A241E": "#2F2923",
+        "#2D2821": "#322D26",
+        "#322D26": "#37322B",
+        "#393229": "#3E372E",
+        "#41392F": "#463E34",
+        "#493F33": "#4E4438"
+      }
+    },
+    {
+      "texture": "alexscaves:block/forsaken_idol_4",
+      "colors": {
+        "#2A241E": "#2F2923",
+        "#2D2821": "#322D26",
+        "#322D26": "#37322B",
+        "#393229": "#3E372E",
+        "#41392F": "#463E34"
+      }
+    }
+  ]
+}

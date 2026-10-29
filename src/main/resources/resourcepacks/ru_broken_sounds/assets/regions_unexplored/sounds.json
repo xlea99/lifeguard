@@ -1,0 +1,87 @@
+{
+  "block.baobab.fence_gate_open": {
+    "replace": true,
+    "sounds": [
+      {
+        "name": "regions_unexplored:block/baobab/fence_gate_open1",
+        "volume": 0.8
+      }
+    ],
+    "subtitle": "subtitles.block.fence_gate.toggle"
+  },
+  "block.redwood.door_close": {
+    "replace": true,
+    "sounds": [
+      {
+        "name": "regions_unexplored:block/redwood/door_close2",
+        "volume": 0.9
+      },
+      {
+        "name": "regions_unexplored:block/redwood/door_close3",
+        "volume": 0.9
+      }
+    ],
+    "subtitle": "subtitles.block.door.toggle"
+  },
+  "block.redwood.hanging_sign_place": {
+    "replace": true,
+    "sounds": [
+      "regions_unexplored:block/redwood/hanging_sign_break1",
+      "regions_unexplored:block/redwood/hanging_sign_break3",
+      "regions_unexplored:block/redwood/hanging_sign_break4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.redwood.place": {
+    "replace": true,
+    "sounds": [
+      "regions_unexplored:block/redwood/wood_place1",
+      "regions_unexplored:block/redwood/wood_place3",
+      "regions_unexplored:block/redwood/wood_place4"
+    ],
+    "subtitle": "subtitles.block.generic.place"
+  },
+  "block.leaf_litter.break": {
+    "replace": true,
+    "sounds": [
+      "regions_unexplored:block/leaf_litter/break1",
+      "regions_unexplored:block/leaf_litter/break2",
+      "regions_unexplored:block/leaf_litter/break3",
+      "regions_unexplored:block/leaf_litter/break5"
+    ],
+    "subtitle": "subtitles.block.generic.break"
+  },
+  "block.leaf_litter.fall": {
+    "replace": true,
+    "sounds": [
+      "regions_unexplored:block/leaf_litter/step1",
+      "regions_unexplored:block/leaf_litter/step2",
+      "regions_unexplored:block/leaf_litter/step3",
+      "regions_unexplored:block/leaf_litter/step5",
+      "regions_unexplored:block/leaf_litter/step6"
+    ],
+    "subtitle": "subtitles.block.generic.fall"
+  },
+  "block.leaf_litter.hit": {
+    "replace": true,
+    "sounds": [
+      "regions_unexplored:block/leaf_litter/step1",
+      "regions_unexplored:block/leaf_litter/step2",
+      "regions_unexplored:block/leaf_litter/step3",
+      "regions_unexplored:block/leaf_litter/step5",
+      "regions_unexplored:block/leaf_litter/step6"
+    ],
+    "subtitle": "subtitles.block.generic.hit"
+  },
+  "block.leaf_litter.step": {
+    "replace": true,
+    "sounds": [
+      "regions_unexplored:block/leaf_litter/step1",
+      "regions_unexplored:block/leaf_litter/step2",
+      "regions_unexplored:block/leaf_litter/step3",
+      "regions_unexplored:block/leaf_litter/step5",
+      "regions_unexplored:block/leaf_litter/step6"
+    ],
+    "subtitle": "subtitles.block.generic.footsteps"
+  }
+}

@@ -5,8 +5,10 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+import net.minecraft.resources.ResourceLocation;
 import net.xlea99.lifeguard.Lifeguard;
 import net.xlea99.lifeguard.client.menu.LifeguardScreen;
+import net.xlea99.lifeguard.entry.ac_thornwood_very_slightly_lighter_planks.AcThornwoodVerySlightlyLighterPlanks;
 import net.xlea99.lifeguard.entry.cauldron_fourths.CauldronFourths;
 import net.xlea99.lifeguard.entry.cauldron_fourths.FourthsClient;
 import net.xlea99.lifeguard.entry.clayworks_flower_pots.ClayworksFlowerPots;
@@ -17,7 +19,6 @@ import net.xlea99.lifeguard.entry.sexy_runic_glints.GlintsClient;
 import net.xlea99.lifeguard.entry.haunted_harvest_mask_limit.HauntedHarvestMaskLimit;
 import net.xlea99.lifeguard.entry.haunted_harvest_mask_limit.HollowPumpkins;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
-import net.xlea99.lifeguard.entry.snowy_spirit_brighter_ginger.GingerPack;
 import net.xlea99.lifeguard.entry.dye_the_world_glow_lights.DyeTheWorldGlowLights;
 import net.xlea99.lifeguard.entry.dye_the_world_glow_lights.GlowLightsPack;
 import net.xlea99.lifeguard.entry.dye_the_world_open_sacks.DyeTheWorldOpenSacks;
@@ -27,6 +28,8 @@ import net.xlea99.lifeguard.entry.etcetera_shimmering_bismuth_trims.ShimmerTrims
 import net.xlea99.lifeguard.entry.snowy_spirit_brighter_ginger.SnowySpiritBrighterGinger;
 import net.xlea99.lifeguard.entry.snowy_spirit_edible_treats.GumdropCrumbs;
 import net.xlea99.lifeguard.entry.snowy_spirit_edible_treats.SnowySpiritEdibleTreats;
+import net.xlea99.lifeguard.entry.spawn_ru_pineify_rotten_wood.PineRotPack;
+import net.xlea99.lifeguard.entry.spawn_ru_pineify_rotten_wood.SpawnRuPineifyRottenWood;
 import net.xlea99.lifeguard.entry.whiter_labels.WhiterLabels;
 import net.xlea99.lifeguard.entry.whiter_labels.WhiterPaper;
 
@@ -54,7 +57,11 @@ public final class LifeguardClient {
         if (SnowySpiritEdibleTreats.ENTRY.active())
             GumdropCrumbs.register(modEventBus);
         if (SnowySpiritBrighterGinger.ENTRY.active())
-            GingerPack.register();
+            SpecRecolors.register(SnowySpiritBrighterGinger.ENTRY.id(), recolors("snowy_spirit_ginger"), "snowyspirit");
+        if (AcThornwoodVerySlightlyLighterPlanks.ENTRY.active())
+            SpecRecolors.register(AcThornwoodVerySlightlyLighterPlanks.ENTRY.id(), recolors("ac_thornwood"), "alexscaves");
+        if (SpawnRuPineifyRottenWood.ENTRY.active())
+            PineRotPack.register(modEventBus);
         if (DyeTheWorldGlowLights.ENTRY.active())
             GlowLightsPack.register();
         if (DyeTheWorldOpenSacks.ENTRY.active())
@@ -64,5 +71,10 @@ public final class LifeguardClient {
         // The server owns this one: the tooltip checks the synced value each time.
         if (HauntedHarvestMaskLimit.ENTRY.installed())
             HollowPumpkins.registerTooltip();
+    }
+
+    /** A {@link SpecRecolors} spec: {@code assets/lifeguard/recolors/<name>.json}. */
+    private static ResourceLocation recolors(String name) {
+        return ResourceLocation.fromNamespaceAndPath(Lifeguard.MODID, "recolors/" + name + ".json");
     }
 }
