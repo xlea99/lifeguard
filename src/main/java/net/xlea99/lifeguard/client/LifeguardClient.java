@@ -16,8 +16,12 @@ import net.xlea99.lifeguard.entry.clayworks_flower_pots.FlowerPotsClient;
 import net.xlea99.lifeguard.entry.dye_depot_sparklers.DyeDepotSparklers;
 import net.xlea99.lifeguard.entry.dye_depot_sparklers.SparklersClient;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.GlintsClient;
+import net.xlea99.lifeguard.entry.species_dyeable_chaindeliers.ChaindelierClient;
+import net.xlea99.lifeguard.entry.species_dyeable_chaindeliers.SpeciesDyeableChaindeliers;
 import net.xlea99.lifeguard.entry.haunted_harvest_mask_limit.HauntedHarvestMaskLimit;
 import net.xlea99.lifeguard.entry.haunted_harvest_mask_limit.HollowPumpkins;
+import net.xlea99.lifeguard.entry.jukebox_synced_playback.ClientJukeboxSync;
+import net.xlea99.lifeguard.entry.jukebox_synced_playback.JukeboxSyncedPlayback;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
 import net.xlea99.lifeguard.entry.dye_the_world_glow_lights.DyeTheWorldGlowLights;
 import net.xlea99.lifeguard.entry.dye_the_world_glow_lights.GlowLightsPack;
@@ -52,6 +56,8 @@ public final class LifeguardClient {
             SparklersClient.register(modEventBus);
         if (ClayworksFlowerPots.ENTRY.installed())
             FlowerPotsClient.register(modEventBus);
+        if (SpeciesDyeableChaindeliers.ENTRY.installed())
+            ChaindelierClient.register(modEventBus);
         if (WhiterLabels.ENTRY.active())
             WhiterPaper.register(modEventBus);
         if (SnowySpiritEdibleTreats.ENTRY.active())
@@ -71,6 +77,9 @@ public final class LifeguardClient {
         // The server owns this one: the tooltip checks the synced value each time.
         if (HauntedHarvestMaskLimit.ENTRY.installed())
             HollowPumpkins.registerTooltip();
+        // The server owns this one too: the listeners check the synced switch.
+        if (JukeboxSyncedPlayback.ENTRY.installed())
+            ClientJukeboxSync.register();
     }
 
     /** A {@link SpecRecolors} spec: {@code assets/lifeguard/recolors/<name>.json}. */
