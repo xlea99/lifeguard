@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:chest",
+    "minecraft:trapped_chest",
+    {
+      "id": "#minecraft:copper_chests",
+      "required": false
+    },
+    {
+      "id": "#c:chests/wooden",
+      "required": false
+    },
+    {
+      "id": "#c:chests/trapped",
+      "required": false
+    }
+  ]
+}
