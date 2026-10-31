@@ -38,6 +38,7 @@ public final class RemoteServer {
         if (beforeJoin == null)
             return;
         beforeJoin.applyTo(Entries.REGISTRY);
+        Entries.REGISTRY.clearServerBroken();
         beforeJoin = null;
         Lifeguard.LOGGER.info("Lifeguard: back to this game's own settings");
     }

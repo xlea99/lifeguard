@@ -8,7 +8,9 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.xlea99.lifeguard.boot.Boot;
 import net.xlea99.lifeguard.boot.Setups;
 import net.xlea99.lifeguard.data.DataConditions;
+import net.xlea99.lifeguard.data.UsedIds;
 import net.xlea99.lifeguard.magnet.Magnets;
+import net.xlea99.lifeguard.sync.BrokenNotice;
 import net.xlea99.lifeguard.sync.Sync;
 import org.slf4j.Logger;
 
@@ -23,6 +25,7 @@ public class Lifeguard {
         Boot.start();
 
         DataConditions.register(modEventBus);
+        UsedIds.register(modEventBus);
         modEventBus.addListener(Sync::registerPayloads);
         Setups.runCommon(modEventBus);
         // Alex's Caves magnets for every block that is one (shared by several entries' metals): joins AC's after each
@@ -30,5 +33,6 @@ public class Lifeguard {
         Magnets.register(modEventBus);
         modEventBus.addListener(Sync::registerTasks);
         NeoForge.EVENT_BUS.addListener(Sync::onServerAboutToStart);
+        NeoForge.EVENT_BUS.addListener(BrokenNotice::onLoggedIn);
     }
 }

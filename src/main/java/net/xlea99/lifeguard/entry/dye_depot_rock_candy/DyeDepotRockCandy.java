@@ -13,6 +13,9 @@ public final class DyeDepotRockCandy {
      */
     public static final Entry ENTRY = Entries.compat("dye_depot_rock_candy", Taste.NONE).home("alexscaves")
         .requiresMods("alexscaves", "dye_depot")
+        .usesIds("block", "alexscaves:rock_candy_white")
+        .usesIds("item", "alexscaves:rock_candy_white", "alexscaves:rock_candy_black")
+        .usesIds("creative_mode_tab", "alexscaves:candy_cavity")
         .side(Side.SERVER).restart(Restart.GAME);
 
     /** Where they turn up in the world; the parent only makes them craftable. */

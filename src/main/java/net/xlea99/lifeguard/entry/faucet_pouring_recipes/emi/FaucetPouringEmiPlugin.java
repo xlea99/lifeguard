@@ -31,6 +31,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ConcretePowderBlock;
 import net.neoforged.fml.util.ObfuscationReflectionHelper;
 import net.xlea99.lifeguard.Lifeguard;
+import net.xlea99.lifeguard.boot.BrokenEntries;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.ClientPouringRecipes;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.PouringRecipe;
@@ -96,7 +97,14 @@ public final class FaucetPouringEmiPlugin implements EmiPlugin {
             // first and dissolves it, as here.
             if (!(block instanceof ConcretePowderBlock powder) || block instanceof SugarBlock)
                 continue;
-            Block concrete = ObfuscationReflectionHelper.getPrivateValue(ConcretePowderBlock.class, powder, "concrete");
+            Block concrete;
+            try {
+                concrete = ObfuscationReflectionHelper.getPrivateValue(ConcretePowderBlock.class, powder, "concrete");
+            } catch (RuntimeException e) {
+                BrokenEntries.mark(FaucetPouringRecipes.EMI, "ConcretePowderBlock.concrete can't be read (" + e
+                    + "), so the powder-to-concrete pours can't be shown");
+                return;
+            }
             powders.add(EmiStack.of(block));
             concretes.add(EmiStack.of(concrete));
         }

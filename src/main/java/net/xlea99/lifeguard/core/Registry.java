@@ -157,6 +157,13 @@ public final class Registry implements SettingsView {
             if (new HashSet<>(entry.cancelledMixins()).size() != entry.cancelledMixins().size())
                 problems.add(id + ": cancels the same mixin twice");
         }
+        for (Map.Entry<String, List<String>> used : entry.usedIds().entrySet()) {
+            if (!NAME.matcher(used.getKey()).matches())
+                problems.add(id + ": '" + used.getKey() + "' isn't a registry name (item, block, mob_effect...)");
+            for (String usedId : used.getValue())
+                if (!RECIPE_ID.matcher(usedId).matches())
+                    problems.add(id + ": '" + usedId + "' isn't an id (namespace:path)");
+        }
         if (entry.kind() == EntryClass.FIX && entry.requiredMods().size() > 1)
             problems.add(id + ": a fix requires at most one mod; one that needs " + entry.requiredMods()
                 + " is compat, or a fix on the mod that is actually broken");
@@ -303,6 +310,34 @@ public final class Registry implements SettingsView {
     public Optional<Entry> get(String id) {
         requireFrozen();
         return Optional.ofNullable(byId.get(id));
+    }
+
+    /** Every entry that requires this one, directly or through others: what goes dark when it does. */
+    public List<Entry> dependents(Entry entry) {
+        requireFrozen();
+        List<Entry> found = new ArrayList<>();
+        List<Entry> frontier = new ArrayList<>(List.of(entry));
+        while (!frontier.isEmpty()) {
+            Entry at = frontier.remove(0);
+            for (Entry other : byId.values())
+                if (other.requiredEntries().contains(at) && !found.contains(other)) {
+                    found.add(other);
+                    frontier.add(other);
+                }
+        }
+        return found;
+    }
+
+    /** The entries this game found broken this session. */
+    public List<Entry> broken() {
+        requireFrozen();
+        return byId.values().stream().filter(Entry::broken).toList();
+    }
+
+    /** Forgets what the last followed server found broken: the client is back on its own state. */
+    public void clearServerBroken() {
+        for (Entry entry : byId.values())
+            entry.setServerBroken(null);
     }
 
     // --- the state entries resolve against -----------------------------------------------------------------------------

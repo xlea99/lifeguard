@@ -5,6 +5,7 @@ import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 import javax.annotation.Nullable;
 import net.xlea99.lifeguard.Lifeguard;
+import net.xlea99.lifeguard.boot.BrokenEntries;
 
 /**
  * Whether an Iris shaderpack is in use. Shaderpacks draw the world through their own programs, which replace vanilla's
@@ -43,7 +44,9 @@ public final class Shaderpacks {
         } catch (ClassNotFoundException e) {
             return null;
         } catch (Throwable e) {
-            Lifeguard.LOGGER.warn("Lifeguard couldn't reach Iris's API; rune glints may vanish under shaderpacks", e);
+            // Iris is there but its API moved: glints would vanish under shaderpacks, half the entry.
+            BrokenEntries.mark(SexyRunicGlints.ENTRY, "Iris is installed but IrisApi.isShaderPackInUse can't be"
+                + " reached (" + e + "), so glints can't step aside for shaderpacks");
             return null;
         }
     }

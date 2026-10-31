@@ -38,7 +38,8 @@ public final class Sync {
     }
 
     public static void registerPayloads(RegisterPayloadHandlersEvent event) {
-        event.registrar("1").optional()
+        // "2": the entry states carry broken (2026-10-30). Both sides must agree, or the payloads don't connect.
+        event.registrar("2").optional()
             .configurationToClient(SyncPayload.TYPE, SyncPayload.STREAM_CODEC, Sync::receive)
             .configurationToClient(RegistryShapePayload.TYPE, RegistryShapePayload.STREAM_CODEC, Sync::receiveShape);
     }

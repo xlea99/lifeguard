@@ -28,6 +28,7 @@ public record SyncPayload(ServerSnapshot snapshot) implements CustomPacketPayloa
         for (Map.Entry<String, ServerSnapshot.EntryState> entry : snapshot.entries().entrySet()) {
             buf.writeUtf(entry.getKey());
             buf.writeUtf(entry.getValue().setting().id());
+            buf.writeNullable(entry.getValue().broken(), FriendlyByteBuf::writeUtf);
             Map<String, Object> values = entry.getValue().values();
             buf.writeVarInt(values.size());
             for (Map.Entry<String, Object> value : values.entrySet()) {
@@ -59,6 +60,7 @@ public record SyncPayload(ServerSnapshot snapshot) implements CustomPacketPayloa
         for (int i = 0; i < entryCount; i++) {
             String id = buf.readUtf();
             Switch setting = Switch.byId(buf.readUtf()).orElse(Switch.AUTO);
+            String broken = buf.readNullable(FriendlyByteBuf::readUtf);
             int valueCount = buf.readVarInt();
             Map<String, Object> values = new LinkedHashMap<>();
             for (int j = 0; j < valueCount; j++) {
@@ -71,7 +73,7 @@ public record SyncPayload(ServerSnapshot snapshot) implements CustomPacketPayloa
                     default -> throw new DecoderException("Lifeguard: unknown sub-value kind " + kind + " for " + id + "." + name);
                 });
             }
-            entries.put(id, new ServerSnapshot.EntryState(setting, values));
+            entries.put(id, new ServerSnapshot.EntryState(setting, values, broken));
         }
         return new SyncPayload(new ServerSnapshot(profile, entries));
     }
