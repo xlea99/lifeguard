@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "lifeguard:entry",
+      "entry": "cc_extended_plated_bricks"
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "lifeguard:cc/minecraft/netherite_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "lifeguard:cc/minecraft/chiseled_netherite_bricks"
+  }
+}

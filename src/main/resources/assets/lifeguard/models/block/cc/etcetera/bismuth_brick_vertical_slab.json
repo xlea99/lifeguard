@@ -1,0 +1,8 @@
+{
+  "parent": "quark:block/vertical_slab",
+  "textures": {
+    "bottom": "lifeguard:block/cc/etcetera/bismuth_bricks",
+    "top": "lifeguard:block/cc/etcetera/bismuth_bricks",
+    "side": "lifeguard:block/cc/etcetera/bismuth_bricks"
+  }
+}

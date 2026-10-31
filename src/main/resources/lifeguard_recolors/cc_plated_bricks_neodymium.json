@@ -1,0 +1,109 @@
+{
+  "_comment": "Colors only: the textures are Caverns & Chasms' own iron and chiseled silver plated bricks, read from the player's install and recolored at runtime; the chiseled glyphs are ours (textures/recolor_patterns/cc/). Converted from lnod_glue's by workspace/claude-tools/gen_plated_bars.py.",
+  "requires": [
+    "caverns_and_chasms",
+    "alexscaves"
+  ],
+  "textures": [
+    {
+      "output": "lifeguard:textures/block/cc/alexscaves/azure_neodymium_bricks.png",
+      "source": "caverns_and_chasms:textures/block/iron_bricks.png",
+      "strict": true,
+      "colors": {
+        "#3B3A38": "#1C3752",
+        "#404344": "#243C69",
+        "#564E51": "#334080",
+        "#565560": "#335491",
+        "#635C5D": "#3A4F77",
+        "#696366": "#475F97",
+        "#717076": "#4C6D9D",
+        "#767375": "#4F76BE",
+        "#82808A": "#7684D5",
+        "#918F99": "#858DD4",
+        "#999792": "#8B9ECA"
+      }
+    },
+    {
+      "output": "lifeguard:textures/block/cc/alexscaves/chiseled_azure_neodymium_bricks.png",
+      "source": "caverns_and_chasms:textures/block/chiseled_silver_bricks.png",
+      "strict": true,
+      "colors": {
+        "#615F63": "#1C3752",
+        "#6A676C": "#243C69",
+        "#78737A": "#334080",
+        "#7D7980": "#335491",
+        "#8B7D82": "#3A4F77",
+        "#828593": "#475F97",
+        "#8896AC": "#4C6D9D",
+        "#9FA3BA": "#4F76BE",
+        "#B3BABF": "#7684D5",
+        "#D2C8D7": "#858DD4",
+        "#D1D1D1": "#8B9ECA"
+      },
+      "paint": "lifeguard:textures/recolor_patterns/cc/alexscaves/chiseled_azure_neodymium_bricks.png",
+      "paint_colors": {
+        "#141414": "#615F63",
+        "#282828": "#6A676C",
+        "#3C3C3C": "#78737A",
+        "#505050": "#7D7980",
+        "#646464": "#8B7D82",
+        "#787878": "#828593",
+        "#8C8C8C": "#8896AC",
+        "#A0A0A0": "#9FA3BA",
+        "#B4B4B4": "#B3BABF",
+        "#C8C8C8": "#D2C8D7",
+        "#DCDCDC": "#D1D1D1"
+      }
+    },
+    {
+      "output": "lifeguard:textures/block/cc/alexscaves/scarlet_neodymium_bricks.png",
+      "source": "caverns_and_chasms:textures/block/iron_bricks.png",
+      "strict": true,
+      "colors": {
+        "#3B3A38": "#572F36",
+        "#404344": "#6B3030",
+        "#564E51": "#7E3042",
+        "#565560": "#904141",
+        "#635C5D": "#7A4745",
+        "#696366": "#945064",
+        "#717076": "#9F5D60",
+        "#767375": "#BB5E5D",
+        "#82808A": "#D1707E",
+        "#918F99": "#D37F86",
+        "#999792": "#CC948D"
+      }
+    },
+    {
+      "output": "lifeguard:textures/block/cc/alexscaves/chiseled_scarlet_neodymium_bricks.png",
+      "source": "caverns_and_chasms:textures/block/chiseled_silver_bricks.png",
+      "strict": true,
+      "colors": {
+        "#615F63": "#572F36",
+        "#6A676C": "#6B3030",
+        "#78737A": "#7E3042",
+        "#7D7980": "#904141",
+        "#8B7D82": "#7A4745",
+        "#828593": "#945064",
+        "#8896AC": "#9F5D60",
+        "#9FA3BA": "#BB5E5D",
+        "#B3BABF": "#D1707E",
+        "#D2C8D7": "#D37F86",
+        "#D1D1D1": "#CC948D"
+      },
+      "paint": "lifeguard:textures/recolor_patterns/cc/alexscaves/chiseled_scarlet_neodymium_bricks.png",
+      "paint_colors": {
+        "#141414": "#615F63",
+        "#282828": "#6A676C",
+        "#3C3C3C": "#78737A",
+        "#505050": "#7D7980",
+        "#646464": "#8B7D82",
+        "#787878": "#828593",
+        "#8C8C8C": "#8896AC",
+        "#A0A0A0": "#9FA3BA",
+        "#B4B4B4": "#B3BABF",
+        "#C8C8C8": "#D2C8D7",
+        "#DCDCDC": "#D1D1D1"
+      }
+    }
+  ]
+}

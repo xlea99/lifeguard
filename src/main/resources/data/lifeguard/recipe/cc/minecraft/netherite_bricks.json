@@ -1,0 +1,26 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "lifeguard:entry",
+      "entry": "cc_extended_plated_bricks"
+    }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "#": {
+      "tag": "c:ingots/netherite"
+    },
+    "X": {
+      "item": "minecraft:deepslate"
+    }
+  },
+  "pattern": [
+    "#X",
+    "X#"
+  ],
+  "result": {
+    "count": 4,
+    "id": "lifeguard:cc/minecraft/netherite_bricks"
+  }
+}

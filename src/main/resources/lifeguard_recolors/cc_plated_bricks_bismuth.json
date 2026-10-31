@@ -1,0 +1,143 @@
+{
+  "_comment": "Colors only: the textures are Caverns & Chasms' own iron and chiseled silver plated bricks, read from the player's install and recolored at runtime; the chiseled glyphs are ours (textures/recolor_patterns/cc/). Converted from lnod_glue's by workspace/claude-tools/gen_plated_bars.py.",
+  "requires": [
+    "caverns_and_chasms",
+    "etcetera"
+  ],
+  "textures": [
+    {
+      "output": "lifeguard:textures/block/cc/etcetera/bismuth_bricks.png",
+      "source": "caverns_and_chasms:textures/block/iron_bricks.png",
+      "strict": true,
+      "frames": [
+        {
+          "#3B3A38": "#6A5265",
+          "#404344": "#7D566B",
+          "#564E51": "#975D52",
+          "#565560": "#A16D8A",
+          "#635C5D": "#906D80",
+          "#696366": "#B27D78",
+          "#717076": "#B48AA4",
+          "#767375": "#CD90B2",
+          "#82808A": "#EEA895",
+          "#918F99": "#F2B5A2",
+          "#999792": "#EBC4D5"
+        },
+        {
+          "#3B3A38": "#6A674D",
+          "#404344": "#6E734D",
+          "#564E51": "#907645",
+          "#565560": "#8A915D",
+          "#635C5D": "#838967",
+          "#696366": "#B0946C",
+          "#717076": "#A6A97E",
+          "#767375": "#B0B97C",
+          "#82808A": "#E1C589",
+          "#918F99": "#E6D19D",
+          "#999792": "#DAE3C1"
+        },
+        {
+          "#3B3A38": "#4A6A6D",
+          "#404344": "#467480",
+          "#564E51": "#43857A",
+          "#565560": "#5494A3",
+          "#635C5D": "#628993",
+          "#696366": "#6EA294",
+          "#717076": "#79ABB5",
+          "#767375": "#73BCCE",
+          "#82808A": "#89D6CC",
+          "#918F99": "#9CDED7",
+          "#999792": "#BCE2EF"
+        },
+        {
+          "#3B3A38": "#5B5673",
+          "#404344": "#6C5A83",
+          "#564E51": "#8A5C89",
+          "#565560": "#8C73A9",
+          "#635C5D": "#817194",
+          "#696366": "#A17EA9",
+          "#717076": "#9F8FBD",
+          "#767375": "#B496D6",
+          "#82808A": "#E0A5DA",
+          "#918F99": "#E7B2DD",
+          "#999792": "#DCC8ED"
+        }
+      ],
+      "mcmeta_from": "etcetera:textures/block/bismuth_block.png"
+    },
+    {
+      "output": "lifeguard:textures/block/cc/etcetera/chiseled_bismuth_bricks.png",
+      "source": "caverns_and_chasms:textures/block/chiseled_silver_bricks.png",
+      "strict": true,
+      "frames": [
+        {
+          "#615F63": "#6A5265",
+          "#6A676C": "#7D566B",
+          "#78737A": "#975D52",
+          "#7D7980": "#A16D8A",
+          "#8B7D82": "#906D80",
+          "#828593": "#B27D78",
+          "#8896AC": "#B48AA4",
+          "#9FA3BA": "#CD90B2",
+          "#B3BABF": "#EEA895",
+          "#D2C8D7": "#F2B5A2",
+          "#D1D1D1": "#EBC4D5"
+        },
+        {
+          "#615F63": "#6A674D",
+          "#6A676C": "#6E734D",
+          "#78737A": "#907645",
+          "#7D7980": "#8A915D",
+          "#8B7D82": "#838967",
+          "#828593": "#B0946C",
+          "#8896AC": "#A6A97E",
+          "#9FA3BA": "#B0B97C",
+          "#B3BABF": "#E1C589",
+          "#D2C8D7": "#E6D19D",
+          "#D1D1D1": "#DAE3C1"
+        },
+        {
+          "#615F63": "#4A6A6D",
+          "#6A676C": "#467480",
+          "#78737A": "#43857A",
+          "#7D7980": "#5494A3",
+          "#8B7D82": "#628993",
+          "#828593": "#6EA294",
+          "#8896AC": "#79ABB5",
+          "#9FA3BA": "#73BCCE",
+          "#B3BABF": "#89D6CC",
+          "#D2C8D7": "#9CDED7",
+          "#D1D1D1": "#BCE2EF"
+        },
+        {
+          "#615F63": "#5B5673",
+          "#6A676C": "#6C5A83",
+          "#78737A": "#8A5C89",
+          "#7D7980": "#8C73A9",
+          "#8B7D82": "#817194",
+          "#828593": "#A17EA9",
+          "#8896AC": "#9F8FBD",
+          "#9FA3BA": "#B496D6",
+          "#B3BABF": "#E0A5DA",
+          "#D2C8D7": "#E7B2DD",
+          "#D1D1D1": "#DCC8ED"
+        }
+      ],
+      "mcmeta_from": "etcetera:textures/block/bismuth_block.png",
+      "paint": "lifeguard:textures/recolor_patterns/cc/etcetera/chiseled_bismuth_bricks.png",
+      "paint_colors": {
+        "#141414": "#615F63",
+        "#282828": "#6A676C",
+        "#3C3C3C": "#78737A",
+        "#505050": "#7D7980",
+        "#646464": "#8B7D82",
+        "#787878": "#828593",
+        "#8C8C8C": "#8896AC",
+        "#A0A0A0": "#9FA3BA",
+        "#B4B4B4": "#B3BABF",
+        "#C8C8C8": "#D2C8D7",
+        "#DCDCDC": "#D1D1D1"
+      }
+    }
+  ]
+}

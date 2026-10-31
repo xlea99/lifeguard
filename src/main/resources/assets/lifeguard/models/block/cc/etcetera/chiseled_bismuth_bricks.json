@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "lifeguard:block/cc/etcetera/chiseled_bismuth_bricks"
+  }
+}

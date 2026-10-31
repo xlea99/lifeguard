@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "lifeguard:cc/minecraft/netherite_brick_vertical_slab",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/caverns_and_chasms/necromium_brick_vertical_slab",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/etcetera/bismuth_brick_vertical_slab",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/alexscaves/azure_neodymium_brick_vertical_slab",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/alexscaves/scarlet_neodymium_brick_vertical_slab",
+      "required": false
+    }
+  ]
+}

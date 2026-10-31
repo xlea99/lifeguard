@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "lifeguard:entry",
+      "entry": "cc_extended_plated_bricks.alexscaves"
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "lifeguard:cc/alexscaves/azure_neodymium_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "lifeguard:cc/alexscaves/azure_neodymium_brick_wall"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "lifeguard:block/cc/etcetera/bismuth_bricks",
+    "top": "lifeguard:block/cc/etcetera/bismuth_bricks",
+    "side": "lifeguard:block/cc/etcetera/bismuth_bricks"
+  }
+}

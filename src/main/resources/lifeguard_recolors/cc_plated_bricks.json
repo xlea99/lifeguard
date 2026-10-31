@@ -1,0 +1,108 @@
+{
+  "_comment": "Colors only: the textures are Caverns & Chasms' own iron and chiseled silver plated bricks, read from the player's install and recolored at runtime; the chiseled glyphs are ours (textures/recolor_patterns/cc/). Converted from lnod_glue's by workspace/claude-tools/gen_plated_bars.py.",
+  "requires": [
+    "caverns_and_chasms"
+  ],
+  "textures": [
+    {
+      "output": "lifeguard:textures/block/cc/minecraft/netherite_bricks.png",
+      "source": "caverns_and_chasms:textures/block/iron_bricks.png",
+      "strict": true,
+      "colors": {
+        "#3B3A38": "#2C2422",
+        "#404344": "#352925",
+        "#564E51": "#3C2F37",
+        "#565560": "#483A41",
+        "#635C5D": "#423734",
+        "#696366": "#4F434C",
+        "#717076": "#574B52",
+        "#767375": "#63525B",
+        "#82808A": "#72606A",
+        "#918F99": "#78686F",
+        "#999792": "#7C7176"
+      }
+    },
+    {
+      "output": "lifeguard:textures/block/cc/minecraft/chiseled_netherite_bricks.png",
+      "source": "caverns_and_chasms:textures/block/chiseled_silver_bricks.png",
+      "strict": true,
+      "colors": {
+        "#615F63": "#2C2422",
+        "#6A676C": "#352925",
+        "#78737A": "#3C2F37",
+        "#7D7980": "#483A41",
+        "#8B7D82": "#423734",
+        "#828593": "#4F434C",
+        "#8896AC": "#574B52",
+        "#9FA3BA": "#63525B",
+        "#B3BABF": "#72606A",
+        "#D2C8D7": "#78686F",
+        "#D1D1D1": "#7C7176"
+      },
+      "paint": "lifeguard:textures/recolor_patterns/cc/minecraft/chiseled_netherite_bricks.png",
+      "paint_colors": {
+        "#141414": "#615F63",
+        "#282828": "#6A676C",
+        "#3C3C3C": "#78737A",
+        "#505050": "#7D7980",
+        "#646464": "#8B7D82",
+        "#787878": "#828593",
+        "#8C8C8C": "#8896AC",
+        "#A0A0A0": "#9FA3BA",
+        "#B4B4B4": "#B3BABF",
+        "#C8C8C8": "#D2C8D7",
+        "#DCDCDC": "#D1D1D1"
+      }
+    },
+    {
+      "output": "lifeguard:textures/block/cc/caverns_and_chasms/necromium_bricks.png",
+      "source": "caverns_and_chasms:textures/block/iron_bricks.png",
+      "strict": true,
+      "colors": {
+        "#3B3A38": "#38433A",
+        "#404344": "#3C4C3F",
+        "#564E51": "#385853",
+        "#565560": "#476763",
+        "#635C5D": "#505E53",
+        "#696366": "#57726A",
+        "#717076": "#627C77",
+        "#767375": "#648A85",
+        "#82808A": "#779E98",
+        "#918F99": "#84A6A2",
+        "#999792": "#97ADAB"
+      }
+    },
+    {
+      "output": "lifeguard:textures/block/cc/caverns_and_chasms/chiseled_necromium_bricks.png",
+      "source": "caverns_and_chasms:textures/block/chiseled_silver_bricks.png",
+      "strict": true,
+      "colors": {
+        "#615F63": "#38433A",
+        "#6A676C": "#3C4C3F",
+        "#78737A": "#385853",
+        "#7D7980": "#476763",
+        "#8B7D82": "#505E53",
+        "#828593": "#57726A",
+        "#8896AC": "#627C77",
+        "#9FA3BA": "#648A85",
+        "#B3BABF": "#779E98",
+        "#D2C8D7": "#84A6A2",
+        "#D1D1D1": "#97ADAB"
+      },
+      "paint": "lifeguard:textures/recolor_patterns/cc/caverns_and_chasms/chiseled_necromium_bricks.png",
+      "paint_colors": {
+        "#141414": "#615F63",
+        "#282828": "#6A676C",
+        "#3C3C3C": "#78737A",
+        "#505050": "#7D7980",
+        "#646464": "#8B7D82",
+        "#787878": "#828593",
+        "#8C8C8C": "#8896AC",
+        "#A0A0A0": "#9FA3BA",
+        "#B4B4B4": "#B3BABF",
+        "#C8C8C8": "#D2C8D7",
+        "#DCDCDC": "#D1D1D1"
+      }
+    }
+  ]
+}

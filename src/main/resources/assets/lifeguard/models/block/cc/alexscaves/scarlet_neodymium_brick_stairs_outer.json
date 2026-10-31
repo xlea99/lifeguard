@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "lifeguard:block/cc/alexscaves/scarlet_neodymium_bricks",
+    "top": "lifeguard:block/cc/alexscaves/scarlet_neodymium_bricks",
+    "side": "lifeguard:block/cc/alexscaves/scarlet_neodymium_bricks"
+  }
+}

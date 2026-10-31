@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "lifeguard:block/cc/alexscaves/azure_neodymium_bricks"
+  }
+}

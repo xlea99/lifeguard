@@ -1,0 +1,141 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "lifeguard:cc/minecraft/netherite_bricks",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/minecraft/netherite_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/minecraft/netherite_brick_slab",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/minecraft/netherite_brick_vertical_slab",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/minecraft/netherite_brick_wall",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/minecraft/chiseled_netherite_bricks",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/caverns_and_chasms/necromium_bricks",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/caverns_and_chasms/necromium_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/caverns_and_chasms/necromium_brick_slab",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/caverns_and_chasms/necromium_brick_vertical_slab",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/caverns_and_chasms/necromium_brick_wall",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/caverns_and_chasms/chiseled_necromium_bricks",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/etcetera/bismuth_bricks",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/etcetera/bismuth_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/etcetera/bismuth_brick_slab",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/etcetera/bismuth_brick_vertical_slab",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/etcetera/bismuth_brick_wall",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/etcetera/chiseled_bismuth_bricks",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/alexscaves/azure_neodymium_bricks",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/alexscaves/azure_neodymium_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/alexscaves/azure_neodymium_brick_slab",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/alexscaves/azure_neodymium_brick_vertical_slab",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/alexscaves/azure_neodymium_brick_wall",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/alexscaves/chiseled_azure_neodymium_bricks",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/alexscaves/scarlet_neodymium_bricks",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/alexscaves/scarlet_neodymium_brick_stairs",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/alexscaves/scarlet_neodymium_brick_slab",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/alexscaves/scarlet_neodymium_brick_vertical_slab",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/alexscaves/scarlet_neodymium_brick_wall",
+      "required": false
+    },
+    {
+      "id": "lifeguard:cc/alexscaves/chiseled_scarlet_neodymium_bricks",
+      "required": false
+    },
+    {
+      "id": "lifeguard:minecraft/netherite_bars",
+      "required": false
+    },
+    {
+      "id": "lifeguard:caverns_and_chasms/necromium_bars",
+      "required": false
+    },
+    {
+      "id": "lifeguard:alexscaves/azure_neodymium_bars",
+      "required": false
+    },
+    {
+      "id": "lifeguard:alexscaves/scarlet_neodymium_bars",
+      "required": false
+    }
+  ]
+}
