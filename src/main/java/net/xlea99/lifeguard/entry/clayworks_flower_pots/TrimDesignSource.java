@@ -32,6 +32,7 @@ public record TrimDesignSource(List<ResourceLocation> textures) implements Sprit
     ).apply(instance, TrimDesignSource::new));
     private static final ResourceLocation PALETTE_KEY = ResourceLocation.withDefaultNamespace("trims/color_palettes/trim_palette");
     private static final ResourceLocation ARMOR_TRIMS = ResourceLocation.withDefaultNamespace("atlases/armor_trims.json");
+    private static final ResourceLocation BISMUTH_PALETTE = ResourceLocation.fromNamespaceAndPath("etcetera", "trims/color_palettes/bismuth");
     static SpriteSourceType type;
 
     @Override
@@ -45,6 +46,9 @@ public record TrimDesignSource(List<ResourceLocation> textures) implements Sprit
 
     private static Map<String, ResourceLocation> materials(ResourceManager manager) {
         Map<String, ResourceLocation> materials = new TreeMap<>();
+        // Etcetera 2.2.8+ adds bismuth to the armor trims atlas in code, not in a definition file: found by its palette.
+        if (manager.getResource(TEXTURE_ID_CONVERTER.idToFile(BISMUTH_PALETTE)).isPresent())
+            materials.put(ShimmerTrims.MATERIAL, BISMUTH_PALETTE);
         for (Resource resource : manager.getResourceStack(ARMOR_TRIMS)) {
             try (Reader reader = resource.openAsReader()) {
                 JsonElement root = JsonParser.parseReader(reader);
