@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "supplementaries:slimeball_projectile", "required": false },
+    { "id": "supplementaries:cannonball", "required": false }
+  ]
+}

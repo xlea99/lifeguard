@@ -1,0 +1,6 @@
+{
+  "replace": false,
+  "values": [
+    { "id": "caverns_and_chasms:kunai", "required": false }
+  ]
+}

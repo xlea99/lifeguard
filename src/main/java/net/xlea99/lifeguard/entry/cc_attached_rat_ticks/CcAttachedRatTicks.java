@@ -1,0 +1,17 @@
+package net.xlea99.lifeguard.entry.cc_attached_rat_ticks;
+
+import net.xlea99.lifeguard.core.Entries;
+import net.xlea99.lifeguard.core.Entry;
+import net.xlea99.lifeguard.core.Restart;
+import net.xlea99.lifeguard.core.Side;
+import net.xlea99.lifeguard.core.Taste;
+
+public final class CcAttachedRatTicks {
+    /** The doubled tick is the server's; the client already skips it. */
+    public static final Entry ENTRY = Entries.fix("cc_attached_rat_ticks", Taste.NONE)
+        .requiresMods("caverns_and_chasms")
+        .side(Side.SERVER).restart(Restart.GAME);
+
+    private CcAttachedRatTicks() {
+    }
+}
