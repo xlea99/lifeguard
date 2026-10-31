@@ -1,5 +1,6 @@
 package net.xlea99.lifeguard.boot;
 
+import com.bawnorton.mixinsquared.canceller.MixinCancellerRegistrar;
 import java.util.List;
 import java.util.Set;
 import net.xlea99.lifeguard.core.Entries;
@@ -10,7 +11,10 @@ import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/** Decides, entry by entry, which of Lifeguard's mixins exist this session. See {@link MixinGate} for the rule. */
+/**
+ * Decides, entry by entry, which of Lifeguard's mixins exist this session (see {@link MixinGate} for the rule), and
+ * which of other mods' mixins entries switch off ({@link LifeguardMixinCanceller}).
+ */
 public final class LifeguardMixinPlugin implements IMixinConfigPlugin {
     private static final Logger LOGGER = LoggerFactory.getLogger("Lifeguard");
 
@@ -20,6 +24,8 @@ public final class LifeguardMixinPlugin implements IMixinConfigPlugin {
             throw new IllegalStateException("lifeguard.mixins.json's package is " + mixinPackage
                 + ", but the gate expects " + MixinGate.MIXIN_ROOT);
         Boot.start();
+        // Other mods' mixins are applied class by class long after every config's onLoad, so this is in time.
+        MixinCancellerRegistrar.register(new LifeguardMixinCanceller());
     }
 
     @Override

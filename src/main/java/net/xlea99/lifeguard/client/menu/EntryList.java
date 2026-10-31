@@ -262,7 +262,8 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
 
         Heading(MenuModel.Line line) {
             mod = line.headingMod();
-            boolean installed = mod.equals(MenuModel.MINECRAFT) || screen.model().modInstalled(mod);
+            boolean installed = mod.equals(MenuModel.MINECRAFT) || mod.equals(MenuModel.LIFEGUARD)
+                || screen.model().modInstalled(mod);
             MutableComponent name = Component.literal(MenuModel.modName(mod))
                 .append(Component.literal("  " + line.count()).withColor(0xFF7A7A7A));
             if (!installed)
