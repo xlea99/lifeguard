@@ -1,0 +1,10 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "lifeguard:entry",
+      "entry": "species_dyeable_chaindeliers"
+    }
+  ],
+  "type": "lifeguard:species_chaindelier_dyeing",
+  "category": "misc"
+}
