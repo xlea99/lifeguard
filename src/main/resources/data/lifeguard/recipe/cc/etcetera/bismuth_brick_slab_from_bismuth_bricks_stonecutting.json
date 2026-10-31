@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "lifeguard:entry",
+      "entry": "cc_extended_plated_bricks.etcetera"
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "lifeguard:cc/etcetera/bismuth_bricks"
+  },
+  "result": {
+    "count": 2,
+    "id": "lifeguard:cc/etcetera/bismuth_brick_slab"
+  }
+}

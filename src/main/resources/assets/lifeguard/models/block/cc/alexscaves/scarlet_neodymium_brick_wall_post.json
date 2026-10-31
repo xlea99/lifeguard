@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_post",
+  "textures": {
+    "wall": "lifeguard:block/cc/alexscaves/scarlet_neodymium_bricks"
+  }
+}

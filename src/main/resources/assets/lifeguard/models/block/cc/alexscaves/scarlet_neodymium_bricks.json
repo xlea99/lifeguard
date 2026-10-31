@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "lifeguard:block/cc/alexscaves/scarlet_neodymium_bricks"
+  }
+}

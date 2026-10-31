@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -52,10 +53,20 @@ import org.jetbrains.annotations.Nullable;
  *                "only_where_differs_from": "othermod:textures/block/z.png",   // optional: the part to recolor
  *                "colors": {"#RRGGBB": "#RRGGBB", ...},
  *                "with_mcmeta": true,                  // optional: serve the source's .mcmeta too (animations)
+ *                "frames": [{"#RRGGBB": "#RRGGBB", ...}, ...],   // optional, instead of colors: an animation strip
+ *                "mcmeta_from": "othermod:textures/block/w.png", // optional: serve that texture's .mcmeta
+ *                "paint": "lifeguard:textures/recolor_patterns/q.png",   // optional, with paint_colors:
+ *                "paint_colors": {"#mask color": "#RRGGBB", ...},
  *                "strict": true}]}                     // optional: complain if the source has colors the table lacks
  * </pre>
  * {@code strict} is for recolors meant to cover every color: if the source has one the table doesn't list, its mod
  * changed the texture, and the error log says so instead of a half-recolored texture passing quietly.
+ *
+ * <p>{@code paint} draws our own art into the source before it's recolored: where the paint image (laid over the source,
+ * not repeating) has one of {@code paint_colors}' colors, the source's pixel becomes that color, one of the source's own,
+ * and is then recolored like any other (in every frame). That's how a chiseled block gets our glyph in its frame.
+ * {@code frames} makes the output one frame per table, stacked top to bottom, each the whole source recolored by that
+ * table: an animation, timed by the .mcmeta of {@code mcmeta_from} (another texture's, to move in step with it).
  *
  * <p>Sources are read straight from the owning mod's file (its namespace is its mod id), not through other resource
  * packs. The pack sits at the bottom of the list, so a resource pack can still replace any of these textures. It serves
@@ -69,8 +80,9 @@ public final class RecolorPack extends AbstractPackResources {
         {"pack": {"description": "Lifeguard: textures recolored at runtime from installed mods", "pack_format": 34}}
         """.getBytes(StandardCharsets.UTF_8);
 
-    private record Recolor(ResourceLocation source, @Nullable ResourceLocation mask, Map<Integer, Integer> colors,
-                           boolean strict) {
+    /** {@code frames} holds one table per animation frame (just {@code colors} for a still texture). */
+    private record Recolor(ResourceLocation source, @Nullable ResourceLocation mask, List<Map<Integer, Integer>> frames,
+                           @Nullable ResourceLocation paint, Map<Integer, Integer> paintColors, boolean strict) {
     }
 
     /** What the pack serves: textures to generate and the .mcmeta files copied with them. */
@@ -150,13 +162,24 @@ public final class RecolorPack extends AbstractPackResources {
             ResourceLocation source = ResourceLocation.parse(t.get("source").getAsString());
             ResourceLocation mask = t.has("only_where_differs_from")
                 ? ResourceLocation.parse(t.get("only_where_differs_from").getAsString()) : null;
-            Map<Integer, Integer> colors = t.getAsJsonObject("colors").entrySet().stream()
-                .collect(Collectors.toMap(e -> rgb(e.getKey()), e -> rgb(e.getValue().getAsString())));
+            List<Map<Integer, Integer>> frames = t.has("frames")
+                ? t.getAsJsonArray("frames").asList().stream().map(f -> colors(f.getAsJsonObject())).toList()
+                : List.of(colors(t.getAsJsonObject("colors")));
+            ResourceLocation paint = t.has("paint") ? ResourceLocation.parse(t.get("paint").getAsString()) : null;
+            Map<Integer, Integer> paintColors = paint == null ? Map.of() : colors(t.getAsJsonObject("paint_colors"));
             boolean strict = t.has("strict") && t.get("strict").getAsBoolean();
-            served.textures().put(output, new Recolor(source, mask, colors, strict));
+            served.textures().put(output, new Recolor(source, mask, frames, paint, paintColors, strict));
             if (t.has("with_mcmeta") && t.get("with_mcmeta").getAsBoolean())
                 served.mcmetas().put(output.withSuffix(".mcmeta"), source.withSuffix(".mcmeta"));
+            if (t.has("mcmeta_from"))
+                served.mcmetas().put(output.withSuffix(".mcmeta"),
+                    ResourceLocation.parse(t.get("mcmeta_from").getAsString()).withSuffix(".mcmeta"));
         }
+    }
+
+    private static Map<Integer, Integer> colors(JsonObject table) {
+        return table.entrySet().stream()
+            .collect(Collectors.toMap(e -> rgb(e.getKey()), e -> rgb(e.getValue().getAsString())));
     }
 
     private static int rgb(String hex) {
@@ -227,24 +250,38 @@ public final class RecolorPack extends AbstractPackResources {
 
     private static byte[] recolor(ResourceLocation output, Recolor recolor) throws IOException {
         Set<Integer> unknown = new HashSet<>();
+        List<Map<Integer, Integer>> frames = recolor.frames();
         try (NativeImage image = NativeImage.read(read(recolor.source()));
-             NativeImage mask = recolor.mask() == null ? null : NativeImage.read(read(recolor.mask()))) {
-            for (int y = 0; y < image.getHeight(); y++)
-                for (int x = 0; x < image.getWidth(); x++) {
-                    int pixel = image.getPixelRGBA(x, y);
-                    if (pixel >>> 24 == 0 || mask != null && mask.getPixelRGBA(x, y) == pixel)
-                        continue;
-                    Integer to = recolor.colors().get(rgb(pixel));
-                    if (to == null)
-                        unknown.add(rgb(pixel));
-                    else
-                        image.setPixelRGBA(x, y, pixel & 0xFF000000 | abgr(to));
-                }
+             NativeImage mask = recolor.mask() == null ? null : NativeImage.read(read(recolor.mask()));
+             NativeImage paint = recolor.paint() == null ? null : NativeImage.read(read(recolor.paint()));
+             NativeImage out = new NativeImage(image.getWidth(), image.getHeight() * frames.size(), true)) {
+            if (paint != null)
+                for (int y = 0; y < Math.min(image.getHeight(), paint.getHeight()); y++)
+                    for (int x = 0; x < Math.min(image.getWidth(), paint.getWidth()); x++) {
+                        int over = paint.getPixelRGBA(x, y);
+                        Integer to = over >>> 24 == 0 ? null : recolor.paintColors().get(rgb(over));
+                        if (to != null)
+                            image.setPixelRGBA(x, y, 0xFF000000 | abgr(to));
+                    }
+            for (int frame = 0; frame < frames.size(); frame++)
+                for (int y = 0; y < image.getHeight(); y++)
+                    for (int x = 0; x < image.getWidth(); x++) {
+                        int pixel = image.getPixelRGBA(x, y);
+                        int outY = frame * image.getHeight() + y;
+                        out.setPixelRGBA(x, outY, pixel);
+                        if (pixel >>> 24 == 0 || mask != null && mask.getPixelRGBA(x, y) == pixel)
+                            continue;
+                        Integer to = frames.get(frame).get(rgb(pixel));
+                        if (to == null)
+                            unknown.add(rgb(pixel));
+                        else
+                            out.setPixelRGBA(x, outY, pixel & 0xFF000000 | abgr(to));
+                    }
             if (recolor.strict() && !unknown.isEmpty())
                 Lifeguard.LOGGER.error("Lifeguard: {} is only partly recolored: {} has {} colors its recolor doesn't know, so "
                     + "its mod must have changed it; the recolor needs remaking for that version", output, recolor.source(),
                     unknown.size());
-            return image.asByteArray();
+            return out.asByteArray();
         }
     }
 

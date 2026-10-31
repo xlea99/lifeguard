@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/template_wall_side",
+  "textures": {
+    "wall": "lifeguard:block/cc/minecraft/netherite_bricks"
+  }
+}

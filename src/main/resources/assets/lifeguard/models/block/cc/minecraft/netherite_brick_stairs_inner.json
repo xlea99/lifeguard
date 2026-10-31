@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "lifeguard:block/cc/minecraft/netherite_bricks",
+    "top": "lifeguard:block/cc/minecraft/netherite_bricks",
+    "side": "lifeguard:block/cc/minecraft/netherite_bricks"
+  }
+}

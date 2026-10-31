@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "lifeguard:entry",
+      "entry": "cc_extended_plated_bricks"
+    }
+  ],
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "lifeguard:cc/caverns_and_chasms/necromium_bricks"
+  },
+  "result": {
+    "count": 1,
+    "id": "lifeguard:cc/caverns_and_chasms/chiseled_necromium_bricks"
+  }
+}
