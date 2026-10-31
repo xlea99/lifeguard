@@ -12,7 +12,7 @@ import net.xlea99.lifeguard.core.Taste;
  * The textures and names always ship: they only show on an item that already carries one of these runes.
  */
 public final class DyeDepotRunes {
-    public static final Entry ENTRY = Entries.compat("dye_depot_runes", Taste.NONE)
+    public static final Entry ENTRY = Entries.compat("dye_depot_runes", Taste.NONE).home("quark")
         .requiresMods("quark", "dye_depot")
         .side(Side.SERVER).restart(Restart.GAME);
 

@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class CitadelAnimationSmoothing {
     /** Rendering only. */
-    public static final Entry ENTRY = Entries.fix("citadel_animation_smoothing", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("citadel_animation_smoothing", Taste.NONE).home("citadel")
         .requiresMods("citadel")
         .side(Side.CLIENT).restart(Restart.GAME);
 

@@ -349,7 +349,7 @@ public final class LifeguardScreen extends Screen {
                 return true;
             }
             case GLFW.GLFW_KEY_LEFT, GLFW.GLFW_KEY_RIGHT -> {
-                if (selected != null && !selected.children().isEmpty() && !collapseIgnored()
+                if (selected != null && !selected.shownBelow().isEmpty() && !collapseIgnored()
                     && model.collapsed(selected) == (keyCode == GLFW.GLFW_KEY_RIGHT)) {
                     model.toggleCollapsed(selected);
                     rebuildRows();

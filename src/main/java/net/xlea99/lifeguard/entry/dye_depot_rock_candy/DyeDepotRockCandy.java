@@ -11,12 +11,13 @@ public final class DyeDepotRockCandy {
      * The 16 candies are registered whenever both mods are installed, never by the switch: a world may hold them. Off,
      * their recipes and creative tab entries go, and the Confection Oven stops reading them.
      */
-    public static final Entry ENTRY = Entries.compat("dye_depot_rock_candy", Taste.NONE)
+    public static final Entry ENTRY = Entries.compat("dye_depot_rock_candy", Taste.NONE).home("alexscaves")
         .requiresMods("alexscaves", "dye_depot")
         .side(Side.SERVER).restart(Restart.GAME);
 
     /** Where they turn up in the world; the parent only makes them craftable. */
-    public static final Entry CANDY_CAVITY = Entries.compat("candy_cavity", Taste.STRONG).parent(ENTRY)
+    public static final Entry CANDY_CAVITY = Entries.compat("dye_depot_rock_candy_candy_cavity", Taste.STRONG)
+        .requiresEntries(ENTRY).shownUnder(ENTRY)
         .side(Side.SERVER).restart(Restart.GAME);
 
     private DyeDepotRockCandy() {

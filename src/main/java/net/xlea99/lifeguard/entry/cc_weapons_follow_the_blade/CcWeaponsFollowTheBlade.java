@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class CcWeaponsFollowTheBlade {
     /** Damage is dealt on the server. */
-    public static final Entry ENTRY = Entries.fix("cc_weapons_follow_the_blade", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("cc_weapons_follow_the_blade", Taste.NONE).home("caverns_and_chasms")
         .requiresMods("caverns_and_chasms")
         .side(Side.SERVER).restart(Restart.GAME);
 

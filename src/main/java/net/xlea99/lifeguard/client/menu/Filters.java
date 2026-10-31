@@ -77,9 +77,9 @@ final class Filters {
         return search.isBlank() || matchesSearch(entry);
     }
 
-    /** Whether this entry was asked for directly: a ticked mod it (or a parent) needs, or a search it matches. */
+    /** Whether this entry was asked for directly: a ticked mod it (or one it's listed under) needs, or a search hit. */
     private boolean asksFor(Entry entry) {
-        for (Entry at = entry; at != null; at = at.parent())
+        for (Entry at = entry; at != null; at = at.shownUnder())
             if (at.requiredMods().stream().anyMatch(mods::contains))
                 return true;
         return !search.isBlank() && matchesSearch(entry);

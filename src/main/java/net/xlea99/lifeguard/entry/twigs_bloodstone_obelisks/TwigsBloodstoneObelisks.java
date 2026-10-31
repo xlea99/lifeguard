@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class TwigsBloodstoneObelisks {
     /** One mixin on vanilla's structure template loading, for Twigs' templates only. */
-    public static final Entry ENTRY = Entries.fix("twigs_bloodstone_obelisks", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("twigs_bloodstone_obelisks", Taste.NONE).home("twigs")
         .requiresMods("twigs")
         .side(Side.SERVER).restart(Restart.GAME);
 

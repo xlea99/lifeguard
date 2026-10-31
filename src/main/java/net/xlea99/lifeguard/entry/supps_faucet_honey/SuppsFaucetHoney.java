@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class SuppsFaucetHoney {
     /** Faucets pour on the server only. */
-    public static final Entry ENTRY = Entries.fix("supps_faucet_honey", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("supps_faucet_honey", Taste.NONE).home("supplementaries")
         .requiresMods("supplementaries")
         .side(Side.SERVER).restart(Restart.GAME);
 

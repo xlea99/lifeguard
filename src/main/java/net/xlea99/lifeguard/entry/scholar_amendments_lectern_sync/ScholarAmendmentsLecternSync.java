@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class ScholarAmendmentsLecternSync {
     /** The server builds what a lectern sends to clients. */
-    public static final Entry ENTRY = Entries.compat("scholar_amendments_lectern_sync", Taste.NONE)
+    public static final Entry ENTRY = Entries.compat("scholar_amendments_lectern_sync", Taste.NONE).home("scholar")
         .requiresMods("scholar", "amendments")
         .side(Side.SERVER).restart(Restart.GAME);
 

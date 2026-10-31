@@ -4,8 +4,8 @@ import java.util.List;
 
 /**
  * Which of Lifeguard's mixins get applied. Every mixin lives in its entry's package, named after the entry's id:
- * {@code net.xlea99.lifeguard.mixin.jukebox.speakers.SpeakerBlockMixin} belongs to {@code jukebox.speakers}. The
- * package is the whole link, so nothing has to be declared twice and a mixin can't end up ungated by accident.
+ * {@code net.xlea99.lifeguard.mixin.supps_jukebox_speakers.SpeakerBlockMixin} belongs to {@code supps_jukebox_speakers}.
+ * The package is the whole link, so nothing has to be declared twice and a mixin can't end up ungated by accident.
  *
  * <p>Kept free of the mixin library itself so the rule can be tested without a game; the mixin plugin only asks it.
  */
@@ -61,7 +61,7 @@ public final class MixinGate {
         };
     }
 
-    /** {@code net.xlea99.lifeguard.mixin.jukebox.speakers.SpeakerBlockMixin} to {@code jukebox.speakers}. */
+    /** {@code net.xlea99.lifeguard.mixin.supps_jukebox_speakers.SpeakerBlockMixin} to {@code supps_jukebox_speakers}. */
     static String entryPackage(String mixinClassName) {
         if (!mixinClassName.startsWith(MIXIN_ROOT))
             throw new IllegalStateException(mixinClassName + " isn't under " + MIXIN_ROOT);

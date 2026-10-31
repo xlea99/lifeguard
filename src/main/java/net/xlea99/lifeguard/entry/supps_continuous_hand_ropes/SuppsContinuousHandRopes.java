@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class SuppsContinuousHandRopes {
     /** The server moves the blocks; the client only predicts whether the click took. */
-    public static final Entry ENTRY = Entries.tweak("supps_continuous_hand_ropes", Taste.LIGHT)
+    public static final Entry ENTRY = Entries.tweak("supps_continuous_hand_ropes", Taste.LIGHT).home("supplementaries")
         .requiresMods("supplementaries")
         .side(Side.SERVER).restart(Restart.GAME);
 

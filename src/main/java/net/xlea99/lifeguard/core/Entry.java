@@ -15,32 +15,40 @@ import java.util.function.BooleanSupplier;
  * menu, mixin gating, the mod page) reads from that declaration:
  *
  * <pre>{@code
- * Entry JUKEBOX = Entries.feature("jukebox", Taste.LIGHT)
+ * Entry JUKEBOX = Entries.feature("jukebox", Taste.LIGHT).home(Entry.MINECRAFT)
  *     .side(Side.SERVER).restart(Restart.GAME);
- * Entry JUKEBOX_SPEAKERS = Entries.compat("speakers", Taste.LIGHT)
- *     .parent(JUKEBOX).requiresMods("supplementaries")
+ * Entry JUKEBOX_SPEAKERS = Entries.compat("jukebox_speakers", Taste.LIGHT)
+ *     .requiresEntries(JUKEBOX).requiresMods("supplementaries").shownUnder(JUKEBOX)
  *     .side(Side.SERVER).restart(Restart.GAME)
  *     .values(MAX_SPEAKERS);
  * }</pre>
  *
- * <p>Nothing about an entry is implied: side and restart have no defaults, and its words live in the lang file under
- * {@link #nameKey()} and {@link #descKey()}. The declaration methods only work until the registry is frozen at startup;
- * after that the declaration is fixed and only the switch changes.
+ * <p>What an entry needs ({@link #requiresMods}, {@link #requiresEntries}) is load-bearing; where the menu lists it
+ * ({@link #home}, {@link #shownUnder}) is only presentation, and its id is neither: moving an entry in the menu never
+ * touches its id, its config key or its files.
+ *
+ * <p>Nothing about an entry is implied: side, restart and its place in the menu have no defaults, and its words live in
+ * the lang file under {@link #nameKey()} and {@link #descKey()}. The declaration methods only work until the registry is
+ * frozen at startup; after that the declaration is fixed and only the switch changes.
  */
 public final class Entry {
+    /** {@link #home} for Lifeguard's own content (no other mod's idea it extends): the menu's first group. */
+    public static final String LIFEGUARD = "lifeguard";
+    /** {@link #home} for entries about Minecraft itself. */
+    public static final String MINECRAFT = "minecraft";
+
     private final Registry registry;
-    private final String name;
+    private final String id;
     private final EntryClass kind;
     private final Taste taste;
 
-    private Entry parent;
+    private String home;
+    private Entry shownUnder;
     private Side side;
     private Restart restart;
     private Gating gating = Gating.LOAD;
-    private boolean planned;
     private boolean registryShaping;
     private boolean resourcePack;
-    private boolean ownContent;
     private final Map<String, Set<String>> sharedMixins = new LinkedHashMap<>();
     private final List<String> recipeEdits = new ArrayList<>();
     private final List<String> cancelledMixins = new ArrayList<>();
@@ -48,7 +56,7 @@ public final class Entry {
     private final Set<String> requiredMods = new LinkedHashSet<>();
     private final List<Entry> requiredEntries = new ArrayList<>();
     private final List<SubValue<?>> values = new ArrayList<>();
-    private final List<Entry> children = new ArrayList<>();
+    private final List<Entry> shownBelow = new ArrayList<>();
 
     private volatile Switch setting = Switch.AUTO;
 
@@ -58,18 +66,32 @@ public final class Entry {
     private boolean cachedActive;
     private volatile int cachedGeneration = -1;
 
-    Entry(Registry registry, String name, EntryClass kind, Taste taste) {
+    Entry(Registry registry, String id, EntryClass kind, Taste taste) {
         this.registry = registry;
-        this.name = Objects.requireNonNull(name);
+        this.id = Objects.requireNonNull(id);
         this.kind = Objects.requireNonNull(kind);
         this.taste = Objects.requireNonNull(taste);
     }
 
     // --- declaration ---------------------------------------------------------------------------------------------------
 
-    public Entry parent(Entry parent) {
+    /**
+     * The menu group a top-level entry is listed under: a mod it requires (the one it extends), {@link #LIFEGUARD} or
+     * {@link #MINECRAFT}. Presentation only. An entry {@link #shownUnder shown under} another lives in that one's group.
+     */
+    public Entry home(String modId) {
         declaring();
-        this.parent = parent;
+        this.home = Objects.requireNonNull(modId);
+        return this;
+    }
+
+    /**
+     * Lists this entry under {@code entry} in the menu, as part of it. Presentation only: what it actually needs is
+     * {@link #requiresEntries}, which a nested entry usually also names.
+     */
+    public Entry shownUnder(Entry entry) {
+        declaring();
+        this.shownUnder = entry;
         return this;
     }
 
@@ -89,13 +111,6 @@ public final class Entry {
     public Entry runtimeGated() {
         declaring();
         this.gating = Gating.RUNTIME;
-        return this;
-    }
-
-    /** Declared ahead of its code (a port not done yet). Visible in development, dropped from release builds. */
-    public Entry planned() {
-        declaring();
-        this.planned = true;
         return this;
     }
 
@@ -157,20 +172,16 @@ public final class Entry {
         return this;
     }
 
-    /** Lifeguard's own content (no other mod's idea it extends): listed under the menu's Lifeguard group, at the top. */
-    public Entry ownContent() {
-        declaring();
-        this.ownContent = true;
-        return this;
-    }
-
     public Entry requiresMods(String... modIds) {
         declaring();
         Collections.addAll(requiredMods, modIds);
         return this;
     }
 
-    /** Entries elsewhere in the tree this one needs. A parent never needs listing: it is required already. */
+    /**
+     * Entries this one needs: it's only active while they all are. Turning one off silences this entry but keeps its
+     * switch, so turning it back on restores it.
+     */
     public Entry requiresEntries(Entry... entries) {
         declaring();
         // Kept as given, nulls included: a null here means a constant declared later in another class (static init
@@ -190,18 +201,17 @@ public final class Entry {
 
     private void declaring() {
         if (registry.frozen())
-            throw new IllegalStateException(name + ": entries can't change their declaration after startup");
+            throw new IllegalStateException(id + ": entries can't change their declaration after startup");
     }
 
     // --- what it is ----------------------------------------------------------------------------------------------------
 
-    /** The stable key the config file and lang file use, e.g. {@code jukebox.speakers}. Never renamed once shipped. */
+    /**
+     * The stable key the config file, lang file, mixin package and data conditions use, e.g. {@code jukebox_speakers}.
+     * Never renamed once shipped.
+     */
     public String id() {
-        return parent == null ? name : parent.id() + "." + name;
-    }
-
-    public String name() {
-        return name;
+        return id;
     }
 
     public EntryClass kind() {
@@ -212,12 +222,24 @@ public final class Entry {
         return taste;
     }
 
-    public Entry parent() {
-        return parent;
+    /** The menu group it's listed under: its own {@link #home}, or that of the entry it's shown under. */
+    public String home() {
+        return shownUnder == null ? home : shownUnder.home();
     }
 
-    public List<Entry> children() {
-        return Collections.unmodifiableList(children);
+    /** The home as declared (null for an entry shown under another). */
+    String declaredHome() {
+        return home;
+    }
+
+    /** The entry the menu lists this one under, or null for a top-level entry. */
+    public Entry shownUnder() {
+        return shownUnder;
+    }
+
+    /** The entries the menu lists under this one, in declaration order. */
+    public List<Entry> shownBelow() {
+        return Collections.unmodifiableList(shownBelow);
     }
 
     public Side side() {
@@ -232,10 +254,6 @@ public final class Entry {
         return gating;
     }
 
-    public boolean isPlanned() {
-        return planned;
-    }
-
     public boolean isRegistryShaping() {
         return registryShaping;
     }
@@ -247,10 +265,6 @@ public final class Entry {
     /** The shared mixin groups this entry uses, each with the mods it needs installed. */
     public Map<String, Set<String>> sharedMixins() {
         return Collections.unmodifiableMap(sharedMixins);
-    }
-
-    public boolean isOwnContent() {
-        return ownContent;
     }
 
     /** {@code resourcepacks/<id>}: where the entry's pack lives in the jar, if it has one. */
@@ -303,12 +317,8 @@ public final class Entry {
         return registry;
     }
 
-    void addChild(Entry child) {
-        children.add(child);
-    }
-
-    void clearChildren() {
-        children.clear();
+    void addShownBelow(Entry entry) {
+        shownBelow.add(entry);
     }
 
     // --- the switch ----------------------------------------------------------------------------------------------------
@@ -348,13 +358,11 @@ public final class Entry {
     }
 
     /**
-     * Whether everything this entry needs is installed (its mods, its parent's, its required entries'), whatever the
-     * switches say. A runtime-gated entry's mixins load whenever this holds.
+     * Whether everything this entry needs is installed (its mods, and its required entries'), whatever the switches say.
+     * A runtime-gated entry's mixins load whenever this holds.
      */
     public boolean installed() {
         if (!missingMods().isEmpty())
-            return false;
-        if (parent != null && !parent.installed())
             return false;
         for (Entry required : requiredEntries)
             if (!required.installed())
@@ -363,9 +371,8 @@ public final class Entry {
     }
 
     /**
-     * The one question code asks. An entry is active when its parent is active (or it has none), every required mod is
-     * present, every required entry is active, and its switch is on. Turning a parent off silences its children but keeps
-     * their switches, so turning it back on restores them.
+     * The one question code asks. An entry is active when every required mod is present, every required entry is active,
+     * and its switch is on. Where the menu lists it plays no part.
      */
     public boolean active() {
         registry.requireFrozen();
@@ -383,8 +390,6 @@ public final class Entry {
      */
     public boolean activeUnder(SettingsView view) {
         registry.requireFrozen();
-        if (parent != null && !parent.activeUnder(view))
-            return false;
         for (String modId : requiredMods)
             if (!registry.modPresent(modId))
                 return false;

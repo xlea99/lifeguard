@@ -11,7 +11,7 @@ public final class SpeciesSoapWashesStackaticks {
      * Runtime-gated: a right-click is handled on both sides (the client mustn't make the Stackatick sit), so the listener
      * is registered whenever both mods are there and asks the switch. See StackatickSoap.
      */
-    public static final Entry ENTRY = Entries.compat("species_soap_washes_stackaticks", Taste.NONE)
+    public static final Entry ENTRY = Entries.compat("species_soap_washes_stackaticks", Taste.NONE).home("species")
         .requiresMods("species", "supplementaries")
         .side(Side.SERVER).restart(Restart.GAME)
         .runtimeGated();

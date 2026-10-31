@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class NeapolitanAmendmentsMilkshakes {
     /** Cauldrons change on the server (the client predicts the same). */
-    public static final Entry ENTRY = Entries.compat("neapolitan_amendments_milkshakes", Taste.NONE)
+    public static final Entry ENTRY = Entries.compat("neapolitan_amendments_milkshakes", Taste.NONE).home("neapolitan")
         .requiresMods("neapolitan", "amendments")
         .side(Side.SERVER).restart(Restart.GAME);
 

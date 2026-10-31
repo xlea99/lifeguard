@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class CcBoneFluteChecks {
     /** The server takes the commands. See BoneFluteCommands. */
-    public static final Entry ENTRY = Entries.fix("cc_bone_flute_checks", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("cc_bone_flute_checks", Taste.NONE).home("caverns_and_chasms")
         .requiresMods("caverns_and_chasms")
         .side(Side.SERVER).restart(Restart.GAME);
 

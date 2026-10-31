@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class AmLavaBottleDupe {
     /** Moonlight reads its liquids from data on the server, which sends them to players. */
-    public static final Entry ENTRY = Entries.tweak("am_lava_bottle_dupe", Taste.DEEP_END)
+    public static final Entry ENTRY = Entries.tweak("am_lava_bottle_dupe", Taste.DEEP_END).home("alexsmobs")
         .requiresMods("alexsmobs", "moonlight")
         .side(Side.SERVER).restart(Restart.GAME);
 

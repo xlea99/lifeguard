@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class CcStorageDuctItemLoss {
     /** Hoppers and pipes move items on the server. See duct/StorageDucts. */
-    public static final Entry ENTRY = Entries.fix("cc_storage_duct_item_loss", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("cc_storage_duct_item_loss", Taste.NONE).home("caverns_and_chasms")
         .requiresMods("caverns_and_chasms")
         .side(Side.SERVER).restart(Restart.GAME)
         .sharesMixins("cc_storage_ducts", "caverns_and_chasms");

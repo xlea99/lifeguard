@@ -30,14 +30,10 @@ import net.xlea99.lifeguard.sync.RemoteServer;
  * restart, because mixins were decided at startup and a live change would only reach half of them.
  */
 final class MenuModel {
-    /** The mod "needs no other mod" entries are grouped under. */
-    static final String MINECRAFT = "";
-    /** Lifeguard's own content's group ({@link Entry#isOwnContent()}), listed first. A space, so no mod id matches it. */
-    static final String LIFEGUARD = " lifeguard";
-
     /**
-     * One line of the list: a mod heading (its id, MINECRAFT for entries needing no other mod), or an entry at some depth
-     * in its tree. A context line is an ancestor shown only because something under it matches the filters.
+     * One line of the list: a group heading (an entry's {@link Entry#home()}: a mod id, {@link Entry#MINECRAFT} or
+     * {@link Entry#LIFEGUARD}), or an entry at some depth in its tree. A context line is an entry shown only because
+     * something listed under it matches the filters.
      */
     record Line(String headingMod, int count, Entry entry, int depth, boolean context) {
         boolean isHeading() {
@@ -227,8 +223,8 @@ final class MenuModel {
     }
 
     void collapseAllMods() {
-        for (Entry root : registry.roots())
-            collapsedMods.add(homeMod(root));
+        for (Entry top : registry.topLevel())
+            collapsedMods.add(top.home());
     }
 
     void expandAllMods() {
@@ -240,14 +236,14 @@ final class MenuModel {
             collapsedMods.add(mod);
     }
 
-    /** Opens every collapsed ancestor and the entry's mod group, so the entry has a row to scroll to. */
+    /** Opens every collapsed entry it's listed under and its group, so the entry has a row to scroll to. */
     void expandTo(Entry entry) {
-        for (Entry up = entry.parent(); up != null; up = up.parent())
+        for (Entry up = entry.shownUnder(); up != null; up = up.shownUnder())
             collapsed.remove(up);
-        collapsedMods.remove(homeMod(rootOf(entry)));
+        collapsedMods.remove(entry.home());
     }
 
-    /** Entries elsewhere in the tree that list this one in their requirements. */
+    /** Entries that list this one in their requirements. */
     List<Entry> requiredBy(Entry entry) {
         List<Entry> dependents = new ArrayList<>();
         for (Entry other : registry.entries())
@@ -258,8 +254,6 @@ final class MenuModel {
 
     /** Why an entry is on or off under the draft, first reason first: the same order the rule checks them in. */
     Reason why(Entry entry) {
-        if (entry.parent() != null && !entry.parent().activeUnder(draft))
-            return new Reason(false, Reason.Kind.PARENT_OFF, entry.parent());
         if (!entry.missingMods().isEmpty())
             return new Reason(false, Reason.Kind.MISSING_MODS, null);
         for (Entry required : entry.requiredEntries())
@@ -270,7 +264,7 @@ final class MenuModel {
     }
 
     record Reason(boolean active, Kind kind, Entry because) {
-        enum Kind { PARENT_OFF, MISSING_MODS, REQUIRED_OFF, PROFILE, OVERRIDE }
+        enum Kind { MISSING_MODS, REQUIRED_OFF, PROFILE, OVERRIDE }
     }
 
     void toggleCollapsed(Entry entry) {
@@ -279,65 +273,55 @@ final class MenuModel {
     }
 
     /**
-     * Headings by mod, each tree under its root's home mod (the first mod its root requires; Minecraft for none), so a
-     * tree is never split across headings. Minecraft first, then mods by name; inside each, Feature, Tweak, Compat, Fix,
-     * then declaration order.
+     * Headings by group (each top-level entry's {@link Entry#home()}; everything shown under it comes along, so a tree is
+     * never split across headings). Lifeguard first, then Minecraft, then mods by name; inside each, Feature, Tweak,
+     * Compat, Fix, then declaration order.
      *
-     * <p>Only entries the filters let through, plus their ancestors greyed as context, so nothing shows without where it
-     * lives. A collapsed mod group keeps its heading and nothing under it. While any filter is on, collapsing (entries
-     * and groups alike) is ignored: a match is never hidden inside a closed parent.
+     * <p>Only entries the filters let through, plus the entries they're listed under greyed as context, so nothing shows
+     * without where it lives. A collapsed group keeps its heading and nothing under it. While any filter is on, collapsing
+     * (entries and groups alike) is ignored: a match is never hidden inside a closed entry.
      */
     List<Line> lines(Filters filters) {
         Set<Entry> matching = matching(filters);
         Set<Entry> shown = new HashSet<>(matching);
         for (Entry entry : matching)
-            for (Entry up = entry.parent(); up != null; up = up.parent())
+            for (Entry up = entry.shownUnder(); up != null; up = up.shownUnder())
                 shown.add(up);
         boolean ignoreCollapse = filters.any();
 
-        Map<String, List<Entry>> rootsByMod = new HashMap<>();
-        for (Entry root : registry.roots())
-            rootsByMod.computeIfAbsent(homeMod(root), mod -> new ArrayList<>()).add(root);
-        List<String> mods = new ArrayList<>(rootsByMod.keySet());
-        mods.sort(Comparator.comparing((String mod) -> !mod.equals(LIFEGUARD))
-            .thenComparing(mod -> !mod.equals(MINECRAFT))
-            .thenComparing(mod -> modName(mod).toLowerCase(Locale.ROOT)));
+        Map<String, List<Entry>> topByGroup = new HashMap<>();
+        for (Entry top : registry.topLevel())
+            topByGroup.computeIfAbsent(top.home(), group -> new ArrayList<>()).add(top);
+        List<String> groups = new ArrayList<>(topByGroup.keySet());
+        groups.sort(Comparator.comparing((String group) -> !group.equals(Entry.LIFEGUARD))
+            .thenComparing(group -> !group.equals(Entry.MINECRAFT))
+            .thenComparing(group -> modName(group).toLowerCase(Locale.ROOT)));
 
         List<Line> lines = new ArrayList<>();
-        for (String mod : mods) {
-            List<Entry> roots = new ArrayList<>(rootsByMod.get(mod));
-            roots.sort(Comparator.comparing(Entry::kind)); // stable: declaration order within a class
+        for (String group : groups) {
+            List<Entry> tops = new ArrayList<>(topByGroup.get(group));
+            tops.sort(Comparator.comparing(Entry::kind)); // stable: declaration order within a class
             List<Line> section = new ArrayList<>();
-            for (Entry root : roots)
-                addTree(section, root, 0, shown, matching, ignoreCollapse);
+            for (Entry top : tops)
+                addTree(section, top, 0, shown, matching, ignoreCollapse);
             if (section.isEmpty())
                 continue;
             int count = 0;
             for (Entry entry : matching)
-                if (homeMod(rootOf(entry)).equals(mod))
+                if (entry.home().equals(group))
                     count++;
-            lines.add(new Line(mod, count, null, 0, false));
-            if (ignoreCollapse || !collapsedMods.contains(mod))
+            lines.add(new Line(group, count, null, 0, false));
+            if (ignoreCollapse || !collapsedMods.contains(group))
                 lines.addAll(section);
         }
         return lines;
     }
 
-    /**
-     * Where a root's tree is listed: Lifeguard's own group for our own content, else the first mod it requires (the one
-     * it extends), or Minecraft if none.
-     */
-    static String homeMod(Entry root) {
-        if (root.isOwnContent())
-            return LIFEGUARD;
-        return root.requiredMods().isEmpty() ? MINECRAFT : root.requiredMods().iterator().next();
-    }
-
-    /** A mod's display name, from our lang file; Minecraft for the no-mod group; the id as a last resort. */
+    /** A group's display name: Lifeguard and Minecraft from our menu words, a mod from our lang file, else its id. */
     static String modName(String modId) {
-        if (modId.equals(MINECRAFT))
+        if (modId.equals(Entry.MINECRAFT))
             return I18n.get("lifeguard.menu.group.minecraft");
-        if (modId.equals(LIFEGUARD))
+        if (modId.equals(Entry.LIFEGUARD))
             return I18n.get("lifeguard.menu.group.lifeguard");
         String key = "lifeguard.mod." + modId;
         return I18n.exists(key) ? I18n.get(key) : modId;
@@ -391,13 +375,6 @@ final class MenuModel {
         return count;
     }
 
-    private static Entry rootOf(Entry entry) {
-        Entry at = entry;
-        while (at.parent() != null)
-            at = at.parent();
-        return at;
-    }
-
     private void addTree(List<Line> lines, Entry entry, int depth, Set<Entry> shown, Set<Entry> matching,
                          boolean ignoreCollapse) {
         if (!shown.contains(entry))
@@ -405,8 +382,8 @@ final class MenuModel {
         lines.add(new Line(null, 0, entry, depth, !matching.contains(entry)));
         if (!ignoreCollapse && collapsed.contains(entry))
             return;
-        for (Entry child : entry.children())
-            addTree(lines, child, depth + 1, shown, matching, ignoreCollapse);
+        for (Entry below : entry.shownBelow())
+            addTree(lines, below, depth + 1, shown, matching, ignoreCollapse);
     }
 
     // --- saving --------------------------------------------------------------------------------------------------------

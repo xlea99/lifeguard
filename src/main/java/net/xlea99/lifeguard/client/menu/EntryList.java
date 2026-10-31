@@ -262,7 +262,8 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
 
         Heading(MenuModel.Line line) {
             mod = line.headingMod();
-            boolean installed = mod.equals(MenuModel.MINECRAFT) || mod.equals(MenuModel.LIFEGUARD)
+            boolean installed = mod.equals(net.xlea99.lifeguard.core.Entry.MINECRAFT)
+                || mod.equals(net.xlea99.lifeguard.core.Entry.LIFEGUARD)
                 || screen.model().modInstalled(mod);
             MutableComponent name = Component.literal(MenuModel.modName(mod))
                 .append(Component.literal("  " + line.count()).withColor(0xFF7A7A7A));
@@ -338,7 +339,7 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
             renderGuides(graphics, base, glyphX, top);
             TasteGlyphs.draw(graphics, font, entry.taste(), glyphX, top + (height - TasteGlyphs.HEIGHT) / 2 + 1);
             arrowLeft = glyphX + TasteGlyphs.width(font) + 3;
-            if (!entry.children().isEmpty())
+            if (!entry.shownBelow().isEmpty())
                 graphics.drawString(font, model.collapsed(entry) && !screen.collapseIgnored() ? "▸" : "▾", arrowLeft,
                     textY, 0xFF9A9A9A, false);
             int textX = arrowLeft + 7;
@@ -434,7 +435,7 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
                 }
                 return Component.translatable("lifeguard.menu.needs", names);
             }
-            return entry.isPlanned() ? Component.translatable("lifeguard.menu.planned") : null;
+            return null;
         }
 
         boolean overSwitch(double mouseX) {
@@ -450,7 +451,7 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
 
         @Override
         public boolean mouseClicked(double mouseX, double mouseY, int button) {
-            if (button == 0 && !entry.children().isEmpty() && !screen.collapseIgnored() && mouseX >= arrowLeft
+            if (button == 0 && !entry.shownBelow().isEmpty() && !screen.collapseIgnored() && mouseX >= arrowLeft
                 && mouseX < arrowLeft + 7) {
                 screen.model().toggleCollapsed(entry);
                 screen.rebuildRows();

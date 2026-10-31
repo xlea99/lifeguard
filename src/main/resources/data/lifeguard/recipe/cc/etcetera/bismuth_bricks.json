@@ -2,7 +2,7 @@
   "neoforge:conditions": [
     {
       "type": "lifeguard:entry",
-      "entry": "cc_extended_plated_bricks.etcetera"
+      "entry": "cc_extended_plated_bricks_etcetera"
     }
   ],
   "type": "minecraft:crafting_shaped",

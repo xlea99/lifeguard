@@ -13,6 +13,7 @@ public final class VanillaBackportResinTrimIcons {
      * old look, never icons pointing at sprites that aren't there.
      */
     public static final Entry ENTRY = Entries.compat("vanilla_backport_resin_trim_icons", Taste.NONE)
+        .home("vanillabackport")
         .requiresMods("vanillabackport", "blueprint")
         .side(Side.CLIENT).restart(Restart.GAME)
         .resourcePack();

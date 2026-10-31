@@ -12,7 +12,7 @@ public final class EndermanHeadReach {
     public static final SubValue.Int RANGE = SubValue.ofInt("range", 48, 1, 64);
 
     /** The head checks for watchers on the server. */
-    public static final Entry ENTRY = Entries.tweak("enderman_head_reach", Taste.LIGHT)
+    public static final Entry ENTRY = Entries.tweak("enderman_head_reach", Taste.LIGHT).home("supplementaries")
         .requiresMods("supplementaries")
         .side(Side.SERVER).restart(Restart.GAME)
         .values(RANGE);

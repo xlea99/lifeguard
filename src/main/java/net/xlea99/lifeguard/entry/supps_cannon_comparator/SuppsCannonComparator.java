@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class SuppsCannonComparator {
     /** Comparators read blocks on the server only. */
-    public static final Entry ENTRY = Entries.fix("supps_cannon_comparator", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("supps_cannon_comparator", Taste.NONE).home("supplementaries")
         .requiresMods("supplementaries")
         .side(Side.SERVER).restart(Restart.GAME);
 

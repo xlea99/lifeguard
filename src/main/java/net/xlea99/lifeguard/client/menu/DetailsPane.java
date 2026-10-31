@@ -78,8 +78,6 @@ final class DetailsPane {
         reserveReason(x, y);
         y[0] += 4;
         text(font, Component.translatable(entry.descKey()), x, y, inner, 0xFFD8D8D8, null);
-        if (entry.isPlanned())
-            text(font, Component.translatable("lifeguard.menu.details.planned").withStyle(ChatFormatting.ITALIC), x, y, inner, 0xFF808080, null);
         if (model.locked(entry))
             text(font, Component.translatable(model.brokenFile(entry.side()).isPresent()
                 ? "lifeguard.menu.details.broken_note" : "lifeguard.menu.details.server_note"), x, y, inner, 0xFFE0A040, null);
@@ -89,8 +87,6 @@ final class DetailsPane {
 
         y[0] += 4;
         mods(font, x, y, inner);
-        links(font, "lifeguard.menu.details.parent", entry.parent() == null ? List.of() : List.of(entry.parent()), x, y, inner);
-        links(font, "lifeguard.menu.details.children", entry.children(), x, y, inner);
         links(font, "lifeguard.menu.details.requires", entry.requiredEntries(), x, y, inner);
         links(font, "lifeguard.menu.details.required_by", model.requiredBy(entry), x, y, inner);
     }
@@ -104,8 +100,6 @@ final class DetailsPane {
 
     private Component reasonText(MenuModel.Reason reason) {
         return switch (reason.kind()) {
-            case PARENT_OFF -> Component.translatable("lifeguard.menu.details.why.parent_off",
-                Component.translatable(reason.because().nameKey()));
             case MISSING_MODS -> Component.translatable("lifeguard.menu.details.why.missing_mods", modNames(entry.missingMods()));
             case REQUIRED_OFF -> Component.translatable("lifeguard.menu.details.why.required_off",
                 Component.translatable(reason.because().nameKey()));

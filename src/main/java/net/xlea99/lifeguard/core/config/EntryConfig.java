@@ -37,8 +37,9 @@ import net.xlea99.lifeguard.core.Taste;
  *
  * <p>The file holds the side's profile and one tri-state switch per entry, plus any sub-values. Its text is generated
  * from the declarations every time, comments included, so the comments can't drift from the code; only the values are
- * the player's. Sections are the class, nesting is the tree: a child sits inside its parent's table, under its root's
- * class. Reading looks for an entry under every class section, so re-classing an entry keeps the player's choice.
+ * the player's. Each entry is one table, {@code [<class section>.<id>]}: where the menu lists an entry plays no part, so
+ * moving it there never moves the player's choice. Reading looks for an entry under every class section, so re-classing
+ * an entry keeps the player's choice too.
  *
  * <p>What's left in the file that no entry claims is kept and written back, so a config survives a version that removes
  * or renames something. A file that doesn't parse is never overwritten: defaults are used for that session and the
@@ -245,9 +246,9 @@ public final class EntryConfig {
         Set<List<String>> written = new HashSet<>();
         written.add(List.of());
         for (EntryClass kind : EntryClass.values())
-            for (Entry root : registry.roots())
-                if (root.kind() == kind)
-                    writeTree(out, root, written, view);
+            for (Entry entry : registry.entries())
+                if (entry.kind() == kind && entry.side() == side)
+                    writeEntry(out, entry, written, view);
 
         boolean header = false;
         for (List<String> path : unknown.keySet()) {
@@ -263,28 +264,21 @@ public final class EntryConfig {
         return out.toString();
     }
 
-    private void writeTree(StringBuilder out, Entry entry, Set<List<String>> written, SettingsView view) {
-        if (entry.side() == side) {
-            List<String> path = tablePath(entry);
-            int depth = path.size() - 1;
-            String indent = "\t".repeat(depth - 1);
-            String inner = "\t".repeat(depth);
-            out.append('\n').append(indent).append('[').append(Toml.tablePath(path)).append(']').append('\n');
-            comment(out, inner, summary(entry));
-            for (String line : wrap(texts.lang(entry.descKey())))
-                comment(out, inner, line);
-            comment(out, inner, autoNote(entry, view));
-            out.append(inner).append(ENABLED_KEY).append(" = ").append(Toml.string(view.setting(entry).id())).append('\n');
-            for (SubValue<?> value : entry.values()) {
-                comment(out, inner, texts.lang(value.nameKey()) + range(value) + ", default " + value.defaultValue());
-                out.append(inner).append(Toml.key(value.name())).append(" = ").append(Toml.value(view.value(value))).append('\n');
-            }
-            writeUnknown(out, path, depth);
-            written.add(path);
+    private void writeEntry(StringBuilder out, Entry entry, Set<List<String>> written, SettingsView view) {
+        List<String> path = tablePath(entry);
+        String inner = "\t";
+        out.append('\n').append('[').append(Toml.tablePath(path)).append(']').append('\n');
+        comment(out, inner, summary(entry));
+        for (String line : wrap(texts.lang(entry.descKey())))
+            comment(out, inner, line);
+        comment(out, inner, autoNote(entry, view));
+        out.append(inner).append(ENABLED_KEY).append(" = ").append(Toml.string(view.setting(entry).id())).append('\n');
+        for (SubValue<?> value : entry.values()) {
+            comment(out, inner, texts.lang(value.nameKey()) + range(value) + ", default " + value.defaultValue());
+            out.append(inner).append(Toml.key(value.name())).append(" = ").append(Toml.value(view.value(value))).append('\n');
         }
-        // A child on the other side still lives under its parent; it's just written in the other file.
-        for (Entry child : entry.children())
-            writeTree(out, child, written, view);
+        writeUnknown(out, path, 1);
+        written.add(path);
     }
 
     private void writeUnknown(StringBuilder out, List<String> path, int depth) {
@@ -325,8 +319,6 @@ public final class EntryConfig {
                 names.add(texts.modName(modId));
             asides.add("does nothing: " + String.join(", ", names) + (names.size() == 1 ? " isn't" : " aren't") + " installed");
         }
-        if (entry.isPlanned())
-            asides.add("planned: no code yet");
         return asides.isEmpty() ? note : note + " (" + String.join("; ", asides) + ")";
     }
 
@@ -359,7 +351,7 @@ public final class EntryConfig {
 
     // --- paths ---------------------------------------------------------------------------------------------------------
 
-    /** The class section a tree lives in: its root's class, plural. */
+    /** The section an entry lives in: its class, plural. */
     static String section(EntryClass kind) {
         return switch (kind) {
             case FEATURE -> "features";
@@ -370,7 +362,7 @@ public final class EntryConfig {
     }
 
     private static List<String> tablePath(Entry entry) {
-        return pathUnder(section(root(entry).kind()), entry);
+        return pathUnder(section(entry.kind()), entry);
     }
 
     private static List<List<String>> candidatePaths(Entry entry) {
@@ -385,17 +377,7 @@ public final class EntryConfig {
     }
 
     private static List<String> pathUnder(String section, Entry entry) {
-        List<String> path = new ArrayList<>();
-        path.add(section);
-        path.addAll(List.of(entry.id().split("\\.")));
-        return path;
-    }
-
-    private static Entry root(Entry entry) {
-        Entry at = entry;
-        while (at.parent() != null)
-            at = at.parent();
-        return at;
+        return List.of(section, entry.id());
     }
 
     private List<Entry> sideEntries() {

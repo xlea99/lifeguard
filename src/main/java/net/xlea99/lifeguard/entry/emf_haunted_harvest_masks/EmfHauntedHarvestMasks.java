@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class EmfHauntedHarvestMasks {
     /** Only how the mask is drawn. */
-    public static final Entry ENTRY = Entries.compat("emf_haunted_harvest_masks", Taste.NONE)
+    public static final Entry ENTRY = Entries.compat("emf_haunted_harvest_masks", Taste.NONE).home("hauntedharvest")
         .requiresMods("hauntedharvest", "entity_model_features")
         .side(Side.CLIENT).restart(Restart.GAME);
 

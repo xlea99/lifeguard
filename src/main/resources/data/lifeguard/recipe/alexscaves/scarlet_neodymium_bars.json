@@ -2,7 +2,7 @@
   "neoforge:conditions": [
     {
       "type": "lifeguard:entry",
-      "entry": "extended_metal_bars.alexscaves",
+      "entry": "extended_metal_bars_alexscaves",
       "and": [
         {
           "type": "neoforge:mod_loaded",

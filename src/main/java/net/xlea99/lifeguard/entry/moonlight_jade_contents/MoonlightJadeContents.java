@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class MoonlightJadeContents {
     /** Only what Jade shows; the contents are already on the client. */
-    public static final Entry ENTRY = Entries.compat("moonlight_jade_contents", Taste.NONE)
+    public static final Entry ENTRY = Entries.compat("moonlight_jade_contents", Taste.NONE).home("moonlight")
         .requiresMods("moonlight", "jade")
         .side(Side.CLIENT).restart(Restart.GAME);
 

@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class AmendmentsHangingPotNames {
     /** Only what Jade shows. */
-    public static final Entry ENTRY = Entries.compat("amendments_hanging_pot_names", Taste.NONE)
+    public static final Entry ENTRY = Entries.compat("amendments_hanging_pot_names", Taste.NONE).home("amendments")
         .requiresMods("amendments", "jade")
         .side(Side.CLIENT).restart(Restart.GAME);
 

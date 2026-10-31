@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class AmendmentsLavaDripLayers {
     /** Dripstone drips on the server. */
-    public static final Entry ENTRY = Entries.fix("amendments_lava_drip_layers", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("amendments_lava_drip_layers", Taste.NONE).home("amendments")
         .requiresMods("amendments")
         .side(Side.SERVER).restart(Restart.GAME);
 
