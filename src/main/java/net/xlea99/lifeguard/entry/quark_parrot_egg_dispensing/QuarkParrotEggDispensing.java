@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class QuarkParrotEggDispensing {
     /** No mixins: a dispenser behavior registered at startup ({@link ParrotEggDispensers}) when this is active. */
-    public static final Entry ENTRY = Entries.fix("quark_parrot_egg_dispensing", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("quark_parrot_egg_dispensing", Taste.NONE).home("quark")
         .requiresMods("quark")
         .side(Side.SERVER).restart(Restart.GAME);
 

@@ -14,7 +14,7 @@ public final class RuBrokenSounds {
      * in RU's {@code sounds.json}). An entry rather than loose data only so that packs without Regions Unexplored don't
      * log a missing-file warning per sound; off is RU's sounds as shipped.
      */
-    public static final Entry ENTRY = Entries.fix("ru_broken_sounds", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("ru_broken_sounds", Taste.NONE).home("regions_unexplored")
         .requiresMods("regions_unexplored")
         .side(Side.CLIENT).restart(Restart.GAME)
         .resourcePack();

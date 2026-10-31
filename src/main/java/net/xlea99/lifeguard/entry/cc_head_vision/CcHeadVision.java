@@ -13,7 +13,7 @@ import net.xlea99.lifeguard.core.Taste;
  */
 public final class CcHeadVision {
     /** Only what you see. */
-    public static final Entry ENTRY = Entries.feature("cc_head_vision", Taste.STRONG)
+    public static final Entry ENTRY = Entries.feature("cc_head_vision", Taste.STRONG).home("caverns_and_chasms")
         .requiresMods("caverns_and_chasms", "supplementaries")
         .side(Side.CLIENT).restart(Restart.GAME)
         .resourcePack();

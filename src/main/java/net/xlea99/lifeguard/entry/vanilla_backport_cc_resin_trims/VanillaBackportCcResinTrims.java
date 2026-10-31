@@ -14,6 +14,7 @@ public final class VanillaBackportCcResinTrims {
      * not loose assets: without VB the resin palette is missing and every pattern would log an error at each reload.
      */
     public static final Entry ENTRY = Entries.compat("vanilla_backport_cc_resin_trims", Taste.NONE)
+        .home("vanillabackport")
         .requiresMods("vanillabackport", "caverns_and_chasms")
         .side(Side.CLIENT).restart(Restart.GAME)
         .resourcePack();

@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class SuppsPedestalCompat {
     /** Visual: only the pedestal renderer changes. */
-    public static final Entry ENTRY = Entries.compat("supps_pedestal_compat", Taste.NONE)
+    public static final Entry ENTRY = Entries.compat("supps_pedestal_compat", Taste.NONE).home("supplementaries")
         .requiresMods("supplementaries", "alexscaves")
         .side(Side.CLIENT).restart(Restart.GAME);
 

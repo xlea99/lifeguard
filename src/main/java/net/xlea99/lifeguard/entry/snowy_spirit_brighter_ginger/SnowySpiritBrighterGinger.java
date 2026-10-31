@@ -12,7 +12,7 @@ public final class SnowySpiritBrighterGinger {
      * x0.92, a little brighter; icing and candy bits map to themselves), from {@code lifeguard:recolors/snowy_spirit_ginger.json}
      * applied to the player's own Snowy Spirit textures ({@code client/SpecRecolors}): its art can't ship, only be recolored.
      */
-    public static final Entry ENTRY = Entries.tweak("snowy_spirit_brighter_ginger", Taste.DEEP_END)
+    public static final Entry ENTRY = Entries.tweak("snowy_spirit_brighter_ginger", Taste.DEEP_END).home("snowyspirit")
         .requiresMods("snowyspirit")
         .side(Side.CLIENT).restart(Restart.GAME);
 

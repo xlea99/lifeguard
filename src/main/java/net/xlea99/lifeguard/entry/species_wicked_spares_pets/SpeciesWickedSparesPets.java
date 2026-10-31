@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class SpeciesWickedSparesPets {
     /** Haunting is decided on the server. */
-    public static final Entry ENTRY = Entries.fix("species_wicked_spares_pets", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("species_wicked_spares_pets", Taste.NONE).home("species")
         .requiresMods("species")
         .side(Side.SERVER).restart(Restart.GAME);
 

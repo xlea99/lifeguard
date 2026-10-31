@@ -12,6 +12,7 @@ public final class CcStorageDuctSpanLimit {
     public static final SubValue.Int MAX_SPAN = SubValue.ofInt("max_span", 8, 1, 64);
     /** Networks are built and opened on the server. See duct/StorageDucts. */
     public static final Entry ENTRY = Entries.tweak("cc_storage_duct_span_limit", Taste.LIGHT)
+        .home("caverns_and_chasms")
         .requiresMods("caverns_and_chasms")
         .side(Side.SERVER).restart(Restart.GAME)
         .sharesMixins("cc_storage_ducts", "caverns_and_chasms")

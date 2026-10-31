@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class SuppsSoapLoreFirst {
     /** Runtime-gated: crafting previews its result on the client. */
-    public static final Entry ENTRY = Entries.fix("supps_soap_lore_first", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("supps_soap_lore_first", Taste.NONE).home("supplementaries")
         .requiresMods("supplementaries")
         .side(Side.SERVER).restart(Restart.GAME)
         .runtimeGated();

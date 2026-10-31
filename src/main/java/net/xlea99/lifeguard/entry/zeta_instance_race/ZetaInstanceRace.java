@@ -11,7 +11,7 @@ public final class ZetaInstanceRace {
      * The race happens in every game, client and dedicated server alike, while mods are constructed: long before any
      * world, so it's load-gated and read once. Server side so a dedicated server reads it too.
      */
-    public static final Entry ENTRY = Entries.fix("zeta_instance_race", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("zeta_instance_race", Taste.NONE).home("zeta")
         .requiresMods("zeta")
         .side(Side.SERVER).restart(Restart.GAME);
 

@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class SpeciesSwapperResetsFall {
     /** The swap happens on the server. */
-    public static final Entry ENTRY = Entries.tweak("species_swapper_resets_fall", Taste.LIGHT)
+    public static final Entry ENTRY = Entries.tweak("species_swapper_resets_fall", Taste.LIGHT).home("species")
         .requiresMods("species")
         .side(Side.SERVER).restart(Restart.GAME);
 

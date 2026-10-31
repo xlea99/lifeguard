@@ -13,7 +13,7 @@ public final class SrmPersonalitySnow {
      * rules are gone, and with Personality's option off, unsupported snow just floats. Its three snow mixins are
      * switched off unless its option is on and SRM's gravity is off (see {@link FallingSnowOwner}).
      */
-    public static final Entry ENTRY = Entries.compat("srm_personality_snow", Taste.NONE)
+    public static final Entry ENTRY = Entries.compat("srm_personality_snow", Taste.NONE).home("snowrealmagic")
         .requiresMods("snowrealmagic", "personality")
         .side(Side.SERVER).restart(Restart.GAME)
         .cancelsMixins(FallingSnowOwner::personalityYields,

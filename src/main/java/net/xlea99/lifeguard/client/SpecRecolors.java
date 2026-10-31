@@ -49,6 +49,11 @@ public final class SpecRecolors {
     private SpecRecolors() {
     }
 
+    /** A spec by name: {@code assets/lifeguard/recolors/<name>.json}. */
+    public static ResourceLocation spec(String name) {
+        return ResourceLocation.fromNamespaceAndPath(Lifeguard.MODID, "recolors/" + name + ".json");
+    }
+
     /** {@code id} names the entry in the log and the pack; {@code spec} is a {@code lifeguard:recolors/*.json}. */
     public static void register(String id, ResourceLocation spec, String... namespaces) {
         CONSTRUCTING.set(List.of(namespaces));

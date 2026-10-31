@@ -11,7 +11,7 @@ public final class SpawnRuPineifyRottenWood {
      * Deep End's call: rotten wood as a drained pine. Only textures, models and blockstates; the bark and stripped
      * side ship (Regions Unexplored's MIT art, recolored), so Regions Unexplored itself isn't needed.
      */
-    public static final Entry ENTRY = Entries.tweak("spawn_ru_pineify_rotten_wood", Taste.DEEP_END)
+    public static final Entry ENTRY = Entries.tweak("spawn_ru_pineify_rotten_wood", Taste.DEEP_END).home("spawn")
         .requiresMods("spawn")
         .side(Side.CLIENT).restart(Restart.GAME)
         .resourcePack();

@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class SuppsGunpowderLightsNuke {
     /** Gunpowder burns on the server. */
-    public static final Entry ENTRY = Entries.fix("supps_gunpowder_lights_nuke", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("supps_gunpowder_lights_nuke", Taste.NONE).home("supplementaries")
         .requiresMods("supplementaries")
         .side(Side.SERVER).restart(Restart.GAME);
 

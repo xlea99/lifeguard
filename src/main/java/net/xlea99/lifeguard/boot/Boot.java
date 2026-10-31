@@ -81,7 +81,7 @@ public final class Boot {
         LoadingModList mods = LoadingModList.get();
         registry.setModPresence(modId -> mods.getModFileById(modId) != null);
         // Throws, listing every problem, if a declaration is wrong: a crash here is a bug in Lifeguard, found early.
-        registry.freeze(lang.keySet(), !FMLLoader.isProduction());
+        registry.freeze(lang.keySet());
         checkResourcePacks(registry);
         checkRecipeEdits(registry);
 
@@ -152,10 +152,8 @@ public final class Boot {
     }
 
     private static String summary(Registry registry) {
-        int active = 0, inert = 0, planned = 0;
+        int active = 0, inert = 0;
         for (Entry entry : registry.entries()) {
-            if (entry.isPlanned())
-                planned++;
             if (!entry.installed())
                 inert++;
             else if (entry.active())
@@ -165,8 +163,6 @@ public final class Boot {
         int total = registry.entries().size();
         out.append(total).append(total == 1 ? " entry, " : " entries, ").append(active).append(" active, ")
             .append(inert).append(" missing a mod");
-        if (planned > 0)
-            out.append(", ").append(planned).append(" planned");
         out.append(" · server profile ").append(registry.profile(Side.SERVER).id());
         if (clientConfig != null)
             out.append(" · client profile ").append(registry.profile(Side.CLIENT).id());

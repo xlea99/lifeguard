@@ -11,7 +11,7 @@ public final class CcGlareGrumpiness {
      * Runtime-gated: a Glare works out its grumpiness on both sides every tick (the server's is the one that counts), so
      * both ask the switch the server synced.
      */
-    public static final Entry ENTRY = Entries.fix("cc_glare_grumpiness", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("cc_glare_grumpiness", Taste.NONE).home("caverns_and_chasms")
         .requiresMods("caverns_and_chasms")
         .side(Side.SERVER).restart(Restart.GAME)
         .runtimeGated();

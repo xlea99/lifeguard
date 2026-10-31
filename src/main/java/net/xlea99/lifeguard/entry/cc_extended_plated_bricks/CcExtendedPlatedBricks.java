@@ -13,19 +13,22 @@ public final class CcExtendedPlatedBricks {
      * can't be crafted. See block/PlatedBricks.
      */
     public static final Entry ENTRY = Entries.compat("cc_extended_plated_bricks", Taste.LIGHT)
+        .home("caverns_and_chasms")
         .requiresMods("caverns_and_chasms")
         .side(Side.SERVER).restart(Restart.GAME)
         .runtimeGated();
 
     /** Azure and scarlet neodymium, together. Their bricks are magnets (magnet/Magnets): off, they stop pushing and pulling. */
-    public static final Entry ALEXSCAVES = Entries.compat("alexscaves", Taste.LIGHT).parent(ENTRY)
+    public static final Entry ALEXSCAVES = Entries.compat("cc_extended_plated_bricks_alexscaves", Taste.LIGHT)
+        .requiresEntries(ENTRY).shownUnder(ENTRY)
         .requiresMods("alexscaves")
         .side(Side.SERVER).restart(Restart.GAME)
         .runtimeGated()
         .sharesMixins("ac_magnets", "alexscaves");
 
     /** Etcetera's bismuth. */
-    public static final Entry ETCETERA = Entries.compat("etcetera", Taste.LIGHT).parent(ENTRY)
+    public static final Entry ETCETERA = Entries.compat("cc_extended_plated_bricks_etcetera", Taste.LIGHT)
+        .requiresEntries(ENTRY).shownUnder(ENTRY)
         .requiresMods("etcetera")
         .side(Side.SERVER).restart(Restart.GAME)
         .runtimeGated();

@@ -12,6 +12,7 @@ public final class SupplementariesGrouperOpenSides {
      * client predicts the placed state), so the client needs the mixin too, following the server's setting.
      */
     public static final Entry ENTRY = Entries.fix("supplementaries_grouper_open_sides", Taste.NONE)
+        .home("supplementaries")
         .requiresMods("supplementaries")
         .side(Side.SERVER).restart(Restart.GAME)
         .runtimeGated();

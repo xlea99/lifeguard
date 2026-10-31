@@ -12,7 +12,7 @@ public final class SpeciesDyeableChaindeliers {
      * nothing), and both sides draw or handle it, each asking the switch the server synced. The resource pack holds the
      * atlas source that makes the glow masks. See Chaindeliers.
      */
-    public static final Entry ENTRY = Entries.tweak("species_dyeable_chaindeliers", Taste.LIGHT)
+    public static final Entry ENTRY = Entries.tweak("species_dyeable_chaindeliers", Taste.LIGHT).home("species")
         .requiresMods("species")
         .side(Side.SERVER).restart(Restart.GAME)
         .runtimeGated()

@@ -12,7 +12,7 @@ public final class DyeDepotSparklers {
      * hold them), and dyeing a sparkler runs on both sides. Off, their recipes and creative tab entries go, and a Dye
      * Depot dye no longer recolors a sparkler.
      */
-    public static final Entry ENTRY = Entries.compat("dye_depot_sparklers", Taste.NONE)
+    public static final Entry ENTRY = Entries.compat("dye_depot_sparklers", Taste.NONE).home("caverns_and_chasms")
         .requiresMods("caverns_and_chasms", "dye_depot")
         .side(Side.SERVER).restart(Restart.GAME)
         .runtimeGated();

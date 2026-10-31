@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class BucketMobFlicker {
     /** Buckets let mobs out on the server. */
-    public static final Entry ENTRY = Entries.fix("bucket_mob_flicker", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("bucket_mob_flicker", Taste.NONE).home(Entry.MINECRAFT)
         .side(Side.SERVER).restart(Restart.GAME);
 
     private BucketMobFlicker() {

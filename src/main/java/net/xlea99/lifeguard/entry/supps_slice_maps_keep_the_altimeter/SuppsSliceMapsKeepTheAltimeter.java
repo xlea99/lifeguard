@@ -12,6 +12,7 @@ public final class SuppsSliceMapsKeepTheAltimeter {
      * mixin too, following the server's setting. Strong: an altimeter (or depth gauge) becomes a reusable tool.
      */
     public static final Entry ENTRY = Entries.tweak("supps_slice_maps_keep_the_altimeter", Taste.STRONG)
+        .home("supplementaries")
         .requiresMods("supplementaries")
         .side(Side.SERVER).restart(Restart.GAME)
         .runtimeGated();

@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class EtceteraLabelWashStacking {
     /** Runtime-gated: washing at a cauldron runs on both sides. */
-    public static final Entry ENTRY = Entries.fix("etcetera_label_wash_stacking", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("etcetera_label_wash_stacking", Taste.NONE).home("etcetera")
         .requiresMods("etcetera")
         .side(Side.SERVER).restart(Restart.GAME)
         .runtimeGated();

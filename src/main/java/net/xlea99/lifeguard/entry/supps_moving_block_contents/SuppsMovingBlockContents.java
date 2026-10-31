@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class SuppsMovingBlockContents {
     /** Only how moving blocks are drawn. */
-    public static final Entry ENTRY = Entries.fix("supps_moving_block_contents", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("supps_moving_block_contents", Taste.NONE).home("supplementaries")
         .requiresMods("supplementaries")
         .side(Side.CLIENT).restart(Restart.GAME);
 

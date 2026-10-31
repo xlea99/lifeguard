@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class CcHiddenTrimIcons {
     /** Only which outlines a smithing screen cycles. Deep End's opinion: it hides exactly the two materials it cut. */
-    public static final Entry ENTRY = Entries.tweak("cc_hidden_trim_icons", Taste.DEEP_END)
+    public static final Entry ENTRY = Entries.tweak("cc_hidden_trim_icons", Taste.DEEP_END).home("caverns_and_chasms")
         .requiresMods("caverns_and_chasms")
         .side(Side.CLIENT).restart(Restart.GAME);
 

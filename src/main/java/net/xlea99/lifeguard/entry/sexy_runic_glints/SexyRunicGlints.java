@@ -12,7 +12,7 @@ import net.xlea99.lifeguard.core.Taste;
  * (Dye Depot's colors then get {@code dye_depot_runes}' plain Quark-style ones).
  */
 public final class SexyRunicGlints {
-    public static final Entry ENTRY = Entries.tweak("sexy_runic_glints", Taste.STRONG)
+    public static final Entry ENTRY = Entries.tweak("sexy_runic_glints", Taste.STRONG).home("quark")
         .requiresMods("quark")
         .side(Side.CLIENT).restart(Restart.GAME);
 

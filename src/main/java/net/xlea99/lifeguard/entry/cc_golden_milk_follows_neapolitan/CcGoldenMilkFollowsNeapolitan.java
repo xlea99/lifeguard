@@ -9,6 +9,7 @@ import net.xlea99.lifeguard.core.Taste;
 public final class CcGoldenMilkFollowsNeapolitan {
     /** Cauldron interactions are decided on the server. */
     public static final Entry ENTRY = Entries.compat("cc_golden_milk_follows_neapolitan", Taste.NONE)
+        .home("caverns_and_chasms")
         .requiresMods("caverns_and_chasms", "neapolitan")
         .side(Side.SERVER).restart(Restart.GAME);
 

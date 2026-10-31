@@ -118,10 +118,11 @@ public final class EntryPacks {
         });
     }
 
+    /** How far down the requirements an entry sits: one that needs another goes on top of it. */
     private static int depth(Entry entry) {
         int depth = 0;
-        for (Entry up = entry.parent(); up != null; up = up.parent())
-            depth++;
+        for (Entry required : entry.requiredEntries())
+            depth = Math.max(depth, depth(required) + 1);
         return depth;
     }
 }

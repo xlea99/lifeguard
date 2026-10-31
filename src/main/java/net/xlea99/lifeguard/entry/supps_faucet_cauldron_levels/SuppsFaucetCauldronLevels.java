@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class SuppsFaucetCauldronLevels {
     /** Faucets pour on the server only. */
-    public static final Entry ENTRY = Entries.tweak("supps_faucet_cauldron_levels", Taste.NONE)
+    public static final Entry ENTRY = Entries.tweak("supps_faucet_cauldron_levels", Taste.NONE).home("supplementaries")
         .requiresMods("supplementaries")
         .side(Side.SERVER).restart(Restart.GAME);
 

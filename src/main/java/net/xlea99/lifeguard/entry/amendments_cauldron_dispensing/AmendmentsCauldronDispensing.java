@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class AmendmentsCauldronDispensing {
     /** Dispensers fire on the server. */
-    public static final Entry ENTRY = Entries.fix("amendments_cauldron_dispensing", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("amendments_cauldron_dispensing", Taste.NONE).home("amendments")
         .requiresMods("amendments")
         .side(Side.SERVER).restart(Restart.GAME);
 

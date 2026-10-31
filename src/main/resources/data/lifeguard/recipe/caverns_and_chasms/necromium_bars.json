@@ -2,7 +2,7 @@
   "neoforge:conditions": [
     {
       "type": "lifeguard:entry",
-      "entry": "extended_metal_bars.caverns_and_chasms",
+      "entry": "extended_metal_bars_caverns_and_chasms",
       "and": [
         {
           "type": "neoforge:mod_loaded",

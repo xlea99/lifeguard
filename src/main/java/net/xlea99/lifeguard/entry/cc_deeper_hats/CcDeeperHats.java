@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class CcDeeperHats {
     /** Mobs spawn on the server. */
-    public static final Entry ENTRY = Entries.fix("cc_deeper_hats", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("cc_deeper_hats", Taste.NONE).home("caverns_and_chasms")
         .requiresMods("caverns_and_chasms")
         .side(Side.SERVER).restart(Restart.GAME);
 

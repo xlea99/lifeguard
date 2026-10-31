@@ -8,7 +8,7 @@ import net.xlea99.lifeguard.core.Taste;
 
 public final class CcAttachedRatTicks {
     /** The doubled tick is the server's; the client already skips it. */
-    public static final Entry ENTRY = Entries.fix("cc_attached_rat_ticks", Taste.NONE)
+    public static final Entry ENTRY = Entries.fix("cc_attached_rat_ticks", Taste.NONE).home("caverns_and_chasms")
         .requiresMods("caverns_and_chasms")
         .side(Side.SERVER).restart(Restart.GAME);
 
