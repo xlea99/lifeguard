@@ -10,6 +10,7 @@ public final class AcInfiniteSoda {
     /** Fluids spread on the server. */
     public static final Entry ENTRY = Entries.tweak("ac_infinite_soda", Taste.DEEP_END).home("alexscaves")
         .requiresMods("alexscaves")
+        .usesIds("fluid", "alexscaves:purple_soda")
         .side(Side.SERVER).restart(Restart.GAME);
 
     /** A faucet on a soda source pours it like water: a bottle at a time if need be, never draining the source. */

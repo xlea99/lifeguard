@@ -217,6 +217,12 @@ if (file('workspace/tests/java').isDirectory()) {
         // The core's own libraries, which the game provides at runtime but the test classpath doesn't get.
         testImplementation 'com.electronwill.night-config:toml:3.8.3'
         testImplementation 'com.google.code.gson:gson:2.10.1'
+        // The mixin preflight's tests: ASM, and the hook annotations its fixture classes carry (read, never applied).
+        testImplementation 'org.ow2.asm:asm-tree:9.8'
+        testImplementation 'org.slf4j:slf4j-api:2.0.9'
+        testImplementation 'net.fabricmc:sponge-mixin:0.16.4+mixin.0.8.7'
+        testImplementation 'io.github.llamalad7:mixinextras-neoforge:0.4.1'
+        testImplementation "com.github.bawnorton.mixinsquared:mixinsquared-common:${mixinsquared_version}"
         testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     }
     tasks.named('test', Test) {

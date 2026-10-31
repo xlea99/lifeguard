@@ -78,6 +78,9 @@ final class DetailsPane {
         reserveReason(x, y);
         y[0] += 4;
         text(font, Component.translatable(entry.descKey()), x, y, inner, 0xFFD8D8D8, null);
+        String broken = MenuModel.brokenReason(entry);
+        if (broken != null)
+            text(font, Component.translatable("lifeguard.menu.details.broken", broken), x, y, inner, 0xFFD07C7C, null);
         if (model.locked(entry))
             text(font, Component.translatable(model.brokenFile(entry.side()).isPresent()
                 ? "lifeguard.menu.details.broken_note" : "lifeguard.menu.details.server_note"), x, y, inner, 0xFFE0A040, null);
@@ -100,6 +103,11 @@ final class DetailsPane {
 
     private Component reasonText(MenuModel.Reason reason) {
         return switch (reason.kind()) {
+            case BROKEN -> Component.translatable("lifeguard.menu.details.why.broken");
+            case BROKEN_HERE -> Component.translatable("lifeguard.menu.details.why.broken_here");
+            case BROKEN_ON_SERVER -> Component.translatable("lifeguard.menu.details.why.broken_on_server");
+            case REQUIRED_BROKEN -> Component.translatable("lifeguard.menu.details.why.required_broken",
+                Component.translatable(reason.because().nameKey()));
             case MISSING_MODS -> Component.translatable("lifeguard.menu.details.why.missing_mods", modNames(entry.missingMods()));
             case REQUIRED_OFF -> Component.translatable("lifeguard.menu.details.why.required_off",
                 Component.translatable(reason.because().nameKey()));

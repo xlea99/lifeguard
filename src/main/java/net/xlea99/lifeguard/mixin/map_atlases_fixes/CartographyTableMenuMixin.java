@@ -19,21 +19,21 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(value = CartographyTableMenu.class, priority = 1500)
 public abstract class CartographyTableMenuMixin {
 
-    @Dynamic("Added by Map Atlases' CartographyTableMenuMixin")
+    @Dynamic(value = "Added by Map Atlases' CartographyTableMenuMixin", mixin = pepjebs.mapatlases.mixin.CartographyTableMenuMixin.class)
     @Inject(method = "mapatlases$addFilledMap", at = @At("HEAD"), cancellable = true)
     private void lifeguard$noRoomForTheMap(ItemStack atlas, ItemStack map, Level level, CallbackInfoReturnable<ItemStack> cir) {
         if (AtlasFixes.isFull(atlas, level))
             cir.setReturnValue(null);
     }
 
-    @Dynamic("Added by Map Atlases' CartographyTableMenuMixin")
+    @Dynamic(value = "Added by Map Atlases' CartographyTableMenuMixin", mixin = pepjebs.mapatlases.mixin.CartographyTableMenuMixin.class)
     @ModifyReturnValue(method = "mapatlases$mergeAtlases", at = @At("RETURN"))
     private ItemStack lifeguard$mergeWithinLimit(ItemStack merged, @Local(argsOnly = true) Level level) {
         return merged != null && AtlasFixes.isOverLimit(merged, level) ? null : merged;
     }
 
     /** Shears cut one atlas at a time: with a stack in the slot, the map would leave every atlas in it. */
-    @Dynamic("Added by Map Atlases' CartographyTableMenuMixin")
+    @Dynamic(value = "Added by Map Atlases' CartographyTableMenuMixin", mixin = pepjebs.mapatlases.mixin.CartographyTableMenuMixin.class)
     @Inject(method = "mapatlases$cutSelectedMap", at = @At("HEAD"), cancellable = true)
     private void lifeguard$cutOneAtlas(ItemStack atlas, Level level, CallbackInfoReturnable<ItemStack> cir) {
         if (atlas.getCount() > 1)

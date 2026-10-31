@@ -15,6 +15,7 @@ import net.neoforged.bus.api.EventPriority;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.brewing.RegisterBrewingRecipesEvent;
 import net.xlea99.lifeguard.Lifeguard;
+import net.xlea99.lifeguard.boot.BrokenEntries;
 import net.xlea99.lifeguard.mixin.am_lava_vision_fallback.PotionBrewingBuilderAccessor;
 import org.jetbrains.annotations.Nullable;
 
@@ -69,7 +70,8 @@ public final class LavaVision {
         try {
             return Class.forName("com.github.alexthe666.alexsmobs.config.AMConfig").getField("lavaBottleEnabled").getBoolean(null);
         } catch (ReflectiveOperationException | RuntimeException e) {
-            Lifeguard.LOGGER.warn("Couldn't read Alex's Mobs' lavaBottleEnabled; leaving Lava Vision as it is", e);
+            BrokenEntries.mark(AmLavaVisionFallback.ENTRY, "Alex's Mobs' AMConfig.lavaBottleEnabled can't be read ("
+                + e + "), so it can't tell whether lava bottles are on");
             return null;
         }
     }

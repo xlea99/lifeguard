@@ -13,6 +13,7 @@ public final class SpeciesBloodlustAllFood {
      */
     public static final Entry ENTRY = Entries.fix("species_bloodlust_all_food", Taste.NONE).home("species")
         .requiresMods("species")
+        .usesIds("mob_effect", "species:bloodlust")
         .side(Side.SERVER).restart(Restart.GAME)
         .runtimeGated();
 

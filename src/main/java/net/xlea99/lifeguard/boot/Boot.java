@@ -92,6 +92,10 @@ public final class Boot {
         if (FMLLoader.getDist().isClient())
             clientConfig = open(new EntryConfig(dir.resolve("lifeguard-client.toml"), Side.CLIENT, registry, texts));
 
+        // Every mixin that would apply is checked against what it hooks; an entry whose mixins don't fit is broken (off)
+        // from here on, before anything below reads active() for good.
+        MixinPreflight.run(registry, dedicatedServer());
+
         // Mixins are decided right after this, from these same answers, so this is exactly what loaded.
         Set<String> shaping = new LinkedHashSet<>();
         for (Entry entry : registry.entries())
@@ -163,6 +167,8 @@ public final class Boot {
         int total = registry.entries().size();
         out.append(total).append(total == 1 ? " entry, " : " entries, ").append(active).append(" active, ")
             .append(inert).append(" missing a mod");
+        if (!registry.broken().isEmpty())
+            out.append(", ").append(registry.broken().size()).append(" BROKEN");
         out.append(" · server profile ").append(registry.profile(Side.SERVER).id());
         if (clientConfig != null)
             out.append(" · client profile ").append(registry.profile(Side.CLIENT).id());

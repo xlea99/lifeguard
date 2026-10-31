@@ -3,6 +3,7 @@ package net.xlea99.lifeguard.mixin.scholar_amendments_lectern_sync;
 import com.llamalad7.mixinextras.injector.ModifyReturnValue;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.LecternBlockEntity;
+import org.spongepowered.asm.mixin.Dynamic;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
@@ -18,6 +19,8 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(value = LecternBlockEntity.class, priority = 1500)
 public abstract class LecternBlockEntityMixin {
 
+    @Dynamic(value = "Added by Amendments' LecternBlockEntityUpdateMixin",
+        mixin = net.mehvahdjukaar.amendments.mixins.LecternBlockEntityUpdateMixin.class)
     @ModifyReturnValue(method = "getUpdateTag", at = @At("RETURN"))
     private CompoundTag lifeguard$sayTheBookIsGone(CompoundTag tag) {
         if (!tag.contains("Book"))

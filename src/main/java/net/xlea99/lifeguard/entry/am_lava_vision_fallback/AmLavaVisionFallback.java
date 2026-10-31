@@ -10,6 +10,8 @@ public final class AmLavaVisionFallback {
     /** Brewing recipes are built on both sides from common config; the server's brewing stands are what count. */
     public static final Entry ENTRY = Entries.tweak("am_lava_vision_fallback", Taste.DEEP_END).home("alexsmobs")
         .requiresMods("alexsmobs")
+        .usesIds("item", "alexsmobs:lava_bottle", "alexsmobs:bone_serpent_tooth")
+        .usesIds("potion", "alexsmobs:lava_vision", "alexsmobs:long_lava_vision")
         .side(Side.SERVER).restart(Restart.GAME);
 
     private AmLavaVisionFallback() {

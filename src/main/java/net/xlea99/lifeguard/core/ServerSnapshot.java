@@ -7,7 +7,8 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * The server's half of the registry as one value: its profile, and every server entry's switch and sub-values.
+ * The server's half of the registry as one value: its profile, and every server entry's switch, sub-values and
+ * whether it's broken on the server.
  *
  * <p>A server sends this to each client as it joins. The client applies it over its own server-side state, so the
  * menu shows what the server actually enforces and runtime-gated code follows the server instead of the player's local
@@ -15,8 +16,11 @@ import java.util.Optional;
  */
 public record ServerSnapshot(String profile, Map<String, EntryState> entries) {
 
-    /** One entry as the server has it. Sub-values are Integer, Double or Boolean. */
-    public record EntryState(Switch setting, Map<String, Object> values) {
+    /** One entry as the server has it. Sub-values are Integer, Double or Boolean; {@code broken} is null when it isn't. */
+    public record EntryState(Switch setting, Map<String, Object> values, String broken) {
+        public EntryState(Switch setting, Map<String, Object> values) {
+            this(setting, values, null);
+        }
     }
 
     public static ServerSnapshot capture(Registry registry) {
@@ -27,7 +31,7 @@ public record ServerSnapshot(String profile, Map<String, EntryState> entries) {
             Map<String, Object> values = new LinkedHashMap<>();
             for (SubValue<?> value : entry.values())
                 values.put(value.name(), value.get());
-            entries.put(entry.id(), new EntryState(entry.setting(), values));
+            entries.put(entry.id(), new EntryState(entry.setting(), values, entry.brokenReason()));
         }
         return new ServerSnapshot(registry.profile(Side.SERVER).id(), entries);
     }
@@ -38,6 +42,7 @@ public record ServerSnapshot(String profile, Map<String, EntryState> entries) {
      * <ul>
      *     <li>A server entry the server didn't send is switched off: the server isn't running it (an older Lifeguard),
      *     so nothing of it runs here either.</li>
+     *     <li>One the server found broken is off here too, marked so the menu can say why.</li>
      *     <li>An id this client doesn't know is skipped: the server is newer, and that entry has no code here.</li>
      *     <li>A sub-value that doesn't fit this client's declaration (a newer range, a different type) falls back to its
      *     default.</li>
@@ -54,6 +59,7 @@ public record ServerSnapshot(String profile, Map<String, EntryState> entries) {
             if (entry.side() != Side.SERVER)
                 continue;
             EntryState state = entries.get(entry.id());
+            entry.setServerBroken(state == null ? null : state.broken());
             if (state == null) {
                 entry.set(Switch.OFF);
                 for (SubValue<?> value : entry.values())

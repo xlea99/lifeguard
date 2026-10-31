@@ -243,6 +243,11 @@ final class MenuModel {
         collapsedMods.remove(entry.home());
     }
 
+    /** What didn't fit, for an entry broken here or on the server this client follows; null when it isn't broken. */
+    static String brokenReason(Entry entry) {
+        return entry.broken() ? entry.brokenReason() : entry.serverBrokenReason();
+    }
+
     /** Entries that list this one in their requirements. */
     List<Entry> requiredBy(Entry entry) {
         List<Entry> dependents = new ArrayList<>();
@@ -254,17 +259,23 @@ final class MenuModel {
 
     /** Why an entry is on or off under the draft, first reason first: the same order the rule checks them in. */
     Reason why(Entry entry) {
+        if (entry.broken())
+            return new Reason(false, following && entry.side() == Side.SERVER && entry.serverBrokenReason() == null
+                ? Reason.Kind.BROKEN_HERE : Reason.Kind.BROKEN, null);
+        if (entry.serverBrokenReason() != null)
+            return new Reason(false, Reason.Kind.BROKEN_ON_SERVER, null);
         if (!entry.missingMods().isEmpty())
             return new Reason(false, Reason.Kind.MISSING_MODS, null);
         for (Entry required : entry.requiredEntries())
             if (!required.activeUnder(draft))
-                return new Reason(false, Reason.Kind.REQUIRED_OFF, required);
+                return new Reason(false, required.broken() || required.serverBrokenReason() != null
+                    ? Reason.Kind.REQUIRED_BROKEN : Reason.Kind.REQUIRED_OFF, required);
         boolean on = entry.switchedOnUnder(draft);
         return new Reason(on, draft.setting(entry) == Switch.AUTO ? Reason.Kind.PROFILE : Reason.Kind.OVERRIDE, null);
     }
 
     record Reason(boolean active, Kind kind, Entry because) {
-        enum Kind { MISSING_MODS, REQUIRED_OFF, PROFILE, OVERRIDE }
+        enum Kind { BROKEN, BROKEN_HERE, BROKEN_ON_SERVER, MISSING_MODS, REQUIRED_BROKEN, REQUIRED_OFF, PROFILE, OVERRIDE }
     }
 
     void toggleCollapsed(Entry entry) {

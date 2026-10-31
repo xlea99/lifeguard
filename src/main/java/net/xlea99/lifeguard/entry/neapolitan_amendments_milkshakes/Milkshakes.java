@@ -18,7 +18,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LayeredCauldronBlock;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.xlea99.lifeguard.Lifeguard;
+import net.xlea99.lifeguard.boot.BrokenEntries;
 import org.jetbrains.annotations.Nullable;
 
 /**
@@ -64,7 +64,8 @@ public final class Milkshakes {
             Object value = common.getClass().getField("milkshakeCauldrons").get(common);
             return !Boolean.FALSE.equals(value.getClass().getMethod("get").invoke(value));
         } catch (ReflectiveOperationException | RuntimeException e) {
-            Lifeguard.LOGGER.warn("Lifeguard: couldn't read Neapolitan's Milkshake Cauldrons setting; leaving milkshakes off Amendments cauldrons", e);
+            BrokenEntries.mark(NeapolitanAmendmentsMilkshakes.ENTRY, "Neapolitan's NeapolitanConfig.COMMON.milkshakeCauldrons"
+                + " can't be read (" + e + "), so it can't tell whether milkshake cauldrons are on");
             return false;
         }
     }

@@ -351,10 +351,11 @@ final class EntryList extends ContainerObjectSelectionList<EntryList.Row> {
             int nameColor = context ? 0xFF555555 : missing ? 0xFF6A6A6A : active ? 0xFFEDEDED : 0xFF9A9A9A;
             Component name = Component.translatable(entry.nameKey());
             graphics.drawString(font, font.substrByWidth(name, nameRight - textX).getString(), textX, textY, nameColor, false);
-            Component aside = aside(missing);
+            boolean broken = MenuModel.brokenReason(entry) != null;
+            Component aside = broken ? Component.translatable("lifeguard.menu.entry_broken") : aside(missing);
             int afterName = textX + font.width(name) + 6;
             if (aside != null && afterName + font.width(aside) < nameRight)
-                graphics.drawString(font, aside, afterName, textY, 0xFF666666, false);
+                graphics.drawString(font, aside, afterName, textY, broken ? 0xFFD07C7C : 0xFF666666, false);
 
             // Class and side cells.
             String classCode = Component.translatable("lifeguard.class." + entry.kind().id() + ".code").getString();

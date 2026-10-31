@@ -23,6 +23,8 @@ public final class MixinGate {
      * Whether a mixin should be applied right now, at startup.
      *
      * <ul>
+     *     <li>A broken entry's never apply, however it's gated: never half an entry. Nor do those of any entry that needs
+     *     it, directly or through others.</li>
      *     <li>A client entry's mixins never apply on a dedicated server.</li>
      *     <li>A load-gated entry's apply when it's active: off means never loaded.</li>
      *     <li>A runtime-gated entry's apply whenever it's installed, and check {@link Entry#active()} as they run.</li>
@@ -52,13 +54,64 @@ public final class MixinGate {
         return applies(entry, dedicatedServer);
     }
 
+    /**
+     * Whether a mixin could apply in this game with every switch on: its entry (or one sharing its group) is installed and
+     * runs on this side. The preflight checks all of these, so an entry that's off still shows broken before anyone turns
+     * it on.
+     */
+    public static boolean couldApply(String mixinClassName, Registry registry, boolean dedicatedServer) {
+        if (isCore(mixinClassName))
+            return true;
+        for (Entry owner : owners(mixinClassName, registry)) {
+            String entryPackage = entryPackage(mixinClassName);
+            boolean groupModsThere = !entryPackage.startsWith(SHARED_PACKAGE + ".") || owner.sharedMixins()
+                .get(entryPackage.substring(SHARED_PACKAGE.length() + 1)).stream().allMatch(registry::modPresent);
+            if (groupModsThere && owner.installed() && !(dedicatedServer && owner.side() == Side.CLIENT))
+                return true;
+        }
+        return false;
+    }
+
+    /** Whether a mixin is always-on infrastructure ({@code mixin.core}): owned by no entry. */
+    public static boolean isCore(String mixinClassName) {
+        String entryPackage = entryPackage(mixinClassName);
+        return entryPackage.equals(CORE_PACKAGE) || entryPackage.startsWith(CORE_PACKAGE + ".");
+    }
+
+    /** The entries a mixin belongs to: its own entry, or every entry sharing its group. Empty for a core mixin. */
+    public static List<Entry> owners(String mixinClassName, Registry registry) {
+        if (isCore(mixinClassName))
+            return List.of();
+        String entryPackage = entryPackage(mixinClassName);
+        if (entryPackage.startsWith(SHARED_PACKAGE + ".")) {
+            String group = entryPackage.substring(SHARED_PACKAGE.length() + 1);
+            return registry.entries().stream().filter(e -> e.sharedMixins().containsKey(group)).toList();
+        }
+        return registry.get(entryPackage).map(List::of).orElse(List.of());
+    }
+
     private static boolean applies(Entry entry, boolean dedicatedServer) {
+        if (brokenUnder(entry))
+            return false;
         if (dedicatedServer && entry.side() == Side.CLIENT)
             return false;
         return switch (entry.gating()) {
             case LOAD -> entry.active();
             case RUNTIME -> entry.installed();
         };
+    }
+
+    /**
+     * Broken, or needing something broken. A runtime-gated entry's mixins would otherwise load whenever it's installed,
+     * and may lean on what the broken one's mixins add (a duck interface, a field) before any active() check runs.
+     */
+    private static boolean brokenUnder(Entry entry) {
+        if (entry.broken())
+            return true;
+        for (Entry required : entry.requiredEntries())
+            if (brokenUnder(required))
+                return true;
+        return false;
     }
 
     /** {@code net.xlea99.lifeguard.mixin.supps_jukebox_speakers.SpeakerBlockMixin} to {@code supps_jukebox_speakers}. */

@@ -52,6 +52,7 @@ public final class Entry {
     private final Map<String, Set<String>> sharedMixins = new LinkedHashMap<>();
     private final List<String> recipeEdits = new ArrayList<>();
     private final List<String> cancelledMixins = new ArrayList<>();
+    private final Map<String, List<String>> usedIds = new LinkedHashMap<>();
     private BooleanSupplier cancelWhen = () -> false;
     private final Set<String> requiredMods = new LinkedHashSet<>();
     private final List<Entry> requiredEntries = new ArrayList<>();
@@ -59,6 +60,12 @@ public final class Entry {
     private final List<Entry> shownBelow = new ArrayList<>();
 
     private volatile Switch setting = Switch.AUTO;
+
+    // Broken: its code no longer fits what it hooks, found at startup (the preflight) or by code at runtime. Session
+    // state, never a switch: the config keeps the player's choice for when a version that fits is installed.
+    private volatile String brokenReason;
+    // The server this client follows found it broken on its side; cleared on leaving.
+    private volatile String serverBrokenReason;
 
     // active() is asked from hot paths (runtime-gated mixins), so its answer is cached until the registry's generation
     // moves, which happens whenever a switch, a profile or mod presence changes. The generation is written after the
@@ -169,6 +176,18 @@ public final class Entry {
     public Entry sharesMixins(String group, String... withMods) {
         declaring();
         sharedMixins.put(group, Set.of(withMods));
+        return this;
+    }
+
+    /**
+     * Other mods' content this entry's code finds by id, in one of the game's registries ({@code "item"},
+     * {@code "alexsmobs:lava_bottle"}). Checked once the registries are complete: one that's gone (renamed by a mod
+     * update) breaks the entry, loudly, instead of leaving it acting on air. An id is only checked while its mod is
+     * installed.
+     */
+    public Entry usesIds(String registry, String... ids) {
+        declaring();
+        usedIds.computeIfAbsent(registry, key -> new ArrayList<>()).addAll(List.of(ids));
         return this;
     }
 
@@ -291,6 +310,11 @@ public final class Entry {
         return "recipe_edits/" + id() + "/" + recipeId.substring(0, colon) + "/" + recipeId.substring(colon + 1) + ".json";
     }
 
+    /** The ids it finds other mods' content by, per registry name. */
+    public Map<String, List<String>> usedIds() {
+        return Collections.unmodifiableMap(usedIds);
+    }
+
     public Set<String> requiredMods() {
         return Collections.unmodifiableSet(requiredMods);
     }
@@ -334,6 +358,44 @@ public final class Entry {
         }
     }
 
+    // --- broken ------------------------------------------------------------------------------------------------------
+
+    /**
+     * Switches the entry off for this session because its code no longer fits what it hooks: {@code reason} says what
+     * didn't match. Everything that requires it goes dark with it; its switch and config are untouched. The first
+     * reason is kept.
+     */
+    public void markBroken(String reason) {
+        registry.requireFrozen();
+        Objects.requireNonNull(reason);
+        if (brokenReason == null) {
+            brokenReason = reason;
+            registry.changed();
+        }
+    }
+
+    /** Whether this game found the entry broken this session. */
+    public boolean broken() {
+        return brokenReason != null;
+    }
+
+    /** What didn't fit, or null when it isn't broken here. */
+    public String brokenReason() {
+        return brokenReason;
+    }
+
+    /** What the server this client follows found broken on its side, or null. */
+    public String serverBrokenReason() {
+        return serverBrokenReason;
+    }
+
+    void setServerBroken(String reason) {
+        if (!Objects.equals(serverBrokenReason, reason)) {
+            serverBrokenReason = reason;
+            registry.changed();
+        }
+    }
+
     /** Whether the live switch says on: an override, or Auto with the side's profile reaching this entry's taste. */
     public boolean switchedOn() {
         return switchedOnUnder(registry);
@@ -371,8 +433,9 @@ public final class Entry {
     }
 
     /**
-     * The one question code asks. An entry is active when every required mod is present, every required entry is active,
-     * and its switch is on. Where the menu lists it plays no part.
+     * The one question code asks. An entry is active when it isn't broken (here, or on the server this client follows),
+     * every required mod is present, every required entry is active, and its switch is on. Where the menu lists it plays
+     * no part.
      */
     public boolean active() {
         registry.requireFrozen();
@@ -390,6 +453,8 @@ public final class Entry {
      */
     public boolean activeUnder(SettingsView view) {
         registry.requireFrozen();
+        if (brokenReason != null || serverBrokenReason != null)
+            return false;
         for (String modId : requiredMods)
             if (!registry.modPresent(modId))
                 return false;

@@ -14,6 +14,8 @@ public final class SpeciesDyeableChaindeliers {
      */
     public static final Entry ENTRY = Entries.tweak("species_dyeable_chaindeliers", Taste.LIGHT).home("species")
         .requiresMods("species")
+        .usesIds("block", "species:chaindelier")
+        .usesIds("item", "species:chaindelier")
         .side(Side.SERVER).restart(Restart.GAME)
         .runtimeGated()
         .resourcePack();
