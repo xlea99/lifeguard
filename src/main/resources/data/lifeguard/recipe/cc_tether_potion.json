@@ -1,0 +1,10 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "lifeguard:entry",
+      "entry": "cc_crafted_tether_potions"
+    }
+  ],
+  "type": "lifeguard:cc_tether_potion",
+  "category": "misc"
+}
