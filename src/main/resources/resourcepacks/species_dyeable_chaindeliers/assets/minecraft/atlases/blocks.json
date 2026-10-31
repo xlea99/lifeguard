@@ -1,0 +1,11 @@
+{
+  "sources": [
+    {
+      "type": "lifeguard:spectre_glow",
+      "textures": [
+        "species:block/chaindelier_bottom",
+        "species:block/chaindelier_side"
+      ]
+    }
+  ]
+}
