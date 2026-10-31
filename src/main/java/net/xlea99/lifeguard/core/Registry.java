@@ -158,6 +158,16 @@ public final class Registry implements SettingsView {
             if (!editedRecipes.add(recipeId))
                 problems.add(id + ": edits " + recipeId + " twice");
         }
+        if (!entry.cancelledMixins().isEmpty()) {
+            if (entry.restart() != null && entry.restart() != Restart.GAME)
+                problems.add(id + ": cancelling other mods' mixins needs a game restart (they're decided at startup)");
+            if (entry.gating() != Gating.LOAD)
+                problems.add(id + ": entries that cancel other mods' mixins are load-gated (decided once, at startup)");
+            if (entry.requiredMods().isEmpty())
+                problems.add(id + ": cancels other mods' mixins but requires no mod (name the mods they belong to)");
+            if (new HashSet<>(entry.cancelledMixins()).size() != entry.cancelledMixins().size())
+                problems.add(id + ": cancels the same mixin twice");
+        }
         if (entry.kind() == EntryClass.FIX && entry.requiredMods().size() > 1)
             problems.add(id + ": a fix requires at most one mod; one that needs " + entry.requiredMods()
                 + " is compat, or a fix on the mod that is actually broken");

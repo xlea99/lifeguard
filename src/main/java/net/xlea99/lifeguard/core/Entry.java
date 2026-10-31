@@ -2,10 +2,13 @@ package net.xlea99.lifeguard.core;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.BooleanSupplier;
 
 /**
  * One thing the player can switch on or off. Declared once, as a constant, and everything else (the config file, the
@@ -37,7 +40,11 @@ public final class Entry {
     private boolean planned;
     private boolean registryShaping;
     private boolean resourcePack;
+    private boolean ownContent;
+    private final Map<String, Set<String>> sharedMixins = new LinkedHashMap<>();
     private final List<String> recipeEdits = new ArrayList<>();
+    private final List<String> cancelledMixins = new ArrayList<>();
+    private BooleanSupplier cancelWhen = () -> false;
     private final Set<String> requiredMods = new LinkedHashSet<>();
     private final List<Entry> requiredEntries = new ArrayList<>();
     private final List<SubValue<?>> values = new ArrayList<>();
@@ -125,6 +132,38 @@ public final class Entry {
         return this;
     }
 
+    /**
+     * Switches other mods' mixins off, by class name ({@code com.example.mixin.FooMixin}), when the game starts with
+     * this entry active and {@code when} agrees (MixinSquared's canceller, bundled). For an overlap where one mod's
+     * mixin replaces the specialist's own code. {@code when} runs before the game's classes load: it may read other
+     * mods' config files from disk, nothing more.
+     */
+    public Entry cancelsMixins(BooleanSupplier when, String... mixinClassNames) {
+        declaring();
+        this.cancelWhen = Objects.requireNonNull(when);
+        Collections.addAll(cancelledMixins, mixinClassNames);
+        return this;
+    }
+
+    /**
+     * Uses mixins shared with other entries, in {@code mixin.shared.<group>}: one hook several entries' content needs
+     * (our neodymium blocks being Alex's Caves magnets, say). They're applied when any entry naming the group would have
+     * its own applied and the mods it names for the group (the ones the mixins target) are installed, so they check
+     * what's active as they run.
+     */
+    public Entry sharesMixins(String group, String... withMods) {
+        declaring();
+        sharedMixins.put(group, Set.of(withMods));
+        return this;
+    }
+
+    /** Lifeguard's own content (no other mod's idea it extends): listed under the menu's Lifeguard group, at the top. */
+    public Entry ownContent() {
+        declaring();
+        this.ownContent = true;
+        return this;
+    }
+
     public Entry requiresMods(String... modIds) {
         declaring();
         Collections.addAll(requiredMods, modIds);
@@ -205,6 +244,15 @@ public final class Entry {
         return resourcePack;
     }
 
+    /** The shared mixin groups this entry uses, each with the mods it needs installed. */
+    public Map<String, Set<String>> sharedMixins() {
+        return Collections.unmodifiableMap(sharedMixins);
+    }
+
+    public boolean isOwnContent() {
+        return ownContent;
+    }
+
     /** {@code resourcepacks/<id>}: where the entry's pack lives in the jar, if it has one. */
     public String resourcePackPath() {
         return "resourcepacks/" + id();
@@ -215,6 +263,15 @@ public final class Entry {
     }
 
     /** {@code recipe_edits/<id>/<namespace>/<path>.json}: where the jar holds one recipe edit of this entry's. */
+    public List<String> cancelledMixins() {
+        return Collections.unmodifiableList(cancelledMixins);
+    }
+
+    /** Whether this entry switches {@code mixinClassName} off this session: decided once, at startup. */
+    public boolean cancels(String mixinClassName) {
+        return cancelledMixins.contains(mixinClassName) && active() && cancelWhen.getAsBoolean();
+    }
+
     public String recipeEditPath(String recipeId) {
         int colon = recipeId.indexOf(':');
         return "recipe_edits/" + id() + "/" + recipeId.substring(0, colon) + "/" + recipeId.substring(colon + 1) + ".json";

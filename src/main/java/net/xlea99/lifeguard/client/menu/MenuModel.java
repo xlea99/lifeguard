@@ -32,6 +32,8 @@ import net.xlea99.lifeguard.sync.RemoteServer;
 final class MenuModel {
     /** The mod "needs no other mod" entries are grouped under. */
     static final String MINECRAFT = "";
+    /** Lifeguard's own content's group ({@link Entry#isOwnContent()}), listed first. A space, so no mod id matches it. */
+    static final String LIFEGUARD = " lifeguard";
 
     /**
      * One line of the list: a mod heading (its id, MINECRAFT for entries needing no other mod), or an entry at some depth
@@ -297,7 +299,8 @@ final class MenuModel {
         for (Entry root : registry.roots())
             rootsByMod.computeIfAbsent(homeMod(root), mod -> new ArrayList<>()).add(root);
         List<String> mods = new ArrayList<>(rootsByMod.keySet());
-        mods.sort(Comparator.comparing((String mod) -> !mod.equals(MINECRAFT))
+        mods.sort(Comparator.comparing((String mod) -> !mod.equals(LIFEGUARD))
+            .thenComparing(mod -> !mod.equals(MINECRAFT))
             .thenComparing(mod -> modName(mod).toLowerCase(Locale.ROOT)));
 
         List<Line> lines = new ArrayList<>();
@@ -320,8 +323,13 @@ final class MenuModel {
         return lines;
     }
 
-    /** Where a root's tree is listed: the first mod it requires (the one it extends), or Minecraft if none. */
+    /**
+     * Where a root's tree is listed: Lifeguard's own group for our own content, else the first mod it requires (the one
+     * it extends), or Minecraft if none.
+     */
     static String homeMod(Entry root) {
+        if (root.isOwnContent())
+            return LIFEGUARD;
         return root.requiredMods().isEmpty() ? MINECRAFT : root.requiredMods().iterator().next();
     }
 
@@ -329,6 +337,8 @@ final class MenuModel {
     static String modName(String modId) {
         if (modId.equals(MINECRAFT))
             return I18n.get("lifeguard.menu.group.minecraft");
+        if (modId.equals(LIFEGUARD))
+            return I18n.get("lifeguard.menu.group.lifeguard");
         String key = "lifeguard.mod." + modId;
         return I18n.exists(key) ? I18n.get(key) : modId;
     }

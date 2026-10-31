@@ -22,8 +22,8 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.common.conditions.ConditionalOps;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.event.OnDatapackSyncEvent;
-import net.neoforged.neoforge.network.PacketDistributor;
 import net.xlea99.lifeguard.Lifeguard;
+import net.xlea99.lifeguard.sync.Payloads;
 
 /**
  * The loaded faucet pouring recipes ({@code data/<namespace>/faucet_pouring/*.json}, see {@link PouringRecipe}), and
@@ -48,7 +48,7 @@ public final class PouringRecipes extends SimpleJsonResourceReloadListener imple
         NeoForge.EVENT_BUS.addListener((AddReloadListenerEvent event) -> event.addListener(TARGET));
         NeoForge.EVENT_BUS.addListener((OnDatapackSyncEvent event) -> {
             PouringRecipesPayload payload = new PouringRecipesPayload(TARGET.json);
-            event.getRelevantPlayers().forEach(player -> PacketDistributor.sendToPlayer(player, payload));
+            event.getRelevantPlayers().forEach(player -> Payloads.send(player, payload));
         });
     }
 
