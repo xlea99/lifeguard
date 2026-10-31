@@ -1,6 +1,21 @@
 package net.xlea99.lifeguard.boot;
 
 import java.util.List;
+import net.xlea99.lifeguard.entry.cc_attached_rat_ticks.CcAttachedRatTicks;
+import net.xlea99.lifeguard.entry.cc_bone_flute_checks.CcBoneFluteChecks;
+import net.xlea99.lifeguard.entry.cc_rat_pack_minimum.CcRatPackMinimum;
+import net.xlea99.lifeguard.entry.cc_deeper_hats.CcDeeperHats;
+import net.xlea99.lifeguard.entry.cc_glare_grumpiness.CcGlareGrumpiness;
+import net.xlea99.lifeguard.entry.cc_necromium_armor_slowness.CcNecromiumArmorSlowness;
+import net.xlea99.lifeguard.entry.cc_flint_piston_striking.CcFlintPistonStriking;
+import net.xlea99.lifeguard.entry.twigs_cc_flowering_azaleas.TwigsCcFloweringAzaleas;
+import net.xlea99.lifeguard.entry.cc_storage_duct_item_loss.CcStorageDuctItemLoss;
+import net.xlea99.lifeguard.entry.cc_storage_duct_span_limit.CcStorageDuctSpanLimit;
+import net.xlea99.lifeguard.entry.cc_weapons_follow_the_blade.CcWeaponsFollowTheBlade;
+import net.xlea99.lifeguard.entry.cc_crafted_tether_potions.CcCraftedTetherPotions;
+import net.xlea99.lifeguard.entry.cc_hidden_trim_icons.CcHiddenTrimIcons;
+import net.xlea99.lifeguard.entry.cc_extended_plated_bricks.CcExtendedPlatedBricks;
+import net.xlea99.lifeguard.entry.extended_metal_bars.ExtendedMetalBars;
 import net.xlea99.lifeguard.entry.ac_immediately_fast_gingerbread_stripes.AcImmediatelyFastGingerbreadStripes;
 import net.xlea99.lifeguard.entry.ac_thornwood_very_slightly_lighter_planks.AcThornwoodVerySlightlyLighterPlanks;
 import net.xlea99.lifeguard.entry.ac_infinite_soda.AcInfiniteSoda;
@@ -30,7 +45,12 @@ import net.xlea99.lifeguard.entry.dye_depot_sparklers.DyeDepotSparklers;
 import net.xlea99.lifeguard.entry.dye_the_world_glow_lights.DyeTheWorldGlowLights;
 import net.xlea99.lifeguard.entry.dye_the_world_open_sacks.DyeTheWorldOpenSacks;
 import net.xlea99.lifeguard.entry.emf_haunted_harvest_masks.EmfHauntedHarvestMasks;
+import net.xlea99.lifeguard.entry.boidsify.Boidsify;
 import net.xlea99.lifeguard.entry.haunted_harvest_mask_limit.HauntedHarvestMaskLimit;
+import net.xlea99.lifeguard.entry.jukebox_playlists.JukeboxPlaylists;
+import net.xlea99.lifeguard.entry.jukebox_progress_signal.JukeboxProgressSignal;
+import net.xlea99.lifeguard.entry.jukebox_synced_playback.JukeboxSyncedPlayback;
+import net.xlea99.lifeguard.entry.supps_jukebox_speakers.SuppsJukeboxSpeakers;
 import net.xlea99.lifeguard.entry.haunted_harvest_pumpkin_compat.HauntedHarvestPumpkinCompat;
 import net.xlea99.lifeguard.entry.haunted_harvest_torch_lanterns.HauntedHarvestTorchLanterns;
 import net.xlea99.lifeguard.entry.haunted_harvest_unified_carved_pumpkin.HauntedHarvestUnifiedCarvedPumpkin;
@@ -39,6 +59,7 @@ import net.xlea99.lifeguard.entry.etcetera_easy_anvils_label_costs.EtceteraEasyA
 import net.xlea99.lifeguard.entry.etcetera_label_wash_stacking.EtceteraLabelWashStacking;
 import net.xlea99.lifeguard.entry.etcetera_shimmering_bismuth_trims.EtceteraShimmeringBismuthTrims;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
+import net.xlea99.lifeguard.entry.fire_blocks_place_unlit.FireBlocksPlaceUnlit;
 import net.xlea99.lifeguard.entry.map_atlases_fixes.MapAtlasesFixes;
 import net.xlea99.lifeguard.entry.moonlight_jade_contents.MoonlightJadeContents;
 import net.xlea99.lifeguard.entry.moonlight_registration_races.MoonlightRegistrationRaces;
@@ -59,7 +80,17 @@ import net.xlea99.lifeguard.entry.ru_broken_sounds.RuBrokenSounds;
 import net.xlea99.lifeguard.entry.snowy_spirit_brighter_ginger.SnowySpiritBrighterGinger;
 import net.xlea99.lifeguard.entry.snowy_spirit_edible_treats.SnowySpiritEdibleTreats;
 import net.xlea99.lifeguard.entry.snowy_spirit_eggnog_nerf.SnowySpiritEggnogNerf;
+import net.xlea99.lifeguard.entry.species_bloodlust_all_food.SpeciesBloodlustAllFood;
+import net.xlea99.lifeguard.entry.species_coil_culling.SpeciesCoilCulling;
+import net.xlea99.lifeguard.entry.species_dyeable_chaindeliers.SpeciesDyeableChaindeliers;
+import net.xlea99.lifeguard.entry.species_ghoul_forgets_prey.SpeciesGhoulForgetsPrey;
+import net.xlea99.lifeguard.entry.species_kinetic_blasts.SpeciesKineticBlasts;
+import net.xlea99.lifeguard.entry.species_stackatick_breeding.SpeciesStackatickBreeding;
+import net.xlea99.lifeguard.entry.species_swapper_resets_fall.SpeciesSwapperResetsFall;
+import net.xlea99.lifeguard.entry.species_soap_washes_stackaticks.SpeciesSoapWashesStackaticks;
+import net.xlea99.lifeguard.entry.species_wicked_spares_pets.SpeciesWickedSparesPets;
 import net.xlea99.lifeguard.entry.spawn_ru_pineify_rotten_wood.SpawnRuPineifyRottenWood;
+import net.xlea99.lifeguard.entry.srm_personality_snow.SrmPersonalitySnow;
 import net.xlea99.lifeguard.entry.sleep_tight_spawn_events.SleepTightSpawnEvents;
 import net.xlea99.lifeguard.entry.supplementaries_grouper_open_sides.SupplementariesGrouperOpenSides;
 import net.xlea99.lifeguard.entry.supps_blue_bomb_dispensing.SuppsBlueBombDispensing;
@@ -70,6 +101,9 @@ import net.xlea99.lifeguard.entry.twigs_bloodstone_obelisks.TwigsBloodstoneObeli
 import net.xlea99.lifeguard.entry.twigs_gravel_pebbles.TwigsGravelPebbles;
 import net.xlea99.lifeguard.entry.twigs_leaf_twigs.TwigsLeafTwigs;
 import net.xlea99.lifeguard.entry.twigs_pebble_dispensing.TwigsPebbleDispensing;
+import net.xlea99.lifeguard.entry.vanilla_backport_cc_resin_trims.VanillaBackportCcResinTrims;
+import net.xlea99.lifeguard.entry.vanilla_backport_lightning_rods.VanillaBackportLightningRods;
+import net.xlea99.lifeguard.entry.vanilla_backport_pause_pauses_music.VanillaBackportPausePausesMusic;
 import net.xlea99.lifeguard.entry.vanilla_backport_resin_trim_icons.VanillaBackportResinTrimIcons;
 import net.xlea99.lifeguard.entry.warden_roar_loop.WardenRoarLoop;
 import net.xlea99.lifeguard.entry.whiter_labels.WhiterLabels;
@@ -118,8 +152,21 @@ public final class Catalog {
         BucketMobFlicker.class,
         CauldronFourths.class,
         CcHeadVision.class,
+        CcCraftedTetherPotions.class,
+        CcHiddenTrimIcons.class,
         CcImmediatelyFastRatCollars.class,
+        CcExtendedPlatedBricks.class,
+        CcFlintPistonStriking.class,
+        CcDeeperHats.class,
+        CcGlareGrumpiness.class,
+        CcNecromiumArmorSlowness.class,
+        CcAttachedRatTicks.class,
+        CcBoneFluteChecks.class,
+        CcRatPackMinimum.class,
+        CcStorageDuctItemLoss.class,
+        CcStorageDuctSpanLimit.class,
         CcTetherPotionCompat.class,
+        CcWeaponsFollowTheBlade.class,
         CitadelAnimationSmoothing.class,
         CcCannonBackfire.class,
         CcGoldenBucketCompat.class,
@@ -132,6 +179,11 @@ public final class Catalog {
         DyeTheWorldOpenSacks.class,
         EmfHauntedHarvestMasks.class,
         HauntedHarvestMaskLimit.class,
+        Boidsify.class,
+        JukeboxSyncedPlayback.class,
+        JukeboxProgressSignal.class,
+        JukeboxPlaylists.class,
+        SuppsJukeboxSpeakers.class,
         HauntedHarvestPumpkinCompat.class,
         HauntedHarvestTorchLanterns.class,
         HauntedHarvestUnifiedCarvedPumpkin.class,
@@ -140,7 +192,9 @@ public final class Catalog {
         EtceteraLabelWashStacking.class,
         EtceteraShimmeringBismuthTrims.class,
         FaucetPouringRecipes.class,
+        FireBlocksPlaceUnlit.class,
         MapAtlasesFixes.class,
+        ExtendedMetalBars.class,
         MoonlightJadeContents.class,
         MoonlightRegistrationRaces.class,
         NeapolitanAmendmentsMilkshakes.class,
@@ -161,7 +215,17 @@ public final class Catalog {
         SnowySpiritBrighterGinger.class,
         SnowySpiritEdibleTreats.class,
         SnowySpiritEggnogNerf.class,
+        SpeciesBloodlustAllFood.class,
+        SpeciesCoilCulling.class,
+        SpeciesDyeableChaindeliers.class,
+        SpeciesGhoulForgetsPrey.class,
+        SpeciesKineticBlasts.class,
+        SpeciesStackatickBreeding.class,
+        SpeciesSwapperResetsFall.class,
+        SpeciesSoapWashesStackaticks.class,
+        SpeciesWickedSparesPets.class,
         SpawnRuPineifyRottenWood.class,
+        SrmPersonalitySnow.class,
         SupplementariesGrouperOpenSides.class,
         SuppsBlueBombDispensing.class,
         SuppsSoapLoreFirst.class,
@@ -188,9 +252,13 @@ public final class Catalog {
         SuppsSliceMapsKeepTheAltimeter.class,
         ThemedCandleHolderFlames.class,
         TwigsBloodstoneObelisks.class,
+        TwigsCcFloweringAzaleas.class,
         TwigsGravelPebbles.class,
         TwigsLeafTwigs.class,
         TwigsPebbleDispensing.class,
+        VanillaBackportCcResinTrims.class,
+        VanillaBackportLightningRods.class,
+        VanillaBackportPausePausesMusic.class,
         VanillaBackportResinTrimIcons.class,
         ZetaInstanceRace.class
     );
