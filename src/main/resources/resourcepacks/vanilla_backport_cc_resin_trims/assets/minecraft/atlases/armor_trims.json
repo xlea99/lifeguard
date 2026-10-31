@@ -1,0 +1,29 @@
+{
+  "sources": [
+    {
+      "type": "minecraft:paletted_permutations",
+      "textures": [
+        "caverns_and_chasms:trims/models/armor/exile",
+        "caverns_and_chasms:trims/models/armor/exile_leggings",
+        "caverns_and_chasms:trims/models/armor/forger",
+        "caverns_and_chasms:trims/models/armor/forger_leggings",
+        "caverns_and_chasms:trims/models/armor/immolate",
+        "caverns_and_chasms:trims/models/armor/immolate_leggings",
+        "caverns_and_chasms:trims/models/armor/rim",
+        "caverns_and_chasms:trims/models/armor/rim_leggings",
+        "caverns_and_chasms:trims/models/armor/plate",
+        "caverns_and_chasms:trims/models/armor/plate_leggings",
+        "caverns_and_chasms:trims/models/armor/core",
+        "caverns_and_chasms:trims/models/armor/core_leggings",
+        "caverns_and_chasms:trims/models/armor/sanguine",
+        "caverns_and_chasms:trims/models/armor/sanguine_leggings",
+        "caverns_and_chasms:trims/models/armor/copper",
+        "caverns_and_chasms:trims/models/armor/copper_leggings"
+      ],
+      "palette_key": "minecraft:trims/color_palettes/trim_palette",
+      "permutations": {
+        "resin": "minecraft:trims/color_palettes/resin"
+      }
+    }
+  ]
+}
