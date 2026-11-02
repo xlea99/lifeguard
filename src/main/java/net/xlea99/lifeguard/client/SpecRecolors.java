@@ -32,10 +32,16 @@ import net.xlea99.lifeguard.Lifeguard;
  * Colors that stay are listed as mapping to themselves, so a texture with a color the spec doesn't name (a resource
  * pack's own art, or the mod changed it) is left alone rather than half recolored.
  *
+ * <p>A texture can instead go out as a new one of our own ({@code output}), and with {@code clear_others} every color the
+ * spec doesn't name is cleared rather than leaving the texture alone: a mask of just the named colors (a book's cover, as
+ * an overlay to tint).
+ *
  * <pre>
  * {"textures": [{"texture": "modid:block/name",         // relative to textures/, no .png
  *                "colors": {"#RRGGBB": "#RRGGBB", ...},
- *                "keep": [[x0, y0, x1, y1], ...]}]}     // optional, inclusive: pixels left as they are (a sign's post)
+ *                "keep": [[x0, y0, x1, y1], ...],       // optional, inclusive: pixels left as they are (a sign's post)
+ *                "output": "lifeguard:block/name",      // optional: written here instead of over the source
+ *                "clear_others": true}]}                // optional: unnamed colors cleared, not refused
  * </pre>
  */
 public final class SpecRecolors {
@@ -99,13 +105,16 @@ public final class SpecRecolors {
                 for (JsonElement entry : json.getAsJsonArray("textures")) {
                     JsonObject texture = entry.getAsJsonObject();
                     ResourceLocation path = ResourceLocation.parse(texture.get("texture").getAsString());
-                    recolor(manager, path, colors(texture.getAsJsonObject("colors")), keeps(texture.getAsJsonArray("keep")), sink);
+                    ResourceLocation output = texture.has("output") ? ResourceLocation.parse(texture.get("output").getAsString()) : path;
+                    boolean clearOthers = texture.has("clear_others") && texture.get("clear_others").getAsBoolean();
+                    recolor(manager, path, output, clearOthers, colors(texture.getAsJsonObject("colors")),
+                        keeps(texture.getAsJsonArray("keep")), sink);
                 }
             });
         }
 
-        private void recolor(ResourceManager manager, ResourceLocation path, Map<Integer, Integer> colors, List<Keep> keeps,
-                             ResourceSink sink) {
+        private void recolor(ResourceManager manager, ResourceLocation path, ResourceLocation output, boolean clearOthers,
+                             Map<Integer, Integer> colors, List<Keep> keeps, ResourceSink sink) {
             try (TextureImage art = TextureImage.open(manager, path)) {
                 NativeImage image = art.getImage();
                 int[] out = new int[image.getWidth() * image.getHeight()];
@@ -113,16 +122,17 @@ public final class SpecRecolors {
                     for (int x = 0; x < image.getWidth(); x++) {
                         int abgr = image.getPixelRGBA(x, y);
                         Integer swapped = colors.get(abgr & 0x00FFFFFF);
-                        if (abgr >>> 24 != 0 && swapped == null) {
+                        if (abgr >>> 24 != 0 && swapped == null && !clearOthers) {
                             Lifeguard.LOGGER.info("[lifeguard] {}: {} has colors we don't know (a resource pack's?), left as is", id, path);
                             return;
                         }
-                        out[y * image.getWidth() + x] = abgr >>> 24 == 0 || kept(keeps, x, y) ? abgr : abgr & 0xFF000000 | swapped;
+                        out[y * image.getWidth() + x] = abgr >>> 24 == 0 || kept(keeps, x, y) ? abgr
+                            : swapped == null ? 0 : abgr & 0xFF000000 | swapped;
                     }
                 for (int y = 0; y < image.getHeight(); y++)
                     for (int x = 0; x < image.getWidth(); x++)
                         image.setPixelRGBA(x, y, out[y * image.getWidth() + x]);
-                sink.addTexture(path, art);
+                sink.addTexture(output, art);
             } catch (IOException | RuntimeException e) {
                 Lifeguard.LOGGER.warn("[lifeguard] {}: couldn't recolor {}", id, path, e);
             }

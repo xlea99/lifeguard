@@ -9,6 +9,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.JukeboxSong;
+import net.minecraft.world.level.block.LevelEvent;
 import net.xlea99.lifeguard.sync.Payloads;
 
 /**
@@ -67,6 +68,17 @@ public final class JukeboxSync {
     public static void stop(ServerLevel level, BlockPos pos, int range) {
         if (range > RANGE)
             send(level, pos, range, new JukeboxStopPayload(pos));
+    }
+
+    /**
+     * Stops the music of the jukebox at {@code pos} for everyone who might hear it, without ending its song (whoever
+     * calls this holds the song's place; its next heartbeat brings the music back mid-song). Vanilla's own stop for those
+     * in its reach, ours for anyone a carrier took it to.
+     */
+    public static void silence(ServerLevel level, BlockPos pos) {
+        level.levelEvent(LevelEvent.SOUND_STOP_JUKEBOX_SONG, pos, 0);
+        for (ServerPlayer player : level.players())
+            Payloads.send(player, new JukeboxStopPayload(pos));
     }
 
     private static void send(ServerLevel level, BlockPos pos, int radius, CustomPacketPayload payload) {

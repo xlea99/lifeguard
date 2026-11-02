@@ -1,0 +1,7 @@
+{
+  "parent": "supplementaries:special_models/block/books/book_written",
+  "textures": {
+    "0": "lifeguard:block/books/book_written_cover",
+    "particle": "lifeguard:block/books/book_written_cover"
+  }
+}

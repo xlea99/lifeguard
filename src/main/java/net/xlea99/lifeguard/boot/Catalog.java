@@ -31,6 +31,10 @@ import net.xlea99.lifeguard.entry.amendments_mixed_potion_brewing.AmendmentsMixe
 import net.xlea99.lifeguard.entry.amendments_potion_dilution.AmendmentsPotionDilution;
 import net.xlea99.lifeguard.entry.bucket_mob_flicker.BucketMobFlicker;
 import net.xlea99.lifeguard.entry.cauldron_fourths.CauldronFourths;
+import net.xlea99.lifeguard.entry.chest_boat_chests.ChestBoatChests;
+import net.xlea99.lifeguard.entry.chest_boats_take_any_chest.ChestBoatsTakeAnyChest;
+import net.xlea99.lifeguard.entry.chest_minecart_chests.ChestMinecartChests;
+import net.xlea99.lifeguard.entry.pack_animal_chests.PackAnimalChests;
 import net.xlea99.lifeguard.entry.cc_head_vision.CcHeadVision;
 import net.xlea99.lifeguard.entry.cc_immediately_fast_rat_collars.CcImmediatelyFastRatCollars;
 import net.xlea99.lifeguard.entry.cc_tether_potion_compat.CcTetherPotionCompat;
@@ -41,13 +45,19 @@ import net.xlea99.lifeguard.entry.cc_golden_milk_follows_neapolitan.CcGoldenMilk
 import net.xlea99.lifeguard.entry.clayworks_flower_pots.ClayworksFlowerPots;
 import net.xlea99.lifeguard.entry.dye_depot_runes.DyeDepotRunes;
 import net.xlea99.lifeguard.entry.dye_depot_rock_candy.DyeDepotRockCandy;
+import net.xlea99.lifeguard.entry.easy_anvils_quark_anvils.EasyAnvilsQuarkAnvils;
+import net.xlea99.lifeguard.entry.easy_shulker_boxes_dye_depot.EasyShulkerBoxesDyeDepot;
+import net.xlea99.lifeguard.entry.easy_shulker_boxes_output_slots.EasyShulkerBoxesOutputSlots;
 import net.xlea99.lifeguard.entry.dye_depot_sparklers.DyeDepotSparklers;
 import net.xlea99.lifeguard.entry.dye_the_world_glow_lights.DyeTheWorldGlowLights;
 import net.xlea99.lifeguard.entry.dye_the_world_open_sacks.DyeTheWorldOpenSacks;
 import net.xlea99.lifeguard.entry.emf_haunted_harvest_masks.EmfHauntedHarvestMasks;
+import net.xlea99.lifeguard.entry.better_tridents_loyal_drops_last.BetterTridentsLoyalDropsLast;
 import net.xlea99.lifeguard.entry.boidsify.Boidsify;
 import net.xlea99.lifeguard.entry.haunted_harvest_mask_limit.HauntedHarvestMaskLimit;
+import net.xlea99.lifeguard.entry.horseman_quark_horses.HorsemanQuarkHorses;
 import net.xlea99.lifeguard.entry.jukebox_playlists.JukeboxPlaylists;
+import net.xlea99.lifeguard.entry.jukebox_record_scratch.JukeboxRecordScratch;
 import net.xlea99.lifeguard.entry.jukebox_progress_signal.JukeboxProgressSignal;
 import net.xlea99.lifeguard.entry.jukebox_synced_playback.JukeboxSyncedPlayback;
 import net.xlea99.lifeguard.entry.supps_jukebox_speakers.SuppsJukeboxSpeakers;
@@ -67,6 +77,8 @@ import net.xlea99.lifeguard.entry.neapolitan_amendments_milkshakes.NeapolitanAme
 import net.xlea99.lifeguard.entry.no_supps_jar_fish.NoSuppsJarFish;
 import net.xlea99.lifeguard.entry.quark_amethyst_beacon_tint.QuarkAmethystBeaconTint;
 import net.xlea99.lifeguard.entry.quark_donkey_chests.QuarkDonkeyChests;
+import net.xlea99.lifeguard.entry.quark_armor_swap_respects_locks.QuarkArmorSwapRespectsLocks;
+import net.xlea99.lifeguard.entry.quark_chest_minecart_recipe.QuarkChestMinecartRecipe;
 import net.xlea99.lifeguard.entry.quark_elytra_duplication_crash.QuarkElytraDuplicationCrash;
 import net.xlea99.lifeguard.entry.quark_parrot_egg_dispensing.QuarkParrotEggDispensing;
 import net.xlea99.lifeguard.entry.no_end_cave_sounds.NoEndCaveSounds;
@@ -74,6 +86,8 @@ import net.xlea99.lifeguard.entry.paper_labels.PaperLabels;
 import net.xlea99.lifeguard.entry.quark_tool_restock_enchantments.QuarkToolRestockEnchantments;
 import net.xlea99.lifeguard.entry.scholar_amendments_lectern_sync.ScholarAmendmentsLecternSync;
 import net.xlea99.lifeguard.entry.scholar_lectern_atlases.ScholarLecternAtlases;
+import net.xlea99.lifeguard.entry.scholar_default_packs.ScholarDefaultPacks;
+import net.xlea99.lifeguard.entry.scholar_supps_book_piles.ScholarSuppsBookPiles;
 import net.xlea99.lifeguard.entry.sexy_runic_glints.SexyRunicGlints;
 import net.xlea99.lifeguard.entry.sleep_tight_kill_stats.SleepTightKillStats;
 import net.xlea99.lifeguard.entry.ru_broken_sounds.RuBrokenSounds;
@@ -126,6 +140,19 @@ import net.xlea99.lifeguard.entry.supps_respects_mob_griefing.SuppsRespectsMobGr
 import net.xlea99.lifeguard.entry.supps_slice_maps_keep_the_altimeter.SuppsSliceMapsKeepTheAltimeter;
 import net.xlea99.lifeguard.entry.themed_candle_holder_flames.ThemedCandleHolderFlames;
 import net.xlea99.lifeguard.entry.zeta_instance_race.ZetaInstanceRace;
+import net.xlea99.lifeguard.entry.zetter_canvas_texture_cleanup.ZetterCanvasTextureCleanup;
+import net.xlea99.lifeguard.entry.zetter_canvas_timers.ZetterCanvasTimers;
+import net.xlea99.lifeguard.entry.zetter_copies_like_books.ZetterCopiesLikeBooks;
+import net.xlea99.lifeguard.entry.zetter_easel_sync.ZetterEaselSync;
+import net.xlea99.lifeguard.entry.zetter_emi_recipes.ZetterEmiRecipes;
+import net.xlea99.lifeguard.entry.zetter_frame_default_size.ZetterFrameDefaultSize;
+import net.xlea99.lifeguard.entry.zetter_hovered_paintings_stack.ZetterHoveredPaintingsStack;
+import net.xlea99.lifeguard.entry.zetter_missing_painting_drops.ZetterMissingPaintingDrops;
+import net.xlea99.lifeguard.entry.zetter_painting_lighting.ZetterPaintingLighting;
+import net.xlea99.lifeguard.entry.zetter_painting_view_distance.ZetterPaintingViewDistance;
+import net.xlea99.lifeguard.entry.zetter_paintings_stay_put.ZetterPaintingsStayPut;
+import net.xlea99.lifeguard.entry.zetter_tooltips.ZetterTooltips;
+import net.xlea99.lifeguard.entry.zettify_all_paintings.ZettifyAllPaintings;
 
 /**
  * Every class that declares entries. Startup loads each one so its constants register before the freeze.
@@ -150,7 +177,12 @@ public final class Catalog {
         AmendmentsMixedPotionBrewing.class,
         AmendmentsPotionDilution.class,
         BucketMobFlicker.class,
+        BetterTridentsLoyalDropsLast.class,
         CauldronFourths.class,
+        ChestBoatChests.class,
+        ChestBoatsTakeAnyChest.class,
+        ChestMinecartChests.class,
+        PackAnimalChests.class,
         CcHeadVision.class,
         CcCraftedTetherPotions.class,
         CcHiddenTrimIcons.class,
@@ -174,15 +206,20 @@ public final class Catalog {
         ClayworksFlowerPots.class,
         DyeDepotRunes.class,
         DyeDepotRockCandy.class,
+        EasyAnvilsQuarkAnvils.class,
+        EasyShulkerBoxesDyeDepot.class,
+        EasyShulkerBoxesOutputSlots.class,
         DyeDepotSparklers.class,
         DyeTheWorldGlowLights.class,
         DyeTheWorldOpenSacks.class,
         EmfHauntedHarvestMasks.class,
         HauntedHarvestMaskLimit.class,
+        HorsemanQuarkHorses.class,
         Boidsify.class,
         JukeboxSyncedPlayback.class,
         JukeboxProgressSignal.class,
         JukeboxPlaylists.class,
+        JukeboxRecordScratch.class,
         SuppsJukeboxSpeakers.class,
         HauntedHarvestPumpkinCompat.class,
         HauntedHarvestTorchLanterns.class,
@@ -201,6 +238,8 @@ public final class Catalog {
         NoSuppsJarFish.class,
         QuarkAmethystBeaconTint.class,
         QuarkDonkeyChests.class,
+        QuarkChestMinecartRecipe.class,
+        QuarkArmorSwapRespectsLocks.class,
         QuarkElytraDuplicationCrash.class,
         QuarkParrotEggDispensing.class,
         NoEndCaveSounds.class,
@@ -209,6 +248,8 @@ public final class Catalog {
         RuBrokenSounds.class,
         ScholarAmendmentsLecternSync.class,
         ScholarLecternAtlases.class,
+        ScholarDefaultPacks.class,
+        ScholarSuppsBookPiles.class,
         SexyRunicGlints.class,
         SleepTightKillStats.class,
         SleepTightSpawnEvents.class,
@@ -260,7 +301,20 @@ public final class Catalog {
         VanillaBackportLightningRods.class,
         VanillaBackportPausePausesMusic.class,
         VanillaBackportResinTrimIcons.class,
-        ZetaInstanceRace.class
+        ZetaInstanceRace.class,
+        ZetterCanvasTextureCleanup.class,
+        ZetterCanvasTimers.class,
+        ZetterCopiesLikeBooks.class,
+        ZetterEaselSync.class,
+        ZetterEmiRecipes.class,
+        ZetterFrameDefaultSize.class,
+        ZetterHoveredPaintingsStack.class,
+        ZetterMissingPaintingDrops.class,
+        ZetterPaintingLighting.class,
+        ZetterPaintingViewDistance.class,
+        ZetterPaintingsStayPut.class,
+        ZetterTooltips.class,
+        ZettifyAllPaintings.class
     );
 
     private Catalog() {

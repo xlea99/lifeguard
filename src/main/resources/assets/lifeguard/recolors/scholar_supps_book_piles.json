@@ -1,0 +1,30 @@
+{
+  "_comment": "scholar_supps_book_piles (from lnod_glue's scholarBookPileColors): only the covers of Supplementaries' own written book and book and quill (the player's installed textures), turned gray with everything else cleared, as overlays tinted with the book's Scholar color. Each brown keeps its brightness relative to the others, scaled so the cover sits near the middle gray of Scholar's own lectern cover, so a dye looks the same in a pile as in Scholar's hand and on its lecterns. Palette rechecked against Supplementaries 4.0.2 (2026-10-31): unchanged.",
+  "textures": [
+    {
+      "texture": "supplementaries:block/books/book_written",
+      "output": "lifeguard:block/books/book_written_cover",
+      "clear_others": true,
+      "colors": {
+        "#73401C": "#969696",
+        "#683819": "#858585",
+        "#5E2F16": "#737373",
+        "#542B15": "#696969",
+        "#442113": "#525252"
+      }
+    },
+    {
+      "texture": "supplementaries:block/books/book_and_quill",
+      "output": "lifeguard:block/books/book_and_quill_cover",
+      "clear_others": true,
+      "colors": {
+        "#73401C": "#969696",
+        "#683819": "#858585",
+        "#5E2F16": "#737373",
+        "#582C17": "#6C6C6C",
+        "#542B15": "#696969",
+        "#442113": "#525252"
+      }
+    }
+  ]
+}

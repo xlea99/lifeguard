@@ -1,0 +1,8 @@
+{
+  "block.jukebox.record_scratch": {
+    "subtitle": "lifeguard.subtitles.block.jukebox.record_scratch",
+    "sounds": [
+      "lifeguard:block/jukebox/record_scratch"
+    ]
+  }
+}

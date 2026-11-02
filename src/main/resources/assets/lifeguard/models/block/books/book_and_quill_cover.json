@@ -1,0 +1,7 @@
+{
+  "parent": "supplementaries:special_models/block/books/book_and_quill",
+  "textures": {
+    "0": "lifeguard:block/books/book_and_quill_cover",
+    "particle": "lifeguard:block/books/book_and_quill_cover"
+  }
+}

@@ -16,6 +16,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.client.event.ModelEvent;
 import net.xlea99.lifeguard.Lifeguard;
+import net.xlea99.lifeguard.client.OkLab;
 
 /**
  * Placed labels in whiter paper ({@link WhiterLabels}).

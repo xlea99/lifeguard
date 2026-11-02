@@ -34,6 +34,19 @@ repositories {
             includeGroup 'com.github.bawnorton.mixinsquared'
         }
     }
+    // Item Interactions (Fuzs' library inside Easy Shulker Boxes), compiled against only: it isn't published on its own
+    // on Modrinth. Fuzs' own Maven, hosted on GitHub.
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'Fuzs'
+                url = 'https://raw.githubusercontent.com/Fuzss/modresources/main/maven/'
+            }
+        }
+        filter {
+            includeGroup 'fuzs.iteminteractions'
+        }
+    }
 }
 
 base {
@@ -171,6 +184,20 @@ dependencies {
     runtimeOnly "maven.modrinth:easy-anvils:${easy_anvils_version}"
     compileOnly "maven.modrinth:puzzles-lib:${puzzles_lib_version}"
     runtimeOnly "maven.modrinth:puzzles-lib:${puzzles_lib_version}"
+    // Easy Shulker Boxes carries Item Interactions inside its jar at runtime; the library is compiled against on its own.
+    runtimeOnly "maven.modrinth:easy-shulker-boxes:${easy_shulker_boxes_version}"
+    compileOnly("fuzs.iteminteractions:iteminteractions-neoforge:${item_interactions_version}") { transitive = false }
+    compileOnly "maven.modrinth:horseman:${horseman_version}"
+    runtimeOnly "maven.modrinth:horseman:${horseman_version}"
+    compileOnly "maven.modrinth:ZmLgjf6f:${zetter_version}"
+    runtimeOnly "maven.modrinth:ZmLgjf6f:${zetter_version}"
+    // Regions Unexplored only runs in dev (its boat renderer is reached by class name): the preflight checks that hook.
+    runtimeOnly "maven.modrinth:regions-unexplored:${regions_unexplored_version}"
+    runtimeOnly "maven.modrinth:lithostitched:${lithostitched_version}"
+    // Spawn: its boat renderer takes Spawn's own boat type, so the chest boat hook compiles against it.
+    compileOnly "maven.modrinth:spawn-mod:${spawn_version}"
+    runtimeOnly "maven.modrinth:spawn-mod:${spawn_version}"
+    runtimeOnly "maven.modrinth:rLJ1qF79:${teallib_version}"
 
     // MixinSquared, bundled: entries that reach into another mod's own mixins need it whatever else is installed.
     // The same artifact other mods bundle (AllTheLeaks does), so NeoForge keeps one copy, the newest in range.

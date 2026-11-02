@@ -1,7 +1,7 @@
 # Notice
 
 Lifeguard's code is under the Mozilla Public License 2.0 (see `LICENSE`). Some of its art is derived from other mods'
-art, under those mods' licenses, as listed here.
+art, and one sound comes from Freesound, each under its own license, as listed here.
 
 ## Bundled library
 
@@ -64,8 +64,22 @@ installed [Alex's Caves](https://modrinth.com/mod/alexs-caves) (by AlexModGuy, a
 a hair lighter, from the color table in `assets/lifeguard/recolors/ac_thornwood.json`, which is this mod's own. Nothing
 of Alex's Caves' is included.
 
+The `scholar_supps_book_piles` entry's book cover overlays are made on the player's machine from their installed
+[Supplementaries](https://modrinth.com/mod/supplementaries) (by MehVahdJukaar): the covers of its written book and book
+and quill, turned gray with everything else cleared, from the color table in
+`assets/lifeguard/recolors/scholar_supps_book_piles.json`, which is this mod's own. Nothing of Supplementaries' is
+included.
+
 ## Original
 
 `indigo`, `navy` and `teal` in `assets/lifeguard/textures/glint/` are procedural glimmers, not derived from Quark's or
 Minecraft's art, and are under this mod's license like the code.
+
+## Sounds
+
+`assets/lifeguard/sounds/block/jukebox/record_scratch.ogg` (the `jukebox_record_scratch` entry) is
+["record scratch.wav"](https://freesound.org/people/luffy/sounds/3536/) by **luffy**, from Freesound, licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Changes: cut from the 17-second recording down to the
+scratch itself (about 1.2 seconds), mixed to mono, faded at both ends, peak-normalized, and encoded to Ogg Vorbis. It
+stays under CC BY 4.0.
 

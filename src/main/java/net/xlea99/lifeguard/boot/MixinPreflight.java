@@ -82,7 +82,9 @@ final class MixinPreflight {
         "Lorg/spongepowered/asm/mixin/Mutable;");
     private static final List<String> HOOK_LIBRARIES = List.of("Lorg/spongepowered/asm/mixin/",
         "Lcom/llamalad7/mixinextras/", "Lcom/bawnorton/mixinsquared/");
-    private static final Set<String> AT_KEYS = Set.of("value", "target", "ordinal", "args");
+    private static final Set<String> AT_KEYS = Set.of("value", "target", "ordinal", "args", "shift");
+    /** Shifts that only move the injection next to its match, so whether it fits is the match's own question. */
+    private static final Set<String> NEIGHBOR_SHIFTS = Set.of("NONE", "BEFORE", "AFTER");
 
     private final ClassSource source;
     private final Map<String, ClassNode> classes = new HashMap<>();
@@ -288,6 +290,7 @@ final class MixinPreflight {
             return;
         int required = integer(injector, "require", 1);
         int found = 0;
+        boolean unchecked = false; // an @At it can't read: that's the problem, not "gone"
         String desc = injector.desc;
         if (desc.equals(WRAP_METHOD)) {
             found = methods.size();
@@ -317,10 +320,19 @@ final class MixinPreflight {
                 problems.add(handler.name + " has no @At");
             for (AnnotationNode one : ats) {
                 int here = 0;
+                boolean checked = true;
                 for (Target target : methods) {
                     List<AbstractInsnNode> points = points(target, one, handler, injector, problems);
+                    if (points == null) {
+                        checked = false;
+                        break;
+                    }
                     here += points.size();
                     checkLocals(handler, target, points, problems);
+                }
+                if (!checked) {
+                    unchecked = true;
+                    continue;
                 }
                 if (here == 0)
                     problems.add(handler.name + ": " + describeAt(one) + " is gone from " + describe(methods));
@@ -333,7 +345,7 @@ final class MixinPreflight {
         if (desc.equals(INJECT))
             for (Target target : methods)
                 checkCapturedArguments(handler, target, problems);
-        if (found < required)
+        if (found < required && !unchecked)
             problems.add(handler.name + " finds " + found + " of the " + required + " places it needs in "
                 + describe(methods));
     }
@@ -435,14 +447,21 @@ final class MixinPreflight {
         }
     }
 
-    /** Where an {@code @At} lands in one target method: every match, cut to its ordinal when it has one. */
+    /**
+     * Where an {@code @At} lands in one target method: every match, cut to its ordinal when it has one. Null when the
+     * preflight can't read the {@code @At} (the problem is already added), so it isn't also called gone.
+     */
     private List<AbstractInsnNode> points(Target target, AnnotationNode at, MethodNode handler, AnnotationNode injector,
                                           List<String> problems) {
         for (int i = 0; i < vals(at).size(); i += 2)
             if (!AT_KEYS.contains((String) vals(at).get(i))) {
                 problems.add(handler.name + ": @At sets " + vals(at).get(i) + ", which the preflight can't check yet");
-                return List.of();
+                return null;
             }
+        if (value(at, "shift") instanceof String[] shift && shift.length == 2 && !NEIGHBOR_SHIFTS.contains(shift[1])) {
+            problems.add(handler.name + ": @At shift " + shift[1] + ", which the preflight can't check yet");
+            return null;
+        }
         String kind = string(at, "value", "");
         String member = string(at, "target", "");
         MethodNode method = target.method();
@@ -475,7 +494,7 @@ final class MixinPreflight {
             case "NEW" -> {
                 if (member.contains("(")) {
                     problems.add(handler.name + ": @At NEW by constructor descriptor, which the preflight can't check yet");
-                    return List.of();
+                    return null;
                 }
                 String type = member.startsWith("L") && member.endsWith(";") ? member.substring(1, member.length() - 1)
                     : internal(member);
@@ -489,7 +508,7 @@ final class MixinPreflight {
                 if (slot == -2) {
                     problems.add(handler.name + ": @At LOAD outside an argsOnly @ModifyVariable, which the preflight"
                         + " can't check yet");
-                    return List.of();
+                    return null;
                 }
                 for (AbstractInsnNode insn : method.instructions)
                     if (insn instanceof VarInsnNode load && load.var == slot && load.getOpcode() >= Opcodes.ILOAD
@@ -498,7 +517,7 @@ final class MixinPreflight {
             }
             default -> {
                 problems.add(handler.name + ": @At(\"" + kind + "\") is a kind the preflight can't check yet");
-                return List.of();
+                return null;
             }
         }
         return ordinal(matches, integer(at, "ordinal", -1));
