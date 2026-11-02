@@ -64,12 +64,16 @@ import net.xlea99.lifeguard.entry.supps_jukebox_speakers.SuppsJukeboxSpeakers;
 import net.xlea99.lifeguard.entry.haunted_harvest_pumpkin_compat.HauntedHarvestPumpkinCompat;
 import net.xlea99.lifeguard.entry.haunted_harvest_torch_lanterns.HauntedHarvestTorchLanterns;
 import net.xlea99.lifeguard.entry.haunted_harvest_unified_carved_pumpkin.HauntedHarvestUnifiedCarvedPumpkin;
+import net.xlea99.lifeguard.entry.enchanting_tables_keep_lapis.EnchantingTablesKeepLapis;
 import net.xlea99.lifeguard.entry.enderman_head_reach.EndermanHeadReach;
+import net.xlea99.lifeguard.entry.ice_stops_crops.IceStopsCrops;
+import net.xlea99.lifeguard.entry.betterf3_lost_f3_info.BetterF3LostF3Info;
 import net.xlea99.lifeguard.entry.etcetera_easy_anvils_label_costs.EtceteraEasyAnvilsLabelCosts;
 import net.xlea99.lifeguard.entry.etcetera_label_wash_stacking.EtceteraLabelWashStacking;
 import net.xlea99.lifeguard.entry.etcetera_shimmering_bismuth_trims.EtceteraShimmeringBismuthTrims;
 import net.xlea99.lifeguard.entry.faucet_pouring_recipes.FaucetPouringRecipes;
 import net.xlea99.lifeguard.entry.fire_blocks_place_unlit.FireBlocksPlaceUnlit;
+import net.xlea99.lifeguard.entry.lithium_navigation_swaps.LithiumNavigationSwaps;
 import net.xlea99.lifeguard.entry.map_atlases_fixes.MapAtlasesFixes;
 import net.xlea99.lifeguard.entry.moonlight_jade_contents.MoonlightJadeContents;
 import net.xlea99.lifeguard.entry.moonlight_registration_races.MoonlightRegistrationRaces;
@@ -224,12 +228,16 @@ public final class Catalog {
         HauntedHarvestPumpkinCompat.class,
         HauntedHarvestTorchLanterns.class,
         HauntedHarvestUnifiedCarvedPumpkin.class,
+        EnchantingTablesKeepLapis.class,
         EndermanHeadReach.class,
+        IceStopsCrops.class,
+        BetterF3LostF3Info.class,
         EtceteraEasyAnvilsLabelCosts.class,
         EtceteraLabelWashStacking.class,
         EtceteraShimmeringBismuthTrims.class,
         FaucetPouringRecipes.class,
         FireBlocksPlaceUnlit.class,
+        LithiumNavigationSwaps.class,
         MapAtlasesFixes.class,
         ExtendedMetalBars.class,
         MoonlightJadeContents.class,

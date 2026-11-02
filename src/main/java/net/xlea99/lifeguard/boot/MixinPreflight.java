@@ -281,7 +281,8 @@ final class MixinPreflight {
                                List<ClassNode> targets, List<String> problems) {
         for (int i = 0; i < vals(injector).size(); i += 2) {
             String key = (String) vals(injector).get(i);
-            if (!Set.of("method", "at", "constant", "require", "cancellable", "argsOnly", "index", "ordinal")
+            // order only ranks handlers injected at the same point; it can't make a hook stop fitting.
+            if (!Set.of("method", "at", "constant", "require", "cancellable", "argsOnly", "index", "ordinal", "order")
                 .contains(key))
                 problems.add(handler.name + " sets " + key + ", which the preflight can't check yet");
         }

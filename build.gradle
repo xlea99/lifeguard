@@ -189,6 +189,8 @@ dependencies {
     compileOnly("fuzs.iteminteractions:iteminteractions-neoforge:${item_interactions_version}") { transitive = false }
     compileOnly "maven.modrinth:horseman:${horseman_version}"
     runtimeOnly "maven.modrinth:horseman:${horseman_version}"
+    compileOnly "maven.modrinth:lithium:${lithium_version}"
+    runtimeOnly "maven.modrinth:lithium:${lithium_version}"
     compileOnly "maven.modrinth:ZmLgjf6f:${zetter_version}"
     runtimeOnly "maven.modrinth:ZmLgjf6f:${zetter_version}"
     // Regions Unexplored only runs in dev (its boat renderer is reached by class name): the preflight checks that hook.
@@ -198,6 +200,9 @@ dependencies {
     compileOnly "maven.modrinth:spawn-mod:${spawn_version}"
     runtimeOnly "maven.modrinth:spawn-mod:${spawn_version}"
     runtimeOnly "maven.modrinth:rLJ1qF79:${teallib_version}"
+    compileOnly "maven.modrinth:betterf3:${betterf3_version}"
+    runtimeOnly "maven.modrinth:betterf3:${betterf3_version}"
+    runtimeOnly "maven.modrinth:cloth-config:${cloth_config_version}"
 
     // MixinSquared, bundled: entries that reach into another mod's own mixins need it whatever else is installed.
     // The same artifact other mods bundle (AllTheLeaks does), so NeoForge keeps one copy, the newest in range.
@@ -229,6 +234,31 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+}
+
+// GameTests live in the private workspace too (workspace/gametests): real multiplayer checks with mock server players,
+// run by `gradlew runGameTestServer`. Only dev runs load them; they never reach the jar.
+if (file('workspace/gametests/java').isDirectory()) {
+    sourceSets {
+        gametest {
+            java.srcDir 'workspace/gametests/java'
+            resources.srcDir 'workspace/gametests/resources'
+            compileClasspath += sourceSets.main.output
+            runtimeClasspath += sourceSets.main.output
+        }
+    }
+    configurations {
+        gametestCompileOnly.extendsFrom compileOnly
+        gametestImplementation.extendsFrom implementation
+    }
+    neoForge {
+        addModdingDependenciesTo(sourceSets.gametest)
+        mods {
+            "${mod_id}" {
+                sourceSet(sourceSets.gametest)
+            }
+        }
+    }
 }
 
 // Tests live in the private workspace, never in this repo. A clone without it builds normally; with it, `gradlew test`
