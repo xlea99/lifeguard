@@ -17,6 +17,8 @@ import net.xlea99.lifeguard.entry.cc_hidden_trim_icons.CcHiddenTrimIcons;
 import net.xlea99.lifeguard.entry.cc_extended_plated_bricks.CcExtendedPlatedBricks;
 import net.xlea99.lifeguard.entry.extended_metal_bars.ExtendedMetalBars;
 import net.xlea99.lifeguard.entry.ac_immediately_fast_gingerbread_stripes.AcImmediatelyFastGingerbreadStripes;
+import net.xlea99.lifeguard.entry.ac_irradiated_glow_sync.AcIrradiatedGlowSync;
+import net.xlea99.lifeguard.entry.ac_radiation_glow_batching.AcRadiationGlowBatching;
 import net.xlea99.lifeguard.entry.ac_thornwood_very_slightly_lighter_planks.AcThornwoodVerySlightlyLighterPlanks;
 import net.xlea99.lifeguard.entry.ac_infinite_soda.AcInfiniteSoda;
 import net.xlea99.lifeguard.entry.am_lava_bottle_dupe.AmLavaBottleDupe;
@@ -39,6 +41,7 @@ import net.xlea99.lifeguard.entry.cc_head_vision.CcHeadVision;
 import net.xlea99.lifeguard.entry.cc_immediately_fast_rat_collars.CcImmediatelyFastRatCollars;
 import net.xlea99.lifeguard.entry.cc_tether_potion_compat.CcTetherPotionCompat;
 import net.xlea99.lifeguard.entry.citadel_animation_smoothing.CitadelAnimationSmoothing;
+import net.xlea99.lifeguard.entry.citadel_iris_post_effects.CitadelIrisPostEffects;
 import net.xlea99.lifeguard.entry.cc_cannon_backfire.CcCannonBackfire;
 import net.xlea99.lifeguard.entry.cc_golden_bucket_compat.CcGoldenBucketCompat;
 import net.xlea99.lifeguard.entry.cc_golden_milk_follows_neapolitan.CcGoldenMilkFollowsNeapolitan;
@@ -67,7 +70,9 @@ import net.xlea99.lifeguard.entry.haunted_harvest_unified_carved_pumpkin.Haunted
 import net.xlea99.lifeguard.entry.enchanting_tables_keep_lapis.EnchantingTablesKeepLapis;
 import net.xlea99.lifeguard.entry.enderman_head_reach.EndermanHeadReach;
 import net.xlea99.lifeguard.entry.ice_stops_crops.IceStopsCrops;
+import net.xlea99.lifeguard.entry.iris_firework_fade.IrisFireworkFade;
 import net.xlea99.lifeguard.entry.betterf3_lost_f3_info.BetterF3LostF3Info;
+import net.xlea99.lifeguard.entry.zipline_server_checks.ZiplineServerChecks;
 import net.xlea99.lifeguard.entry.etcetera_easy_anvils_label_costs.EtceteraEasyAnvilsLabelCosts;
 import net.xlea99.lifeguard.entry.etcetera_label_wash_stacking.EtceteraLabelWashStacking;
 import net.xlea99.lifeguard.entry.etcetera_shimmering_bismuth_trims.EtceteraShimmeringBismuthTrims;
@@ -120,6 +125,7 @@ import net.xlea99.lifeguard.entry.twigs_gravel_pebbles.TwigsGravelPebbles;
 import net.xlea99.lifeguard.entry.twigs_leaf_twigs.TwigsLeafTwigs;
 import net.xlea99.lifeguard.entry.twigs_pebble_dispensing.TwigsPebbleDispensing;
 import net.xlea99.lifeguard.entry.vanilla_backport_cc_resin_trims.VanillaBackportCcResinTrims;
+import net.xlea99.lifeguard.entry.vanilla_backport_fa_cold_pig.VanillaBackportFaColdPig;
 import net.xlea99.lifeguard.entry.vanilla_backport_lightning_rods.VanillaBackportLightningRods;
 import net.xlea99.lifeguard.entry.vanilla_backport_pause_pauses_music.VanillaBackportPausePausesMusic;
 import net.xlea99.lifeguard.entry.vanilla_backport_resin_trim_icons.VanillaBackportResinTrimIcons;
@@ -168,6 +174,8 @@ import net.xlea99.lifeguard.entry.zettify_all_paintings.ZettifyAllPaintings;
 public final class Catalog {
     private static final List<Class<?>> DECLARATIONS = List.of(
         AcImmediatelyFastGingerbreadStripes.class,
+        AcIrradiatedGlowSync.class,
+        AcRadiationGlowBatching.class,
         AcThornwoodVerySlightlyLighterPlanks.class,
         AcInfiniteSoda.class,
         AmLavaBottleDupe.class,
@@ -204,6 +212,7 @@ public final class Catalog {
         CcTetherPotionCompat.class,
         CcWeaponsFollowTheBlade.class,
         CitadelAnimationSmoothing.class,
+        CitadelIrisPostEffects.class,
         CcCannonBackfire.class,
         CcGoldenBucketCompat.class,
         CcGoldenMilkFollowsNeapolitan.class,
@@ -231,7 +240,9 @@ public final class Catalog {
         EnchantingTablesKeepLapis.class,
         EndermanHeadReach.class,
         IceStopsCrops.class,
+        IrisFireworkFade.class,
         BetterF3LostF3Info.class,
+        ZiplineServerChecks.class,
         EtceteraEasyAnvilsLabelCosts.class,
         EtceteraLabelWashStacking.class,
         EtceteraShimmeringBismuthTrims.class,
@@ -306,6 +317,7 @@ public final class Catalog {
         TwigsLeafTwigs.class,
         TwigsPebbleDispensing.class,
         VanillaBackportCcResinTrims.class,
+        VanillaBackportFaColdPig.class,
         VanillaBackportLightningRods.class,
         VanillaBackportPausePausesMusic.class,
         VanillaBackportResinTrimIcons.class,

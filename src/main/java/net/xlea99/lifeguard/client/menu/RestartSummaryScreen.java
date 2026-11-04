@@ -5,6 +5,7 @@ import java.util.List;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.screens.GenericMessageScreen;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -77,12 +78,29 @@ final class RestartSummaryScreen extends Screen {
         int buttonWidth = 110;
         int y = height - 28;
         int x = width / 2 - (buttonWidth * 3 + 8) / 2;
-        addRenderableWidget(Button.builder(Component.translatable("lifeguard.menu.summary.quit"), button -> minecraft.stop())
+        addRenderableWidget(Button.builder(Component.translatable("lifeguard.menu.summary.quit"), button -> quitGame())
             .bounds(x, y, buttonWidth, 20).build());
         addRenderableWidget(Button.builder(Component.translatable("lifeguard.menu.summary.later"),
             button -> minecraft.setScreen(parent)).bounds(x + buttonWidth + 4, y, buttonWidth, 20).build());
         addRenderableWidget(Button.builder(Component.translatable("lifeguard.menu.summary.keep_editing"),
             button -> minecraft.setScreen(menu)).bounds(x + (buttonWidth + 4) * 2, y, buttonWidth, 20).build());
+    }
+
+    /**
+     * In a world, leaves it exactly as the pause menu's "Save and Quit to Title" does (the "Saving world" screen while
+     * the server saves, and a save that throws crashes loudly), then quits. `Minecraft.stop()` alone would also save,
+     * through `destroy()`, but inside a catch-all that exits silently if a mod's save code throws.
+     */
+    private void quitGame() {
+        if (minecraft.level != null) {
+            boolean local = minecraft.isLocalServer();
+            minecraft.level.disconnect();
+            if (local)
+                minecraft.disconnect(new GenericMessageScreen(Component.translatable("menu.savingLevel")));
+            else
+                minecraft.disconnect();
+        }
+        minecraft.stop();
     }
 
     @Override

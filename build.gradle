@@ -203,6 +203,11 @@ dependencies {
     compileOnly "maven.modrinth:betterf3:${betterf3_version}"
     runtimeOnly "maven.modrinth:betterf3:${betterf3_version}"
     runtimeOnly "maven.modrinth:cloth-config:${cloth_config_version}"
+    // Zipline rides Reconnectible Chains' spans; its server hook is wrapped by an entry, so both load in dev runs too.
+    compileOnly "maven.modrinth:C1MoWQlb:${zipline_version}"
+    runtimeOnly "maven.modrinth:C1MoWQlb:${zipline_version}"
+    compileOnly "maven.modrinth:5pzBXDS3:${connectiblechains_version}"
+    runtimeOnly "maven.modrinth:5pzBXDS3:${connectiblechains_version}"
 
     // MixinSquared, bundled: entries that reach into another mod's own mixins need it whatever else is installed.
     // The same artifact other mods bundle (AllTheLeaks does), so NeoForge keeps one copy, the newest in range.

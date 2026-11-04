@@ -39,7 +39,7 @@ public final class Shaderpacks {
             MethodHandle handle = MethodHandles.publicLookup()
                 .findVirtual(api, "isShaderPackInUse", MethodType.methodType(boolean.class))
                 .bindTo(instance);
-            Lifeguard.LOGGER.info("Iris found: rune glints fall back to plain ones while a shaderpack is on");
+            Lifeguard.LOGGER.info("Iris found: Lifeguard's rendering steps aside while a shaderpack is on");
             return handle;
         } catch (ClassNotFoundException e) {
             return null;
